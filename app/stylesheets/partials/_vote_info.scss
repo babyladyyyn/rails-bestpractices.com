@@ -1,18 +1,18 @@
-@import "compass/utilities/general/float";
-
 @mixin vote-info {
-  @include float-left;
-  margin-right: 20px;
-  p {
-    width: 40px;
-    font-size: 2em;
-    text-align: center;
-    margin: 0;
-  }
-  .like-icon, .dislike-icon, .like-icon.active, dislike-icon.active {
-    border: none;
-    display: block;
-    text-indent: 9999px;
-    cursor: pointer;
+  width: 50px;
+  vertical-align: top;
+  div {
+    p {
+      width: 40px;
+      font-size: 2em;
+      text-align: center;
+      margin: 0;
+    }
+    .like-icon, .dislike-icon, .like-icon.active, dislike-icon.active {
+      border: none;
+      display: block;
+      text-indent: 9999px;
+      cursor: pointer;
+    }
   }
 }

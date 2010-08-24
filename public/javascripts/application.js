@@ -19,6 +19,15 @@ $(function() {
   // pretty print the wikistyle pre code
   prettyPrint();
 
+  $(window).scroll(function() {
+    $votes = $('.vote-info div');
+    if ($(this).scrollTop() > 230) {
+      $votes.css('margin-top', $(this).scrollTop() - 230);
+    } else {
+      $votes.css('margin-top', 0);
+    }
+  });
+
   $('.collapse').click(function() {
     $(this).parents('h3').next().hide();
     $(this).hide();

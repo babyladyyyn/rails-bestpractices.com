@@ -51,7 +51,7 @@ table.posts {
   }
 }
 .post {
-  margin: 15px 20px;
+  margin: 15px 0;
   .addthis_toolbox {
     @include float-right;
   }
