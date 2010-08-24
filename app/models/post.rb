@@ -36,4 +36,8 @@ class Post < ActiveRecord::Base
     "#{id}-#{title.parameterize}"
   end
 
+  def related_posts
+    Post.tagged_with(self.tag_list, :any => true).select('id, title').where(['id <> ?', self.id]).limit(4)
+  end
+
 end

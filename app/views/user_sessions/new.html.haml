@@ -1,7 +1,7 @@
 - set_meta_tags :title => 'Login', :noindex => true
 
 %h2 Login
-= render 'shared/login_form', :user_session => @user_session, :return_to => nil
+= render 'shared/login_form', :user_session => @user_session, :return_to => params[:return_to]
 
 .register-hint
   %p

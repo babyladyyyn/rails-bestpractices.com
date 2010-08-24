@@ -1,7 +1,7 @@
 @mixin vote-info {
   width: 50px;
   vertical-align: top;
-  div {
+  > div {
     p {
       width: 40px;
       font-size: 2em;

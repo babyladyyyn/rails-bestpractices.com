@@ -82,6 +82,18 @@ table.posts {
       @include inline-block;
     }
   }
+  .related_posts {
+    margin-top: 10px;
+    strong {
+      font-size: 18px;
+    }
+    ul {
+      li {
+        margin-left: 10px;
+        line-height: 24px;
+      }
+    }
+  }
 }
 .implemented {
   font-size: 12px;

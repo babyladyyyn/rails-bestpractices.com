@@ -1,7 +1,7 @@
 module VotesHelper
   def vote_like_link(voteable)
     unless current_user
-      return link_to_function('Like', "javascript:alert('You should log in before vote!');", :class => 'like-icon')
+      return link_to 'Like', new_user_session_path(:return_to => request.url), :class => 'like-icon'
     end
     vote = voteable.vote current_user
     if vote
@@ -17,7 +17,7 @@ module VotesHelper
   
   def vote_dislike_link(voteable)
     unless current_user
-      return link_to_function('Dislike', "javascript:alert('You should log in before vote!');", :class => 'dislike-icon')
+      return link_to 'Disike', new_user_session_path(:return_to => request.url), :class => 'dislike-icon'
     end
     vote = voteable.vote current_user
     if vote
