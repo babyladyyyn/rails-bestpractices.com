@@ -16,13 +16,14 @@ class Notification < ActiveRecord::Base
   end
 
   private
+
     def increase_notification_count
-      user.increment! :unread_notification_count
+      notifierable.user.increment! :unread_notification_count
     end
 
     def decrease_notification_count
       unless self.read?
-        user.decrement! :unread_notification_count
+        notifierable.user.decrement! :unread_notification_count
       end
     end
 end
