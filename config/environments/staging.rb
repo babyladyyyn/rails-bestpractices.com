@@ -45,4 +45,10 @@ RailsBestpracticesCom::Application.configure do
   config.i18n.fallbacks = true
   
   config.active_record.observers = :notifier_observer
+
+  config.action_mailer.delivery_method = :smtp
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[rails-bestpractices.com] ",
+    :sender_address => %{"Application Error" <exception.notifier@rails-bestpractices.com>},
+    :exception_recipients => %w(flyerhzm@rails-bestpractices.com flyerhzm@gmail.com)
 end
