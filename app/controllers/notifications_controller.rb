@@ -15,6 +15,6 @@ class NotificationsController < InheritedResources::Base
     end
     
     def collection
-      @notifications ||= end_of_association_chain.includes(:notifierable => :user).paginate(:page => params[:page], :per_page => Notification.per_page)
+      @notifications ||= end_of_association_chain.paginate(:page => params[:page], :per_page => Notification.per_page)
     end
 end
