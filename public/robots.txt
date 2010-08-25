@@ -1,4 +1,5 @@
 User-agent: *
+Disallow: /user_session/*
 Disallow: /users/*
 Disallow: /tags/*
 Allow: /
