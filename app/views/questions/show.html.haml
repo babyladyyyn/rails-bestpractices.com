@@ -6,27 +6,28 @@
 
 %h2= @question.title
 
-.question
-  .vote-info
-    = vote_like_link(@question)
-    %p= @question.vote_points
-    = vote_dislike_link(@question)
-  .question-info
-    %p
-      = image_tag @question.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @question.user.login
-      Posted by 
-      = link_to @question.user.login, user_path(@question.user)
-      on 
-      = l(@question.created_at.to_date)
+%table.question
+  %tr
+    %td.vote-info
+      = vote_like_link(@question)
+      %p= @question.vote_points
+      = vote_dislike_link(@question)
+    %td.question-info
+      %p
+        = image_tag @question.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @question.user.login
+        Posted by 
+        = link_to @question.user.login, user_path(@question.user)
+        on 
+        = l(@question.created_at.to_date)
 
-    .wikistyle= raw @question.formatted_html
-    = render 'comments/short_comments', :comments => @question.comments
-    = render 'comments/short_comment_form', :parent => @question
+      .wikistyle= raw @question.formatted_html
+      = render 'comments/short_comments', :comments => @question.comments
+      = render 'comments/short_comment_form', :parent => @question
       
-    .tags
-      - @question.tags.each do |tag|
-        = link_to tag.name, tag_path(tag.name)
-  .clear
+      .tags
+        - @question.tags.each do |tag|
+          = link_to tag.name, tag_path(tag.name)
+    .clear
 
 = render 'answers/answers', :question => @question
 = render 'shared/login_register'

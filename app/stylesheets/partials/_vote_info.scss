@@ -1,18 +1,16 @@
 @mixin vote-info {
   width: 50px;
   vertical-align: top;
-  > div {
-    p {
-      width: 40px;
-      font-size: 2em;
-      text-align: center;
-      margin: 0;
-    }
-    .like-icon, .dislike-icon, .like-icon.active, dislike-icon.active {
-      border: none;
-      display: block;
-      text-indent: 9999px;
-      cursor: pointer;
-    }
+  p {
+    width: 40px;
+    font-size: 2em;
+    text-align: center;
+    margin: 0;
+  }
+  .like-icon, .dislike-icon, .like-icon.active, dislike-icon.active {
+    border: none;
+    display: block;
+    text-indent: 9999px;
+    cursor: pointer;
   }
 }

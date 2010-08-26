@@ -3,24 +3,26 @@
     %h3 Answers
     - question.answers.each do |answer|
       - unless answer.new_record?
-        .answer
-          .command
-            - if answer.belongs_to? current_user
-              = link_to 'Edit', edit_question_answer_path(question, answer)
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              = link_to 'Share', new_post_path(:answer_id => answer.id)
-          .vote-info
-            = vote_like_link(answer)
-            %p= answer.vote_points
-            = vote_dislike_link(answer)
-          .answer-info
-            %p
-              = image_tag answer.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => answer.user.login
-              Answered by 
-              = link_to answer.user.login, user_path(answer.user)
-              on 
-              = l(answer.created_at.to_date)
+        %table.answer
+          %tr
+            %td.vote-info
+              = vote_like_link(answer)
+              %p= answer.vote_points
+              = vote_dislike_link(answer)
+            %td
+              .command
+                - if answer.belongs_to? current_user
+                  = link_to 'Edit', edit_question_answer_path(question, answer)
+                  &nbsp;&nbsp;|&nbsp;&nbsp;
+                  = link_to 'Share', new_post_path(:answer_id => answer.id)
+              .answer-info
+                %p
+                  = image_tag answer.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => answer.user.login
+                  Answered by 
+                  = link_to answer.user.login, user_path(answer.user)
+                  on 
+                  = l(answer.created_at.to_date)
 
-            .wikistyle= raw answer.formatted_html
-            = render 'comments/short_comments', :comments => answer.comments
-            = render 'comments/short_comment_form', :parent => answer
+                .wikistyle= raw answer.formatted_html
+                = render 'comments/short_comments', :comments => answer.comments
+                = render 'comments/short_comment_form', :parent => answer
