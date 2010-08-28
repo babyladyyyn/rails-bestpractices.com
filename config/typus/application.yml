@@ -26,7 +26,7 @@ Answer:
   fields:
     default: user_id, vote_points, question_id, question, user
     form: body, formatted_html, user_id, vote_points, question_id, question, user
-  order_by: 
+  order_by: -created_at
   relationships: question, user, votes
   filters: 
   search: 
@@ -36,7 +36,7 @@ Comment:
   fields:
     default: user_id, username, commentable
     form: body, user_id, username
-  order_by: 
+  order_by: -created_at
   relationships: user
   filters: 
   search: 
@@ -46,7 +46,7 @@ Implementation:
   fields:
     default: post_id, user_id, post, user
     form: post_id, user_id, body, formatted_html, post, user
-  order_by: 
+  order_by: -created_at
   relationships: post, user
   filters: 
   search: title
@@ -56,7 +56,7 @@ Page:
   fields:
     default: name
     form: name, body
-  order_by:
+  order_by: -created_at
   redlationships:
   filters:
   search: name
@@ -66,7 +66,7 @@ Post:
   fields:
     default: title, user_id, comments_count, vote_points, view_count, tag_list, user, implemented
     form: title, body, user_id, formatted_html, description, comments_count, vote_points, view_count, tag_list, user, implemented
-  order_by: 
+  order_by: -created_at
   relationships: base_tags, comments, implementation, tag_taggings, taggings, tags, user, votes
   filters: 
   search: title
@@ -76,7 +76,7 @@ Question:
   fields:
     default: title, user_id, vote_points, view_count, answers_count, user
     form: title, body, formatted_html, user_id, vote_points, view_count, answers_count, user
-  order_by: 
+  order_by: -created_at
   relationships: answers, base_tags, tag_taggings, taggings, tags, user, votes
   filters: 
   search: title
@@ -86,7 +86,7 @@ User:
   fields:
     default: login, email, url, developer, posts_count, implementations_count, comments_count, votes_count, questions_count, answers_count
     form: login, email, url, developer, posts_count, implementations_count, comments_count, votes_count, questions_count, answers_count
-  order_by: 
+  order_by: -created_at
   relationships: comments, implementations, posts, votes, questions, answers
   filters: 
   search: login
@@ -96,7 +96,7 @@ Vote:
   fields:
     default: like, user, voteable
     form: like, user, voteable
-  order_by: 
+  order_by: -created_at
   relationships: voteable, user
   filters: 
   search: 
