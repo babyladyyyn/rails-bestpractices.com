@@ -18,7 +18,7 @@ class QuestionsController < InheritedResources::Base
     end
 
     def collection
-      @questions ||= end_of_association_chain.includes(:user, :tags)
+      @questions ||= end_of_association_chain.select(Question::INDEX_COLUMNS).includes(:user, :tags)
       @questions = @questions.order(params[:order] ? "#{params[:nav]} #{params[:order]}" : "created_at desc")
       @questions = @questions.paginate(:page => params[:page], :per_page => Question.per_page)
     end
