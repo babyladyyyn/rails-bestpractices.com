@@ -13,7 +13,7 @@ class Question < ActiveRecord::Base
   validates_uniqueness_of :title
 
   scope :not_answered, where(:answers_count => 0)
-  scope :search, lambda { |q| where(['title LIKE ?', "%#{q}%"]) }
+  scope :search, lambda { |q| where(['questions.title LIKE ?', "%#{q}%"]) }
 
   def self.per_page
     10

@@ -6,7 +6,7 @@ class Notification < ActiveRecord::Base
   after_create :increase_notification_count
   before_destroy :decrease_notification_count
 
-  default_scope order('created_at desc')
+  default_scope order('notifications.created_at desc')
 
   def self.per_page
     10

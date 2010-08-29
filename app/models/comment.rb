@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
   validates_presence_of :body
   validates_presence_of :username, :if => Proc.new { |comment| !comment.user_id }
 
-  scope :post, where(:commentable_type => 'Post').order("created_at desc")
+  scope :post, where(:commentable_type => 'Post').order("comments.created_at desc")
 
   def self.per_page
     10
