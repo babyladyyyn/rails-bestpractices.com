@@ -32,7 +32,7 @@ class PostsController < InheritedResources::Base
     
     def collection
       @posts ||= end_of_association_chain.includes(:user, :tags)
-      @posts = @posts.order("#{params[:nav]} #{params[:order]}") if params[:order]
+      @posts = @posts.order(params[:order] ? "#{params[:nav]} #{params[:order]}" : "created_at desc")
       @posts = @posts.paginate(:page => params[:page], :per_page => Post.per_page)
     end
 end

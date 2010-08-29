@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    = stylesheet_link_tag 'compiled/screen', 'compiled/layout', 'compiled/sidebar', 'compiled/post', 'compiled/question', 'compiled/answer', 'compiled/implementation', 'compiled/comment', 'compiled/user', 'compiled/notification', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/login_register', 'compiled/css_sprite', 'prettify', 'compiled/page', :cache => true, :media => 'screen, projection'
+    = stylesheet_link_tag stylesheets, :cache => true, :media => 'screen, projection'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = display_meta_tags :site => 'Rails Best Practices', :description => "rails, ruby on rails, best practices, tips, tricks"
@@ -73,11 +73,6 @@
           %li= link_to 'About Us', page_path('about-us')
         .copyright &copy; 2010 rails-bestpractices.com
       
-    = javascript_include_tag 'jquery', 'rails', 'jquery.autocomplete', 'prettify', 'wmd', 'application', :cache => true
+    = javascript_include_tag javascripts, :cache => true
     = javascript_include_tag "http://platform.twitter.com/widgets.js"
-    - if Rails.env == 'development'
-      = javascript_include_tag 'showdown', 'wmd-base', 'wmd-plus'
     = yield :js
-
-    - if Rails.env == 'production'
-      = render 'shared/google_analytics'

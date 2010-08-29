@@ -1,4 +1,19 @@
 module ApplicationHelper
+  def stylesheets
+    ['compiled/screen', 'compiled/layout', 'compiled/sidebar', 'compiled/post', 'compiled/question', 'compiled/answer', 'compiled/implementation', 'compiled/comment', 'compiled/user', 'compiled/notification', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/login_register', 'compiled/css_sprite', 'prettify', 'compiled/page']
+  end
+
+  def javascripts
+    javascripts = ['jquery', 'rails', 'jquery.autocomplete', 'prettify', 'wmd', 'application', 'uservoice']
+    if Rails.env == 'production'
+      javascripts << 'google_analytics'
+    end
+    if Rails.env == 'development'
+      javascripts << ['showdown', 'wmd-base', 'wmd-plus']
+    end
+    javascripts
+  end
+
   def nav_class(name, &block)
     class_name = if params[:nav] == name
       "nav active"
