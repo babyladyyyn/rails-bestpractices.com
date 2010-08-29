@@ -11,14 +11,8 @@ class Post < ActiveRecord::Base
   validates_presence_of :title, :body
   validates_uniqueness_of :title
 
-  default_scope order('created_at desc')
   scope :search, lambda { |q| where(['title LIKE ?', "%#{q}%"]) }
   scope :implemented, where(:implemented => true)
-  with_exclusive_scope do
-    scope :hot, order('vote_points desc')
-    scope :most_voted, order('vote_points desc')
-    scope :most_commented, order('comments_count desc')
-  end
 
   def self.per_page
     10

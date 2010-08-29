@@ -1,8 +1,11 @@
 class QuestionsController < InheritedResources::Base
   before_filter :require_user, :only => [:new, :edit, :create, :update, :destroy]
-  has_scope :most_voted
-  has_scope :most_answered
   has_scope :not_answered
+
+  index! do |format|
+    params[:nav] ||= "created_at"
+    params[:order] ||= "desc"
+  end
 
   show! do |format|
     @question.increment!(:view_count)
@@ -15,6 +18,8 @@ class QuestionsController < InheritedResources::Base
     end
 
     def collection
-      @questions ||= end_of_association_chain.includes(:user, :tags).paginate(:page => params[:page], :per_page => Question.per_page)
+      @questions ||= end_of_association_chain.includes(:user, :tags)
+      @questions = @questions.order("#{params[:nav]} #{params[:order]}") if params[:order]
+      @questions = @questions.paginate(:page => params[:page], :per_page => Question.per_page)
     end
 end

@@ -1,11 +1,4 @@
 .share-section
   = link_to 'Question', new_question_path
   %p Ask for a Rails Best Practice!
-.questions-section
-  %h3 Navigator
-  %ul
-    %li= link_to 'Recent Questions', questions_path
-    %li= link_to 'Most Voted Questions', questions_path(:most_voted => true)
-    %li= link_to 'Most Answered Questions', questions_path(:most_answered => true)
-    %li= link_to 'Not answered Questions', questions_path(:not_answered => true)
 = render 'shared/tag_section'

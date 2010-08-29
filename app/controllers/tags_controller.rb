@@ -3,7 +3,7 @@ class TagsController < InheritedResources::Base
 
   show! do |format|
     if @tag
-      params[:nav] = params[:nav] || "posts"
+      params[:nav] ||= "posts"
       @children = @tag.send(params[:nav]).includes(:user, :tags).paginate(:page => params[:page], :per_page => 10)
     else
       format.html { render_404 }

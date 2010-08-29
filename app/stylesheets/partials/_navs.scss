@@ -19,5 +19,22 @@
       font-weight: bold;
       border-bottom: 1px solid #fff;
     }
+    a.arrow-down-icon, a.arrow-up-icon {
+      @include inline-block;
+      padding-left: 20px;
+      line-height: 16px;
+    }
+    a.created_at {
+      width: 50px;
+    }
+    a.vote_points {
+      width: 40px;
+    }
+    a.comments_count {
+      width: 70px;
+    }
+    a.answers_count {
+      width: 60px;
+    }
   }
 }

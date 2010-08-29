@@ -1,9 +1,5 @@
 .posts-section
   %h3 Navigator
   %ul
-    %li= link_to 'Recent Best Practices', posts_path
-    %li= link_to 'Most Voted Best Practices', posts_path(:most_voted => true)
-    %li= link_to 'Most Commented Best Practices', posts_path(:most_commented => true)
-    %li= link_to 'Implemented Best Practices', posts_path(:implemented => true)
     %li= link_to 'Recent Comments', comments_path(:post => true)
     %li= link_to 'All Best Practices', archive_posts_path

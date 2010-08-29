@@ -1,8 +1,5 @@
 class PostsController < InheritedResources::Base
   before_filter :require_user, :only => [:new, :edit, :create, :update, :destroy]
-  has_scope :hot
-  has_scope :most_voted
-  has_scope :most_commented
   has_scope :implemented
   respond_to :xml, :only => :index
 
@@ -12,6 +9,11 @@ class PostsController < InheritedResources::Base
     else
       @post = Post.new
     end
+  end
+
+  index! do |format|
+    params[:nav] ||= "created_at"
+    params[:order] ||= "desc"
   end
 
   show! do |format|
@@ -29,6 +31,8 @@ class PostsController < InheritedResources::Base
     end
     
     def collection
-      @posts ||= end_of_association_chain.includes(:user, :tags).paginate(:page => params[:page], :per_page => Post.per_page)
+      @posts ||= end_of_association_chain.includes(:user, :tags)
+      @posts = @posts.order("#{params[:nav]} #{params[:order]}") if params[:order]
+      @posts = @posts.paginate(:page => params[:page], :per_page => Post.per_page)
     end
 end
