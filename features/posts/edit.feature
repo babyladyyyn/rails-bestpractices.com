@@ -47,6 +47,5 @@ Feature: Edit Post
       | Tag list           | edit, test              |
       | Content            | *edit-italic* **bold**  |
     When I press "Save"
-    Then I should be on update post failure page
-    And I should see "Title" with error "has already been taken"
+    Then I should see "Title" with error "has already been taken"
 
