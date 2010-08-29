@@ -2,6 +2,8 @@
   .login-register
     %h3 Recommend to login or register first
     .short-login
+      = button_to "Sign in with Twitter", { :controller => 'user_sessions', :action => 'create', :oauth_provider => 'twitter', :authentication_type => 'session' }, :class => 'sign-in-twitter-button'
+      = button_to "Login with Facebook", { :controller => 'user_sessions', :action => 'create', :oauth_provider => 'facebook', :authentication_type => 'session' }, :class => 'sign-in-facebook-button'
       %h4 Login
       = render 'shared/login_form', :user_session => UserSession.new, :return_to => request.url
     .short-register

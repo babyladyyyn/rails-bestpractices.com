@@ -285,29 +285,9 @@ div.ac_results ul {
   margin: 0;
   padding: 0;
 }
-.new {
-  height: 0;
-  position: relative;
-  .new-icon {
-    position: absolute;
-  }
-}
-.nav .new .new-icon {
-  top: -20px;
-  right: -22px;
-}
-.main-nav .new .new-icon {
-  top: -30px;
-  left: 62px;
-}
-.hot {
-  height: 0;
-  position: relative;
-  .hot-icon {
-    position: absolute;
-  }
-}
-.posts-section .hot .hot-icon {
-  top: -30px;
-  left: 115px;
+.sign-in-twitter-button, .sign-in-facebook-button {
+  text-indent: -99999px;
+  border: none;
+  margin: 5px 0;
+  cursor: pointer;
 }
