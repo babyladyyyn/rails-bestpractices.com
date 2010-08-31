@@ -36,8 +36,8 @@ gem "awesome_print", :require => 'ap', :group => :development
 gem "bullet", "~> 2.0.0.rc1", :group => :development
 
 gem "autotest-rails", "~> 4.1.0", :group => :test
-gem "rspec", "~> 2.0.0.beta.12", :group => :test
-gem "rspec-rails", "~> 2.0.0.beta.12", :group => :test
+gem "rspec", "= 2.0.0.beta.18", :group => :test
+gem "rspec-rails", "= 2.0.0.beta.18", :group => :test
 gem "factory_girl_rails", "~> 1.0.0", :group => :test
 gem 'remarkable_activerecord', '~> 4.0.0.alpha2', :group => :test
 
@@ -47,5 +47,5 @@ gem "capybara", "= 0.3.9", :group => :cucumber
 gem "database_cleaner", :group => :cucumber
 gem "spork", :group => :cucumber
 gem "launchy", :group => :cucumber
-gem "pickle", :git => "git://github.com/codegram/pickle.git", :group => :cucumber
+gem "pickle", "~> 0.4.2", :group => :cucumber
 gem "cross-stub", "= 0.2.0", :group => :cucumber

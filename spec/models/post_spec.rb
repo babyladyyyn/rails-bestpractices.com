@@ -25,20 +25,6 @@ describe Post do
   should_validate_presence_of :title, :body
   should_validate_uniqueness_of :title
 
-  it 'should be sorted descendingly by creation time given default scope' do
-    Post.delete_all
-    posts = %w{1 2}.map{|day| Factory(:post, :created_at => "2010-01-0#{day} 09:00") }
-    Post.all.map(&:id).should == posts.map(&:id).reverse
-  end
-
-  it 'should exclusively be sorted descendingly by vote_points given hot scope' do
-    Post.delete_all
-    posts = [[1, 2], [2,1]].map do |(point,day)|
-      Factory(:post, :vote_points => point, :created_at => "2010-01-0#{day} 09:00")
-    end
-    Post.hot.map(&:id).should == posts.map(&:id).reverse
-  end
-
   it 'should be scopable by completed implementation' do
     Post.delete_all
     posts = [false, true].map{|flag| Factory(:post, :implemented => flag) }
