@@ -14,6 +14,10 @@ module ApplicationHelper
     javascripts << 'uservoice'
   end
 
+  def current_locale
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  end
+
   def nav_class(name, &block)
     class_name = if params[:nav] == name
       "nav active"

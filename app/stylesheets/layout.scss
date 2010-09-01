@@ -172,9 +172,15 @@ body {
     }
   }
 }
+#broadcast {
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #fff6bf;
+  border: 2px solid #ffd324;
+  color: #514721;
+}
 #flash {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   .message {
     padding: 10px;
   }

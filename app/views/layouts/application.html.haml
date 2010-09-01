@@ -46,6 +46,9 @@
     #container
       .container
         #content
+          - if current_locale == 'zh'
+            #broadcast
+              如果你英文不好，可以在这里输入中文，我们会帮助你翻译成英文。
           - unless flash.blank?
             #flash
               - flash.each do |type, message|
