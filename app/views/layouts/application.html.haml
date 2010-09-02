@@ -28,6 +28,7 @@
             %li
               = link_to "Leaders", users_path
             %li.last= link_to "About", page_path(:name => 'about-us')
+        .pledgie= render 'shared/pledgie'
         .share
           = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
           = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
@@ -53,7 +54,6 @@
           #tweet= render 'shared/tweet_button'
           = yield
         #sidebar
-          / = render 'shared/pledgie'
           - unless current_user
             = button_to "Sign in with Twitter", { :controller => 'user_sessions', :action => 'create', :oauth_provider => 'twitter', :authentication_type => 'session' }, :class => 'sign-in-twitter-button'
             = button_to "Login with Facebook", { :controller => 'user_sessions', :action => 'create', :oauth_provider => 'facebook', :authentication_type => 'session' }, :class => 'sign-in-facebook-button'
@@ -68,9 +68,10 @@
           = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
           = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
         %ul
-          %li= link_to 'Help', page_path('help')
+          / %li= link_to 'Help', page_path('help')
           %li= link_to 'Contact Us', page_path('contact-us')
           %li= link_to 'About Us', page_path('about-us')
+          %li= link_to 'Advertise', page_path('advertise')
         .copyright &copy; 2010 rails-bestpractices.com
       
     = javascript_include_tag javascripts, :cache => true

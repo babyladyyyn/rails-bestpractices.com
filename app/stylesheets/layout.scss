@@ -58,6 +58,10 @@ body {
 }
 #header {
   background: url(/images/header-bg.png) repeat-x 0 0 #fdfdfd;
+  .pledgie {
+    margin: 20px 0 0 0;
+    text-align: center;
+  }
   .nav {
     font: 11px verdana;
     margin: 12px 40px 0 0;
@@ -113,7 +117,7 @@ body {
     }
   }
   .share {
-    margin: 40px 40px 0 0;
+    margin: 20px 40px 0 0;
     a {
       @include inline-block;
     }
