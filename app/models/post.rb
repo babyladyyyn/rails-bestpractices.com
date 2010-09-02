@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   scope :search, lambda { |q| where(['posts.title LIKE ?', "%#{q}%"]) }
   scope :implemented, where(:implemented => true)
 
-  INDEX_COLUMNS = (column_names - [:body, :formatted_html, :updated_at]).join(",")
+  INDEX_COLUMNS = (column_names - ['body', 'formatted_html', 'updated_at']).join(",")
 
   def self.per_page
     10

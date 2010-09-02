@@ -15,7 +15,7 @@ class Question < ActiveRecord::Base
   scope :not_answered, where(:answers_count => 0)
   scope :search, lambda { |q| where(['questions.title LIKE ?', "%#{q}%"]) }
 
-  INDEX_COLUMNS = (column_names - [:body, :formatted_html, :updated_at]).join(",")
+  INDEX_COLUMNS = (column_names - ['body', 'formatted_html', 'updated_at']).join(",")
 
   def self.per_page
     10
