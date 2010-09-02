@@ -13,8 +13,10 @@ class TweetObserver < ActiveRecord::Observer
     
     def twitter
       config = TWITTER_CONFIG
-      httpauth = Twitter::HTTPAuth.new(config['email'], config['password'])
-      Twitter::Base.new(httpauth)
+      twitter_user = User.find_by_login("Rails BestPractices")
+      oauth = Twitter::OAuth.new(config['key'], config['secret'])
+      oauth.authorize_from_access(twitter_user.access_token.token, twitter_user.access_token.secret)
+      Twitter::Base.new(oauth)
     end
 
     def bitly
