@@ -10,7 +10,7 @@ describe Notification do
   describe "notification count" do
     it "should increase notification count" do
       comment = Factory(:comment)
-      user = comment.user
+      user = comment.commentable.user
       user.notifications.create(:notifierable => comment)
       user.unread_notification_count.should == 1
       user.notifications.create(:notifierable => comment)
@@ -19,7 +19,7 @@ describe Notification do
 
     it "should decrease notification count when read" do
       comment = Factory(:comment)
-      user = comment.user
+      user = comment.commentable.user
       notification1 = user.notifications.create(:notifierable => comment)
       notification2 = user.notifications.create(:notifierable => comment)
       notification1.read!
@@ -30,7 +30,7 @@ describe Notification do
 
     it "should decrease notification count before destroy" do
       comment = Factory(:comment)
-      user = comment.user
+      user = comment.commentable.user
       notification1 = user.notifications.create(:notifierable => comment)
       notification2 = user.notifications.create(:notifierable => comment)
       notification1.destroy
@@ -41,7 +41,7 @@ describe Notification do
 
     it "should not decrease notification count when delete after read" do
       comment = Factory(:comment)
-      user = comment.user
+      user = comment.commentable.user
       notification1 = user.notifications.create(:notifierable => comment)
       notification2 = user.notifications.create(:notifierable => comment)
       notification1.read!
