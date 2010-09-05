@@ -46,9 +46,11 @@
     #container
       .container
         #content
-          - if current_locale == 'zh'
+          - if display_chinese_entry?
             #broadcast
               如果你英文不好，可以在这里输入中文，我们会帮助你翻译成英文。
+              = link_to "点击这里创建", new_drop_path
+              = link_to 'Close', close_broadcast_path, :class => 'close-icon'
           - unless flash.blank?
             #flash
               - flash.each do |type, message|

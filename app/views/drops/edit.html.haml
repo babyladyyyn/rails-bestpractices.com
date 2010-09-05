@@ -1,0 +1,9 @@
+- set_meta_tags :title => "Edit a drop", :noindex => true
+
+%h2 修改
+
+= semantic_form_for @drop do |form|
+  = render 'form', :f => form
+  = form.buttons do
+    = form.submit "修改"
+    = link_to '返回', root_path
