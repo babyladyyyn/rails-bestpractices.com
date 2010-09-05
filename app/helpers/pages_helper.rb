@@ -4,7 +4,9 @@ module PagesHelper
     action = params[:action]
     name = "#{controller}-#{action}-sidebar"
     page1 = Page.find_by_name(name)
-    if action == 'new' or action == 'edit'
+    if controller == 'pages' and params[:name] == 'implementations'
+      name = "implementations-sidebar"
+    elsif action == 'new' or action == 'edit'
       name = "#{controller}-form-sidebar"
     else
       name = "#{controller}-sidebar"
