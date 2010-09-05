@@ -36,7 +36,7 @@
         .container
           %ul
             %li= link_to 'Rails Best Practices', root_path
-            %li= link_to 'Implementations', implementations_path
+            %li= link_to 'Implementations', page_path('implementations')
             %li
               = link_to 'Questions', questions_path
           = form_tag search_path, :method => :get do
