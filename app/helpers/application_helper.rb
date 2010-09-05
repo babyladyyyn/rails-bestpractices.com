@@ -19,7 +19,7 @@ module ApplicationHelper
   end
 
   def current_locale
-    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    request.env['HTTP_ACCEPT_LANGUAGE'] ? request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first : "en"
   end
 
   def nav_class(name, &block)
