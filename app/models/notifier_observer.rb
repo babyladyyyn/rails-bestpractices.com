@@ -5,6 +5,10 @@ class NotifierObserver < ActiveRecord::Observer
     notify(model)
   end
 
+  def before_destroy(model)
+    destroy(model)
+  end
+
   private
     def notify(model)
       if model.is_a? Comment
@@ -12,5 +16,9 @@ class NotifierObserver < ActiveRecord::Observer
       elsif model.is_a? Answer
         model.question.user.notifications.create(:notifierable => model)
       end
+    end
+
+    def destroy(model)
+      Notification.where(:notifierable_id => model.id, :notifierable_type => model.class.to_s).first.destroy
     end
 end

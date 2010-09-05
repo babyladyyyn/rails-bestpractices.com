@@ -73,4 +73,36 @@ describe NotifierObserver do
       notification.user.should == question_user
     end
   end
+
+  it 'should be observing Comment#destroy' do
+    comment = Factory(:comment)
+    within_observable_scope do |observer|
+      observer.should_receive(:destroy).with(comment)
+      comment.destroy
+    end
+  end
+
+  it 'should destroy notification after destroying a post comment' do
+    within_observable_scope do |observer|
+      post_user = Factory(:user, :login => 'post_user')
+      post = Factory(:post, :title => 'notifierable post', :user => post_user)
+      comment = Factory(:comment, :commentable => post)
+      post_user.notifications.size.should == 1
+
+      comment.destroy
+      post_user.notifications.size.should == 0
+    end
+  end
+
+  it 'should destroy notification after destroying a question answer' do
+    within_observable_scope do |observer|
+      question_user = Factory(:user, :login => 'question_user')
+      question = Factory(:question, :title => 'notifierable question', :user => question_user)
+      answer = Factory(:answer, :question => question)
+      question_user.notifications.size.should == 1
+
+      answer.destroy
+      question_user.notifications.size.should == 0
+    end
+  end
 end

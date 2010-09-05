@@ -34,8 +34,8 @@ Answer:
 
 Comment:
   fields:
-    default: user, username, commentable
-    form: body, user, username
+    default: user_id, username, commentable
+    form: body, user_id, username
   order_by: -created_at
   relationships: user
   filters: 
