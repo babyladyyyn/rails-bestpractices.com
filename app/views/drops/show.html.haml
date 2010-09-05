@@ -1,0 +1,25 @@
+- title @drop.title, :noindex => true
+
+.command
+  - if @drop.belongs_to? current_user
+    = link_to 'Edit', edit_drop_path(@drop)
+
+%h2 请耐心等待，我们会帮你翻译成英文并提交在网站上
+
+.drop
+  %p
+    标题：
+    = @drop.title
+  %p
+    作者： 
+    = link_to @drop.user.login, user_path(@drop.user)
+  %p
+    类型：
+    = @drop.kind
+  %p
+    描述：
+    = @drop.description
+  .wikistyle= raw @drop.formatted_html
+  .tags
+    %strong 标签： 
+    = @drop.tag_list

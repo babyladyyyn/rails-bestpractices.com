@@ -29,6 +29,8 @@ RailsBestpracticesCom::Application.routes.draw do |map|
 
   resources :notifications, :only => [:index, :destroy]
 
+  resources :drops
+
   resources :users
 
   resource :user_session
@@ -36,6 +38,8 @@ RailsBestpracticesCom::Application.routes.draw do |map|
   match 'search' => 'search#show', :as => :search
   
   match 'page/:name' => 'pages#show', :as => :page
+
+  match 'close_broadcast' => 'broadcasts#close', :as => :close_broadcast
 
   root :to => "posts#index"
 

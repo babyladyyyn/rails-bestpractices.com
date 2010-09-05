@@ -1,0 +1,11 @@
+= f.inputs do
+  = f.input :title, :label => '标题'
+  = f.input :kind, :label => '类型', :as => :select, :collection => {'最佳实践' => 'post', '问题' => 'question'}
+  = f.input :description, :label => '描述', :hint => '请输入一段简短的描述', :input_html => { :class => 'wmd-ignore', :rows => 4 }
+  = f.input :tag_list, :label => '标签', :hint => '用逗号分隔 ( , )'
+  = f.input :body, :label => '内容'
+  .wmd-preview.wikistyle
+
+:javascript
+  var tags = #{all_tags};
+  wmd_options = {"output": "Markdown"};

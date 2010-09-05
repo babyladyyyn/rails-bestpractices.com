@@ -7,6 +7,7 @@ admin:
   AdminUser: create, read, update, delete
   Answer: create, read, update, delete
   Comment: create, read, update, delete
+  Drop: create, read, update, delete
   Implementation: create, read, update, delete
   Page: create, read, update, delete
   Post: create, read, update, delete

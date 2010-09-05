@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100825090255) do
+ActiveRecord::Schema.define(:version => 20100905013759) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -65,6 +65,18 @@ ActiveRecord::Schema.define(:version => 20100825090255) do
   add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "drops", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.text     "formatted_html"
+    t.text     "description"
+    t.string   "kind"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "tag_list"
+  end
 
   create_table "implementations", :force => true do |t|
     t.integer  "post_id"
