@@ -2,8 +2,6 @@ RailsBestpracticesCom::Application.routes.draw do |map|
   #match "admin/acts_as_taggable_on/tags", :to => "admin/acts_as_taggable_on/tags#index"
   Typus::Routes.draw(map)
 
-  match "/tags/:id/posts" => redirect { |params, req| req.query_string.index('page') ? "/tags/#{params[:id]}?#{req.query_string.sub(/controller=.*?&/, '').sub(/action=.*?&/, '')}" : "/tags/#{params[:id]}?nav=posts" }
-  match "/tags/:id/questions" => redirect { |params, req| req.query_string.index('page') ? "/tags/#{params[:id]}?#{req.query_string.sub(/controller=.*?&/, '').sub(/action=.*?&/, '')}" : "/tags/#{params[:id]}?nav=questions" }
   resources :tags, :only => :show
 
   resources :posts do
