@@ -43,6 +43,8 @@
           - @post.related_posts.each do |rp|
             %li= link_to rp.title, post_path(rp)
 
+      .adsense= render 'shared/google_adsense'
+
       = render 'comments/comments', :parent => @post
       = render 'shared/login_register'
       = render 'comments/comment_form', {:parent => @post, :comment => @comment}
