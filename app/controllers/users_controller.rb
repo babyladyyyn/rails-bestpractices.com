@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if params[:id] =~ /^\d+$/
+    if params[:id] != @user.to_param
       redirect_to user_path(@user), :status => 301 
     else
       params[:nav] = params[:nav] || "posts"

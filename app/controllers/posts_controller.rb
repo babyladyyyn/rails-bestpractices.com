@@ -16,9 +16,16 @@ class PostsController < InheritedResources::Base
     params[:order] ||= "desc"
   end
 
-  show! do |format|
-    @post.increment!(:view_count)
-    @comment = @post.comments.build
+  def show
+    @post = Post.find(params[:id])
+    if params[:id] != @post.to_param
+      redirect_to post_path(@post), :status => 301
+      return false
+    end
+    show! do |format|
+      @post.increment!(:view_count)
+      @comment = @post.comments.build
+    end
   end
   
   def archive
