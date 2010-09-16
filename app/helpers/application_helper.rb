@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def display_chinese_entry?
-    current_locale == 'zh' and 'false' != session[:chinese_entry] and params[:controller] == 'posts' and params[:action] == 'index'
+    current_locale == 'zh' and 'false' != cookies[:chinese_entry] and params[:controller] == 'posts' and params[:action] == 'index'
   end
 
   def current_locale
