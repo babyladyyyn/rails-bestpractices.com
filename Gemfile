@@ -30,6 +30,7 @@ gem "oauth2"
 gem "authlogic-connect", '~>0.0.6'
 gem "cancan"
 gem "recaptcha", :require => "recaptcha/rails"
+gem 'typus', "~>1.0.0.pre6"
 
 gem "mongrel", :group => :development
 gem "awesome_print", :require => 'ap', :group => :development

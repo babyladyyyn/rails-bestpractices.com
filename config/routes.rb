@@ -1,7 +1,5 @@
 RailsBestpracticesCom::Application.routes.draw do |map|
   #match "admin/acts_as_taggable_on/tags", :to => "admin/acts_as_taggable_on/tags#index"
-  Typus::Routes.draw(map)
-
   resources :tags, :only => :show
 
   resources :posts do

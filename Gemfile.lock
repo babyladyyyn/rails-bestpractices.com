@@ -229,6 +229,7 @@ GEM
       httparty (~> 0.5.0)
       oauth (~> 0.4.1)
       yajl-ruby (~> 0.7.0)
+    typus (1.0.0.pre6)
     tzinfo (0.3.23)
     will_paginate (3.0.pre2)
     yajl-ruby (0.7.7)
@@ -281,4 +282,5 @@ DEPENDENCIES
   sqlite3-ruby
   system_timer
   twitter (~> 0.9.8)
+  typus (~> 1.0.0.pre6)
   will_paginate (~> 3.0.pre2)
