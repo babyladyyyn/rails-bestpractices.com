@@ -7,12 +7,12 @@ class CommentsController < InheritedResources::Base
     if current_user or params[:skip] == 'true' or verify_recaptcha(:model => @comment, :message => @comment.body)
       create! do |success, failure|
         success.html { redirect_to parent_url }
-        failure.html { render failure_url }
+        failure.html { render failure_page }
       end
     else
       flash[:error] = "Not correct captcha!"
       flash.delete :recaptcha_error
-      render failure_url
+      render failure_page
     end
   end
 
@@ -43,7 +43,7 @@ class CommentsController < InheritedResources::Base
       end
     end
     
-    def failure_url
+    def failure_page
       if params[:question_id]
         'questions/show'
       elsif params[:answer_id]
