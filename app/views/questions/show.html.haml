@@ -4,7 +4,20 @@
   - if @question.belongs_to? current_user
     = link_to 'Edit', edit_question_path(@question)
 
-%h2= @question.title
+%h2
+  = @question.title
+  = link_to 'Question', new_question_path
+
+.navs
+  %ul
+    = nav_class('created_at') do
+      = questions_order_link("created_at")
+    = nav_class('vote_points') do
+      = questions_order_link("vote_points")
+    = nav_class('answers_count') do
+      = questions_order_link("answers_count")
+    = nav_class('not_answered') do
+      = link_to 'Not Answered', questions_path(:not_answered => true, :nav => 'not_answered')
 
 %table.question
   %tr

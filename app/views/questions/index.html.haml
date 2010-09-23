@@ -2,7 +2,10 @@
 
 %h2
   Questions
-  %ul.navs
+  = link_to 'Question', new_question_path
+
+.navs
+  %ul
     = nav_class('created_at') do
       = questions_order_link("created_at")
     = nav_class('vote_points') do
@@ -11,5 +14,6 @@
       = questions_order_link("answers_count")
     = nav_class('not_answered') do
       = link_to 'Not Answered', questions_path(:not_answered => true, :nav => 'not_answered')
+
 = render 'questions', :questions => @questions
 = will_paginate @questions, :previous_label => "<< Previous", :next_label => "Next >>"
