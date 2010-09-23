@@ -39,11 +39,12 @@
         %strong tags: 
         - @post.tags.each do |tag|
           = link_to tag.name, tag_path(tag.name)
-      .related_posts
-        %strong related best practices:
-        %ul
-          - @post.related_posts.each do |rp|
-            %li= link_to rp.title, post_path(rp)
+      - if @post.related_posts.present?
+        .related_posts
+          %strong related best practices:
+          %ul
+            - @post.related_posts.each do |rp|
+              %li= link_to rp.title, post_path(rp)
 
       .adsense= render 'shared/google_adsense'
 
