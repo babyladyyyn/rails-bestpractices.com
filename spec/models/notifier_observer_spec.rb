@@ -105,4 +105,13 @@ describe NotifierObserver do
       question_user.notifications.size.should == 0
     end
   end
+
+  it 'should not create notification after creating a comment to own post' do
+    within_observable_scope do |observer|
+      post_user = Factory(:user, :login => 'post_user')
+      post = Factory(:post, :title => 'notifierable post', :user => post_user)
+      comment = Factory(:comment, :commentable => post, :user => post_user)
+      post_user.notifications.size.should == 0
+    end
+  end
 end
