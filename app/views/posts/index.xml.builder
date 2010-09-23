@@ -7,9 +7,18 @@ xml.rss(:version => '2.0') do
     xml.language 'en-us'
 
     @posts.each do |post|
+      descriptions = ["#{post.description}    #{link_to 'see more', post_url(post)}"]
+      descriptions << "<div><p><b>Recommendation:</b><center><a href='http://www.rubyslide.com'>RubySlide</a> gathers all the latest Ruby slides and presentations in one convenient place!</center><p></div>"
+      if post.related_posts.present?
+        descriptions << "<div><p><b>Related Posts</b></p><ul>"
+        post.related_posts.each do |p|
+          descriptions << "<li>#{link_to p.title, post_url(p)}</li>"
+        end
+        descriptions << "</ul></div>"
+      end
       xml.item do
         xml.title post.title
-        xml.description "#{post.description}    #{link_to 'see more', post_url(post)}"
+        xml.description descriptions.join('')
         xml.author post.user.login
         xml.pubDate post.created_at
         xml.link post_url(post)
