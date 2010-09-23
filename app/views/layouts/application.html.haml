@@ -59,9 +59,7 @@
           #tweet= render 'shared/tweet_button'
           = yield
         #sidebar
-          - unless current_user
-            = button_to "Sign in with Twitter", { :controller => 'user_sessions', :action => 'create', :oauth_provider => 'twitter', :authentication_type => 'session' }, :class => 'sign-in-twitter-button'
-            = button_to "Login with Facebook", { :controller => 'user_sessions', :action => 'create', :oauth_provider => 'facebook', :authentication_type => 'session' }, :class => 'sign-in-facebook-button'
+          = render 'shared/sidebar'
           = render 'sidebar'
           / = render 'shared/twitter_widget'
           .static-section
