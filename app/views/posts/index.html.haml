@@ -2,7 +2,9 @@
 
 %h2
   Rails Best Practices
-  %ul.navs
+  = link_to 'Share', new_post_path
+.navs
+  %ul
     = nav_class('created_at') do
       = posts_order_link("created_at")
     = nav_class('vote_points') do
@@ -11,5 +13,6 @@
       = posts_order_link("comments_count")
     = nav_class('implemented') do
       = link_to 'Implemented', posts_path(:implemented => true, :nav => 'implemented')
+
 = render 'posts', :posts => @posts, :description => true
 = will_paginate @posts, :previous_label => "<< Previous", :next_label => "Next >>"

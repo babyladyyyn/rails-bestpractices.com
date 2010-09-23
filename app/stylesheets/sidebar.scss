@@ -13,28 +13,6 @@
     font-weight: bold;
     margin-bottom: 5px;
   }
-  .share-section {
-    @include border-radius(5px);
-    background-color: #fdeec5;
-    width: 220px;
-    height: 85px;
-    text-align: center;
-    a {
-      background-color: #fd9800;
-      color: #fff;
-      font-weight: bold;
-      width: 80px;
-      height: 28px;
-      line-height: 28px;
-      margin: 20px 0 10px 0;
-      @include inline-block;
-    }
-    p {
-      color: #c34237;
-      font-size: 12px;
-      font-weight: bold;
-    }
-  }
   .posts-section {
     margin: 20px 0;
     line-height: 2;

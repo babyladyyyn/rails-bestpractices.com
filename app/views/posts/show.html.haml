@@ -10,7 +10,9 @@
     - else
       = link_to 'New Implement', new_post_implementation_path(@post)
 
-%h2= @post.title
+%h2
+  = @post.title
+  = link_to 'Share', new_post_path
 
 %table.post
   %tr

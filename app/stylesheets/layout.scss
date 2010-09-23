@@ -222,11 +222,24 @@ body {
   }
   > h2 {
     font: 20px verdana;
-    border-bottom: 1px solid #9e9e9e;
-    min-height: 30px;
-    ul.navs {
-      @include navs;
+    margin-bottom: 20px;
+    a {
+      background-color: #fd9800;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      width: 80px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      @include float-right;
+      @include border-radius(8px);
     }
+  }
+  .navs {
+    @include navs;
+    height: 30px;
+    border-bottom: 1px solid #9e9e9e;
   }
   .empty {
     font-size: 24px;
