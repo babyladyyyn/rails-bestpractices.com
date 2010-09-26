@@ -4,6 +4,7 @@
 @import "compass/css3/inline-block";
 
 @mixin navs {
+  clear: both;
   ul {
     height: 30px;
     @include no-bullets;

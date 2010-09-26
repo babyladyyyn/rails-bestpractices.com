@@ -1,12 +1,12 @@
 - title @question.title
 
 .command
+  = link_to 'Question', new_question_path, :class => 'question-button'
   - if @question.belongs_to? current_user
     = link_to 'Edit', edit_question_path(@question)
 
 %h2
   = @question.title
-  = link_to 'Question', new_question_path
 
 .navs
   %ul

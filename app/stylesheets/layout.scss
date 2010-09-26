@@ -223,18 +223,6 @@ body {
   > h2 {
     font: 20px verdana;
     margin-bottom: 20px;
-    a {
-      background-color: #fd9800;
-      color: #fff;
-      font-size: 12px;
-      font-weight: bold;
-      width: 80px;
-      height: 28px;
-      line-height: 28px;
-      text-align: center;
-      @include float-right;
-      @include border-radius(8px);
-    }
   }
   .navs {
     @include navs;
@@ -299,6 +287,14 @@ body {
     @include inline-block;
     &.hide {
       display: none;
+    }
+    &.share-button, &.question-button {
+      background-color: #fd9800;
+      color: #fff;
+      width: 80px;
+      height: 30px;
+      text-align: center;
+      @include border-radius(8px);
     }
   }
 }

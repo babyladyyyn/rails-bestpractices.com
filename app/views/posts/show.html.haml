@@ -1,6 +1,7 @@
 - title @post.title
 
 .command
+  = link_to 'Share', new_post_path, :class => 'share-button'
   - if @post.belongs_to? current_user
     = link_to 'Edit', edit_post_path(@post)
   - if current_user and current_user.developer?
@@ -12,7 +13,6 @@
 
 %h2
   = @post.title
-  = link_to 'Share', new_post_path
 
 %table.post
   %tr

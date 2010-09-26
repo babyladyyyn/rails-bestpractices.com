@@ -1,8 +1,9 @@
 - set_meta_tags :title => 'rails best practices list'
 
+.command
+  = link_to 'Share', new_post_path, :class => 'share-button'
 %h2
   Rails Best Practices
-  = link_to 'Share', new_post_path
 .navs
   %ul
     = nav_class('created_at') do
