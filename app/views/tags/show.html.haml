@@ -2,7 +2,8 @@
 
 %h2
   = "Tag #{@tag.name}"
-  %ul.navs
+.navs
+  %ul
     = nav_class('posts') do
       = link_to "Rails Best Practices", tag_path(@tag.name, :nav => 'posts')
     = nav_class('questions') do
