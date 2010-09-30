@@ -17,4 +17,13 @@ describe Implementation do
   should_belong_to :post, :touch => true
   should_validate_presence_of :body
 
+  context "implemented" do
+    it "set implementd for post" do
+      post = Factory(:post)
+      post.implemented.should == false
+      implementation = Factory(:implementation, :post => post)
+      post.implemented.should == true
+    end
+  end
+
 end

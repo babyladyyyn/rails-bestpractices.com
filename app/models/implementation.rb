@@ -5,6 +5,7 @@ class Implementation < ActiveRecord::Base
 
   belongs_to :post, :touch => true
   validates_presence_of :body
+  after_create :cache_post
 
   def self.per_page
     10
@@ -17,5 +18,10 @@ class Implementation < ActiveRecord::Base
   def tweet_path
     "posts/#{post.to_param}/implementation"
   end
+
+  protected
+    def cache_post
+      self.post.update_attribute(:implemented, true)
+    end
 
 end
