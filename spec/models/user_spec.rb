@@ -44,21 +44,22 @@ describe User do
 
   describe 'updating profile' do
 
+    let(:login) { 'flyerhzm' }
+    let(:profile_name) { '~flyerhzm~' }
+    let(:user) { Factory(:user, :login => login) }
     before do
-      @login, @profile_name = 'flyerhzm', '~flyerhzm~'
-      @user = Factory(:user, :login => @login)
-      @user.stub!(:profile => {:name => @profile_name})
+      user.stub!(:profile => {:name => profile_name})
     end
 
     it 'should not be allowed if :access_token is absent' do
-      @user.update_profile.should be_nil
-      @user.login.should == @login
+      user.update_profile.should be_nil
+      user.login.should == login
     end
 
     it 'should update :login if :access_token is present' do
-      @user.access_token = AccessToken.new
-      @user.update_profile.should_not be_nil
-      @user.login.should == @profile_name
+      user.access_token = AccessToken.new
+      user.update_profile.should_not be_nil
+      user.login.should == profile_name
     end
 
   end

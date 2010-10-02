@@ -2,9 +2,7 @@ require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
 describe Post do
 
-  before :each do
-    @post = Factory.create(:post)
-  end
+  let(:post) { Factory.create(:post) }
 
   include RailsBestPractices::Spec::Support
   should_act_as_taggable
@@ -22,8 +20,13 @@ describe Post do
   end
 
   should_have_one :implementation, :dependent => :destroy
-  should_validate_presence_of :title, :body
-  should_validate_uniqueness_of :title
+  should_validate_presence_of :body
+
+  describe 'when title validation is required' do
+    before { Factory.create(:post) }
+    should_validate_presence_of :title
+    should_validate_uniqueness_of :title
+  end
 
   it 'should be scopable by completed implementation' do
     Post.delete_all
@@ -38,8 +41,8 @@ describe Post do
   end
 
   it "should reflect :id & :title when converted to param" do
-    @post.title = 'Super Mighty Proc'
-    @post.to_param.should == @post.instance_exec{"#{id}-#{title.parameterize}"}
+    post.title = 'Super Mighty Proc'
+    post.to_param.should == post.instance_exec{"#{id}-#{title.parameterize}"}
   end
 
 end
