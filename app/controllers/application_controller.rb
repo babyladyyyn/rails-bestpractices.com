@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     #flash[:error] = "Access denied."
     #redirect_to root_url
   #end
+    
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    render_404
+  end
 
   rescue_from ActionController::InvalidAuthenticityToken do |exception|
     render_422
@@ -73,7 +77,7 @@ class ApplicationController < ActionController::Base
       respond_to do |format|
         format.html { render :file => "#{Rails.root}/public/422.html", :status => :unprocessable_entity, :layout => false }
         format.xml  { header :unprocessable_entity }
-        format.xml  { header :unprocessable_entity }
+        format.any  { header :unprocessable_entity }
       end
     end
 end
