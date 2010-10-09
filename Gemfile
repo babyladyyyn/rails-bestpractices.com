@@ -33,21 +33,28 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem 'typus', "~>1.0.0.pre6"
 gem 'whenever'
 
-gem "mongrel", :group => :development
-gem "awesome_print", :require => 'ap', :group => :development
-gem "bullet", "~> 2.0.0.rc1", :group => :development
+group :development do
+  gem "mongrel"
+  gem "awesome_print", :require => 'ap'
+  gem "bullet", "~> 2.0.0.rc1"
+end
 
-gem "autotest-rails", "~> 4.1.0", :group => :test
-gem "rspec", "~> 2.0.0.beta.20", :group => :test
-gem "rspec-rails", "~> 2.0.0.beta.20", :group => :test
-gem "factory_girl_rails", "~> 1.0.0", :group => :test
-gem 'remarkable_activerecord', '~> 4.0.0.alpha2', :group => :test
+group :test do
+  gem "autotest-rails", "~> 4.1.0"
+  gem "rcov", "~> 0.9.9"
+  gem "rspec", "~> 2.0.0.rc"
+  gem "rspec-rails", "~> 2.0.0.rc"
+  gem "factory_girl_rails", "~> 1.0.0"
+  gem 'remarkable_activerecord', '~> 4.0.0.alpha2'
+end
 
-gem "cucumber", "= 0.8.5", :group => :cucumber
-gem "cucumber-rails", "= 0.3.2", :group => :cucumber
-gem "capybara", "= 0.3.9", :group => :cucumber
-gem "database_cleaner", :group => :cucumber
-gem "spork", :group => :cucumber
-gem "launchy", :group => :cucumber
-gem "pickle", "~> 0.4.2", :group => :cucumber
-gem "cross-stub", "= 0.2.0", :group => :cucumber
+group :cucumber do
+  gem "cucumber", "= 0.8.5"
+  gem "cucumber-rails", "= 0.3.2"
+  gem "capybara", "= 0.3.9"
+  gem "database_cleaner"
+  gem "spork"
+  gem "launchy"
+  gem "pickle", "~> 0.4.2"
+  gem "cross-stub", "= 0.2.0"
+end

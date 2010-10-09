@@ -169,6 +169,7 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
+    rcov (0.9.9)
     rdiscount (1.6.5)
     recaptcha (0.2.3)
     remarkable (4.0.0.alpha4)
@@ -263,11 +264,12 @@ DEPENDENCIES
   pickle (~> 0.4.2)
   rack-openid (~> 0.2.1)
   rails (= 3.0.0)
+  rcov (~> 0.9.9)
   rdiscount
   recaptcha
   remarkable_activerecord (~> 4.0.0.alpha2)
-  rspec (~> 2.0.0.beta.20)
-  rspec-rails (~> 2.0.0.beta.20)
+  rspec (~> 2.0.0.rc)
+  rspec-rails (~> 2.0.0.rc)
   ruby-openid
   sitemap_generator (~> 0.3.3)
   spork

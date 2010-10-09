@@ -18,3 +18,4 @@ config/authlogic.yml
 *.swp
 dump.rdb
 tmp/cross-stub.cache
+coverage
