@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '3.0.1'
 
 gem 'sqlite3-ruby', :require => 'sqlite3', :group => :development
 gem 'mysql2'
@@ -42,8 +42,8 @@ end
 group :test do
   gem "autotest-rails", "~> 4.1.0"
   gem "rcov", "~> 0.9.9"
-  gem "rspec", "~> 2.0.0.rc"
-  gem "rspec-rails", "~> 2.0.0.rc"
+  gem "rspec", "~> 2.0.0"
+  gem "rspec-rails", "~> 2.0.0"
   gem "factory_girl_rails", "~> 1.0.0"
   gem 'remarkable_activerecord', '~> 4.0.0.alpha2'
 end
