@@ -32,11 +32,12 @@ gem "cancan"
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'typus', "~>1.0.0.pre6"
 gem 'whenever'
+gem "thinking-sphinx", "~> 2.0.0.rc2", :require => 'thinking_sphinx'
 
 group :development do
   gem "mongrel"
   gem "awesome_print", :require => 'ap'
-  gem "bullet", "~> 2.0.0.rc1"
+  gem "bullet", "~> 2.0.0.rc2"
 end
 
 group :test do
