@@ -34,12 +34,6 @@ describe Post do
     Post.implemented.should == posts[1..1]
   end
 
-  it 'should be searchable by title' do
-    Post.delete_all
-    posts = %w{Awesome Fantastic}.map{|adj| Factory(:post, :title => "#{adj} Practice") }
-    Post.search('some').should == posts[0..0]
-  end
-
   it "should reflect :id & :title when converted to param" do
     post.title = 'Super Mighty Proc'
     post.to_param.should == post.instance_exec{"#{id}-#{title.parameterize}"}

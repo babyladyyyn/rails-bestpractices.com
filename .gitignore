@@ -21,4 +21,4 @@ tmp/cross-stub.cache
 coverage
 db/sphinx
 log/*.pid
-config/development.sphinx.conf
+config/*.sphinx.conf

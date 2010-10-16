@@ -21,11 +21,9 @@ describe Comment do
 
   it 'should be scopable by post type (sorted by creation timing)' do
     Comment.delete_all
-    comments = [
-      Factory(:post, :created_at => 3.days.ago),
-      Factory(:post, :created_at => 1.day.ago)
-    ].map{|obj| Factory(:comment, :commentable => obj) }
-    Comment.post.should == [1,0].map{|i| comments[i] }
+    comment1 = Factory(:comment, :commentable => Factory(:post), :created_at => 3.days.ago)
+    comment2 = Factory(:comment, :commentable => Factory(:post), :created_at => 1.days.ago)
+    Comment.post.should == [comment2, comment1]
   end
 
   describe 'parent name' do

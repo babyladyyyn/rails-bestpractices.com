@@ -4,6 +4,7 @@ Feature: Search Post
     Given a user "flyerhzm" exists with login: "flyerhzm"
     And a post exists with user: user "flyerhzm", title: "first best practice"
     And I am already signed in as "flyerhzm"
+    And the post indexes are processed
 
   Scenario: Successful search result
     Given I fill in "search" with "first best"
