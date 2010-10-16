@@ -10,6 +10,9 @@
 every 1.day do
   rake "sitemap:refresh"
 end
+every 12.hours do
+  rake "ts:index"
+end
 #
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
