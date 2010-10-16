@@ -16,7 +16,7 @@ gem "inherited_resources", "~> 1.1.2"
 gem "exception_notification", :git => "git://github.com/rails/exception_notification.git", :require => "exception_notifier"
 gem "acts-as-taggable-on", "~> 2.0.6"
 gem "rdiscount"
-gem "gravtastic", "~>2.2.0"
+gem "gravtastic", "~> 3.0.0"
 gem "css_sprite", "~> 1.4.9"
 gem "meta-tags", :require => 'meta_tags'
 gem "sitemap_generator", "~> 0.3.3"
