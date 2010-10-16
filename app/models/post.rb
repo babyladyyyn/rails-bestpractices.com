@@ -11,10 +11,21 @@ class Post < ActiveRecord::Base
   validates_presence_of :title, :body
   validates_uniqueness_of :title
 
-  scope :search, lambda { |q| where(['posts.title LIKE ?', "%#{q}%"]) }
   scope :implemented, where(:implemented => true)
 
   INDEX_COLUMNS = (column_names - ['body', 'formatted_html', 'updated_at']).join(",")
+
+  define_index do
+    indexes :title, :description, :body
+
+    has :vote_points, :comments_count, :view_count, :id
+
+    set_property :field_weights => {
+      :title => 10,
+      :description => 5,
+      :body => 1
+    }
+  end
 
   def self.per_page
     10

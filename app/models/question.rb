@@ -13,9 +13,19 @@ class Question < ActiveRecord::Base
   validates_uniqueness_of :title
 
   scope :not_answered, where(:answers_count => 0)
-  scope :search, lambda { |q| where(['questions.title LIKE ?', "%#{q}%"]) }
 
   INDEX_COLUMNS = (column_names - ['body', 'formatted_html', 'updated_at']).join(",")
+
+  define_index do
+    indexes :title, :body
+
+    has :vote_points, :answers_count, :view_count, :id
+
+    set_property :field_weights => {
+      :title => 10,
+      :body => 1
+    }
+  end
 
   def self.per_page
     10
