@@ -1,3 +1,4 @@
+@no-txn
 Feature: Search Post
 
   Background:

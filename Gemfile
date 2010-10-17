@@ -50,10 +50,10 @@ group :test do
 end
 
 group :cucumber do
-  gem "cucumber", "= 0.8.5"
-  gem "cucumber-rails", "= 0.3.2"
+  gem "cucumber", "~> 0.9.2"
+  gem "cucumber-rails", "~> 0.3.2"
   gem "capybara", "= 0.3.9"
-  gem "database_cleaner"
+  gem "database_cleaner", "~> 0.6.0.rc3"
   gem "spork"
   gem "launchy"
   gem "pickle", "~> 0.4.2"
