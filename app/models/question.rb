@@ -14,7 +14,7 @@ class Question < ActiveRecord::Base
 
   scope :not_answered, where(:answers_count => 0)
 
-  INDEX_COLUMNS = (column_names - ['body', 'formatted_html', 'updated_at']).join(",")
+  INDEX_COLUMNS = column_names - ['body', 'formatted_html', 'updated_at']
 
   define_index do
     indexes :title, :body
