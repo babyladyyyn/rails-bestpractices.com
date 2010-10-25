@@ -13,8 +13,6 @@ class Post < ActiveRecord::Base
 
   scope :implemented, where(:implemented => true)
 
-  INDEX_COLUMNS = column_names - ['body', 'formatted_html', 'updated_at']
-
   define_index do
     indexes :title, :description, :body
 

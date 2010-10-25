@@ -34,6 +34,7 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem 'typus', "~>1.0.0.pre6"
 gem 'whenever'
 gem "thinking-sphinx", "~> 2.0.0.rc2", :require => 'thinking_sphinx'
+gem "slim_scrooge", "~> 1.0.6"
 
 group :development do
   gem "mongrel"

@@ -38,7 +38,7 @@ class PostsController < InheritedResources::Base
     end
     
     def collection
-      @posts ||= end_of_association_chain.select(Post::INDEX_COLUMNS).includes(:user, :tags)
+      @posts ||= end_of_association_chain.includes(:user, :tags)
       @posts = @posts.order(params[:order] ? "#{params[:nav]} #{params[:order]}" : "created_at desc")
       @posts = @posts.paginate(:page => params[:page], :per_page => Post.per_page)
     end
