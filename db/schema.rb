@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100905013759) do
+ActiveRecord::Schema.define(:version => 20101030160122) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -40,21 +40,21 @@ ActiveRecord::Schema.define(:version => 20100905013759) do
   end
 
   create_table "answers", :force => true do |t|
-    t.text     "body"
-    t.text     "formatted_html"
+    t.text     "body",           :limit => 16777215
+    t.text     "formatted_html", :limit => 16777215
     t.integer  "user_id"
-    t.integer  "vote_points",    :default => 0
+    t.integer  "vote_points",                        :default => 0
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count", :default => 0
+    t.integer  "comments_count",                     :default => 0
   end
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
   add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
 
   create_table "comments", :force => true do |t|
-    t.text     "body"
+    t.text     "body",             :limit => 16777215
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
@@ -67,12 +67,27 @@ ActiveRecord::Schema.define(:version => 20100905013759) do
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
   create_table "drops", :force => true do |t|
     t.string   "title"
-    t.text     "body"
+    t.text     "body",           :limit => 16777215
     t.integer  "user_id"
-    t.text     "formatted_html"
-    t.text     "description"
+    t.text     "formatted_html", :limit => 16777215
+    t.text     "description",    :limit => 16777215
     t.string   "kind"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -109,16 +124,16 @@ ActiveRecord::Schema.define(:version => 20100905013759) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
-    t.text     "body"
+    t.text     "body",           :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.text     "formatted_html"
-    t.text     "description"
-    t.integer  "comments_count", :default => 0
-    t.integer  "vote_points",    :default => 0
+    t.text     "formatted_html", :limit => 16777215
+    t.text     "description",    :limit => 16777215
+    t.integer  "comments_count",                     :default => 0
+    t.integer  "vote_points",                        :default => 0
     t.integer  "view_count"
-    t.boolean  "implemented",    :default => false, :null => false
+    t.boolean  "implemented",                        :default => false, :null => false
   end
 
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
