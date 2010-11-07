@@ -12,6 +12,14 @@ class Comment < ActiveRecord::Base
     10
   end
 
+  def user_name
+    user ? user.login : username
+  end
+
+  def user_email
+    user ? user.email : email
+  end
+
   def parent_name
     case commentable
     when Question

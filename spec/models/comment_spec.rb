@@ -45,7 +45,32 @@ describe Comment do
       comment = Factory(:comment, :commentable => Factory(:answer, :question => question))
       comment.parent_name.should == "Answer of #{question.title}"
     end
+  end
 
+  describe "user_name" do
+    it "should show user.login" do
+      user = Factory(:user, :login => 'flyerhzm')
+      comment = Factory(:comment, :user => user)
+      comment.user_name.should == 'flyerhzm'
+    end
+
+    it "should show comment.username" do
+      comment = Factory(:comment, :user => nil, :username => 'test')
+      comment.user_name.should == 'test'
+    end
+  end
+
+  describe "user_email" do
+    it "should show user.email" do
+      user = Factory(:user, :email => 'flyerhzm@gmail.com')
+      comment = Factory(:comment, :user => user)
+      comment.user_email.should == 'flyerhzm@gmail.com'
+    end
+
+    it "should show comment.email" do
+      comment = Factory(:comment, :user => nil, :username => 'test', :email => 'test@test.com')
+      comment.user_email.should == 'test@test.com'
+    end
   end
 
 end
