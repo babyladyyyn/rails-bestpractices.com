@@ -22,8 +22,10 @@ RailsBestpracticesCom::Application.configure do
   # config.active_record.observers = :tweet_observer
   config.active_record.observers = :notifier_observer
 
+  config.action_mailer.default_url_options = { :host => "rails-bestpractices.com" }
+
   config.after_initialize do
-    Bullet.enable = true
+    Bullet.enable = false
     Bullet.alert = true
     Bullet.rails_logger = true
   end

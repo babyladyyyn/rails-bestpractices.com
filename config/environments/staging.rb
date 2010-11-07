@@ -47,6 +47,9 @@ RailsBestpracticesCom::Application.configure do
   config.active_record.observers = :notifier_observer
 
   config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.default_url_options = { :host => "staging.rails-bestpractices.com" }
+
   config.middleware.use ExceptionNotifier,
     :email_prefix => "[rails-bestpractices.com] ",
     :sender_address => %{"Application Error" <exception.notifier@rails-bestpractices.com>},
