@@ -6,6 +6,7 @@
         = form.input :user_id, :as => :hidden, :value => current_user.id
       - else
         = form.input :username, :hint => "Note: you can log in without input username."
+        = form.input :email, :hint => "Optional and will not be shown."
         = hidden_field_tag :skip, 'true'
       = form.input :body, :label => 'Content', :input_html => { :class => 'wmd-ignore', :rows => 2 }
     = form.buttons do

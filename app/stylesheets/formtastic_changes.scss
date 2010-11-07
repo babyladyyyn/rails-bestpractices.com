@@ -54,13 +54,26 @@ form.formtastic {
     }
   }
 }
-form#new_comment, form#new_answer {
+form#new_answer {
   margin: 32px 0;
   fieldset {
     width: 100%;
     ol li {
       margin-bottom: 0;
       width: 100%;
+    }
+  }
+}
+form#new_comment {
+  margin: 32px 0;
+  fieldset {
+    width: 100%;
+    ol li {
+      margin-bottom: 1em;
+      width: 100%;
+      p {
+        margin-top: 0
+      }
     }
   }
 }

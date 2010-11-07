@@ -85,9 +85,12 @@
       &.hide {
         display: none;
       }
+      label {
+        width: 98px;
+      }
       textarea {
         height: 50px;
-        width: 380px;
+        width: 398px;
       }
       ol {
         @include float-right;
