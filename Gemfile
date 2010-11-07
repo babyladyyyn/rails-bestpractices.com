@@ -50,6 +50,7 @@ group :test do
   gem "rspec-rails", "~> 2.0.0"
   gem "factory_girl_rails", "~> 1.0.0"
   gem 'remarkable_activerecord', '~> 4.0.0.alpha2'
+  gem "email_spec", "~> 1.0.0"
 end
 
 group :cucumber do

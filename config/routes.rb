@@ -1,4 +1,4 @@
-RailsBestpracticesCom::Application.routes.draw do |map|
+RailsBestpracticesCom::Application.routes.draw do
   #match "admin/acts_as_taggable_on/tags", :to => "admin/acts_as_taggable_on/tags#index"
   resources :tags, :only => :show
 

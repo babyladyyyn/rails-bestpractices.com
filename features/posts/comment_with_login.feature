@@ -2,18 +2,20 @@ Feature: Comment Post with Login
 
   Background:
     Given a post exists with title: "first best practice"
-    Given I am already signed in as "flyerhzm"
+    And I am already signed in as "flyerhzm"
     And I follow "first best practice"
 
   Scenario: Successful comment with valid info
     Given I fill in "Content" with "good post" under "Post a comment"
     When I press "Comment" at "July 24, 2010 13:52"
+    And all delayed jobs have finished
     Then I should see "Comment was successfully created"
     And I should see the following new entry under "Comments":
     """
       Posted by flyerhzm on July 24, 2010 13:52
       > good post
     """
+    And 1 email should be delivered to user1@gmail.com
 
   Scenario: Unsuccessful comment with empty content
     Given I fill in "Content" with "" under "Post a comment"
