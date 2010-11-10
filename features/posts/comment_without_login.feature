@@ -17,7 +17,7 @@ Feature: Comment Post without Login
       Posted by flyerhzm on July 24, 2010 13:52
       > good post
     """
-    And 1 email should be delivered to user1@gmail.com
+    And "user1@gmail.com" should receive an email
 
   Scenario Outline: Unsuccessful comment with invalid info
     Given I fill in the following under "Post a comment":
