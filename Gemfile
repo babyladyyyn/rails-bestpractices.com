@@ -36,6 +36,7 @@ gem 'whenever'
 gem "thinking-sphinx", "~> 2.0.0.rc2", :require => 'thinking_sphinx'
 gem "slim_scrooge", "~> 1.0.6"
 gem "delayed_job", "~> 2.1.0.pre2"
+gem "switch_user", "~> 0.5.0"
 
 group :development do
   gem "mongrel"
@@ -50,7 +51,7 @@ group :test do
   gem "rspec-rails", "~> 2.0.0"
   gem "factory_girl_rails", "~> 1.0.0"
   gem 'remarkable_activerecord', '~> 4.0.0.alpha2'
-  gem "email_spec", "~> 1.0.0"
+  gem 'email_spec', '~> 1.0.0'
 end
 
 group :cucumber do
