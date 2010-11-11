@@ -1,7 +1,8 @@
 Feature: Comment Post without Login
 
   Background:
-    Given a post exists with title: "first best practice"
+    Given a user "richard" exists with login: "richard"
+    And a post exists with user: user "richard", title: "first best practice"
     And I go to the home page
     And I follow "first best practice"
 
@@ -17,7 +18,7 @@ Feature: Comment Post without Login
       Posted by flyerhzm on July 24, 2010 13:52
       > good post
     """
-    And "user1@gmail.com" should receive an email
+    And "richard@gmail.com" should receive an email
 
   Scenario Outline: Unsuccessful comment with invalid info
     Given I fill in the following under "Post a comment":

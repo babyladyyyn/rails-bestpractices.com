@@ -1,7 +1,8 @@
 Feature: Comment Post with Login
 
   Background:
-    Given a post exists with title: "first best practice"
+    Given a user "richard" exists with login: "richard"
+    And a post exists with user: user "richard", title: "first best practice"
     And I am already signed in as "flyerhzm"
     And I follow "first best practice"
 
@@ -15,7 +16,7 @@ Feature: Comment Post with Login
       Posted by flyerhzm on July 24, 2010 13:52
       > good post
     """
-    And "user1@gmail.com" should receive an email
+    And "richard@gmail.com" should receive an email
 
   Scenario: Unsuccessful comment with empty content
     Given I fill in "Content" with "" under "Post a comment"
