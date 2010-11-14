@@ -4,16 +4,18 @@ class DelayedJob::NotifyComment < Struct.new(:comment_id)
     commentable = comment.commentable
     emails = []
 
-    unless commentable.user == comment.user
-      emails << commentable.user.email
-      NotificationMailer.notify_comment(commentable.user.email, comment).deliver
+    email = commentable.user.email
+    if email and commentable.user != comment.user
+      emails << email
+      NotificationMailer.notify_comment(email, comment).deliver
     end
 
     comments = commentable.comments
     comments.each do |c|
-      if c.email and c.email != comment.email and !emails.include? c.email
-        emails << c.email
-        NotificationMailer.notify_comment(c.email, comment).deliver
+      email = c.user_email
+      if email and email != comment.user_email and !emails.include? email
+        emails << email
+        NotificationMailer.notify_comment(email, comment).deliver
       end
     end
   end

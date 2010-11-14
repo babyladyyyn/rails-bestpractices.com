@@ -24,4 +24,28 @@ describe NotificationMailer do
       @email.should have_body_text(/#{post_url(@post)}/)
     end
   end
+
+  describe "notify_answer" do
+    before :each do
+      @question = Factory(:question, :title => 'email question')
+      @answer = Factory(:answer, :question => @question, :body => 'answer body')
+      @email = NotificationMailer.notify_answer("flyerhzm@gmail.com", @answer)
+    end
+
+    it "should be set to be delivered to the email passed in" do
+      @email.should deliver_to("flyerhzm@gmail.com")
+    end
+
+    it "should have the correct subject" do
+      @email.should have_subject(/Answer to email question/)
+    end
+
+    it "should contain the answer's body in the mail body" do
+      @email.should have_body_text(/answer body/)
+    end
+
+    it "should contain a link to the question" do
+      @email.should have_body_text(/#{question_url(@question)}/)
+    end
+  end
 end

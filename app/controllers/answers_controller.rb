@@ -3,7 +3,10 @@ class AnswersController < InheritedResources::Base
   belongs_to :question
 
   create! do |success, failure|
-    success.html { redirect_to question_path(@question) }
+    success.html {
+      job = Delayed::Job.enqueue(DelayedJob::NotifyAnswer.new(@answer.id))
+      redirect_to question_path(@question)
+    }
     failure.html { render 'questions/show' }
   end
 

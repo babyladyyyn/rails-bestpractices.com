@@ -6,4 +6,10 @@ class NotificationMailer < ActionMailer::Base
     mail(:to => email, 
          :subject => "Comment on #{comment.parent_name}")
   end
+
+  def notify_answer(email, answer)
+    @answer = answer
+    mail(:to => email,
+         :subject => "Answer to #{answer.question.title}")
+  end
 end

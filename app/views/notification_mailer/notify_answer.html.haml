@@ -1,0 +1,7 @@
+%p= "#{@answer.user.login} answer to #{@answer.question.title}"
+
+%p= @answer.body
+
+%p
+  View Answer: 
+  = link_to question_url(@answer.question), question_url(@answer.question)

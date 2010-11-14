@@ -11,14 +11,12 @@ Feature: Comment Post without Login
       | Username | flyerhzm  |
       | Content  | good post |
     When I press "Comment" at "July 24, 2010 13:52"
-    And all delayed jobs have finished
     Then I should see "Comment was successfully created"
     And I should see the following new entry under "Comments":
     """
       Posted by flyerhzm on July 24, 2010 13:52
       > good post
     """
-    And "richard@gmail.com" should receive an email
 
   Scenario Outline: Unsuccessful comment with invalid info
     Given I fill in the following under "Post a comment":

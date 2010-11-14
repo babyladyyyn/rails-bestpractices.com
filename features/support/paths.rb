@@ -24,6 +24,8 @@ module NavigationHelpers
       post_path(Post.last) # this is super brittle
     when /comment post failure page/
       post_comments_path(Post.last) # this is super brittle
+    when /answer question failure page/
+      question_answers_path(Question.last)
     when /the user show page for (.*)/
       user = User.find_by_login($1)
       user_path(user)
