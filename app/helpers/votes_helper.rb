@@ -17,7 +17,7 @@ module VotesHelper
   
   def vote_dislike_link(voteable)
     unless current_user
-      return link_to 'Disike', new_user_session_path(:return_to => request.url), :class => 'dislike-icon'
+      return link_to 'Dislike', new_user_session_path(:return_to => request.url), :class => 'dislike-icon'
     end
     vote = voteable.vote current_user
     if vote
