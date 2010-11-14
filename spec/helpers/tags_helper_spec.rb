@@ -1,15 +1,11 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the TagsHelper. For example:
-#
-# describe TagsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe TagsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should return all tags" do
+    tag1 = ActsAsTaggableOn::Tag.create(:name => 'tag1')
+    tag2 = ActsAsTaggableOn::Tag.create(:name => 'tag2')
+    tag3 = ActsAsTaggableOn::Tag.create(:name => 'tag3')
+
+    helper.all_tags.should == "['tag1','tag2','tag3']"
+  end
 end
