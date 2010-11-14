@@ -1,15 +1,37 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the PagesHelper. For example:
-# 
-# describe PagesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe PagesHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "render_sidebar_content" do
+    it "should render controller action sidebar only" do
+      page = Factory(:page, :name => "posts-index-sidebar", :body => "page1")
+      helper.params[:controller] = 'posts'
+      helper.params[:action] = 'index'
+      helper.render_sidebar_content.should == "page1"
+    end
+
+    it "should render controller action sidebar with controller sidebar" do
+      page1 = Factory(:page, :name => "posts-index-sidebar", :body => "page1")
+      page2 = Factory(:page, :name => "posts-sidebar", :body => "page2")
+      helper.params[:controller] = 'posts'
+      helper.params[:action] = 'index'
+      helper.render_sidebar_content.should == "page1page2"
+    end
+
+    it "should render controller action sidebar with controller form sidebar" do
+      page1 = Factory(:page, :name => "posts-new-sidebar", :body => "page1")
+      page2 = Factory(:page, :name => "posts-form-sidebar", :body => "page2")
+      helper.params[:controller] = 'posts'
+      helper.params[:action] = 'new'
+      helper.render_sidebar_content.should == "page1page2"
+    end
+
+    it "should render controller action sidebar with implementations sidebar" do
+      page1 = Factory(:page, :name => "pages-show-sidebar", :body => "page1")
+      page2 = Factory(:page, :name => "implementations-sidebar", :body => "page2")
+      helper.params[:controller] = 'pages'
+      helper.params[:action] = 'show'
+      helper.params[:name] = 'implementations'
+      helper.render_sidebar_content.should == "page1page2"
+    end
+  end
 end
