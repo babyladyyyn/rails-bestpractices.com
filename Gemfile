@@ -35,8 +35,7 @@ gem 'typus', "~>1.0.0.pre6"
 gem 'whenever'
 gem "thinking-sphinx", "~> 2.0.0.rc2", :require => 'thinking_sphinx'
 gem "slim_scrooge", "~> 1.0.6"
-gem "daemons", "1.0.10"
-gem "delayed_job", "~> 2.1.0.pre2"
+gem "delayed_job", "~> 2.1.0"
 gem "switch_user", "~> 0.5.0"
 
 group :development do
