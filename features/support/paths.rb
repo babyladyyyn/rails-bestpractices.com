@@ -24,6 +24,10 @@ module NavigationHelpers
       post_path(Post.last) # this is super brittle
     when /comment post failure page/
       post_comments_path(Post.last) # this is super brittle
+    when /create question failure page/
+      questions_path
+    when /update question failure page/
+      question_path(Question.last)
     when /answer question failure page/
       question_answers_path(Question.last)
     when /the user show page for (.*)/

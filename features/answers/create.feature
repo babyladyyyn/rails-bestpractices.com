@@ -4,8 +4,7 @@ Feature: Answer an question
     Given a user "richard" exists with login: "richard"
     And a question exists with user: user "richard", title: "first question"
     And I am already signed in as "flyerhzm"
-    And I follow "Questions"
-    And I follow "first question"
+    And I follow "Questions" / "first question"
 
   Scenario: Successful answer
     Given I fill in "answer_body" with "good question" under "Your Answer"

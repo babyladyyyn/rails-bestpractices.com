@@ -1,24 +1,20 @@
-Feature: Edit Post
+Feature: Update Question
 
   Background:
     Given a user "flyerhzm" exists with login: "flyerhzm"
-    And a post exists with user: user "flyerhzm", title: "first best practice"
+    And a question exists with user: user "flyerhzm", title: "first question"
     And I am already signed in as "flyerhzm"
-    And I follow "first best practice" / "Edit"
+    And I follow "Questions" / "first question"
+    And I follow "Edit"
 
   Scenario: Successful edit with valid info
     Given I fill in the following:
-      | Title              | edit best practices           |
-      | Short Description  | edit short description        |
+      | Title              | edit question                 |
       | Tag list           | edit, test                    |
       | Content            | *edit-italic* **bold**        |
     When I press "Save"
-    Then I should see success message "Best Practice was successfully updated!"
-    And I should see "edit best practices" page
-    # TODO: The following works, but too cryptic ... ideally, feature file shouldn't
-    # deal with such low level stuff. Anyway, will leave it as it is for now,
-    # till we can find a better way to express it.
-    And I should see "edit short description" within ".description"
+    Then I should see success message "Question was successfully updated."
+    And I should see "edit question" page
     And I should see "edit" within ".tags a"
     And I should see "test" within ".tags a"
     And I should see "edit-italic" within ".wikistyle em"
@@ -27,11 +23,10 @@ Feature: Edit Post
   Scenario Outline: Unsuccessful edit with missing info
     Given I fill in the following:
       | Title              | <title>   |
-      | Short Description  |           |
       | Content            | <content> |
       | Tag list           |           |
     When I press "Save"
-    Then I should be on update post failure page
+    Then I should be on update question failure page
     And I should see "<field>" with error "can't be blank"
 
     Examples:
@@ -40,10 +35,9 @@ Feature: Edit Post
       | something |           | Content |
 
   Scenario: Unsuccessful edit with duplicated title
-    Given a post exists with title: "edit best practice"
+    Given a question exists with title: "edit question"
     And I fill in the following:
-      | Title              | edit best practice      |
-      | Short Description  | edit short description  |
+      | Title              | edit question           |
       | Tag list           | edit, test              |
       | Content            | *edit-italic* **bold**  |
     When I press "Save"
