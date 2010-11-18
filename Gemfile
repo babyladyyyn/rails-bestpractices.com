@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.1'
+gem 'rails', '3.0.3'
 
 gem 'sqlite3-ruby', :require => 'sqlite3', :group => :development
 gem 'mysql2'
@@ -36,7 +36,7 @@ gem 'whenever'
 gem "thinking-sphinx", "~> 2.0.0.rc2", :require => 'thinking_sphinx'
 gem "slim_scrooge", "~> 1.0.6"
 gem "delayed_job", "~> 2.1.0"
-gem "switch_user", "~> 0.5.0"
+gem "switch_user", "~> 0.6.0"
 
 group :development do
   gem "mongrel"
@@ -47,8 +47,8 @@ end
 group :test do
   gem "autotest-rails", "~> 4.1.0"
   gem "rcov", "~> 0.9.9"
-  gem "rspec", "~> 2.0.0"
-  gem "rspec-rails", "~> 2.0.0"
+  gem "rspec", "~> 2.1.0"
+  gem "rspec-rails", "~> 2.1.0"
   gem "factory_girl_rails", "~> 1.0.0"
   gem 'remarkable_activerecord', '~> 4.0.0.alpha2'
   gem 'email_spec', '~> 1.0.0'
