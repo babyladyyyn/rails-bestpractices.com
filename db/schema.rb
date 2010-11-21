@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101121081631) do
+ActiveRecord::Schema.define(:version => 20101121145855) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20101121081631) do
   end
 
   add_index "access_tokens", ["key"], :name => "index_access_tokens_on_key", :unique => true
+  add_index "access_tokens", ["user_id"], :name => "index_access_tokens_on_user_id"
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -95,6 +96,8 @@ ActiveRecord::Schema.define(:version => 20101121081631) do
     t.string   "tag_list"
   end
 
+  add_index "drops", ["user_id"], :name => "index_drops_on_user_id"
+
   create_table "implementations", :force => true do |t|
     t.integer  "post_id"
     t.integer  "user_id"
@@ -115,6 +118,8 @@ ActiveRecord::Schema.define(:version => 20101121081631) do
     t.datetime "updated_at"
   end
 
+  add_index "notification_settings", ["user_id"], :name => "index_notification_settings_on_user_id"
+
   create_table "notifications", :force => true do |t|
     t.integer  "user_id"
     t.string   "notifierable_type"
@@ -123,6 +128,9 @@ ActiveRecord::Schema.define(:version => 20101121081631) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "notifications", ["notifierable_id", "notifierable_type"], :name => "index_notifications_on_notifierable_id_and_notifierable_type"
+  add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "pages", :force => true do |t|
     t.string   "name"
@@ -174,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20101121081631) do
 
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tagger_id"], :name => "index_taggings_on_tagger_id"
 
   create_table "tags", :force => true do |t|
     t.string  "name"
