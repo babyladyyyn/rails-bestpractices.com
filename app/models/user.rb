@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates_length_of :password, :minimum => 4, :if => :validate_password?
   validates_confirmation_of :password, :if => :validate_password?
   is_gravtastic!
-  
+
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :votes, :dependent => :destroy
@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   has_many :notifications, :dependent => :destroy
   has_many :drops, :dependent => :destroy
   has_one :access_token
+  has_many :notification_settings, :dependent => :destroy
+
+  accepts_nested_attributes_for :notification_settings
 
   def update_profile
     if self.access_token

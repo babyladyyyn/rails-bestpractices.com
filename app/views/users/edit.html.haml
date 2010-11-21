@@ -5,11 +5,11 @@
 = semantic_form_for @user do |form|
   = form.inputs :name => 'Profile' do
     = form.input :login, :label => "Username"
-    = form.input :email, :hint => "This is used to show your avatar from gravatar.com."
+    = form.input :email
     = form.input :url, :label => "Your Website"
   = form.buttons do
     = form.submit "Save"
-    
+
 - unless @user.access_token
   = semantic_form_for @user do |form|
     = form.inputs :name => 'Change Password' do
@@ -17,3 +17,13 @@
       = form.input :password_confirmation
     = form.buttons do
       = form.submit "Change"
+
+= semantic_form_for @user do |form|
+  = form.inputs :name => 'Notification Settings' do
+    = form.semantic_fields_for :notification_settings do |setting_form|
+      = setting_form.inputs do
+        = setting_form.input :name, :as => :hidden, :wrapper_html => { :class => 'setting_name' }
+        = setting_form.input :description, :label => false, :wrapper_html => { :class => 'setting_description' }, :input_html => { :disabled => 'disabled' }
+        = setting_form.input :value, :label => '', :wrapper_html => { :class => 'setting_value' }
+  = form.buttons do
+    = form.submit "Save"

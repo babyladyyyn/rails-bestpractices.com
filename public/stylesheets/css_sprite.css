@@ -1,0 +1,26 @@
+.twitter-icon, .sign-in-twitter-button, .sign-in-facebook-button, .search-label, .search-icon,
+.rss-icon, .point-to-icon, .plus-sign-icon, .minus-sign-icon, .like-icon,
+.like-icon.active, .home-icon, .dislike-icon, .dislike-icon.active, .delete-icon,
+.comment-icon, .close-icon, .arrow-up-icon, .arrow-down-icon, .answer-icon {
+  background: url('/images/css_sprite.png?1290329512') no-repeat;
+}
+.twitter-icon { background-position: 0px 0px; width: 24px; height: 24px; }
+.sign-in-twitter-button { background-position: 0px -29px; width: 151px; height: 24px; }
+.sign-in-facebook-button { background-position: 0px -58px; width: 154px; height: 22px; }
+.search-label { background-position: 0px -85px; width: 68px; height: 25px; }
+.search-icon { background-position: 0px -115px; width: 17px; height: 17px; }
+.rss-icon { background-position: 0px -137px; width: 24px; height: 24px; }
+.point-to-icon { background-position: 0px -166px; width: 10px; height: 9px; }
+.plus-sign-icon { background-position: 0px -180px; width: 16px; height: 16px; }
+.minus-sign-icon { background-position: 0px -201px; width: 16px; height: 16px; }
+.like-icon { background-position: 0px -222px; width: 40px; height: 24px; }
+.like-icon.active { background-position: 0px -251px; }
+.home-icon { background-position: 0px -280px; width: 12px; height: 11px; }
+.dislike-icon { background-position: 0px -296px; width: 40px; height: 24px; }
+.dislike-icon.active { background-position: 0px -325px; }
+.delete-icon { background-position: 0px -354px; width: 16px; height: 16px; }
+.comment-icon { background-position: 0px -375px; width: 16px; height: 16px; }
+.close-icon { background-position: 0px -396px; width: 16px; height: 16px; }
+.arrow-up-icon { background-position: 0px -417px; width: 16px; height: 16px; }
+.arrow-down-icon { background-position: 0px -438px; width: 16px; height: 16px; }
+.answer-icon { background-position: 0px -459px; width: 16px; height: 16px; }

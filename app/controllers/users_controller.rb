@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
-  
+
   def index
     @users = User.order("(posts_count * 10 + answers_count * 8 + questions_count * 4 + comments_count * 2 + votes_count) desc").limit(50)
   end
-  
+
   def new
     @user = User.new
   end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if params[:id] != @user.to_param
-      redirect_to user_path(@user), :status => 301 
+      redirect_to user_path(@user), :status => 301
     else
       params[:nav] = params[:nav] || "posts"
       @children = @user.send(params[:nav])
@@ -34,6 +34,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = @current_user
+    NotificationSetting::ITEMS.each do |name, description|
+      @user.notification_settings.find_or_create_by_name(name)
+    end
   end
 
   def update
@@ -42,7 +45,7 @@ class UsersController < ApplicationController
     @user.update_attributes(params[:user]) do |result|
       if result
         flash[:notice] = "Account updated!"
-        redirect_to :action => :show
+        redirect_to :action => :edit
       else
         render :action => :edit
       end

@@ -81,7 +81,19 @@ form.post, form.implementation, form.question, form.answer, form.formtastic.user
   margin: 32px 20px;
 }
 form.formtastic.user {
-  input#user_email {
+  input[disabled] {
+    border: none;
+  }
+  li.setting_name {
+    display: none;
+  }
+  li.setting_description {
+    width: 400px;
+    display: inline-block;
+  }
+  li.setting_value {
+    width: 100px;
+    display: inline-block;
   }
 }
 form.post, form.implementation, form.comment, form.question, form.answer {
