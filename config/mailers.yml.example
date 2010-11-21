@@ -1,8 +1,9 @@
 development:
-  noreply:
-    address: 'smtp.gmail.com',
-    port: 587,
-    domain: 'rails-bestpractices.com',
-    authentication: 'plain',
-    user_name: 'noreply',
+  notification:
+    address: 'smtp.gmail.com'
+    port: 587
+    domain: 'rails-bestpractices.com'
+    authentication: 'plain'
+    user_name: 'notification@rails-bestpractices.com'
     password: 'password'
+    tls: true
