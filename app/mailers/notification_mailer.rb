@@ -1,7 +1,7 @@
 class NotificationMailer < ActionMailer::Base
   class <<self
     def smtp_settings
-      options = YAML.load_file("#{RAILS_ROOT}/config/mailers.yml")[RAILS_ENV]['notification']
+      options = YAML.load_file("#{RAILS_ROOT}/config/mailers.yml")[Rails.env]['notification']
       @@smtp_settings = {
         :address              => options["address"],
         :port                 => options["port"],
@@ -17,12 +17,14 @@ class NotificationMailer < ActionMailer::Base
 
   def notify_comment(email, comment)
     @comment = comment
+    @user = User.find_by_email(email)
     mail(:to => email,
          :subject => "Comment on #{comment.parent_name}")
   end
 
   def notify_answer(email, answer)
     @answer = answer
+    @user = User.find_by_email(email)
     mail(:to => email,
          :subject => "Answer to #{answer.question.title}")
   end
