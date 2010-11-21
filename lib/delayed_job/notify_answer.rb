@@ -7,7 +7,7 @@ class DelayedJob::NotifyAnswer < Struct.new(:answer_id)
     email = question.user.email
     if email and question.user != answer.user
       emails << email
-      NotificationMailer.notify_answer(email, answer).deliver
+      NotificationMailer.notify_answer(email, answer).deliver if question.user.answer_question?
     end
 
     answers = question.answers
@@ -15,7 +15,7 @@ class DelayedJob::NotifyAnswer < Struct.new(:answer_id)
       email = a.user.email
       if email and email != answer.user.email and !emails.include? email
         emails << email
-        NotificationMailer.notify_answer(email, answer).deliver
+        NotificationMailer.notify_answer(email, answer).deliver if a.user.after_question_answer?
       end
     end
   end

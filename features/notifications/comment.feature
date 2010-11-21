@@ -27,3 +27,29 @@ Feature: Comment Notification
     Then "richard@gmail.com" should receive an email
     And "comment1@gmail.com" should receive no email
     And "comment2@gmail.com" should receive an email
+
+  Scenario: Not notify if user doesn't select global email
+    Given a user "richard" exists with login: "richard"
+    And a notification_setting exists with user: user "richard", name: "global_email", value: "0"
+    And a notification_setting exists with user: user "richard", name: "comment_post", value: "1"
+    And a post exists with user: user "richard", title: "first best practice"
+    And I am already signed in as "flyerhzm"
+    And I follow "first best practice"
+
+    Given I fill in "Content" with "good post" under "Post a comment"
+    When I press "Comment"
+    And all delayed jobs have finished
+    Then "richard@gmail.com" should receive no email
+
+  Scenario: Not notify if user doesn't want
+    Given a user "richard" exists with login: "richard"
+    And a notification_setting exists with user: user "richard", name: "global_email", value: "1"
+    And a notification_setting exists with user: user "richard", name: "comment_post", value: "0"
+    And a post exists with user: user "richard", title: "first best practice"
+    And I am already signed in as "flyerhzm"
+    And I follow "first best practice"
+
+    Given I fill in "Content" with "good post" under "Post a comment"
+    When I press "Comment"
+    And all delayed jobs have finished
+    Then "richard@gmail.com" should receive no email

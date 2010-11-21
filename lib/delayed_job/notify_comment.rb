@@ -7,7 +7,7 @@ class DelayedJob::NotifyComment < Struct.new(:comment_id)
     email = commentable.user.email
     if email and commentable.user != comment.user
       emails << email
-      NotificationMailer.notify_comment(email, comment).deliver
+      NotificationMailer.notify_comment(email, comment).deliver if commentable.user.send("comment_#{comment.commentable_type.downcase}?")
     end
 
     comments = commentable.comments
@@ -15,7 +15,7 @@ class DelayedJob::NotifyComment < Struct.new(:comment_id)
       email = c.user_email
       if email and email != comment.user_email and !emails.include? email
         emails << email
-        NotificationMailer.notify_comment(email, comment).deliver
+        NotificationMailer.notify_comment(email, comment).deliver if commentable.user.send("after_#{comment.commentable_type.downcase}_comment?")
       end
     end
   end

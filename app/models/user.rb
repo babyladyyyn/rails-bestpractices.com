@@ -39,6 +39,16 @@ class User < ActiveRecord::Base
     "#{id}-#{login.parameterize}"
   end
 
+  NotificationSetting::ITEMS.keys.each do |item_name|
+    class_eval <<-EOF
+      def #{item_name}?
+        self.notification_settings.blank? ||
+        (self.notification_settings.where(:name => 'global_email').first.value &&
+        self.notification_settings.where(:name => '#{item_name}').first.value)
+      end
+    EOF
+  end
+
   private
     def validate_email?
       self.access_token.nil?
