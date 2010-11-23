@@ -13,9 +13,7 @@ end
 every 12.hours do
   rake "ts:index"
 end
-#
-# every 4.days do
-#   runner "AnotherModel.prune_old_records"
-# end
-
-# Learn more: http://github.com/javan/whenever
+every 1.day do
+  rake "backup:run trigger='mysql-backup-dropbox'"
+  rake "backup:run trigger='archive-backup-dropbox'"
+end

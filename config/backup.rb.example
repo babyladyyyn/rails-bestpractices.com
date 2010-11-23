@@ -1,0 +1,39 @@
+backup 'mysql-backup-dropbox' do
+
+  adapter :mysql do
+    user      'user'
+    database  'database'
+  end
+
+  storage :dropbox do
+    api_key           'api_key'
+    secret_access_key 'secret_access_key'
+    username          'username'
+    password          'password'
+    path              'backups'
+  end
+
+  keep_backups 30
+  encrypt_with_password false
+  notify false
+end
+
+backup 'archive-backup-dropbox' do
+
+  adapter :archive do
+    files "#{Rails.root}/log"
+  end
+
+  storage :dropbox do
+    api_key           'api_key'
+    secret_access_key 'secret_access_key'
+    username          'username'
+    password          'password'
+    path              'backups'
+  end
+
+  keep_backups 30
+  encrypt_with_password false
+  notify false
+end
+

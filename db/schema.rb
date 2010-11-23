@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101121145855) do
+ActiveRecord::Schema.define(:version => 20101123135618) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(:version => 20101121145855) do
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
   add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
+
+  create_table "backup", :force => true do |t|
+    t.string   "trigger"
+    t.string   "adapter"
+    t.string   "filename"
+    t.string   "md5sum"
+    t.string   "path"
+    t.string   "bucket"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.text     "body",             :limit => 16777215
