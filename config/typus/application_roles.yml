@@ -9,6 +9,8 @@ admin:
   Comment: create, read, update, delete
   Drop: create, read, update, delete
   Implementation: create, read, update, delete
+  Notification: create, read, update, delete
+  NotificationSetting: create, read, update, delete
   Page: create, read, update, delete
   Post: create, read, update, delete
   Question: create, read, update, delete

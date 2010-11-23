@@ -16,30 +16,30 @@ AdminUser:
   fields:
     default: first_name, last_name, role, email, status, token, preferences
     form: first_name, last_name, role, email, status, token, preferences
-  order_by: 
-  relationships: 
-  filters: 
-  search: 
+  order_by:
+  relationships:
+  filters:
+  search:
   application: rails-bestpractices.com
-  
+
 Answer:
   fields:
     default: vote_points, question_id, question, user
     form: body, formatted_html, vote_points, question_id, question, user
   order_by: -created_at
   relationships: question, user, votes
-  filters: 
-  search: 
+  filters:
+  search:
   application: rails-bestpractices.com
 
 Comment:
   fields:
-    default: user_id, username, commentable
-    form: body, user_id, username
+    default: user_id, username, email, commentable
+    form: body, user_id, username, email
   order_by: -created_at
   relationships: user
-  filters: 
-  search: 
+  filters:
+  search:
   application: rails-bestpractices.com
 
 Drop:
@@ -48,7 +48,7 @@ Drop:
     form: title, kind, description, body, formatted_html, tag_list, user
   order_by: -created_at
   relationships: user
-  filters: 
+  filters:
   search: title
   application: rails-bestpractices.com
 
@@ -58,10 +58,30 @@ Implementation:
     form: post_id, body, formatted_html, post, user
   order_by: -created_at
   relationships: post, user
-  filters: 
+  filters:
   search: title
   application: rails-bestpractices.com
-  
+
+Notification:
+  fields:
+    default: user_id, notifierable_id, read, user
+    form: user_id, notifierable_id, read, user
+  order_by: -created_at
+  relationships: user
+  filters:
+  search:
+  application: rails-bestpractices.com
+
+NotificationSetting:
+  fields:
+    default: name, value, user_id, user
+    form: name, value, user_id, user
+  order_by:
+  relationships: user
+  filters:
+  search: name
+  application: rails-bestpractices.com
+
 Page:
   fields:
     default: name
@@ -78,7 +98,7 @@ Post:
     form: title, body, formatted_html, description, comments_count, vote_points, view_count, tag_list, user, implemented
   order_by: -created_at
   relationships: base_tags, comments, implementation, tag_taggings, taggings, tags, user, votes
-  filters: 
+  filters:
   search: title
   application: rails-bestpractices.com
 
@@ -88,7 +108,7 @@ Question:
     form: title, body, formatted_html, vote_points, view_count, answers_count, user
   order_by: -created_at
   relationships: answers, base_tags, tag_taggings, taggings, tags, user, votes
-  filters: 
+  filters:
   search: title
   application: rails-bestpractices.com
 
@@ -98,7 +118,7 @@ User:
     form: login, email, url, developer, posts_count, implementations_count, comments_count, votes_count, questions_count, answers_count
   order_by: -created_at
   relationships: comments, implementations, posts, votes, questions, answers
-  filters: 
+  filters:
   search: login
   application: rails-bestpractices.com
 
@@ -108,6 +128,6 @@ Vote:
     form: like, user, voteable
   order_by: -created_at
   relationships: voteable, user
-  filters: 
-  search: 
+  filters:
+  search:
   application: rails-bestpractices.com
