@@ -1,3 +1,3 @@
 check process searchd with pidfile /sites/rails-bestpractices.com/production/shared/pids/searchd.production.pid
-    start program = "cd /sites/rails-bestpractices.com/production/current && RAILS_ENV=production bundle exec rake ts:config && bundle exec rake ts:start"
-    stop program = "cd /sites/rails-bestpractices.com/production/current && RAILS_ENV=production bundle exec rake ts:stop"
+    start program = "cd /home/huangzhi/sites/rails-bestpractices.com/production/current && RAILS_ENV=production bundle exec rake ts:config && bundle exec rake ts:start"
+    stop program = "cd /home/huangzhi/sites/rails-bestpractices.com/production/current && RAILS_ENV=production bundle exec rake ts:stop"
