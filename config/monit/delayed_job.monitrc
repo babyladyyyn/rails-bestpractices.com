@@ -1,3 +1,0 @@
-check process delayed_job with pidfile /sites/rails-bestpractices.com/production/shared/pids/delayed_job.pid
-    start program = "cd /home/huangzhi/sites/rails-bestpractices.com/production/current && RAILS_ENV=production bundle exec script/delayed_job start"
-    stop program = "cd /home/huangzhi/sites/rails-bestpractices.com/production/current && RAILS_ENV=production bundle exec script/delayed_job stop"
