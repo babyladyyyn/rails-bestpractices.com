@@ -8,7 +8,9 @@ describe TweetObserver do
     Post.delete_all
     within_observable_scope do |observer|
       instance = Factory.build(:post, :id => 1)
-      observer.should_receive(:tweet).with(instance.tweet_title, instance.tweet_path)
+      delayed_tweet = stub
+      DelayedJob::Tweet.should_receive(:new).with('Post', 1).and_return(delayed_tweet)
+      Delayed::Job.should_receive(:enqueue).with(delayed_tweet)
       instance.save
     end
   end
@@ -16,8 +18,10 @@ describe TweetObserver do
   it 'should be observing Implementation#create' do
     post = Factory(:post)
     within_observable_scope do |observer|
-      instance = Factory.build(:implementation, :post => post)
-      observer.should_receive(:tweet).with(instance.tweet_title, instance.tweet_path)
+      instance = Factory.build(:implementation, :id => 1, :post => post)
+      delayed_tweet = stub
+      DelayedJob::Tweet.should_receive(:new).with('Implementation', 1).and_return(delayed_tweet)
+      Delayed::Job.should_receive(:enqueue).with(delayed_tweet)
       instance.save
     end
   end
@@ -26,7 +30,9 @@ describe TweetObserver do
     Question.delete_all
     within_observable_scope do |observer|
       instance = Factory.build(:question, :id => 1)
-      observer.should_receive(:tweet).with(instance.tweet_title, instance.tweet_path)
+      delayed_tweet = stub
+      DelayedJob::Tweet.should_receive(:new).with('Question', 1).and_return(delayed_tweet)
+      Delayed::Job.should_receive(:enqueue).with(delayed_tweet)
       instance.save
     end
   end
