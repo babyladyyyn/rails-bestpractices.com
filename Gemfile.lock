@@ -75,7 +75,8 @@ GEM
       crack (>= 0.1.4)
       httparty (>= 0.5.2)
     builder (2.1.2)
-    bullet (2.0.0.rc2)
+    bullet (2.0.1)
+      uniform_notifier (~> 1.0.0)
     cancan (1.4.0)
     capybara (0.3.9)
       culerity (>= 0.2.4)
@@ -84,7 +85,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.3)
-    cgi_multipart_eof_fix (2.5.0)
     cloudfiles (1.4.10)
       mime-types (>= 1.16)
     compass (0.10.5)
@@ -119,6 +119,7 @@ GEM
     email_spec (1.0.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    escape_utils (0.1.9)
     excon (0.2.4)
     factory_girl (1.3.2)
     factory_girl_rails (1.0)
@@ -127,7 +128,6 @@ GEM
     faraday (0.4.6)
       addressable (>= 2.1.1)
       rack (>= 1.0.1)
-    fastthread (1.0.7)
     ffi (0.6.3)
       rake (>= 0.8.7)
     fog (0.3.24)
@@ -144,7 +144,6 @@ GEM
       actionpack (>= 2.3.0)
       activesupport (>= 2.3.0)
       i18n (>= 0.4.0)
-    gem_plugin (0.2.3)
     gherkin (2.2.9)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
@@ -173,11 +172,6 @@ GEM
       nokogiri (>= 1.2.1)
     meta-tags (1.2.3)
     mime-types (1.16)
-    mongrel (1.1.5)
-      cgi_multipart_eof_fix (>= 2.4)
-      daemons (>= 1.0.3)
-      fastthread (>= 1.0.1)
-      gem_plugin (>= 0.2.3)
     multi_json (0.0.4)
     multipart-post (1.0.1)
     mysql2 (0.2.4)
@@ -260,11 +254,9 @@ GEM
       rubyzip
     sexp_processor (3.0.5)
     sitemap_generator (0.3.3)
-    slim_scrooge (1.0.10)
     spork (0.8.4)
     sqlite3-ruby (1.3.1)
     switch_user (0.6.0)
-    system_timer (1.0)
     term-ansicolor (1.0.5)
     thinking-sphinx (2.0.0.rc2)
       activerecord (>= 3.0.0.rc)
@@ -279,6 +271,7 @@ GEM
       oauth (~> 0.4.3)
     typus (1.0.0.pre8)
     tzinfo (0.3.23)
+    uniform_notifier (1.0.0)
     whenever (0.5.3)
       aaronh-chronic (>= 0.3.9)
       activesupport (>= 2.3.4)
@@ -296,7 +289,7 @@ DEPENDENCIES
   awesome_print
   backup (~> 2.4.4)
   bitly
-  bullet (~> 2.0.0.rc2)
+  bullet (~> 2.0.1)
   cancan
   capybara (= 0.3.9)
   compass (~> 0.10.2)
@@ -307,6 +300,7 @@ DEPENDENCIES
   database_cleaner (~> 0.6.0.rc3)
   delayed_job (~> 2.1.0)
   email_spec (~> 1.0.0)
+  escape_utils
   exception_notification!
   factory_girl_rails (~> 1.0.0)
   formtastic (~> 1.1.0)
@@ -317,7 +311,6 @@ DEPENDENCIES
   json
   launchy
   meta-tags
-  mongrel
   mysql2
   oauth
   oauth2
@@ -332,11 +325,9 @@ DEPENDENCIES
   rspec-rails (~> 2.1.0)
   ruby-openid
   sitemap_generator (~> 0.3.3)
-  slim_scrooge (~> 1.0.6)
   spork
   sqlite3-ruby
   switch_user (~> 0.6.0)
-  system_timer
   thinking-sphinx (~> 2.0.0.rc2)
   twitter (~> 0.9.8)
   typus (~> 1.0.0.pre6)

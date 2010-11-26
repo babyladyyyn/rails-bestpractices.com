@@ -23,7 +23,6 @@ gem "meta-tags", :require => 'meta_tags'
 gem "sitemap_generator", "~> 0.3.3"
 gem "twitter", "~> 0.9.8"
 gem "bitly"
-gem "system_timer"
 gem "ruby-openid"
 gem "rack-openid", "~>0.2.1", :require => "rack/openid"
 gem "oauth"
@@ -34,15 +33,15 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem 'typus', "~>1.0.0.pre6"
 gem 'whenever'
 gem "thinking-sphinx", "~> 2.0.0.rc2", :require => 'thinking_sphinx'
-gem "slim_scrooge", "~> 1.0.6"
+#gem "slim_scrooge", "~> 1.0.6"
 gem "delayed_job", "~> 2.1.0"
 gem "switch_user", "~> 0.6.0"
 gem "backup", "~> 2.4.4"
+gem "escape_utils"
 
 group :development do
-  gem "mongrel"
   gem "awesome_print", :require => 'ap'
-  gem "bullet", "~> 2.0.0.rc2"
+  gem "bullet", "~> 2.0.1"
 end
 
 group :test do

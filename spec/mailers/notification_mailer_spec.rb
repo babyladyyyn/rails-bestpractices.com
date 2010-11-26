@@ -21,7 +21,7 @@ describe NotificationMailer do
     end
 
     it "should contain a link to the post" do
-      @email.should have_body_text(/#{post_url(@post)}/)
+      @email.should have_body_text(/#{post_url(@post).gsub(/\//, '&#47;')}/)
     end
   end
 
@@ -45,7 +45,7 @@ describe NotificationMailer do
     end
 
     it "should contain a link to the question" do
-      @email.should have_body_text(/#{question_url(@question)}/)
+      @email.should have_body_text(/#{question_url(@question).gsub(/\//, '&#47;')}/)
     end
   end
 end
