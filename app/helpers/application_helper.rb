@@ -1,19 +1,4 @@
 module ApplicationHelper
-  def stylesheets
-    ['compiled/screen', 'compiled/layout', 'compiled/sidebar', 'compiled/post', 'compiled/question', 'compiled/answer', 'compiled/implementation', 'compiled/comment', 'compiled/user', 'compiled/notification', 'compiled/addthis', 'compiled/jquery.autocomplete', 'compiled/formtastic', 'compiled/formtastic_changes', 'compiled/login_register', 'compiled/css_sprite', 'prettify', 'compiled/page']
-  end
-
-  def javascripts
-    javascripts = ['jquery', 'rails', 'jquery.autocomplete', 'prettify', 'wmd', 'application']
-    if Rails.env == 'production'
-      javascripts << 'google_analytics'
-    end
-    if Rails.env == 'development'
-      javascripts << ['showdown', 'wmd-base', 'wmd-plus']
-    end
-    javascripts << 'uservoice'
-  end
-
   def display_chinese_entry?
     current_locale == 'zh' and 'false' != cookies[:chinese_entry] and params[:controller] == 'posts' and params[:action] == 'index'
   end

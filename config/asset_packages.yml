@@ -1,0 +1,34 @@
+---
+javascripts:
+- base:
+  - jquery
+  - rails
+  - jquery.autocomplete
+  - prettify
+  - wmd
+  - application
+  - uservoice
+- development:
+  - showdown
+  - wmd-plus
+  - wmd-base
+stylesheets:
+- base:
+  - compiled/screen
+  - compiled/layout
+  - compiled/sidebar
+  - compiled/post
+  - compiled/question
+  - compiled/answer
+  - compiled/implementation
+  - compiled/comment
+  - compiled/user
+  - compiled/notification
+  - compiled/addthis
+  - compiled/jquery.autocomplete
+  - compiled/formtastic
+  - compiled/formtastic_changes
+  - compiled/login_register
+  - compiled/css_sprite
+  - prettify
+  - compiled/page
