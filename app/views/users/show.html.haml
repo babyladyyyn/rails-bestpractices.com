@@ -13,7 +13,7 @@
       = @user.login
     %p
       %span Website
-      = @user.url
+      = link_to @user.url, @user.url, :ref => 'nofollow', :target => '_blank'
 
 .statistics
   .header.navs
