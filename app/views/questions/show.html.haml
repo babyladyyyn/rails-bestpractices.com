@@ -17,19 +17,21 @@
     %td.question-info
       %p
         = image_tag @question.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @question.user.login
-        Posted by 
+        Posted by
         = link_to @question.user.login, user_path(@question.user)
-        on 
+        on
         = l(@question.created_at.to_date)
 
       .wikistyle= raw @question.formatted_html
-      = render 'comments/short_comments', :comments => @question.comments
-      = render 'comments/short_comment_form', :parent => @question
-      
+
       .tags
         - @question.tags.each do |tag|
           = link_to tag.name, tag_path(tag.name)
-    .clear
+
+      = render 'comments/short_comments', :comments => @question.comments
+      = render 'comments/short_comment_form', :parent => @question
+
+      .adsense= render 'shared/google_adsense'
 
 = render 'answers/answers', :question => @question
 = render 'shared/login_register'
