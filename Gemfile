@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
 
-gem 'sqlite3-ruby', :require => 'sqlite3', :group => :development
 gem 'mysql2', "~> 0.2.6"
 
 gem "json"
@@ -40,6 +39,7 @@ gem "backup", "~> 2.4.4"
 gem "escape_utils"
 
 group :development do
+  gem 'sqlite3-ruby', :require => 'sqlite3'
   gem "awesome_print", :require => 'ap'
   gem "bullet", "~> 2.0.1"
 end
