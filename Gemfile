@@ -45,7 +45,11 @@ group :development do
 end
 
 group :test do
+  gem "ZenTest"
+  gem "autotest"
   gem "autotest-rails", "~> 4.1.0"
+  gem "autotest-fsevent"
+  gem "autotest-growl"
   gem "rcov", "~> 0.9.9"
   gem "rspec", "~> 2.1.0"
   gem "rspec-rails", "~> 2.1.0"
