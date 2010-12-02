@@ -1,15 +1,17 @@
 class NotificationMailer < ActionMailer::Base
-  class <<self
-    def smtp_settings
-      options = YAML.load_file("#{RAILS_ROOT}/config/mailers.yml")[Rails.env]['notification']
-      @@smtp_settings = {
-        :address              => options["address"],
-        :port                 => options["port"],
-        :domain               => options["domain"],
-        :authentication       => options["authentication"],
-        :user_name            => options["user_name"],
-        :password             => options["password"]
-      }
+  if Rails.env.production?
+    class <<self
+      def smtp_settings
+        options = YAML.load_file("#{RAILS_ROOT}/config/mailers.yml")[Rails.env]['notification']
+        @@smtp_settings = {
+          :address              => options["address"],
+          :port                 => options["port"],
+          :domain               => options["domain"],
+          :authentication       => options["authentication"],
+          :user_name            => options["user_name"],
+          :password             => options["password"]
+        }
+      end
     end
   end
 
