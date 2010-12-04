@@ -30,7 +30,7 @@ gem "authlogic-connect", '~>0.0.6'
 gem "cancan"
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'typus', "~> 3.0.2"
-gem 'whenever'
+gem 'whenever', "~> 0.6.1"
 gem "thinking-sphinx", "~> 2.0.0.rc2", :require => 'thinking_sphinx'
 #gem "slim_scrooge", "~> 1.0.6"
 gem "delayed_job", "~> 2.1.0"

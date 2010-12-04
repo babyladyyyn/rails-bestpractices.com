@@ -274,7 +274,7 @@ GEM
       will_paginate (~> 3.0.pre2)
     tzinfo (0.3.23)
     uniform_notifier (1.0.0)
-    whenever (0.5.3)
+    whenever (0.6.2)
       aaronh-chronic (>= 0.3.9)
       activesupport (>= 2.3.4)
     will_paginate (3.0.pre2)
@@ -335,5 +335,5 @@ DEPENDENCIES
   thinking-sphinx (~> 2.0.0.rc2)
   twitter (~> 0.9.8)
   typus (~> 3.0.2)
-  whenever
+  whenever (~> 0.6.1)
   will_paginate (~> 3.0.pre2)
