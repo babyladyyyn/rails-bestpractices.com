@@ -10,7 +10,10 @@
       = link_to "Questions", tag_path(@tag.name, :nav => 'questions')
 
 - if params[:nav] == 'posts'
-  = render 'posts/posts', :posts => @children, :description => true
+  - if @children.empty?
+    .empty No Such Rails Best Practices
+  - else
+    %table.posts= render @children
 - elsif params[:nav] == 'questions'
   = render 'questions/questions', :questions => @children
 = will_paginate @children, :previous_label => "<< Previous", :next_label => "Next >>"

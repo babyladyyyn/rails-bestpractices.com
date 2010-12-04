@@ -1,7 +1,10 @@
 - set_meta_tags :title => 'search result', :noindex => true
 
 %h2 Search Result for Rails Best Practices
-= render 'posts/posts', :posts => @posts, :description => false
+- if @posts.empty?
+  .empty No Such Rails Best Practices
+- else
+  %table.posts= render @posts
 = will_paginate @posts, :param_name => 'posts_page', :previous_label => "<< Previous", :next_label => "Next >>"
 .clear{:style => "height:20px;"}
 

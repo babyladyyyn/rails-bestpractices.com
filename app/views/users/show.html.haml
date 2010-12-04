@@ -30,7 +30,10 @@
         = link_to "#{@user.votes_count} Votes", user_path(@user, :nav => 'votes')
   - case params[:nav]
   - when 'posts'
-    = render 'posts/posts', :posts => @children.includes(:user, :tags), :description => false
+    - if @children.empty?
+      .empty No Such Rails Best Practices
+    - else
+      %table.posts= render @children.includes(:user, :tags)
   - when 'questions'
     = render 'questions/questions', :questions => @children.includes(:user, :tags)
   - when 'answers'

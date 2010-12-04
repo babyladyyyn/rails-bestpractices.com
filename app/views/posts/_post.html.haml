@@ -1,0 +1,17 @@
+%tr
+  %td.stat
+    %p= "#{post.vote_points} votes"
+    %p= "#{post.comments_count} comments"
+    %p= "#{post.view_count} views"
+  %td.content
+    %p.title= link_to post.title, post_path(post)
+    %p.description= post.description
+    %p.tags
+      - post.tags.each do |tag|
+        = link_to tag.name, tag_path(tag.name)
+    - if post.implemented?
+      = link_to 'implemented', post_implementation_path(post), :class => 'implemented'
+  %td.author
+    by
+    = link_to post.user.login, user_path(post.user)
+  %td.avatar= image_tag post.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => post.user.login
