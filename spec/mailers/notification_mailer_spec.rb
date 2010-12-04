@@ -5,6 +5,7 @@ describe NotificationMailer do
     before :each do
       @post = Factory(:post, :title => 'email post')
       @comment = Factory(:comment, :commentable => @post, :body => 'comment body')
+      @user = Factory(:user, :email => 'flyerhzm@gmail.com')
       @email = NotificationMailer.notify_comment("flyerhzm@gmail.com", @comment)
     end
 
@@ -23,12 +24,21 @@ describe NotificationMailer do
     it "should contain a link to the post" do
       @email.should have_body_text(/#{post_url(@post).gsub(/\//, '&#47;')}/)
     end
+
+    it "should contain unsubscribe text" do
+      @email.should have_body_text(/If you don't want to receive email notification, please unsubscribe it/)
+    end
+
+    it "should contain an unusbscribe link" do
+      @email.should have_body_text(/#{edit_user_url(@user).gsub(/\//, '&#47;')}/)
+    end
   end
 
   describe "notify_answer" do
     before :each do
       @question = Factory(:question, :title => 'email question')
       @answer = Factory(:answer, :question => @question, :body => 'answer body')
+      @user = Factory(:user, :email => 'flyerhzm@gmail.com')
       @email = NotificationMailer.notify_answer("flyerhzm@gmail.com", @answer)
     end
 
@@ -46,6 +56,14 @@ describe NotificationMailer do
 
     it "should contain a link to the question" do
       @email.should have_body_text(/#{question_url(@question).gsub(/\//, '&#47;')}/)
+    end
+
+    it "should contain unsubscribe text" do
+      @email.should have_body_text(/If you don't want to receive email notification, please unsubscribe it/)
+    end
+
+    it "should contain an unusbscribe link" do
+      @email.should have_body_text(/#{edit_user_url(@user).gsub(/\//, '&#47;')}/)
     end
   end
 end
