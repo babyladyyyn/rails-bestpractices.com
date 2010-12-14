@@ -10,9 +10,9 @@ en:
         notice: Register successful!
     posts:
       create:
-        notice: Best Practice was successfully created!
+        notice: Your Best Practice has been submitted and is pending approval.
       update:
-        notice: Best Practice was successfully updated!
+        notice: Your Best Practice was successfully updated!
 
   date:
     formats:

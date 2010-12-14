@@ -12,17 +12,20 @@ class Post < ActiveRecord::Base
   validates_uniqueness_of :title
 
   scope :implemented, where(:implemented => true)
+  scope :published, where(:published => true)
 
   define_index do
     indexes :title, :description, :body
 
-    has :vote_points, :comments_count, :view_count, :id
+    has :id
 
     set_property :field_weights => {
       :title => 10,
       :description => 5,
       :body => 1
     }
+
+    where "published = 1"
   end
 
   def self.per_page
@@ -43,6 +46,11 @@ class Post < ActiveRecord::Base
 
   def related_posts
     Post.select('id, title').where(['id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true)
+  end
+
+  def publish!
+    self.update_attribute(:published, true)
+    Delayed::Job.enqueue(DelayedJob::Tweet.new('Post', self.id))
   end
 
 end

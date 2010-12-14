@@ -13,7 +13,7 @@ Feature: Update Post
       | Tag list           | edit, test                    |
       | Content            | *edit-italic* **bold**        |
     When I press "Save"
-    Then I should see success message "Best Practice was successfully updated!"
+    Then I should see success message "Your Best Practice was successfully updated!"
     And I should see "edit best practices" page
     # TODO: The following works, but too cryptic ... ideally, feature file shouldn't
     # deal with such low level stuff. Anyway, will leave it as it is for now,

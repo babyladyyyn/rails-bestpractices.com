@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101201140343) do
+ActiveRecord::Schema.define(:version => 20101214125340) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -41,14 +41,14 @@ ActiveRecord::Schema.define(:version => 20101201140343) do
   end
 
   create_table "answers", :force => true do |t|
-    t.text     "body"
-    t.text     "formatted_html"
+    t.text     "body",           :limit => 16777215
+    t.text     "formatted_html", :limit => 16777215
     t.integer  "user_id"
-    t.integer  "vote_points",    :default => 0
+    t.integer  "vote_points",                        :default => 0
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count", :default => 0
+    t.integer  "comments_count",                     :default => 0
   end
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20101201140343) do
   end
 
   create_table "comments", :force => true do |t|
-    t.text     "body"
+    t.text     "body",             :limit => 16777215
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
@@ -112,8 +112,8 @@ ActiveRecord::Schema.define(:version => 20101201140343) do
   create_table "implementations", :force => true do |t|
     t.integer  "post_id"
     t.integer  "user_id"
-    t.text     "body"
-    t.text     "formatted_html"
+    t.text     "body",           :limit => 16777215
+    t.text     "formatted_html", :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -145,38 +145,39 @@ ActiveRecord::Schema.define(:version => 20101201140343) do
 
   create_table "pages", :force => true do |t|
     t.string   "name"
-    t.text     "body"
+    t.text     "body",       :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "posts", :force => true do |t|
     t.string   "title"
-    t.text     "body"
+    t.text     "body",           :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.text     "formatted_html"
-    t.text     "description"
-    t.integer  "comments_count", :default => 0
-    t.integer  "vote_points",    :default => 0
+    t.text     "formatted_html", :limit => 16777215
+    t.text     "description",    :limit => 16777215
+    t.integer  "comments_count",                     :default => 0
+    t.integer  "vote_points",                        :default => 0
     t.integer  "view_count"
-    t.boolean  "implemented",    :default => false, :null => false
+    t.boolean  "implemented",                        :default => false, :null => false
+    t.boolean  "published",                          :default => false, :null => false
   end
 
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "questions", :force => true do |t|
     t.string   "title"
-    t.text     "body"
-    t.text     "formatted_html"
+    t.text     "body",           :limit => 16777215
+    t.text     "formatted_html", :limit => 16777215
     t.integer  "user_id"
-    t.integer  "vote_points",    :default => 0
-    t.integer  "view_count",     :default => 0
-    t.integer  "answers_count",  :default => 0
+    t.integer  "vote_points",                        :default => 0
+    t.integer  "view_count",                         :default => 0
+    t.integer  "answers_count",                      :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count", :default => 0
+    t.integer  "comments_count",                     :default => 0
   end
 
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"

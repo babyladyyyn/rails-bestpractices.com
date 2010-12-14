@@ -4,7 +4,9 @@ class TagsController < InheritedResources::Base
   show! do |format|
     if @tag
       params[:nav] ||= "posts"
-      @children = @tag.send(params[:nav]).includes(:user, :tags).paginate(:page => params[:page], :per_page => 10)
+      @children = @tag.send(params[:nav])
+      @children = @children.published if params[:nav] == "posts"
+      @children = @children.includes(:user, :tags).paginate(:page => params[:page], :per_page => 10)
     else
       format.html { render_404 }
     end

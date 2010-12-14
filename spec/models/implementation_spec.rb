@@ -26,4 +26,9 @@ describe Implementation do
     end
   end
 
+  it "should tweet after create" do
+    Delayed::Job.should_receive(:enqueue)
+    Factory(:implementation)
+  end
+
 end

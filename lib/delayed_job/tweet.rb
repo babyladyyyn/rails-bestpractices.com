@@ -1,7 +1,9 @@
-class DelayedJob::Tweet < Struct.new(:klass_name, :id)
+class DelayedJob::Tweet < Struct.new(:klass_name, :id, :force)
   def perform
-    model = klass_name.constantize.find(id)
-    tweet(model.tweet_title, model.tweet_path)
+    if Rails.env.production? || force
+      model = klass_name.constantize.find(id)
+      tweet(model.tweet_title, model.tweet_path)
+    end
   end
 
   def tweet(title, path)

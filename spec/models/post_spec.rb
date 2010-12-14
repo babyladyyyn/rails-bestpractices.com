@@ -34,9 +34,31 @@ describe Post do
     Post.implemented.should == posts[1..1]
   end
 
+  it 'should be scopable by published posts' do
+    Post.delete_all
+    posts = [false, true].map{|flag| Factory(:post, :published => flag) }
+    Post.published.should == posts[1..1]
+  end
+
   it "should reflect :id & :title when converted to param" do
     post.title = 'Super Mighty Proc'
     post.to_param.should == post.instance_exec{"#{id}-#{title.parameterize}"}
+  end
+
+  context "publish!" do
+    before :each do
+      @post = Factory(:post, :published => false)
+    end
+
+    it "should mark published as true" do
+      @post.publish!
+      @post.should be_published
+    end
+
+    it "should tweet after publish!" do
+      Delayed::Job.should_receive(:enqueue)
+      @post.publish!
+    end
   end
 
 end

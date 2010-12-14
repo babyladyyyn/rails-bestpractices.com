@@ -14,16 +14,8 @@ Feature: Share Post
       | Content            | *italic* **bold**              |
       | Tag list           | rails, test                    |
     When I press "Share"
-    Then I should see success message "Best Practice was successfully created!"
-    And I should see "first best practice" page
-    # TODO: The following works, but too cryptic ... ideally, feature file shouldn't
-    # deal with such low level stuff. Anyway, will leave it as it is for now,
-    # till we can find a better way to express it.
-    And I should see "first short description" within ".description"
-    And I should see "rails" within ".tags a"
-    And I should see "test" within ".tags a"
-    And I should see "italic" within ".wikistyle em"
-    And I should see "bold" within ".wikistyle strong"
+    Then I should be on the posts page
+     And I should see success message "Your Best Practice has been submitted and is pending approval."
 
   Scenario Outline: Unsuccessful create with missing info
     Given I fill in the following:

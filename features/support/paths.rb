@@ -18,6 +18,8 @@ module NavigationHelpers
       new_user_path
     when /register failure page/
       users_path
+    when /the posts page/
+      posts_path
     when /create post failure page/
       posts_path
     when /update post failure page/

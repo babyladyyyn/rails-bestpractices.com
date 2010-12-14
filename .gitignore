@@ -24,3 +24,4 @@ log/*.pid
 config/*.sphinx.conf
 config/mailers.yml
 config/backup.rb
+config/sphinx.yml

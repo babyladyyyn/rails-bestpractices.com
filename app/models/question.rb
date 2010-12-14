@@ -14,10 +14,12 @@ class Question < ActiveRecord::Base
 
   scope :not_answered, where(:answers_count => 0)
 
+  after_create :tweet_it
+
   define_index do
     indexes :title, :body
 
-    has :vote_points, :answers_count, :view_count, :id
+    has :id
 
     set_property :field_weights => {
       :title => 10,
@@ -40,5 +42,10 @@ class Question < ActiveRecord::Base
   def to_param
     "#{id}-#{title.parameterize}"
   end
+
+  protected
+    def tweet_it
+      Delayed::Job.enqueue(DelayedJob::Tweet.new('Question', self.id))
+    end
 
 end

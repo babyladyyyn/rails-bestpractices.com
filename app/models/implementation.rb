@@ -6,6 +6,7 @@ class Implementation < ActiveRecord::Base
   belongs_to :post, :touch => true
   validates_presence_of :body
   after_create :cache_post
+  after_create :tweet_it
 
   def self.per_page
     10
@@ -22,6 +23,10 @@ class Implementation < ActiveRecord::Base
   protected
     def cache_post
       self.post.update_attribute(:implemented, true)
+    end
+
+    def tweet_it
+      Delayed::Job.enqueue(DelayedJob::Tweet.new('Implementation', self.id))
     end
 
 end

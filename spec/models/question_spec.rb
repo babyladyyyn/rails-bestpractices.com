@@ -40,4 +40,9 @@ describe Question do
     question.to_param.should == question.instance_exec{"#{id}-#{title.parameterize}"}
   end
 
+  it "should tweet after create" do
+    Delayed::Job.should_receive(:enqueue)
+    Factory(:question)
+  end
+
 end
