@@ -14,6 +14,8 @@ class Post < ActiveRecord::Base
   scope :implemented, where(:implemented => true)
   scope :published, where(:published => true)
 
+  after_create :notify_admin
+
   define_index do
     indexes :title, :description, :body
 
@@ -52,5 +54,10 @@ class Post < ActiveRecord::Base
     self.update_attribute(:published, true)
     Delayed::Job.enqueue(DelayedJob::Tweet.new('Post', self.id))
   end
+
+  protected
+    def notify_admin
+      Delayed::Job.enqueue(DelayedJob::NotifyAdmin.new(self.id))
+    end
 
 end

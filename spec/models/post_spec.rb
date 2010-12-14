@@ -45,6 +45,11 @@ describe Post do
     post.to_param.should == post.instance_exec{"#{id}-#{title.parameterize}"}
   end
 
+  it "should notify admin after create" do
+    Delayed::Job.should_receive(:enqueue)
+    Factory(:post)
+  end
+
   context "publish!" do
     before :each do
       @post = Factory(:post, :published => false)

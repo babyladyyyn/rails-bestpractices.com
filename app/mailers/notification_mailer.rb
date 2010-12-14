@@ -30,4 +30,11 @@ class NotificationMailer < ActionMailer::Base
     mail(:to => email,
          :subject => "Answer to #{answer.question.title}")
   end
+
+  def notify_admin(post)
+    @post = post
+    @user = post.user
+    mail(:to => 'flyerhzm@gmail.com',
+         :subject => "#{@user.login} post a best practice")
+  end
 end

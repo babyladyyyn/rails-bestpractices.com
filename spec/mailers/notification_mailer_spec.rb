@@ -66,4 +66,23 @@ describe NotificationMailer do
       @email.should have_body_text(/#{edit_user_url(@user).gsub(/\//, '&#47;')}/)
     end
   end
+
+  describe "notify_admin" do
+    before :each do
+      @post = Factory(:post)
+      @email = NotificationMailer.notify_admin(@post)
+    end
+
+    it "should be set be delivered to admin" do
+      @email.should deliver_to("flyerhzm@gmail.com")
+    end
+
+    it "should have the correct subject" do
+      @email.should have_subject(/post a best practice/)
+    end
+
+    it "should contain text in the mail body" do
+      @email.should have_body_text(/post a best practice/)
+    end
+  end
 end
