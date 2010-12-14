@@ -27,8 +27,9 @@ describe Implementation do
   end
 
   it "should tweet after create" do
+    post = Factory(:post)
     Delayed::Job.should_receive(:enqueue)
-    Factory(:implementation)
+    Factory(:implementation, :post => post)
   end
 
 end
