@@ -33,6 +33,8 @@ class CommentsController < InheritedResources::Base
         @answer = Answer.find(params[:answer_id])
       elsif params[:post_id]
         @post = Post.find(params[:post_id])
+      elsif params[:blog_post_id]
+        @blog_post = BlogPost.find(params[:blog_post_id])
       end
     end
 
@@ -43,9 +45,11 @@ class CommentsController < InheritedResources::Base
         question_path(@answer.question)
       elsif params[:post_id]
         post_path(@post)
+      elsif params[:blog_post_id]
+        blog_post_path(@blog_post)
       end
     end
-    
+
     def failure_page
       if params[:question_id]
         'questions/show'
@@ -53,6 +57,8 @@ class CommentsController < InheritedResources::Base
         'questions/show'
       elsif params[:post_id]
         'posts/show'
+      elsif params[:blog_post_id]
+        'blog_posts/show'
       end
     end
 end

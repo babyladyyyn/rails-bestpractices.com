@@ -6,6 +6,7 @@ admin:
   #ActsAsTaggableOn::Tag: read, delete
   AdminUser: create, read, update, delete
   Answer: create, read, update, delete
+  BlogPost: create, read, update, delete
   Comment: create, read, update, delete
   Drop: create, read, update, delete
   Implementation: create, read, update, delete

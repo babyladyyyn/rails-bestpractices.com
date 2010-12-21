@@ -42,6 +42,16 @@ Comment:
   search:
   application: rails-bestpractices.com
 
+BlogPost:
+  fields:
+    default: title, user
+    form: title, body, user_id
+  order_by: -created_at
+  relationships: comments, user
+  filters:
+  search: title
+  application: rails-bestpractices.com
+
 Drop:
   fields:
     default: title, kind, tag_list, user

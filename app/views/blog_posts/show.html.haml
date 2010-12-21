@@ -1,0 +1,21 @@
+- title @blog_post.title
+
+.blog_post
+  %h2= link_to @blog_post.title, blog_post_path(@blog_post)
+  = render 'shared/addthis'
+  %p.author
+    = image_tag @blog_post.user.gravatar_url(:size => 16, :default => 'mm'), :class => 'user-avatar', :alt => @blog_post.user.login
+    Posted by
+    = link_to @blog_post.user.login, user_path(@blog_post.user)
+    on
+    = l(@blog_post.created_at.to_date)
+  .body= raw @blog_post.body
+
+  .adsense= render 'shared/google_adsense'
+
+  = render 'comments/comments', :parent => @blog_post
+  = render 'shared/login_register'
+  = render 'comments/comment_form', {:parent => @blog_post, :comment => @comment}
+
+- content_for :js do
+  = javascript_include_tag "http://s7.addthis.com/js/250/addthis_widget.js#username=flyerhzm"

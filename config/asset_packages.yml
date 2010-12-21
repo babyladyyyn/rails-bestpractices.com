@@ -20,6 +20,7 @@ stylesheets:
   - compiled/post
   - compiled/question
   - compiled/answer
+  - compiled/blog_post
   - compiled/implementation
   - compiled/comment
   - compiled/user

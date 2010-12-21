@@ -12,7 +12,7 @@ RailsBestpracticesCom::Application.routes.draw do
   resources :implementations do
     resources :comments, :only => :create
   end
-  
+
   resources :questions do
     resources :answers
     resources :votes, :only => [:create, :destroy]
@@ -20,6 +20,10 @@ RailsBestpracticesCom::Application.routes.draw do
   end
   resources :answers do
     resources :votes, :only => [:create, :destroy]
+    resources :comments, :only => :create
+  end
+
+  resources :blog_posts, :only => [:index, :show] do
     resources :comments, :only => :create
   end
 
@@ -32,7 +36,7 @@ RailsBestpracticesCom::Application.routes.draw do
   resource :user_session
 
   match 'search' => 'search#show', :as => :search
-  
+
   match 'page/:name' => 'pages#show', :as => :page
 
   match 'close_broadcast' => 'broadcasts#close', :as => :close_broadcast

@@ -1,0 +1,5 @@
+- set_meta_tags :title => 'Team Blog'
+
+.blog_posts= render @blog_posts
+
+= will_paginate @blog_posts, :previous_label => "<< Previous", :next_label => "Next >>"
