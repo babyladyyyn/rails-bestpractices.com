@@ -24,7 +24,7 @@ RailsBestpracticesCom::Application.routes.draw do
   end
 
   scope '/blog' do
-    resources :posts, :as => :blog_posts, :only => [:index, :show] do
+    resources :posts, :controller => :blog_posts, :as => :blog_posts, :only => [:index, :show] do
       resources :comments, :only => :create
     end
   end
