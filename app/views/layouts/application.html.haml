@@ -26,7 +26,8 @@
               %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
             %li
               = link_to "Leaders", users_path
-            %li.last= link_to "About", page_path(:name => 'about-us')
+            %li= link_to "About", page_path(:name => 'about-us')
+            %li.last= link_to "Blog", blog_posts_path
         .pledgie= render 'shared/pledgie'
         .share
           = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
@@ -73,6 +74,7 @@
           / %li= link_to 'Help', page_path('help')
           %li= link_to 'Contact Us', page_path('contact-us')
           %li= link_to 'About Us', page_path('about-us')
+          %li= link_to 'Team Blog', blog_posts_path
           %li= link_to 'Advertise', page_path('advertise')
         .copyright &copy; 2010 rails-bestpractices.com
 
