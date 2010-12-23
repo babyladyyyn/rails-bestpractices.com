@@ -5,3 +5,6 @@ Disallow: /tags/*
 Disallow: /drops/*
 Allow: /
 Sitemap: http://rails-bestpractices/sitemap1.xml.gz
+
+User-agent: Sosospider
+Disallow:
