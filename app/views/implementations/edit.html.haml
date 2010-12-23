@@ -1,9 +1,0 @@
-- set_meta_tags :title => 'Edit an implementation', :noindex => true
-
-%h2 Edit an implementation
-
-= semantic_form_for @implementation, :url => post_implementation_path(@post) do |form|
-  = render 'form', :f => form
-  = form.buttons do
-    = form.submit "Save"
-    = link_to 'Back', post_implementation_path(@post)

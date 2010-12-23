@@ -7,7 +7,6 @@ class Post < ActiveRecord::Base
 
   acts_as_taggable
 
-  has_one :implementation, :dependent => :destroy
   validates_presence_of :title, :body
   validates_uniqueness_of :title
 

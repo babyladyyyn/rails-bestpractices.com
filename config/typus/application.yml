@@ -62,16 +62,6 @@ Drop:
   search: title
   application: rails-bestpractices.com
 
-Implementation:
-  fields:
-    default: post_id, post, user
-    form: post_id, body, formatted_html, post, user
-  order_by: -created_at
-  relationships: post, user
-  filters:
-  search: title
-  application: rails-bestpractices.com
-
 Notification:
   fields:
     default: user_id, notifierable_id, read, user
@@ -107,7 +97,7 @@ Post:
     default: title, comments_count, vote_points, view_count, tag_list, user, implemented
     form: title, body, formatted_html, description, comments_count, vote_points, view_count, tag_list, user, implemented
   order_by: -created_at
-  relationships: base_tags, comments, implementation, tag_taggings, taggings, tags, user, votes
+  relationships: base_tags, comments, tag_taggings, taggings, tags, user, votes
   filters:
   search: title
   application: rails-bestpractices.com
@@ -124,10 +114,10 @@ Question:
 
 User:
   fields:
-    default: login, email, url, developer, posts_count, implementations_count, comments_count, votes_count, questions_count, answers_count
-    form: login, email, url, developer, posts_count, implementations_count, comments_count, votes_count, questions_count, answers_count
+    default: login, email, url, developer, posts_count, comments_count, votes_count, questions_count, answers_count
+    form: login, email, url, developer, posts_count, comments_count, votes_count, questions_count, answers_count
   order_by: -created_at
-  relationships: comments, implementations, posts, votes, questions, answers
+  relationships: comments, posts, votes, questions, answers
   filters:
   search: login
   application: rails-bestpractices.com

@@ -4,12 +4,6 @@
   = link_to 'Share', new_post_path, :class => 'share-button'
   - if @post.belongs_to? current_user
     = link_to 'Edit', edit_post_path(@post)
-  - if current_user and current_user.developer?
-    &nbsp;|&nbsp;
-    - if @post.implementation
-      = link_to 'Edit Implementation', edit_post_implementation_path(@post)
-    - else
-      = link_to 'New Implement', new_post_implementation_path(@post)
 
 %h2
   = @post.title
@@ -25,18 +19,18 @@
       = render 'shared/addthis'
       %p
         = image_tag @post.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @post.user.login
-        Posted by 
+        Posted by
         = link_to @post.user.login, user_path(@post.user)
-        on 
+        on
         = l(@post.created_at.to_date)
       .description
         .point-to-icon
         %p= @post.description
       .wikistyle= raw @post.formatted_html
       - if @post.implemented?
-        = link_to 'implemented', post_implementation_path(@post), :class => 'implemented'
+        %span.implemented implemented
       .tags
-        %strong tags: 
+        %strong tags:
         - @post.tags.each do |tag|
           = link_to tag.name, tag_path(tag.name)
       - if @post.related_posts.present?

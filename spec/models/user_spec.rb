@@ -9,7 +9,6 @@ describe User do
   should_have_many :posts, :dependent => :destroy
   should_have_many :comments, :dependent => :destroy
   should_have_many :votes, :dependent => :destroy
-  should_have_many :implementations, :dependent => :destroy
   should_have_many :questions, :dependent => :destroy
   should_have_many :answers, :dependent => :destroy
   should_have_many :notifications, :dependent => :destroy

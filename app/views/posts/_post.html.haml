@@ -10,7 +10,7 @@
       - post.tags.each do |tag|
         = link_to tag.name, tag_path(tag.name)
     - if post.implemented?
-      = link_to 'implemented', post_implementation_path(post), :class => 'implemented'
+      %span.implemented implemented
   %td.author
     by
     = link_to post.user.login, user_path(post.user)

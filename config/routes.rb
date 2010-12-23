@@ -6,12 +6,8 @@ RailsBestpracticesCom::Application.routes.draw do
     get :archive, :on => :collection
     resources :comments, :only => :create
     resources :votes, :only => [:create, :destroy]
-    resource :implementation
   end
   resources :comments, :only => :index
-  resources :implementations do
-    resources :comments, :only => :create
-  end
 
   resources :questions do
     resources :answers

@@ -19,7 +19,6 @@ describe Post do
     }
   end
 
-  should_have_one :implementation, :dependent => :destroy
   should_validate_presence_of :body
 
   describe 'when title validation is required' do
@@ -28,7 +27,7 @@ describe Post do
     should_validate_uniqueness_of :title
   end
 
-  it 'should be scopable by completed implementation' do
+  it 'should be scopable by implemented posts' do
     Post.delete_all
     posts = [false, true].map{|flag| Factory(:post, :implemented => flag) }
     Post.implemented.should == posts[1..1]

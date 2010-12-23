@@ -24,14 +24,5 @@ describe PagesHelper do
       helper.params[:action] = 'new'
       helper.render_sidebar_content.should == "page1page2"
     end
-
-    it "should render controller action sidebar with implementations sidebar" do
-      page1 = Factory(:page, :name => "pages-show-sidebar", :body => "page1")
-      page2 = Factory(:page, :name => "implementations-sidebar", :body => "page2")
-      helper.params[:controller] = 'pages'
-      helper.params[:action] = 'show'
-      helper.params[:name] = 'implementations'
-      helper.render_sidebar_content.should == "page1page2"
-    end
   end
 end

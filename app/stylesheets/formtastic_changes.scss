@@ -77,7 +77,7 @@ form#new_comment {
     }
   }
 }
-form.post, form.implementation, form.question, form.answer, form.formtastic.user_session, form.formtastic.user {
+form.post, form.question, form.answer, form.formtastic.user_session, form.formtastic.user {
   margin: 32px 20px;
 }
 form.formtastic.user {
@@ -96,7 +96,7 @@ form.formtastic.user {
     display: inline-block;
   }
 }
-form.post, form.implementation, form.comment, form.question, form.answer {
+form.post, form.comment, form.question, form.answer {
   li.text {
     width: 100%;
   }

@@ -10,14 +10,6 @@ describe DelayedJob::Tweet do
       delayed_tweet.perform
     end
 
-    it "should tweet implmentation" do
-      post = Factory(:post)
-      implementation = Factory(:implementation, :post => post)
-      delayed_tweet = DelayedJob::Tweet.new('Implementation', implementation.id, true)
-      delayed_tweet.should_receive(:tweet).with(implementation.tweet_title, implementation.tweet_path)
-      delayed_tweet.perform
-    end
-
     it "should tweet question" do
       question = Factory(:question)
       delayed_tweet = DelayedJob::Tweet.new('Question', question.id, true)

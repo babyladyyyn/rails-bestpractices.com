@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101221134313) do
+ActiveRecord::Schema.define(:version => 20101223141603) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -118,18 +118,6 @@ ActiveRecord::Schema.define(:version => 20101221134313) do
 
   add_index "drops", ["user_id"], :name => "index_drops_on_user_id"
 
-  create_table "implementations", :force => true do |t|
-    t.integer  "post_id"
-    t.integer  "user_id"
-    t.text     "body",           :limit => 16777215
-    t.text     "formatted_html", :limit => 16777215
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "implementations", ["post_id"], :name => "index_implementations_on_post_id"
-  add_index "implementations", ["user_id"], :name => "index_implementations_on_user_id"
-
   create_table "notification_settings", :force => true do |t|
     t.string   "name"
     t.boolean  "value",      :default => true
@@ -221,9 +209,7 @@ ActiveRecord::Schema.define(:version => 20101221134313) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
-    t.boolean  "developer"
     t.integer  "posts_count",               :default => 0, :null => false
-    t.integer  "implementations_count",     :default => 0, :null => false
     t.integer  "comments_count",            :default => 0, :null => false
     t.integer  "votes_count",               :default => 0, :null => false
     t.integer  "active_token_id"
