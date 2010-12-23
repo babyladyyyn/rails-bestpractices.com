@@ -14,7 +14,7 @@
           %p.first Follow The Rails Best Practices Here
           %p.second Share Your Rails Best Practices Here
         .nav
-          %ul
+          %ul.user
             %li= link_to "Home", root_path
             - if !current_user
               %li= link_to "Register", new_user_path
@@ -24,9 +24,10 @@
                 = link_to current_user.login, user_path(current_user), :class => "user-link"
                 = link_to "#{current_user.unread_notification_count}", notifications_path, :class => "notification-link #{'active' if current_user.unread_notification_count > 0}"
               %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
-            %li
-              = link_to "Leaders", users_path
+            %li.last= link_to "Leaders", users_path
+          %ul.team
             %li= link_to "About", page_path(:name => 'about-us')
+            %li= link_to "RDoc", "http://rdoc.info/github/flyerhzm/rails_best_practices/master/frames"
             %li.last= link_to "Blog", blog_posts_path
         .pledgie= render 'shared/pledgie'
         .share
@@ -36,9 +37,7 @@
         .container
           %ul
             %li= link_to 'Rails Best Practices', root_path
-            %li= link_to 'Implementations', page_path('implementations')
-            %li
-              = link_to 'Questions', questions_path
+            %li= link_to 'Questions', questions_path
           = form_tag search_path, :method => :get do
             .search-label
             = text_field_tag 'search', '', :class => 'search-text'
