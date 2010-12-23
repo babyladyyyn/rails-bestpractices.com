@@ -8,4 +8,8 @@ class BlogPost < ActiveRecord::Base
   def self.per_page
     10
   end
+
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
 end
