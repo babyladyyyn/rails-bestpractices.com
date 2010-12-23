@@ -23,8 +23,10 @@ RailsBestpracticesCom::Application.routes.draw do
     resources :comments, :only => :create
   end
 
-  resources :blog_posts, :only => [:index, :show] do
-    resources :comments, :only => :create
+  scope '/blog' do
+    resources :posts, :as => :blog_posts, :only => [:index, :show] do
+      resources :comments, :only => :create
+    end
   end
 
   resources :notifications, :only => [:index, :destroy]
