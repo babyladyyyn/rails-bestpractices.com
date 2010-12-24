@@ -28,6 +28,8 @@ class Comment < ActiveRecord::Base
       "Answer of #{commentable.question.title}"
     when Post
       "Post #{commentable.title}"
+    when BlogPost
+      "Blog Post #{commentable.title}"
     end
   end
 

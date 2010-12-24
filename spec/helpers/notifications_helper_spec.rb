@@ -12,8 +12,8 @@ describe NotificationsHelper do
       comment_user = Factory(:user, :login => 'comment_user')
       comment = Factory(:comment, :commentable => post, :user => comment_user)
       notification = Factory(:notification, :notifierable => comment, :user => post_user)
-      
-      helper.notification_message(notification).should == "#{link_to 'comment_user', user_path(comment_user)} commented on your rails best practice #{link_to "Post #{post.title}", post_url(post)}"
+
+      helper.notification_message(notification).should == "#{link_to 'comment_user', user_path(comment_user)} commented on #{link_to "Post #{post.title}", post_url(post)}"
     end
 
     it "should display for answer" do
@@ -23,7 +23,7 @@ describe NotificationsHelper do
       answer = Factory(:answer, :question => question, :user => answer_user)
       notification = Factory(:notification, :notifierable => answer, :user => question_user)
 
-      helper.notification_message(notification).should == "#{link_to 'answer_user', user_path(answer_user)} answered your question #{link_to 'notifierable question', question_path(question)}"
+      helper.notification_message(notification).should == "#{link_to 'answer_user', user_path(answer_user)} answered on Question #{link_to 'notifierable question', question_path(question)}"
     end
   end
 end

@@ -13,6 +13,7 @@ class NotificationSetting < ActiveRecord::Base
     :after_answer_comment, 'Comment on Answer after me',
     :answer_question, 'Answer on my Question',
     :after_question_answer, 'Answer on Question after me',
+    :after_blog_post_comment, 'Comment on Team Blog after me',
   ]
 
   def description

@@ -18,5 +18,8 @@ class DelayedJob::NotifyComment < Struct.new(:comment_id)
         NotificationMailer.notify_comment(email, comment).deliver if commentable.user.send("after_#{comment.commentable_type.downcase}_comment?")
       end
     end
+    if comment.commentable_type == "BlogPost"
+      NotificationMailer.notify_comment("flyerhzm@gmail.com", comment).deliver
+    end
   end
 end

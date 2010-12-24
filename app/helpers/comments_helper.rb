@@ -16,9 +16,11 @@ module CommentsHelper
       question_url(commentable)
     when Answer
       question_url(commentable.question)
+    when BlogPost
+      blog_post_path(commentable)
     end
   end
-  
+
   def comment_statistics(comment)
     commentable = comment.commentable
     case commentable
