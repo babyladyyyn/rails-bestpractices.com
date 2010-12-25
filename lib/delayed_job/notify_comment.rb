@@ -5,9 +5,11 @@ class DelayedJob::NotifyComment < Struct.new(:comment_id)
     emails = []
 
     email = commentable.user.email
-    if email.present? and commentable.user != comment.user
+    if comment.commentable_type == "BlogPost"
+      NotificationMailer.notify_comment(email, comment).deliver
+    elsif email.present? and commentable.user != comment.user
       emails << email
-      NotificationMailer.notify_comment(email, comment).deliver if commentable.user.send("comment_#{comment.commentable_type.downcase}?")
+      NotificationMailer.notify_comment(email, comment).deliver if commentable.user.send("comment_#{comment.commentable_type.underscore}?")
     end
 
     comments = commentable.comments
@@ -15,11 +17,8 @@ class DelayedJob::NotifyComment < Struct.new(:comment_id)
       email = c.user_email
       if email.present? and email != comment.user_email and !emails.include? email
         emails << email
-        NotificationMailer.notify_comment(email, comment).deliver if commentable.user.send("after_#{comment.commentable_type.downcase}_comment?")
+        NotificationMailer.notify_comment(email, comment).deliver if commentable.user.send("after_#{comment.commentable_type.underscore}_comment?")
       end
-    end
-    if comment.commentable_type == "BlogPost"
-      NotificationMailer.notify_comment("flyerhzm@gmail.com", comment).deliver
     end
   end
 end
