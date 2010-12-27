@@ -42,6 +42,10 @@ module CommentsHelper
         <p>#{commentable.vote_points} votes</p>
         <p>#{commentable.comments_count} views</p>
       EOF
+    when BlogPost
+      <<-EOF
+        <p>#{commentable.comments_count} views</p>
+      EOF
     end.html_safe
   end
 end
