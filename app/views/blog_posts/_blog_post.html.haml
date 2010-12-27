@@ -6,4 +6,5 @@
     = link_to blog_post.user.login, user_path(blog_post.user)
     on
     = l(blog_post.created_at.to_date)
+  %p.comments_count= link_to "#{blog_post.comments_count} Comments", blog_post_path(blog_post, :anchor => "comments")
   .body= raw blog_post.body

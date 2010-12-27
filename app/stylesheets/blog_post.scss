@@ -1,7 +1,7 @@
 @import "partials/wikistyle";
 
 .blog_post {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   h2 {
     font: 20px verdana;
     margin-bottom: 10px;
@@ -12,6 +12,9 @@
       border: 1px solid #ccc;
       padding: 1px;
     }
+  }
+  .comments_count {
+    margin: 10px 0 0 0;
   }
   .body {
     @include wikistyle;
