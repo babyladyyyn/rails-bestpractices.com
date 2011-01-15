@@ -55,6 +55,7 @@
     overflow: auto;
     padding: 0.5em;
     code {
+      font: normal normal normal 12px/normal Monaco, 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
       background-color: #f8f8ff;
       border: medium none;
       font-size: 100%;
@@ -62,6 +63,7 @@
     }
   }
   code {
+    font: normal normal normal 12px/normal Monaco, 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
     background-color: #f8f8ff;
     border: 1px solid #dedede;
     color: #444444;
