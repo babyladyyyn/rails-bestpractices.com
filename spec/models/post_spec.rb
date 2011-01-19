@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id             :integer(4)      not null, primary key
+#  title          :string(255)
+#  body           :text(16777215)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  user_id        :integer(4)
+#  formatted_html :text(16777215)
+#  description    :text(16777215)
+#  comments_count :integer(4)      default(0)
+#  vote_points    :integer(4)      default(0)
+#  view_count     :integer(4)
+#  implemented    :boolean(1)      default(FALSE), not null
+#  published      :boolean(1)      default(FALSE), not null
+#
+
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
 describe Post do
@@ -66,3 +85,4 @@ describe Post do
   end
 
 end
+

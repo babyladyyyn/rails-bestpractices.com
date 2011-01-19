@@ -42,6 +42,7 @@ group :development do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem "awesome_print", :require => 'ap'
   gem "bullet", "~> 2.0.1"
+  gem "annotate"
 end
 
 group :test do

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id                :integer(4)      not null, primary key
+#  user_id           :integer(4)
+#  notifierable_type :string(255)
+#  notifierable_id   :integer(4)
+#  read              :boolean(1)      default(FALSE)
+#  created_at        :datetime
+#  updated_at        :datetime
+#
+
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
 describe Notification do
@@ -52,3 +65,4 @@ describe Notification do
   end
 
 end
+

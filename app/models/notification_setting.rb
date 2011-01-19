@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: notification_settings
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  value      :boolean(1)      default(TRUE)
+#  user_id    :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class NotificationSetting < ActiveRecord::Base
   attr_accessor :description
 
@@ -20,3 +32,4 @@ class NotificationSetting < ActiveRecord::Base
     ITEMS[self.name.to_sym]
   end
 end
+

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: votes
+#
+#  id            :integer(4)      not null, primary key
+#  like          :boolean(1)
+#  user_id       :integer(4)
+#  voteable_id   :integer(4)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  voteable_type :string(255)
+#
+
 class Vote < ActiveRecord::Base
 
   include UserOwnable
@@ -33,3 +46,4 @@ class Vote < ActiveRecord::Base
     end
 
 end
+
