@@ -40,7 +40,7 @@ class Question < ActiveRecord::Base
 
     set_property :field_weights => {
       :title => 10,
-      :body => 1
+      :body  => 1
     }
   end
 

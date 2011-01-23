@@ -40,9 +40,9 @@ class Post < ActiveRecord::Base
     has :id
 
     set_property :field_weights => {
-      :title => 10,
+      :title       => 10,
       :description => 5,
-      :body => 1
+      :body        => 1
     }
 
     where "published = 1"

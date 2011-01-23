@@ -1,6 +1,6 @@
 class NotifierObserver < ActiveRecord::Observer
   observe :comment, :answer
-  
+
   def after_create(model)
     notify(model)
   end
