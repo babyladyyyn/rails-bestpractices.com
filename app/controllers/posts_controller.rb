@@ -1,5 +1,5 @@
 class PostsController < InheritedResources::Base
-  before_filter :require_user, :only => [:new, :edit, :create, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
   has_scope :implemented
   respond_to :xml, :only => :index
 
@@ -39,11 +39,15 @@ class PostsController < InheritedResources::Base
 
   protected
     def begin_of_association_chain
-      @current_user
+      current_user
+    end
+
+    def resource
+      @post = Post.find(params[:id])
     end
 
     def collection
-      @posts ||= end_of_association_chain.published.includes(:user, :tags)
+      @posts = Post.published.includes(:user, :tags)
       @posts = @posts.order(params[:order] ? "#{params[:nav]} #{params[:order]}" : "created_at desc")
       @posts = @posts.paginate(:page => params[:page], :per_page => Post.per_page)
     end

@@ -5,11 +5,8 @@
 #  id                        :integer(4)      not null, primary key
 #  login                     :string(255)
 #  email                     :string(255)
-#  crypted_password          :string(255)
+#  encrypted_password        :string(255)
 #  password_salt             :string(255)
-#  persistence_token         :string(255)
-#  single_access_token       :string(255)
-#  perishable_token          :string(255)
 #  created_at                :datetime
 #  updated_at                :datetime
 #  url                       :string(255)
@@ -20,6 +17,15 @@
 #  questions_count           :integer(4)      default(0), not null
 #  answers_count             :integer(4)      default(0), not null
 #  unread_notification_count :integer(4)      default(0), not null
+#  reset_password_token      :string(255)
+#  remember_token            :string(255)
+#  remember_created_at       :datetime
+#  sign_in_count             :integer(4)
+#  current_sign_in_at        :datetime
+#  last_sign_in_at           :datetime
+#  current_sign_in_ip        :string(255)
+#  last_sign_in_ip           :string(255)
+#  authentication_token      :string(255)
 #
 
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
@@ -28,7 +34,6 @@ describe User do
 
   include RailsBestPractices::Spec::Support
   should_be_gravastic
-  should_act_as_authentic # This affects the validity of a user
 
   should_have_many :posts, :dependent => :destroy
   should_have_many :comments, :dependent => :destroy
@@ -36,56 +41,12 @@ describe User do
   should_have_many :questions, :dependent => :destroy
   should_have_many :answers, :dependent => :destroy
   should_have_many :notifications, :dependent => :destroy
-  should_have_one :access_token
   should_have_many :notification_settings, :dependent => :destroy
 
-  describe 'when email validation is required' do
+  context "validations" do
     before { Factory(:user) }
-    should_validate_length_of :email, :within => 6..100
-    should_allow_values_for :email, 'flyerhzm@gmail.com'
-    should_not_allow_values_for :email, 'flyerhzm'
-    should_validate_uniqueness_of :email
-  end
-
-  describe 'when email validation is not required' do
-    before { Factory(:user) }
-    subject { @user = Factory(:user, :access_token => AccessToken.new) }
-    should_not_validate_length_of :email, :within => 6..100
-    should_allow_values_for :email, 'flyerhzm@gmail.com', 'flyerhzm'
-    should_not_validate_uniqueness_of :email
-  end
-
-  describe 'when password validation is required' do
-    should_validate_length_of :password, :minimum => 4
-    should_validate_confirmation_of :password
-  end
-
-  describe 'when password validation is not required' do
-    subject { @user = Factory(:user, :access_token => AccessToken.new) }
-    should_not_validate_length_of :password, :minimum => 4
-    should_not_validate_confirmation_of :password
-  end
-
-  describe 'updating profile' do
-
-    let(:login) { 'flyerhzm' }
-    let(:profile_name) { '~flyerhzm~' }
-    let(:user) { Factory(:user, :login => login) }
-    before do
-      user.stub!(:profile => {:name => profile_name})
-    end
-
-    it 'should not be allowed if :access_token is absent' do
-      user.update_profile.should be_nil
-      user.login.should == login
-    end
-
-    it 'should update :login if :access_token is present' do
-      user.access_token = AccessToken.new
-      user.update_profile.should_not be_nil
-      user.login.should == profile_name
-    end
-
+    it { should validate_presence_of :login }
+    it { should validate_uniqueness_of :login }
   end
 
   it "should reflect :id & :login when converted to param" do
@@ -120,4 +81,5 @@ describe User do
   end
 
 end
+
 

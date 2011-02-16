@@ -1,5 +1,5 @@
 class AnswersController < InheritedResources::Base
-  before_filter :require_user, :only => [:new, :edit, :create, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
   belongs_to :question
 
   create! do |success, failure|

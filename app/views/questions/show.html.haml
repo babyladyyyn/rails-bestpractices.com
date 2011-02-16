@@ -31,8 +31,8 @@
       = render 'comments/short_comments', :comments => @question.comments
       = render 'comments/short_comment_form', :parent => @question
 
-      .adsense= render 'shared/google_adsense'
+      - if Rails.env.production?
+        .adsense= render 'shared/google_adsense'
 
 = render 'answers/answers', :question => @question
-= render 'shared/login_register'
 = render 'answers/answer_form', :question => @question, :answer => @answer

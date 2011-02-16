@@ -1,5 +1,5 @@
 class VotesController < InheritedResources::Base
-  before_filter :require_user
+  before_filter :authenticate_user!
   actions :create, :destroy
   belongs_to :post, :question, :answer, :polymorphic => true
 

@@ -10,7 +10,7 @@ class BlogPostsController < InheritedResources::Base
 
   protected
     def collection
-      @blog_posts ||= end_of_association_chain.order("created_at desc").paginate(:page => params[:page], :per_page => BlogPost.per_page)
+      @blog_posts ||= BlogPost.order("created_at desc").paginate(:page => params[:page], :per_page => BlogPost.per_page)
     end
 
     def load_recent_blog_posts

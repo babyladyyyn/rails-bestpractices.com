@@ -10,13 +10,13 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-    when /login page/
+    when /sign in page/
       new_user_session_path
-    when /login failure page/
+    when /sign in failure page/
       user_session_path
-    when /register page/
+    when /sign up page/
       new_user_path
-    when /register failure page/
+    when /sign up failure page/
       users_path
     when /the posts page/
       posts_path

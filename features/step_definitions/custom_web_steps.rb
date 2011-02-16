@@ -13,10 +13,10 @@ end
 Given %r{^I am already signed in as "([^"]*)"$} do |someone|
   user = Factory.build(someone)
   Given "#{someone} exists" rescue nil
-  And %|I go to login page|
-  And %|I fill in "Username" with "#{user.login}"|
+  And %|I go to sign in page|
+  And %|I fill in "Login" with "#{user.login}"|
   And %|I fill in "Password" with "#{user.password}"|
-  And %|I press "Login"|
+  And %|I press "Sign in"|
 end
 
 Then %r{^I should see (success|error) message "([^"]*)"$} do |type, message|

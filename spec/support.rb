@@ -19,13 +19,6 @@ module RailsBestPractices
           should_include_module 'should be gravtastic', 'Gravtastic::InstanceMethods'
         end
 
-        def should_act_as_authentic
-          # NOTE: Just like we don't test the internals of ActiveRecord, we don't test Authlogic
-          # as well ... We just wanna make sure the side effect is present, namely, the appropriate
-          # module is included.
-          should_include_module 'should be acting as authentic', /Authlogic::ActsAsAuthentic::/
-        end
-
         def should_act_as_taggable
           # NOTE: Just like we don't test the internals of ActiveRecord, we don't test ActsAsTaggableOn
           # as well ... We just wanna make sure the side effect is present, namely, the appropriate

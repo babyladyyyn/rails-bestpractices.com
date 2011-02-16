@@ -5,11 +5,11 @@
 .user
   - if @user == current_user
     .command
-      = link_to 'Edit', edit_user_path(@user)
+      = link_to 'Edit', edit_user_registration_path(@user)
   .avatar= image_tag @user.gravatar_url(:size => 64, :default => 'mm'), :class => 'user-avatar', :alt => @user.login
   .info
     %p
-      %span Username
+      %span Login
       = @user.login
     %p
       %span Website

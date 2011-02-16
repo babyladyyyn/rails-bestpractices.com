@@ -1,7 +1,7 @@
 Factory.define :user do |u|
   u.sequence(:login) {|i| "user#{i}" }
-  u.password {|u| u.login }
-  u.password_confirmation {|u| u.login }
+  u.password {|u| u.login.size < 6 ? u.login * 2 : u.login }
+  u.password_confirmation {|u| u.password }
   u.email {|u| "#{u.login}@gmail.com" }
 end
 

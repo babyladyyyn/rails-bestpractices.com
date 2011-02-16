@@ -1,5 +1,5 @@
 Feature: Answer an question
-  
+
   Background:
     Given a user "richard" exists with login: "richard"
     And a question exists with user: user "richard", title: "first question"

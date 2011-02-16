@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101223141603) do
+ActiveRecord::Schema.define(:version => 20110130142925) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -201,11 +201,8 @@ ActiveRecord::Schema.define(:version => 20101223141603) do
   create_table "users", :force => true do |t|
     t.string   "login"
     t.string   "email"
-    t.string   "crypted_password"
+    t.string   "encrypted_password"
     t.string   "password_salt"
-    t.string   "persistence_token"
-    t.string   "single_access_token"
-    t.string   "perishable_token"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
@@ -216,6 +213,15 @@ ActiveRecord::Schema.define(:version => 20101223141603) do
     t.integer  "questions_count",           :default => 0, :null => false
     t.integer  "answers_count",             :default => 0, :null => false
     t.integer  "unread_notification_count", :default => 0, :null => false
+    t.string   "reset_password_token"
+    t.string   "remember_token"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count"
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "authentication_token"
   end
 
   add_index "users", ["active_token_id"], :name => "index_users_on_active_token_id"

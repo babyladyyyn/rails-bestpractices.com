@@ -30,7 +30,7 @@ describe NotificationMailer do
     end
 
     it "should contain an unusbscribe link" do
-      @email.should have_body_text(/#{edit_user_url(@user).gsub(/\//, '&#47;')}/)
+      @email.should have_body_text(/#{edit_user_registration_url(@user).gsub(/\//, '&#47;')}/)
     end
   end
 
@@ -63,7 +63,7 @@ describe NotificationMailer do
     end
 
     it "should contain an unusbscribe link" do
-      @email.should have_body_text(/#{edit_user_url(@user).gsub(/\//, '&#47;')}/)
+      @email.should have_body_text(/#{edit_user_registration_url(@user).gsub(/\//, '&#47;')}/)
     end
   end
 

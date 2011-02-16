@@ -1,4 +1,12 @@
-- set_meta_tags :title => 'Register', :noindex => true
+- set_meta_tags :title => 'Sign up', :noindex => true
 
-%h2 Register
-= render 'shared/register_form', :user => @user, :return_to => nil
+%h2 Sign Up
+= semantic_form_for resource, :url => registration_path(resource) do |form|
+  = form.semantic_errors :base
+  = form.inputs do
+    = form.input :login
+    = form.input :email
+    = form.input :password
+    = form.input :password_confirmation
+  = form.buttons do
+    = form.submit "Sign up"

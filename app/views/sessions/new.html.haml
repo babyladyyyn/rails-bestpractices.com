@@ -1,0 +1,19 @@
+- set_meta_tags :title => 'Sign in', :noindex => true
+
+%h2 Sign in
+= semantic_form_for resource, :url => session_path(resource) do |form|
+  = form.inputs do
+    = form.input :login
+    = form.input :password
+    = form.input :remember_me, :as => :boolean
+  = form.buttons do
+    = form.submit "Sign in"
+
+.register-hint
+  %p
+    Not a Member? You can get other benefits by
+    = link_to 'becoming a rails-bestpractices.com Member', new_user_registration_path
+  %ul
+    %li Share your rails best practices to others
+    %li Vote rails best practices you like
+    %li Comment rails best practices easier

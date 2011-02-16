@@ -17,14 +17,14 @@
         .nav
           %ul.user
             %li= link_to "Home", root_path
-            - if !current_user
-              %li= link_to "Register", new_user_path
-              %li= link_to "Login", new_user_session_path
-            - else
+            - if user_signed_in?
               %li
                 = link_to current_user.login, user_path(current_user), :class => "user-link"
                 = link_to "#{current_user.unread_notification_count}", notifications_path, :class => "notification-link #{'active' if current_user.unread_notification_count > 0}"
-              %li= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you want to logout?"
+              %li= link_to "Sign out", destroy_user_session_path
+            - else
+              %li= link_to "Sign up", new_user_registration_path
+              %li= link_to "Sign in", new_user_session_path
             %li.last= link_to "Leaders", users_path
           %ul.team
             %li= link_to "About", page_path(:name => 'about-us')
@@ -60,7 +60,7 @@
           = yield
         #sidebar
           = render 'shared/sidebar'
-          = render 'sidebar'
+          = render 'sidebar' rescue nil
           / = render 'shared/twitter_widget'
           .static-section
             = render_sidebar_content
