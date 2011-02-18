@@ -8,9 +8,9 @@ Feature: Answer an question
 
   Scenario: Successful answer
     Given I fill in "answer_body" with "good question" under "Your Answer"
-    When I press "Post Your Answer" at "November 14, 2010 19:47"
+    When I press "Post Your Answer"
     Then I should see "Answer was successfully created"
-    And I should see "Answered by flyerhzm on November 14, 2010"
+    And I should see "Answered by flyerhzm"
     And I should see "good question"
 
   Scenario: Unsuccessful answer

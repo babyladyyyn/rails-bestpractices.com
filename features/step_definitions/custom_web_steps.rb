@@ -34,11 +34,6 @@ Given %r{^I follow "([^"]*)" \/ "([^"]*)"$} do |link1, link2|
   [link1, link2].each{|link| Given %|I follow "#{link}"| }
 end
 
-When %r{I press "([^"]*)" at "([^"]*)"$} do |button, timing|
-  Time.xstub(:now => Time.zone.parse(timing))
-  When %|I press "#{button}"|
-end
-
 Then %r{^I should see error fields?:? (.*)$} do |fields|
   while match = fields.match(/((.*?)"([^"]+)")/)
     xpath = '//li[contains(concat(" ",@class," ")," error ")]/label[text()="%s"]' % match[3]
@@ -78,29 +73,6 @@ Then %r{^I should see empty (\w+) search result$} do |model|
     page.should have_no_css(selector)
   else
     assert page.has_no_css?(selector)
-  end
-end
-
-Then %r{^I should see the following new entry under "([^"]*)":$} do |title, string|
-  info, content = string.split("\n").map(&:strip).
-    inject([[],[]]) do |memo, line|
-      if _line = line[/^> (.*)/, 1]
-        memo[1] << _line
-      else
-        memo[0] << line
-      end
-      memo
-    end.map{|s| s.join(' ') }
-  xpath = [
-    %|//*[h3="#{title}"]|,
-    %|*[contains(concat(" ",@class," "),"#{title.tableize.singularize}")]|,
-    %|*[contains(concat(" ",@class," "),"info")][normalize-space(.)="#{info}"]|,
-    %|following-sibling::*[contains(concat(" ",@class," "),"content")][normalize-space(.)="#{content}"]|
-  ].join('/')
-  if page.respond_to? :should
-    page.should have_xpath(xpath)
-  else
-    assert page.has_xpath?(xpath)
   end
 end
 

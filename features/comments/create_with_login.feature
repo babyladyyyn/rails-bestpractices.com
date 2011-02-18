@@ -8,13 +8,10 @@ Feature: Comment Post with Login
 
   Scenario: Successful comment with valid info
     Given I fill in "Content" with "good post" under "Post a comment"
-    When I press "Comment" at "July 24, 2010 13:52"
+    When I press "Comment"
     Then I should see "Comment was successfully created"
-    And I should see the following new entry under "Comments":
-    """
-      Posted by flyerhzm on July 24, 2010 13:52
-      > good post
-    """
+    And I should see "Posted by flyerhzm"
+    And I should see "good post"
 
   Scenario: Unsuccessful comment with empty content
     Given I fill in "Content" with "" under "Post a comment"

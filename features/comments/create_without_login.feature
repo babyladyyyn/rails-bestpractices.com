@@ -10,13 +10,10 @@ Feature: Comment Post without Login
     Given I fill in the following under "Post a comment":
       | Username | flyerhzm  |
       | Content  | good post |
-    When I press "Comment" at "July 24, 2010 13:52"
+    When I press "Comment"
     Then I should see "Comment was successfully created"
-    And I should see the following new entry under "Comments":
-    """
-      Posted by flyerhzm on July 24, 2010 13:52
-      > good post
-    """
+    And I should see "Posted by flyerhzm"
+    And I should see "good post"
 
   Scenario Outline: Unsuccessful comment with invalid info
     Given I fill in the following under "Post a comment":
