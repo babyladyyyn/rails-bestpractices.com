@@ -8,9 +8,9 @@ gem "json"
 gem "haml", "~> 3.0.13"
 gem "compass", "~> 0.10.2"
 gem "will_paginate", "~> 3.0.pre2"
-gem "devise"
-#gem "authlogic", "~> 2.1.6"
 gem "authlogic", :git => "git://github.com/odorcicd/authlogic.git", :branch => "rails3"
+gem "devise"
+gem "omniauth", "0.2.0.beta4"
 gem "formtastic", "~> 1.1.0"
 gem "has_scope", "~> 0.5.0"
 gem "inherited_resources", "~> 1.1.2"
@@ -24,7 +24,7 @@ gem "sitemap_generator", "~> 0.3.3"
 gem "twitter", "~> 0.9.8"
 gem "bitly"
 gem "ruby-openid"
-gem "rack-openid", "~>0.2.1", :require => "rack/openid"
+gem "rack-openid", :require => "rack/openid"
 gem "oauth"
 gem "oauth2"
 gem "authlogic-connect", '~>0.0.6'
@@ -40,6 +40,7 @@ gem "backup", "~> 2.4.4"
 gem "escape_utils"
 
 group :development do
+  gem 'mongrel', '1.2.0.pre2'
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem "awesome_print", :require => 'ap'
   gem "bullet", "~> 2.0.1"

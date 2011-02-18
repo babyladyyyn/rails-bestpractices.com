@@ -4,6 +4,9 @@ RailsBestpracticesCom::Application.routes.draw do
   devise_scope :user do
     resources :users, :only => [:index, :show]
   end
+  match '/auth/:provider/callback' => 'authentications#create'
+  match '/auth/failure' => redirect('/')
+  resources :authentications
 
   resources :tags, :only => :show
 

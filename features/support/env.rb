@@ -80,6 +80,9 @@ Spork.prefork do
     end
   end
 
+  # omniauth test
+  OmniAuth.config.test_mode = true
+
   Before do
     require 'cross-stub'
     CrossStub.setup :file => Rails.root.join('tmp', 'cross-stub.cache')

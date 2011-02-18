@@ -6,7 +6,8 @@
   = form.inputs do
     = form.input :login
     = form.input :email
-    = form.input :password
-    = form.input :password_confirmation
+    - if @user.password_required?
+      = form.input :password
+      = form.input :password_confirmation
   = form.buttons do
     = form.submit "Sign up"

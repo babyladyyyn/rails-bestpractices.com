@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110130142925) do
+ActiveRecord::Schema.define(:version => 20110216150853) do
 
   create_table "access_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(:version => 20110130142925) do
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
   add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
+
+  create_table "authentications", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.string   "token"
+    t.string   "secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "backup", :force => true do |t|
     t.string   "trigger"

@@ -16,23 +16,33 @@ class UsersController < Devise::RegistrationsController
     end
   end
 
+  def create
+    super
+    session[:omniauth] = nil unless @user.new_record?
+  end
+
   def edit
-    @user = current_user
     NotificationSetting::ITEMS.each do |name, description|
-      @user.notification_settings.find_or_create_by_name(name)
+      current_user.notification_settings.find_or_create_by_name(name)
     end
   end
 
   def update
     return create unless current_user
-    @user = current_user # makes our views "cleaner" and more consistent
-    @user.update_attributes(params[:user]) do |result|
-      if result
-        flash[:notice] = "Account updated!"
-        redirect_to :action => :edit
-      else
-        render :edit
-      end
+    if current_user.update_attributes(params[:user])
+      flash[:notice] = "Account updated."
+      redirect_to :action => :edit
+    else
+      render :edit
     end
   end
+
+  protected
+    def build_resource(*args)
+      super
+      if session[:omniauth]
+        @user.apply_omniauth(session[:omniauth])
+        @user.valid?
+      end
+    end
 end

@@ -15,9 +15,11 @@ module NavigationHelpers
     when /sign in failure page/
       user_session_path
     when /sign up page/
-      new_user_path
+      new_user_registration_path
     when /sign up failure page/
       users_path
+    when /user edit page/
+      edit_user_registration_path
     when /the posts page/
       posts_path
     when /create post failure page/

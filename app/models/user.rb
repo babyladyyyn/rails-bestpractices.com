@@ -31,20 +31,9 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :login, :email, :password, :password_confirmation
+  attr_accessible :login, :email, :password, :password_confirmation, :url
   validates_presence_of :login
   validates_uniqueness_of :login
-  #include ConnectProfile
-  #acts_as_authentic do |config|
-    #config.validate_email_field = false
-    #config.validate_password_field = false
-  #end
-
-  #validates_length_of :email, :within => 6..100, :if => :validate_email?
-  #validates_format_of :email, :with => Authlogic::Regex.email, :if => :validate_email?
-  #validates_uniqueness_of :email, :if => :validate_email?
-  #validates_length_of :password, :minimum => 4, :if => :validate_password?
-  #validates_confirmation_of :password, :if => :validate_password?
   is_gravtastic!
 
   has_many :posts, :dependent => :destroy
@@ -54,16 +43,10 @@ class User < ActiveRecord::Base
   has_many :answers, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
   has_many :drops, :dependent => :destroy
-  #has_one :access_token
   has_many :notification_settings, :dependent => :destroy
+  has_many :authentications
 
   accepts_nested_attributes_for :notification_settings
-
-  #def update_profile
-    #if self.access_token
-      #self.update_attribute(:login, self.profile[:name])
-    #end
-  #end
 
   def name
     self.login
@@ -71,6 +54,15 @@ class User < ActiveRecord::Base
 
   def to_param
     "#{id}-#{login.parameterize}"
+  end
+
+  def password_required?
+    (authentications.empty? || !password.blank?) && super
+  end
+
+  def apply_omniauth(omniauth)
+    self.login = omniauth['user_info']['nickname'] if login.blank?
+    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
   end
 
   NotificationSetting::ITEMS.keys.each do |item_name|
@@ -83,5 +75,4 @@ class User < ActiveRecord::Base
     EOF
   end
 end
-
 
