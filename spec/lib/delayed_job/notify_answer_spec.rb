@@ -13,7 +13,8 @@ describe DelayedJob::NotifyAnswer do
   end
 
   it "should not notify to question user when question user has no email" do
-    user = Factory(:user, :email => '')
+    user = Factory(:user)
+    user.email = ''
     question = Factory(:question, :user => user)
     answer = Factory(:answer, :question => question)
 

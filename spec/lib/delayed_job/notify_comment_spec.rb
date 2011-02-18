@@ -13,7 +13,8 @@ describe DelayedJob::NotifyComment do
   end
 
   it "should not notify to post user when post user has no email" do
-    user = Factory(:user, :email => '')
+    user = Factory(:user)
+    user.email = ''
     post = Factory(:post, :user => user)
     comment = Factory(:comment, :commentable => post)
 
