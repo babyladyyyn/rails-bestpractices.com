@@ -4,6 +4,7 @@ Disallow: /users/*
 Disallow: /tags/*
 Disallow: /drops/*
 Disallow: /implementations/*
+Disallow: /auth/*
 Allow: /
 Sitemap: http://rails-bestpractices/sitemap1.xml.gz
 

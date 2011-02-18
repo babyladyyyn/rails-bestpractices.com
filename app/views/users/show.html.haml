@@ -14,7 +14,7 @@
     %p
       %span Website
       - if @user.url?
-        = link_to @user.url, @user.url, :ref => 'nofollow', :target => '_blank'
+        = link_to @user.url, @user.url, :rel => 'nofollow', :target => '_blank'
 
 .statistics
   .header.navs
