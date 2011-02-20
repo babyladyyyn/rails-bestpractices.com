@@ -2,11 +2,6 @@ class QuestionsController < InheritedResources::Base
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
   has_scope :not_answered
 
-  index! do |format|
-    params[:nav] ||= "created_at"
-    params[:order] ||= "desc"
-  end
-
   show! do |format|
     @question.increment!(:view_count)
     @answer = @question.answers.build
@@ -23,7 +18,17 @@ class QuestionsController < InheritedResources::Base
 
     def collection
       @questions = Question.includes(:user, :tags)
-      @questions = @questions.order(params[:order] ? "#{params[:nav]} #{params[:order]}" : "created_at desc")
+      @questions = @questions.order("#{nav} #{order}")
       @questions = @questions.paginate(:page => params[:page], :per_page => Question.per_page)
+    end
+
+    def nav
+      params[:nav] = "created_at" unless %w(created_at vote_points answers_count not_answered).include?(params[:nav])
+      params[:nav]
+    end
+
+    def order
+      params[:order] = "desc" unless %w(desc asc).include?(params[:order])
+      params[:order]
     end
 end

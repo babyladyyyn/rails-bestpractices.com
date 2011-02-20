@@ -11,11 +11,6 @@ class PostsController < InheritedResources::Base
     end
   end
 
-  index! do |format|
-    params[:nav] ||= "created_at"
-    params[:order] ||= "desc"
-  end
-
   def show
     @post = Post.published.find(params[:id])
     if params[:id] != @post.to_param
@@ -48,7 +43,17 @@ class PostsController < InheritedResources::Base
 
     def collection
       @posts = Post.published.includes(:user, :tags)
-      @posts = @posts.order(params[:order] ? "#{params[:nav]} #{params[:order]}" : "created_at desc")
+      @posts = @posts.order("#{nav} #{order}")
       @posts = @posts.paginate(:page => params[:page], :per_page => Post.per_page)
+    end
+
+    def nav
+      params[:nav] = "created_at" unless %w(created_at vote_points comments_count implemented).include?(params[:nav])
+      params[:nav]
+    end
+
+    def order
+      params[:order] = "desc" unless %w(desc asc).include?(params[:order])
+      params[:order]
     end
 end
