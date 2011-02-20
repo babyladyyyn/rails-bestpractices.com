@@ -62,7 +62,12 @@ class User < ActiveRecord::Base
 
   def apply_omniauth(omniauth)
     self.login = omniauth['user_info']['nickname'] if login.blank?
-    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+    authentications.build(
+      :provider => omniauth['provider'],
+      :uid => omniauth['uid'],
+      :token => omniauth['credentials']['token'],
+      :secret => omniauth['credentials']['secret']
+    )
   end
 
   NotificationSetting::ITEMS.keys.each do |item_name|

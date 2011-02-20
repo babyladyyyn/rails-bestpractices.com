@@ -82,6 +82,27 @@ Spork.prefork do
 
   # omniauth test
   OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:twitter] = {
+    'provider' => 'twitter',
+    'uid' => '123456',
+    'user_info' => {
+      'nickname' => 'flyerhzm'
+    },
+    'credentials' => {
+      'token' => 'abcdefg',
+      'secret' => 'abcdefg'
+    }
+  }
+  OmniAuth.config.mock_auth[:facebook] = {
+    'provider' => 'facebook',
+    'uid' => '123456',
+    'user_info' => {
+      'nickname' => 'flyerhzm'
+    },
+    'credentials' => {
+      'token' => 'abcdefg',
+    }
+  }
 
   Before do
     require 'cross-stub'
