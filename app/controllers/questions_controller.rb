@@ -18,17 +18,14 @@ class QuestionsController < InheritedResources::Base
 
     def collection
       @questions = Question.includes(:user, :tags)
-      @questions = @questions.order("#{nav} #{order}")
+      @questions.where(:answers_count => 0) if params[:nav] == 'not_answered'
+      @questions = @questions.order(nav_order)
       @questions = @questions.paginate(:page => params[:page], :per_page => Question.per_page)
     end
 
-    def nav
-      params[:nav] = "created_at" unless %w(created_at vote_points answers_count not_answered).include?(params[:nav])
-      params[:nav]
-    end
-
-    def order
+    def nav_order
+      params[:nav] = "created_at" unless %w(created_at vote_points answers_count).include?(params[:nav])
       params[:order] = "desc" unless %w(desc asc).include?(params[:order])
-      params[:order]
+      "#{params[:nav]} #{params[:order]}"
     end
 end
