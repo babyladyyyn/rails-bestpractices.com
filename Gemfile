@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.4'
 
 gem 'mysql2', "~> 0.2.6"
 
@@ -46,10 +46,11 @@ group :test do
   gem "autotest"
   gem "autotest-rails", "~> 4.1.0"
   gem "rcov", "~> 0.9.9"
+  gem "spork"
   gem "rspec", "~> 2.1.0"
   gem "rspec-rails", "~> 2.1.0"
   gem "factory_girl_rails", "~> 1.0.0"
-  gem 'remarkable_activerecord', '~> 4.0.0.alpha2'
+  gem 'remarkable_activerecord', '4.0.0.alpha4'
   gem 'email_spec', '~> 1.0.0'
 end
 
@@ -58,7 +59,6 @@ group :cucumber do
   gem "cucumber-rails", "~> 0.3.2"
   gem "capybara", "= 0.3.9"
   gem "database_cleaner", "~> 0.6.0.rc3"
-  gem "spork"
   gem "launchy"
   gem "pickle", "~> 0.4.2"
   gem "cross-stub", "= 0.2.0"
