@@ -49,8 +49,8 @@ class PostsController < InheritedResources::Base
     end
 
     def nav_order
-      params[:nav] = "created_at" unless %w(created_at vote_points comments_count).include?(params[:nav])
+      params[:nav] = "created_at" unless %w(created_at vote_points comments_count implemented).include?(params[:nav])
       params[:order] = "desc" unless %w(desc asc).include?(params[:order])
-      "#{params[:nav]} #{params[:order]}"
+      "#{params[:nav] ? "implemented" : params[:nav]} #{params[:order]}"
     end
 end

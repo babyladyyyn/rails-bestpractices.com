@@ -24,8 +24,8 @@ class QuestionsController < InheritedResources::Base
     end
 
     def nav_order
-      params[:nav] = "created_at" unless %w(created_at vote_points answers_count).include?(params[:nav])
+      params[:nav] = "created_at" unless %w(created_at vote_points answers_count not_answered).include?(params[:nav])
       params[:order] = "desc" unless %w(desc asc).include?(params[:order])
-      "#{params[:nav]} #{params[:order]}"
+      "#{params[:nav] == "not_answered" ? "created_at" : params[:nav]} #{params[:order]}"
     end
 end
