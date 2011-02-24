@@ -43,7 +43,7 @@ class PostsController < InheritedResources::Base
 
     def collection
       @posts = Post.published.includes(:user, :tags)
-      @posts.where(:implemented => true) if params[:nav] == 'implemented'
+      @posts = @posts.where(:implemented => true) if params[:nav] == 'implemented'
       @posts = @posts.order(nav_order)
       @posts = @posts.paginate(:page => params[:page], :per_page => Post.per_page)
     end

@@ -18,7 +18,7 @@ class QuestionsController < InheritedResources::Base
 
     def collection
       @questions = Question.includes(:user, :tags)
-      @questions.where(:answers_count => 0) if params[:nav] == 'not_answered'
+      @questions = @questions.where(:answers_count => 0) if params[:nav] == 'not_answered'
       @questions = @questions.order(nav_order)
       @questions = @questions.paginate(:page => params[:page], :per_page => Question.per_page)
     end
