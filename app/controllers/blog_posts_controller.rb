@@ -14,6 +14,6 @@ class BlogPostsController < InheritedResources::Base
     end
 
     def load_recent_blog_posts
-      @recent_blog_posts = @blog_posts || BlogPost.order("created_at desc").select("id, title").limit(BlogPost.per_page)
+      @recent_blog_posts = BlogPost.order("created_at desc").select("id, title").limit(10)
     end
 end

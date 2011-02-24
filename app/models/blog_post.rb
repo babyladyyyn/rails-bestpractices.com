@@ -19,7 +19,7 @@ class BlogPost < ActiveRecord::Base
   validates_uniqueness_of :title
 
   def self.per_page
-    10
+    5
   end
 
   def to_param
