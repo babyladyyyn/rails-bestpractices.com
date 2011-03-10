@@ -9,7 +9,6 @@
 #   feel free to delete them.
 #
 
-require 'rubygems'
 require 'spork'
 
 Spork.prefork do

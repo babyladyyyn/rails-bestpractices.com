@@ -46,12 +46,13 @@ group :test do
   gem "autotest"
   gem "autotest-rails", "~> 4.1.0"
   gem "rcov", "~> 0.9.9"
-  gem "spork"
+  gem "spork", "0.9.0.rc4"
   gem "rspec", "~> 2.1.0"
   gem "rspec-rails", "~> 2.1.0"
   gem "factory_girl_rails", "~> 1.0.0"
   gem 'remarkable_activerecord', '4.0.0.alpha4'
   gem 'email_spec', '~> 1.0.0'
+  gem 'watchr'
 end
 
 group :cucumber do
