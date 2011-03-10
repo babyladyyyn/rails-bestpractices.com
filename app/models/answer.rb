@@ -23,9 +23,7 @@ class Answer < ActiveRecord::Base
   belongs_to :question, :counter_cache => true, :touch => true
   validates_presence_of :body
 
-  def self.per_page
-    10
-  end
+  paginates_per 10
 
   def to_post
     Post.new(:title => self.question.title, :body => self.body, :tag_list => self.question.tag_list)

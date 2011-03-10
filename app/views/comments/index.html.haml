@@ -8,15 +8,15 @@
       .info
         = comment_avatar(comment)
         %p
-          Comments on 
+          Comments on
           = link_to comment.parent_name, comment_parent_link(comment)
         %p
-          Posted by 
+          Posted by
           = comment_user_link(comment)
-          on 
+          on
           = l(comment.created_at)
       .content
         .point-to-icon
         .wikistyle= raw white_list(comment.body.gsub("\n", "<br/>"), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
 
-= will_paginate @comments
+= paginate @comments

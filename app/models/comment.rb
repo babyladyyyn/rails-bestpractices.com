@@ -23,9 +23,7 @@ class Comment < ActiveRecord::Base
 
   scope :post, where(:commentable_type => 'Post').order("comments.created_at desc")
 
-  def self.per_page
-    10
-  end
+  paginates_per 10
 
   def user_name
     user ? user.login : username

@@ -16,4 +16,4 @@
     %table.posts= render @children
 - elsif params[:nav] == 'questions'
   = render 'questions/questions', :questions => @children
-= will_paginate @children, :previous_label => "<< Previous", :next_label => "Next >>"
+= paginate @children

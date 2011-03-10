@@ -21,9 +21,7 @@ class Notification < ActiveRecord::Base
 
   default_scope order('notifications.created_at desc')
 
-  def self.per_page
-    10
-  end
+  paginates_per 10
 
   def read!
     decrease_notification_count

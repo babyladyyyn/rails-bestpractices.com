@@ -11,8 +11,8 @@ describe QuestionsController do
     it "should not allow invalid nav param" do
       questions = mock([Question])
       Question.should_receive(:includes).with(:user, :tags).and_return(questions)
-      questions.should_receive(:order).with("created_at desc").and_return(questions)
-      questions.should_receive(:paginate).and_return(questions)
+      questions.should_receive(:order).with("questions.created_at desc").and_return(questions)
+      questions.should_receive(:page).and_return(questions)
       get :index, :nav => "wssiasbhpnlgw", :order => "desc"
       response.should render_template("questions/index")
       assigns[:questions].should == questions
@@ -22,8 +22,8 @@ describe QuestionsController do
       questions = mock([Question])
       Question.should_receive(:includes).with(:user, :tags).and_return(questions)
       questions.should_receive(:where).with(:answers_count => 0).and_return(questions)
-      questions.should_receive(:order).with("created_at desc").and_return(questions)
-      questions.should_receive(:paginate).and_return(questions)
+      questions.should_receive(:order).with("questions.created_at desc").and_return(questions)
+      questions.should_receive(:page).and_return(questions)
       get :index, :nav => "not_answered"
       response.should render_template("questions/index")
       assigns[:questions].should == questions

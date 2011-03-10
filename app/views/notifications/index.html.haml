@@ -12,4 +12,4 @@
         %td{:class => notification.read? ? "read" : "unread"}= raw notification_message(notification)
         %td.time= "#{time_ago_in_words(notification.created_at)} ago"
         %td.delete= link_to 'Delete', notification_path(notification), :method => :delete, :class => 'delete-icon'
-= will_paginate @notifications, :previous_label => "<< Previous", :next_label => "Next >>"
+= paginate @notifications

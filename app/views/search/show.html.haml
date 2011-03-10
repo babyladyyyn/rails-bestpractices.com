@@ -5,9 +5,9 @@
   .empty No Such Rails Best Practices
 - else
   %table.posts= render @posts
-= will_paginate @posts, :param_name => 'posts_page', :previous_label => "<< Previous", :next_label => "Next >>"
+= paginate @posts, :param_name => 'posts_page'
 .clear{:style => "height:20px;"}
 
 %h2 Search Result for Questions
 = render 'questions/questions', :questions => @questions
-= will_paginate @questions, :param_name => 'questions_page', :previous_label => "<< Previous", :next_label => "Next >>"
+= paginate @questions, :param_name => 'questions_page'
