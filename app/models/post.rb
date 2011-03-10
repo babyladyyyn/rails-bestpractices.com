@@ -34,6 +34,8 @@ class Post < ActiveRecord::Base
 
   after_create :notify_admin
 
+  paginates_per 10
+
   define_index do
     indexes :title, :description, :body
 
@@ -46,10 +48,6 @@ class Post < ActiveRecord::Base
     }
 
     where "published = 1"
-  end
-
-  def self.per_page
-    10
   end
 
   def tweet_title

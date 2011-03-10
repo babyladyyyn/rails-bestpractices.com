@@ -33,6 +33,8 @@ class Question < ActiveRecord::Base
 
   after_create :tweet_it
 
+  paginates_per 10
+
   define_index do
     indexes :title, :body
 
@@ -42,10 +44,6 @@ class Question < ActiveRecord::Base
       :title => 10,
       :body  => 1
     }
-  end
-
-  def self.per_page
-    10
   end
 
   def tweet_title

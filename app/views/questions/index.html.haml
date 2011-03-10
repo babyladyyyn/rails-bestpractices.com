@@ -18,4 +18,4 @@
       = link_to 'Not Answered', questions_path(:not_answered => true, :nav => 'not_answered')
 
 = render 'questions', :questions => @questions
-= will_paginate @questions, :previous_label => "<< Previous", :next_label => "Next >>"
+= paginate @questions

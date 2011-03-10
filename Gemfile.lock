@@ -151,6 +151,8 @@ GEM
       responders (~> 0.6.0)
     json (1.4.6)
     json_pure (1.4.6)
+    kaminari (0.10.4)
+      rails (>= 3.0.0)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -350,6 +352,7 @@ DEPENDENCIES
   has_scope (~> 0.5.0)
   inherited_resources (~> 1.1.2)
   json
+  kaminari
   launchy
   meta-tags
   mongrel (= 1.2.0.pre2)
@@ -372,4 +375,3 @@ DEPENDENCIES
   typus (~> 3.0.2)
   watchr
   whenever (~> 0.6.1)
-  will_paginate (~> 3.0.pre2)
