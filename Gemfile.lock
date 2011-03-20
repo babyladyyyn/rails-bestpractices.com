@@ -92,6 +92,7 @@ GEM
       cucumber (>= 0.8.0)
     culerity (0.2.12)
     daemons (1.0.10)
+    dalli (1.0.3)
     database_cleaner (0.6.0.rc.3)
     delayed_job (2.1.1)
       activesupport (~> 3.0)
@@ -339,6 +340,7 @@ DEPENDENCIES
   css_sprite (~> 1.4.9)
   cucumber (~> 0.9.2)
   cucumber-rails (~> 0.3.2)
+  dalli
   database_cleaner (~> 0.6.0.rc3)
   delayed_job (~> 2.1.0)
   devise
