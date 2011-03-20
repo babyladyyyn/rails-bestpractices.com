@@ -50,3 +50,10 @@ module RailsBestpracticesCom
     config.filter_parameters += [:password]
   end
 end
+
+if defined?(PhusionPassenger)
+  PhusionPassenger.on_event(:starting_worker_process) do |forked|
+    # Only works with DalliStore
+    Rails.cache.reset if forked
+  end
+end
