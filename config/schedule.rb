@@ -19,3 +19,7 @@ every 1.day, :at => '1am' do
   rake "backup:run trigger='mysql-backup-dropbox'"
   rake "backup:run trigger='archive-backup-dropbox'"
 end
+
+every 1.day, :at => '12am' do
+  rake "expire_cache:tag_section"
+end
