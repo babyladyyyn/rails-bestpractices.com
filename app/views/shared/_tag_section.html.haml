@@ -1,5 +1,6 @@
-.tag-section
-  %h3 Tags
-  %ul.tags
-    - ActsAsTaggableOn::Tag.important_tags.order("name").each do |tag|
-      %li= link_to tag.name, tag_path(tag.name)
+- cache('tag_section') do
+  .tag-section
+    %h3 Tags
+    %ul.tags
+      - ActsAsTaggableOn::Tag.important_tags.order("name").each do |tag|
+        %li= link_to tag.name, tag_path(tag.name)
