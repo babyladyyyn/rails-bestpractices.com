@@ -6,12 +6,9 @@ javascripts:
   - jquery.autocomplete
   - prettify
   - wmd
+  - showdown
   - application
   - uservoice
-- development:
-  - showdown
-  - wmd-plus
-  - wmd-base
 stylesheets:
 - base:
   - compiled/screen
@@ -30,5 +27,6 @@ stylesheets:
   - compiled/formtastic_changes
   - compiled/login_register
   - compiled/css_sprite
-  - prettify
   - compiled/page
+  - compiled/wmd
+  - compiled/prettify
