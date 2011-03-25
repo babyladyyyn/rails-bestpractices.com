@@ -55,4 +55,13 @@ $(function() {
       preview: "wmd-preview"
     });
   }
+  if ($('#question_body').length > 0) {
+    $('#question_body').before("<div id='wmd-button-bar'></div>");
+    $('#question_body').after("<div id='wmd-preview' class='wikistyle'></div>");
+    setup_wmd({
+      input: "question_body",
+      button_bar: "wmd-button-bar",
+      preview: "wmd-preview"
+    });
+  }
 });

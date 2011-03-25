@@ -2,8 +2,3 @@
   = f.input :title, :label => 'Title'
   = f.input :tag_list, :hint => 'Split by comma ( , )'
   = f.input :body, :label => 'Content'
-  .wmd-preview.wikistyle
-
-:javascript
-  var tags = #{all_tags};
-  wmd_options = {"output": "Markdown"};
