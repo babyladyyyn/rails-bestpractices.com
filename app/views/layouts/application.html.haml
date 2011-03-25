@@ -81,8 +81,6 @@
     = render 'shared/fork_me_on_github'
 
     = raw javascript_include_merged :base
-    - if Rails.env.development?
-      = raw javascript_include_merged :development
     = yield :js
     - if Rails.env.production?
       = render 'shared/google_analytics'
