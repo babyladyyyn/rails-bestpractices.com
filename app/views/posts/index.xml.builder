@@ -8,7 +8,6 @@ xml.rss(:version => '2.0') do
 
     @posts.each do |post|
       descriptions = ["#{post.description}    #{link_to 'see more', post_url(post)}"]
-      descriptions << "<div><p><b>Recommendation:</b><center><a href='http://www.rubyslide.com'>RubySlide</a> gathers all the latest Ruby slides and presentations in one convenient place!</center><p></div>"
       if post.related_posts.present?
         descriptions << "<div><p><b>Related Posts</b></p><ul>"
         post.related_posts.each do |p|
@@ -16,6 +15,7 @@ xml.rss(:version => '2.0') do
         end
         descriptions << "</ul></div>"
       end
+      descriptions << Page.find_by_name('rss-bottom').body
       xml.item do
         xml.title post.title
         xml.description descriptions.join('')
