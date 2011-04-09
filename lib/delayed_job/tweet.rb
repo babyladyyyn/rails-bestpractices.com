@@ -14,8 +14,9 @@ class DelayedJob::Tweet < Struct.new(:klass_name, :id, :force)
   def twitter
     config = OMNIAUTH_CONFIG['twitter']
     twitter_user = User.find_by_login("Rails BestPractices")
+    provider = twitter_user.authentications.find_by_provider('twitter')
     oauth = Twitter::OAuth.new(config['key'], config['secret'])
-    oauth.authorize_from_access(twitter_user.access_token.token, twitter_user.access_token.secret)
+    oauth.authorize_from_access(provider.token, provider.secret)
     Twitter::Base.new(oauth)
   end
 
