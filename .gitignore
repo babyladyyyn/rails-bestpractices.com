@@ -28,3 +28,4 @@ config/backup.rb
 config/sphinx.yml
 public/javascripts/base_packaged.js
 public/stylesheets/base_packaged.css
+ERD.pdf

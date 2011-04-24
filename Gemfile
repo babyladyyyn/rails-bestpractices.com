@@ -39,6 +39,7 @@ group :development do
   gem "awesome_print", :require => 'ap'
   gem "bullet", "~> 2.0.1"
   gem "annotate"
+  gem "rails-erd"
 end
 
 group :test do
