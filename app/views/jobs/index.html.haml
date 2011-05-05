@@ -1,0 +1,31 @@
+- set_meta_tags :title => 'jobs'
+
+.command= link_to 'Post a Job', new_job_path, :class => 'post-job-button'
+
+%h2 Jobs
+
+%table.jobs
+  %tr
+    %th.posted Posted
+    %th.title Job Title
+    %th.company Company
+    %th.location Location
+  - @jobs.each_with_index do |job, index|
+    %tr.first{:class => (index % 2 == 0 ? "even" : "odd")}
+      %td.posted= job.created_at.to_date
+      %td.title= link_to job.title, job_path(job)
+      %td.company= job.company
+      %td.location= job.location
+    %tr{:class => (index % 2 == 0 ? "even" : "odd")}
+      %td &nbsp;
+      %td{:colspan=>3}
+        = truncate(job.description, :length => 180)
+        = link_to 'more', job_path(job), :class => 'more'
+    %tr.last{:class => (index % 2 == 0 ? "even" : "odd")}
+      %td &nbsp;
+      %td{:colspan=>3}
+        %strong Job Type:
+        = job.job_types.collect(&:name).join(', ')
+
+
+= paginate @jobs

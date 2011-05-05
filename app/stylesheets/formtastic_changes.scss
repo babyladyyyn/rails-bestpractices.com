@@ -77,7 +77,7 @@ form#new_comment {
     }
   }
 }
-form.post, form.question, form.answer, form.formtastic.user_session, form.formtastic.user {
+form.post, form.question, form.answer, form.job, form.formtastic.user_session, form.formtastic.user {
   margin: 32px 20px;
 }
 form.formtastic.user {
@@ -107,6 +107,27 @@ form.post, form.comment, form.question, form.answer {
 form.post {
   #post_description {
     height: 50px;
+  }
+}
+form.job {
+  #job_description {
+    height: 100px;
+  }
+  #job_job_types_input {
+    legend {
+      font-size: 100%;
+      font-weight: normal;
+    }
+    ol {
+      padding: 25px 0 0 0;
+      width: 100%;
+      li {
+        margin-right: 10px;
+        label {
+          font-weight: normal;
+        }
+      }
+    }
   }
 }
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110409034037) do
+ActiveRecord::Schema.define(:version => 20110504135729) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -113,6 +113,34 @@ ActiveRecord::Schema.define(:version => 20110409034037) do
   end
 
   add_index "drops", ["user_id"], :name => "index_drops_on_user_id"
+
+  create_table "job_job_types", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "job_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jobs", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "company"
+    t.string   "company_url"
+    t.string   "country"
+    t.string   "state"
+    t.string   "city"
+    t.string   "address"
+    t.string   "salary"
+    t.string   "apply_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "notification_settings", :force => true do |t|
     t.string   "name"

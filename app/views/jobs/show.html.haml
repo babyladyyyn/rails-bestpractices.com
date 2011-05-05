@@ -1,0 +1,34 @@
+- title @job.title
+
+.command
+  = link_to "< Back to job postings", jobs_path
+
+.job
+  %h2= @job.title
+
+  .subtitle
+    %strong.company= link_to @job.company, @job.company_url
+    %span.location (#{@job.location})
+
+  .posted
+    %strong Posted:
+    = @job.created_at.to_date
+
+  .type
+    %strong Type:
+    = @job.job_types.collect(&:name).join(", ")
+
+  - if @job.address
+    .clear
+    .address
+      %strong Address:
+      = @job.address
+
+  .clear
+  .description
+    %strong Description:
+    %p= @job.description
+
+  .apply_by
+    %strong Apply by Email
+    %p= @job.apply_email

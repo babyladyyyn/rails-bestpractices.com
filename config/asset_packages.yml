@@ -30,3 +30,4 @@ stylesheets:
   - compiled/page
   - compiled/wmd
   - compiled/prettify
+  - compiled/job

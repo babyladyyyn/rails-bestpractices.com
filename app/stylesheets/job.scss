@@ -1,0 +1,98 @@
+.job {
+  h2 {
+    font: 20px verdana;
+    color: #C30;
+    margin: 10px 0;
+  }
+  .subtitle {
+    border-bottom: 1px dotted #999;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  .company a {
+    font: 14px verdana;
+    color: #C30;
+  }
+  .location {
+    color: #909090;
+    font-weight: bold;
+  }
+  .posted {
+    width: 200px;
+    float: left;
+  }
+  .type {
+    float: left;
+    color: #C30;
+  }
+  .address {
+    float: left;
+    margin-top: 5px;
+  }
+  .description {
+    border-top: 1px dotted #999;
+    padding-top: 10px;
+    margin-top: 10px;
+    p {
+      padding: 10px;
+    }
+  }
+  .apply_by {
+    margin-top: 20px;
+    p {
+      padding: 5px 10px;
+    }
+  }
+  strong {
+    color: #909090;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+}
+
+.jobs {
+  table-layout: fixed;
+  line-height: 20px;
+  th.posted {
+    background-color: #FCF0F0;
+    width: 80px;
+    color: #000;
+  }
+  th {
+    background-color: #C30;
+    line-height: 24px;
+    color: #fff;
+    font-weight: bold;
+    padding-left: 5px;
+  }
+  tr.first {
+    td {
+      padding-top: 10px;
+    }
+  }
+  tr.last {
+    td {
+      padding-bottom: 10px;
+    }
+  }
+  tr.odd td {
+    background-color: #FCF0F0;
+  }
+  td.title {
+    padding-left: 5px;
+    a {
+      color: #C30;
+    }
+  }
+  td.title, td.copany, td.location {
+    font-weight: bold;
+  }
+  strong {
+    color: #909090;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  a.more {
+    color: #C30;
+  }
+}
