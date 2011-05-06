@@ -1,0 +1,9 @@
+- set_meta_tags :title => "Update a job", :noindex => true
+
+%h2 Update a job
+
+= semantic_form_for @job do |form|
+  = render 'form', :f => form
+  = form.buttons do
+    = form.submit "Update"
+    = link_to 'Back', jobs_path
