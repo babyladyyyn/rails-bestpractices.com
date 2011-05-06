@@ -17,6 +17,27 @@
     margin: 20px 0;
     line-height: 2;
   }
+  .jobs-section {
+    margin-top: 20px;
+    li {
+      margin-bottom: 5px;
+    }
+    .title {
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .company {
+      color: #666;
+      font-size: 0.9em;
+      line-height: 14px;
+    }
+    .location {
+      font-size: 0.9em;
+    }
+    .all {
+      text-align: right;
+    }
+  }
   .tag-section {
     margin-top: 20px;
     ul {
