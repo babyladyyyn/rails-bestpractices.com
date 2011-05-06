@@ -8,6 +8,14 @@ class JobsController < InheritedResources::Base
   end
 
   protected
+    def begin_of_association_chain
+      current_user
+    end
+
+    def resource
+      @job = Job.find(params[:id])
+    end
+
     def collection
       @jobs = Job.published.page(params[:page].to_i)
     end
