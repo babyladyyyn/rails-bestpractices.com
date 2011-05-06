@@ -6,7 +6,9 @@
     = display_meta_tags :site => 'Rails Best Practices', :description => "rails, ruby on rails, best practices, tips, tricks"
     = csrf_meta_tag
     = raw stylesheet_link_merged :base
-    = auto_discovery_link_tag(:rss, "http://feeds.feedburner.com/rails-bestpractices")
+    = auto_discovery_link_tag(:rss, "http://feeds.feedburner.com/rails-bestpractices", {:title => "posts on rails-bestpractices.com"})
+    = auto_discovery_link_tag(:rss, "http://feeds.feedburner.com/rails-bestpractices-team-blog", {:title => "rails-bestpractices.com team blog"})
+    = auto_discovery_link_tag(:rss, "http://feeds.feedburner.com/rails-bestpractices-jobs", {:title => "jobs on rails-bestpractices.com"})
   %body
     #header
       = switch_user_select
