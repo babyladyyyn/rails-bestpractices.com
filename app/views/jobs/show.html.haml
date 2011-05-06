@@ -27,7 +27,7 @@
   .clear
   .description
     %strong Description:
-    %p= @job.description
+    %p= raw white_list(@job.description.gsub("\n", "<br/>"), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
 
   .apply_by
     %strong Apply by Email
