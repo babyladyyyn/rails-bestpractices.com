@@ -13,6 +13,11 @@ en:
         notice: Your Best Practice has been submitted and is pending approval.
       update:
         notice: Your Best Practice was successfully updated!
+    jobs:
+      create:
+        notice: Your Job has been submitted and is pending approval.
+      update:
+        notice: Your Job was successfully updated!
 
   date:
     formats:

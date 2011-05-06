@@ -37,4 +37,11 @@ class NotificationMailer < ActionMailer::Base
     mail(:to => 'flyerhzm@gmail.com',
          :subject => "#{@user.login} post a best practice")
   end
+
+  def notify_job(job)
+    @job = job
+    @user = job.user
+    mail(:to => 'flyerhzm@gmail.com',
+         :subject => "#{@user.login} post a job")
+  end
 end
