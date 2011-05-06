@@ -10,4 +10,6 @@
         %p.title= link_to job.title, job_path(job)
         %p.company= job.company
         %p.location= "#{job.location}, #{job.country}"
-    %li.all= link_to "View All Jobs", jobs_path
+    %li.links
+      = link_to "View All Jobs", jobs_path, :class => 'all'
+      = link_to "Post a Job", new_job_path, :class => 'add'

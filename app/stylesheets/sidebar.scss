@@ -34,8 +34,14 @@
     .location {
       font-size: 0.9em;
     }
+    .links {
+      overflow: hidden;
+    }
     .all {
-      text-align: right;
+      float: left;
+    }
+    .add {
+      float: right;
     }
   }
   .tag-section {
