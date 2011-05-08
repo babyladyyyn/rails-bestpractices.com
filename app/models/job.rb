@@ -14,7 +14,7 @@ class Job < ActiveRecord::Base
   end
 
   def tweet_title
-    "#{company} is looking for a #{title} in #{location}, #{country}"
+    "#{company} is looking for #{title} in #{location}, #{country}"
   end
 
   def tweet_path
