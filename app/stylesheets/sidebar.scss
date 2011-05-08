@@ -19,6 +19,12 @@
   }
   .jobs-section {
     margin-top: 20px;
+    background-color: #d6eff6;
+    padding: 10px;
+    h3 {
+      color: #971920;
+      font-weight: bold;
+    }
     li {
       margin-bottom: 5px;
     }
@@ -36,6 +42,7 @@
     }
     .links {
       overflow: hidden;
+      margin-bottom: 0;
     }
     .all {
       float: left;
