@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
   has_many :drops, :dependent => :destroy
   has_many :notification_settings, :dependent => :destroy
   has_many :authentications
+  has_many :jobs
 
   accepts_nested_attributes_for :notification_settings
 
