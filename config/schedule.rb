@@ -13,7 +13,7 @@ every 1.day, :at => '2am' do
   rake "sitemap:refresh"
 end
 every 12.hours do
-  rake "ts:rebuild"
+  rake "ts:index"
 end
 every 1.day, :at => '1am' do
   rake "backup:run trigger='mysql-backup-dropbox'"
