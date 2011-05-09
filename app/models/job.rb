@@ -10,11 +10,11 @@ class Job < ActiveRecord::Base
   after_create :notify_admin
 
   def location
-    [self.state, self.city].join(', ')
+    [self.state, self.city, self.country].join(', ')
   end
 
   def tweet_title
-    "#{company} is looking for #{title} in #{location}, #{country}"
+    "#{company} is looking for #{title} in #{location}"
   end
 
   def tweet_path
