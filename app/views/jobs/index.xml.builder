@@ -8,7 +8,7 @@ xml.rss(:version => '2.0') do
 
     @jobs.each do |job|
       xml.item do
-        xml.title job.title
+        xml.title "#{job.title} (#{job.location})"
         xml.description job.description
         xml.author job.user.login
         xml.pubDate job.created_at
