@@ -18,6 +18,6 @@ class JobsController < InheritedResources::Base
     end
 
     def collection
-      @jobs = Job.published.page(params[:page].to_i)
+      @jobs = Job.published.order('created_at desc').page(params[:page].to_i)
     end
 end
