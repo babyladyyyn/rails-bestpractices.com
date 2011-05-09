@@ -7,28 +7,28 @@
   %h2= @job.title
 
   .subtitle
-    %strong.company= link_to @job.company, @job.company_url
+    %span.label.company= link_to @job.company, @job.company_url
     %span.location (#{@job.location})
 
   .posted
-    %strong Posted:
+    %span.label Posted:
     = @job.created_at.to_date
 
   .type
-    %strong Type:
+    %span.label Type:
     = @job.job_types.collect(&:name).join(", ")
 
   - if @job.address
     .clear
     .address
-      %strong Address:
+      %span.label Address:
       = @job.address
 
   .clear
   .description
-    %strong Description:
-    %p= raw white_list(@job.description.gsub("\n", "<br/>"), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
+    %span.label Description:
+    .wikistyle= raw white_list(@job.description, :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
 
   .apply_by
-    %strong Apply by Email
+    %span.label Apply by Email
     %p= @job.apply_email

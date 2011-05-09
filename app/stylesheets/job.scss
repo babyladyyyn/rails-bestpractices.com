@@ -1,3 +1,5 @@
+@import "partials/wikistyle";
+
 .job {
   h2 {
     font: 20px verdana;
@@ -43,10 +45,13 @@
       padding: 5px 10px;
     }
   }
-  strong {
+  span.label {
     color: #909090;
     font-weight: bold;
     margin-right: 5px;
+  }
+  .wikistyle {
+    @include wikistyle;
   }
 }
 

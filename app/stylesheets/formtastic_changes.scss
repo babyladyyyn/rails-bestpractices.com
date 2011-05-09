@@ -111,7 +111,7 @@ form.post {
 }
 form.job {
   #job_description {
-    height: 100px;
+    height: 200px;
   }
   #job_job_types_input {
     legend {
@@ -127,6 +127,11 @@ form.job {
           font-weight: normal;
         }
       }
+    }
+  }
+  table#job_description_toolbar1 {
+    td {
+      width: 22px;
     }
   }
 }
