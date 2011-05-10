@@ -9,7 +9,6 @@ javascripts:
   - showdown
   - application
   - uservoice
-  - tiny_mce/tiny_mce_jquery
 stylesheets:
 - base:
   - compiled/screen

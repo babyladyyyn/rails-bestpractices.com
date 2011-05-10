@@ -10,3 +10,6 @@
   = f.input :apply_email, :label => "Apply Email Address"
   = f.input :description, :label => "Job Description"
   = f.input :job_types, :label => "Job Types", :as => :check_boxes, :collection => JobType.all
+
+- content_for :js do
+  = javascript_include_tag 'tiny_mce/tiny_mce_jquery'
