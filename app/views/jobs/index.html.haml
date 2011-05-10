@@ -19,7 +19,7 @@
     %tr{:class => (index % 2 == 0 ? "even" : "odd")}
       %td &nbsp;
       %td{:colspan=>3}
-        = truncate(job.description, :length => 180)
+        = truncate(strip_tags(job.description), :length => 180)
         = link_to 'more', job_path(job), :class => 'more'
     %tr.last{:class => (index % 2 == 0 ? "even" : "odd")}
       %td &nbsp;
