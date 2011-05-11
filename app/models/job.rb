@@ -23,7 +23,7 @@ class Job < ActiveRecord::Base
 
   def publish!
     self.update_attribute(:published, true)
-    Delayed::Job.enqueue(DelayedJob::Tweet.new('Job', self.id))
+    # Delayed::Job.enqueue(DelayedJob::Tweet.new('Job', self.id))
   end
 
   protected
