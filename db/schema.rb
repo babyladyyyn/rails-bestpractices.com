@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110511145447) do
+ActiveRecord::Schema.define(:version => 20110515145756) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20110511145447) do
     t.datetime "updated_at"
   end
 
+  add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
+
   create_table "backup", :force => true do |t|
     t.string   "trigger"
     t.string   "adapter"
@@ -70,6 +72,8 @@ ActiveRecord::Schema.define(:version => 20110511145447) do
     t.datetime "updated_at"
     t.integer  "comments_count", :default => 0
   end
+
+  add_index "blog_posts", ["user_id"], :name => "index_blog_posts_on_user_id"
 
   create_table "comments", :force => true do |t|
     t.text     "body",             :limit => 16777215
@@ -121,6 +125,9 @@ ActiveRecord::Schema.define(:version => 20110511145447) do
     t.datetime "updated_at"
   end
 
+  add_index "job_job_types", ["job_id"], :name => "index_job_job_types_on_job_id"
+  add_index "job_job_types", ["job_type_id"], :name => "index_job_job_types_on_job_type_id"
+
   create_table "job_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -143,6 +150,8 @@ ActiveRecord::Schema.define(:version => 20110511145447) do
     t.integer  "user_id"
     t.boolean  "published"
   end
+
+  add_index "jobs", ["user_id"], :name => "index_jobs_on_user_id"
 
   create_table "notification_settings", :force => true do |t|
     t.string   "name"
@@ -180,6 +189,8 @@ ActiveRecord::Schema.define(:version => 20110511145447) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "post_bodies", ["post_id"], :name => "index_post_bodies_on_post_id"
 
   create_table "posts", :force => true do |t|
     t.string   "title"
