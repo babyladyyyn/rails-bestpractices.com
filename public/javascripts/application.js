@@ -46,11 +46,11 @@ $(function() {
     return false;
   });
 
-  if ($('#post_body').length > 0) {
-    $('#post_body').before("<div id='wmd-button-bar'></div>");
-    $('#post_body').after("<div id='wmd-preview' class='wikistyle'></div>");
+  if ($('#post_post_body_attributes_body').length > 0) {
+    $('#post_post_body_attributes_body').before("<div id='wmd-button-bar'></div>");
+    $('#post_post_body_attributes_body').after("<div id='wmd-preview' class='wikistyle'></div>");
     setup_wmd({
-      input: "post_body",
+      input: "post_post_body_attributes_body",
       button_bar: "wmd-button-bar",
       preview: "wmd-preview"
     });

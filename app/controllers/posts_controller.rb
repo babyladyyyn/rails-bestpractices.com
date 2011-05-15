@@ -9,6 +9,7 @@ class PostsController < InheritedResources::Base
     else
       @post = Post.new
     end
+    @post.build_post_body
   end
 
   def show

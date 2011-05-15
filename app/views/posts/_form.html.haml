@@ -2,4 +2,5 @@
   = f.input :title, :label => 'Title'
   = f.input :description, :label => 'Short Description', :hint => 'Please give a short description about this best practices', :input_html => { :class => 'wmd-ignore', :rows => 4 }
   = f.input :tag_list, :hint => 'Split by comma ( , )'
-  = f.input :body, :label => 'Content'
+  = f.semantic_fields_for :post_body do |body_fields|
+    = body_fields.input :body, :label => 'Content'

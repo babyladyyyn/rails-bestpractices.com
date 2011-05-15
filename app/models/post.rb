@@ -19,14 +19,15 @@
 
 class Post < ActiveRecord::Base
 
-  include Markdownable
   include UserOwnable
   include Voteable
   include Commentable
 
   acts_as_taggable
 
-  validates_presence_of :title, :body
+  has_one :post_body
+
+  validates_presence_of :title
   validates_uniqueness_of :title
 
   scope :implemented, where(:implemented => true)
@@ -34,7 +35,11 @@ class Post < ActiveRecord::Base
 
   after_create :notify_admin
 
+  accepts_nested_attributes_for :post_body
+
   paginates_per 10
+
+  delegate :body, :formatted_html, :to => :post_body
 
   define_index do
     indexes :title, :description, :body
