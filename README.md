@@ -18,7 +18,7 @@ Setup
 
 4. generate css sprite
 
-    rake css_sprite:generate
+    rake css_sprite:build
 
 5. start server
 
