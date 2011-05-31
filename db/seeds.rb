@@ -7,8 +7,8 @@ users = User.create([
 ])
 
 (1..10).each do |i|
-  Post.create([
-    {:title => "test #{i}a", :body => "subject#{i}\n========\ntitle#{i}\n------\n    def test\n      puts 'test'\n    end", :user => User.first},
-    {:title => "test #{i}b", :body => "subject#{i}\n========\ntitle#{i}\n------\n    def test\n      puts 'test'\n    end", :user => User.last}
-  ])
+  post = Post.create(:title => "test #{i}a", :user => User.first)
+  post.create_post_body(:body => "subject#{i}\n========\ntitle#{i}\n------\n    def test\n      puts 'test'\n    end")
+  post = Post.create(:title => "test #{i}b", :user => User.last)
+  post.create_post_body(:body => "subject#{i}\n========\ntitle#{i}\n------\n    def test\n      puts 'test'\n    end")
 end
