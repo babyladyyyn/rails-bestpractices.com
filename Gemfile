@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.8'
+gem 'activesupport', '3.0.8'
 
 gem 'mysql2', "~> 0.2.6"
 
@@ -9,7 +10,7 @@ gem "haml", "~> 3.0.13"
 gem "compass", "~> 0.10.2"
 gem "kaminari"
 gem "devise"
-gem "omniauth", "0.2.0.beta4"
+gem "omniauth"
 gem "formtastic", "~> 1.1.0"
 gem "has_scope", "~> 0.5.0"
 gem "inherited_resources", "~> 1.1.2"
@@ -20,13 +21,13 @@ gem "gravtastic", "~> 3.0.0"
 gem "css_sprite", "~> 1.4.9"
 gem "meta-tags", :require => 'meta_tags'
 gem "sitemap_generator", "~> 0.3.3"
-gem "twitter", "~> 0.9.8"
+gem "twitter"
 gem "bitly"
 gem "cancan"
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'typus', "~> 3.0.2"
 gem 'whenever', "~> 0.6.1"
-gem "thinking-sphinx", "~> 2.0.0.rc2", :require => 'thinking_sphinx'
+gem "thinking-sphinx", :require => 'thinking_sphinx'
 gem "delayed_job", "~> 2.1.0"
 gem "switch_user", "~> 0.6.0"
 gem "backup", "~> 2.4.4"
@@ -51,7 +52,7 @@ group :test do
   gem "spork", "0.9.0.rc4"
   gem "rspec", "~> 2.1.0"
   gem "rspec-rails", "~> 2.1.0"
-  gem "factory_girl_rails", "~> 1.0.0"
+  gem "factory_girl_rails"
   gem 'remarkable_activerecord', '4.0.0.alpha4'
   gem 'email_spec', '~> 1.0.0'
   gem 'watchr'
