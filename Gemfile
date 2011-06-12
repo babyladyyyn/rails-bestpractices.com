@@ -32,6 +32,7 @@ gem "switch_user", "~> 0.6.0"
 gem "backup", "~> 2.4.4"
 gem "escape_utils"
 gem "dalli"
+gem "newrelic_rpm"
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'
