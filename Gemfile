@@ -13,7 +13,7 @@ gem "omniauth", "0.2.0.beta4"
 gem "formtastic", "~> 1.1.0"
 gem "has_scope", "~> 0.5.0"
 gem "inherited_resources", "~> 1.1.2"
-gem "exception_notification", :git => "git://github.com/rails/exception_notification.git", :require => "exception_notifier"
+gem 'exception_notification', :require => 'exception_notifier'
 gem "acts-as-taggable-on", "~> 2.0.6"
 gem "rdiscount"
 gem "gravtastic", "~> 3.0.0"
