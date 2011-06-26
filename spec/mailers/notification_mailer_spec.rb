@@ -37,7 +37,7 @@ describe NotificationMailer do
   describe "notify_answer" do
     before :each do
       @question = Factory(:question, :title => 'email question')
-      @answer = Factory(:answer, :question => @question, :body => 'answer body')
+      @answer = Factory(:answer, :question => @question, :answer_body => AnswerBody.new(:body => 'answer body'))
       @user = Factory(:user, :email => 'flyerhzm@gmail.com')
       @email = NotificationMailer.notify_answer("flyerhzm@gmail.com", @answer)
     end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PostBody do
+describe AnswerBody do
   include RailsBestPractices::Spec::Support
 
   should_be_markdownable

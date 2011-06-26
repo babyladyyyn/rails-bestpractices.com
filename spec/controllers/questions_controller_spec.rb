@@ -6,6 +6,7 @@ describe QuestionsController do
       user = mock_model(User)
       controller.stub!(:authenticate_user!).and_return(true)
       controller.stub!(:current_user).and_return(user)
+      user.stub!(:questions).and_return([])
     end
 
     it "should not allow invalid nav param" do

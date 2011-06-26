@@ -17,7 +17,7 @@
 #  published      :boolean(1)      default(FALSE), not null
 #
 
-require File.join(File.dirname(__FILE__), '..', 'spec_helper')
+require 'spec_helper'
 
 describe Post do
 
@@ -25,7 +25,6 @@ describe Post do
 
   include RailsBestPractices::Spec::Support
   should_act_as_taggable
-  should_be_markdownable
   should_be_user_ownable
   should_be_commentable
   should_be_voteable

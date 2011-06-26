@@ -1,4 +1,5 @@
 class PostsController < InheritedResources::Base
+  load_and_authorize_resource
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
   has_scope :implemented
   respond_to :xml, :only => :index

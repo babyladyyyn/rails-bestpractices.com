@@ -15,7 +15,7 @@
 #  comments_count :integer(4)      default(0)
 #
 
-require File.join(File.dirname(__FILE__), '..', 'spec_helper')
+require 'spec_helper'
 
 describe Question do
 

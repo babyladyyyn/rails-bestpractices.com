@@ -13,7 +13,7 @@
 #  email            :string(255)
 #
 
-require File.join(File.dirname(__FILE__), '..', 'spec_helper')
+require 'spec_helper'
 
 describe Comment do
 

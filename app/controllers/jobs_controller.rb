@@ -1,7 +1,7 @@
 class JobsController < InheritedResources::Base
+  load_and_authorize_resource
   before_filter :authenticate_user!, :only => [:new, :edit, :created, :update]
   respond_to :xml, :only => :index
-  load_and_authorize_resource
 
   create! do |success, failure|
     success.html { redirect_to posts_path }

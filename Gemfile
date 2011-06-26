@@ -1,13 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.8'
-gem 'activesupport', '3.0.8'
+gem 'rails', '3.0.9'
 
 gem 'mysql2', "~> 0.2.6"
 
 gem "json"
-gem "haml", "~> 3.0.13"
-gem "compass", "~> 0.10.2"
+gem "haml"
+gem "compass"
 gem "kaminari"
 gem "devise"
 gem "omniauth"

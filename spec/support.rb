@@ -103,13 +103,13 @@ module RailsBestPractices
             it "should generate simple markdown html" do
               raw = "subject\n=======\ntitle\n-----"
               formatted = "<h1>subject</h1>\n\n<h2>title</h2>\n"
-              Factory(factory_id, :post_body => Factory(:post_body, :body => raw)).formatted_html.should == formatted
+              Factory(factory_id, :body => raw).formatted_html.should == formatted
             end
 
             it "should generate markdown html with <pre><code>" do
               raw = "subject\n=======\ntitle\n-----\n    def test\n      puts 'test'\n    end"
               formatted = "<h1>subject</h1>\n\n<h2>title</h2>\n\n<pre><code>def test\n  puts 'test'\nend\n</code></pre>\n"
-              Factory(factory_id, :post_body => Factory(:post_body, :body => raw)).formatted_html.should == formatted
+              Factory(factory_id, :body => raw).formatted_html.should == formatted
             end
 
           end

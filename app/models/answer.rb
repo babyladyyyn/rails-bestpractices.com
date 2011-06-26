@@ -15,18 +15,21 @@
 
 class Answer < ActiveRecord::Base
 
-  include Markdownable
   include UserOwnable
   include Voteable
   include Commentable
 
   belongs_to :question, :counter_cache => true, :touch => true
-  validates_presence_of :body
+  has_one :answer_body
+
+  accepts_nested_attributes_for :answer_body
 
   paginates_per 10
 
+  delegate :body, :formatted_html, :to => :answer_body
+
   def to_post
-    Post.new(:title => self.question.title, :body => self.body, :tag_list => self.question.tag_list)
+    Post.new(:title => self.question.title, :post_body => PostBody.new(:body => self.body), :tag_list => self.question.tag_list)
   end
 
   def tweet_title

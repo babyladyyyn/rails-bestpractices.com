@@ -1,10 +1,11 @@
 class QuestionsController < InheritedResources::Base
+  load_and_authorize_resource
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
   has_scope :not_answered
 
   show! do |format|
     @question.increment!(:view_count)
-    @answer = @question.answers.build
+    @answer = @question.answers.build(:answer_body => AnswerBody.new)
   end
 
   protected

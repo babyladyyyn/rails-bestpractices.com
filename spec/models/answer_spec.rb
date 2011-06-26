@@ -13,12 +13,11 @@
 #  comments_count :integer(4)      default(0)
 #
 
-require File.join(File.dirname(__FILE__), '..', 'spec_helper')
+require 'spec_helper'
 
 describe Answer do
 
   include RailsBestPractices::Spec::Support
-  should_be_markdownable
   should_be_user_ownable
   should_be_voteable
   should_be_commentable
@@ -32,12 +31,11 @@ describe Answer do
   end
 
   should_belong_to :question, :counter_cache => true
-  should_validate_presence_of :body
 
   describe 'converting to a post' do
 
     let(:question) { Factory(:question, :tag_list => 'tests', :title => 'Howto write awesome tests') }
-    let(:answer) { Factory(:answer, :question => question, :body => '(empty)') }
+    let(:answer) { Factory(:answer, :question => question, :answer_body => Factory(:answer_body, :body => '(empty)')) }
 
     it "should use question's title as post title" do
       answer.to_post.title.should == question.title
