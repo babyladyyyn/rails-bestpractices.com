@@ -2,7 +2,8 @@ Feature: Answer an question
 
   Background:
     Given a user "richard" exists with login: "richard"
-    And a question exists with user: user "richard", title: "first question"
+    And a question "first question" exists with user: user "richard", title: "first question"
+    And a question_body exists with question: question "first question", body: "first question"
     And I am already signed in as "flyerhzm"
     And I follow "Questions" / "first question"
 

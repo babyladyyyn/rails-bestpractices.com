@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110620144449) do
+ActiveRecord::Schema.define(:version => 20110627151243) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -213,17 +213,23 @@ ActiveRecord::Schema.define(:version => 20110620144449) do
 
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
-  create_table "questions", :force => true do |t|
-    t.string   "title"
-    t.text     "body",           :limit => 16777215
-    t.text     "formatted_html", :limit => 16777215
-    t.integer  "user_id"
-    t.integer  "vote_points",                        :default => 0
-    t.integer  "view_count",                         :default => 0
-    t.integer  "answers_count",                      :default => 0
+  create_table "question_bodies", :force => true do |t|
+    t.text     "body"
+    t.text     "formatted_html"
+    t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count",                     :default => 0
+  end
+
+  create_table "questions", :force => true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "vote_points",    :default => 0
+    t.integer  "view_count",     :default => 0
+    t.integer  "answers_count",  :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "comments_count", :default => 0
   end
 
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"

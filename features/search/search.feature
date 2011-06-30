@@ -5,7 +5,8 @@ Feature: Search Posts and Questions
     Given a user "flyerhzm" exists with login: "flyerhzm"
     And a post exists with user: user "flyerhzm", title: "first best practice"
     And a post exists with user: user "flyerhzm", title: "unpublished best practice", published: false
-    And a question exists with user: user "flyerhzm", title: "first question"
+    And a question "first question" exists with user: user "flyerhzm", title: "first question"
+    And a question_body exists with question: question "first question", body: "first question"
     And I go to the home page
     And the post indexes are processed
     And the question indexes are processed

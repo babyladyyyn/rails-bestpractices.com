@@ -1,4 +1,5 @@
 = f.inputs do
   = f.input :title, :label => 'Title'
   = f.input :tag_list, :hint => 'Split by comma ( , )'
-  = f.input :body, :label => 'Content'
+  = f.semantic_fields_for :question_body do |body_fields|
+    = body_fields.input :body, :label => 'Content'

@@ -17,7 +17,6 @@
 
 class Question < ActiveRecord::Base
 
-  include Markdownable
   include UserOwnable
   include Voteable
   include Commentable
@@ -25,15 +24,20 @@ class Question < ActiveRecord::Base
   acts_as_taggable
 
   has_many :answers, :dependent => :destroy
+  has_one :question_body
 
-  validates_presence_of :title, :body
+  validates_presence_of :title
   validates_uniqueness_of :title
 
   scope :not_answered, where(:answers_count => 0)
 
   after_create :tweet_it
 
+  accepts_nested_attributes_for :question_body
+
   paginates_per 10
+
+  delegate :body, :formatted_html, :to => :question_body
 
   define_index do
     indexes :title, :body

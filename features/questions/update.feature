@@ -2,7 +2,8 @@ Feature: Update Question
 
   Background:
     Given a user "flyerhzm" exists with login: "flyerhzm"
-    And a question exists with user: user "flyerhzm", title: "first question"
+    And a question "first question" exists with user: user "flyerhzm", title: "first question"
+    And a question_body exists with question: question "first question", body: "first question"
     And I am already signed in as "flyerhzm"
     And I follow "Questions" / "first question"
     And I follow "Edit"

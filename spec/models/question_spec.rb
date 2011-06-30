@@ -23,7 +23,6 @@ describe Question do
 
   include RailsBestPractices::Spec::Support
   should_act_as_taggable
-  should_be_markdownable
   should_be_user_ownable
   should_be_commentable
   should_be_voteable
@@ -37,7 +36,6 @@ describe Question do
   end
 
   should_have_many :answers, :dependent => :destroy
-  should_validate_presence_of :body
 
   describe 'when title validation is required' do
     before { Factory.create(:question) }
