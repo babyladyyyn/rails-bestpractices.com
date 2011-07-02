@@ -1,6 +1,6 @@
 class AddMissingIndexes < ActiveRecord::Migration
   def self.up
-    
+
     # These indexes were found by searching for AR::Base finds on your application
     # It is strongly recommanded that you will consult a professional DBA about your infrastucture and implemntation before
     # changing your database in that matter.
@@ -11,7 +11,7 @@ class AddMissingIndexes < ActiveRecord::Migration
     # http://www.railstutor.org
     # http://guides.rubyonrails.org
 
-    
+
     add_index :votes, :post_id
     add_index :votes, :user_id
     add_index :comments, [:commentable_id, :commentable_type]
@@ -20,7 +20,7 @@ class AddMissingIndexes < ActiveRecord::Migration
     add_index :implementations, :user_id
     add_index :posts, :user_id
   end
-  
+
   def self.down
     remove_index :votes, :post_id
     remove_index :votes, :user_id

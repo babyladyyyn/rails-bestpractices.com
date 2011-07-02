@@ -9,7 +9,7 @@ class CreateAccessTokens < ActiveRecord::Migration
       t.boolean :active # whether or not it's associated with the account
       t.timestamps
     end
-    
+
     add_index :access_tokens, :key, :unique => true
   end
 

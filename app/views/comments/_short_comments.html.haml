@@ -3,8 +3,8 @@
     .comment
       = comment.body.gsub("\n", "<br/>")
       %span
-        Posted by 
+        Posted by
         = comment_user_link(comment)
-        on 
+        on
         = l(comment.created_at)
       .clear

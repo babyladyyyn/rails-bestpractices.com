@@ -14,7 +14,7 @@ module VotesHelper
       button_to 'Like', polymorphic_path([voteable, :votes], :like => true), :class => 'like-icon'
     end
   end
-  
+
   def vote_dislike_link(voteable)
     unless current_user
       return link_to 'Dislike', new_user_session_path(:return_to => request.url), :class => 'dislike-icon'

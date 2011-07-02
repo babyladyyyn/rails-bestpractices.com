@@ -8,7 +8,7 @@
         %p= "#{question.view_count} views"
       %td.content
         %p.title= link_to question.title, question_path(question)
-        %p.tags 
+        %p.tags
           - question.tags.each do |tag|
             = link_to tag.name, tag_path(tag.name)
       %td.author

@@ -18,9 +18,9 @@
               .answer-info
                 %p
                   = image_tag answer.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => answer.user.login
-                  Answered by 
+                  Answered by
                   = link_to answer.user.login, user_path(answer.user)
-                  on 
+                  on
                   = l(answer.created_at.to_date)
 
                 .wikistyle= raw answer.formatted_html

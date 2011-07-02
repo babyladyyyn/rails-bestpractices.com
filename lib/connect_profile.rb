@@ -4,15 +4,15 @@ module ConnectProfile
       include InstanceMethods
     end
   end
-  
+
   module InstanceMethods
-    
+
     def facebook
       if token = authenticated_with?(:facebook)
         @facebook ||= JSON.parse(token.get("/me"))
       end
     end
-    
+
     def twitter
       if token = authenticated_with?(:twitter)
         @twitter ||= JSON.parse(token.get("/account/verify_credentials.json").body)
@@ -22,7 +22,7 @@ module ConnectProfile
     def google
       @google ||= "" # todo
     end
-    
+
     # primitive profile to show what's possible
     def profile
       unless @profile
@@ -55,7 +55,7 @@ module ConnectProfile
 
       @profile
     end
-    
+
   end
-  
+
 end
