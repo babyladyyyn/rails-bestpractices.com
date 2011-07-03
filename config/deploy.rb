@@ -27,7 +27,7 @@ after 'deploy:update_code', "asset:init"
 
 namespace :asset do
   task :init do
-    run "cd #{release_path}; rake RAILS_ENV=#{rails_env} css_sprite:build"
+    run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} css_sprite:build"
   end
 end
 
