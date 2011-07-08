@@ -180,7 +180,7 @@ GEM
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
     net-ssh (2.0.23)
-    newrelic_rpm (2.13.4)
+    newrelic_rpm (3.1.0)
     nokogiri (1.4.3.1)
     oa-basic (0.2.6)
       oa-core (= 0.2.6)
