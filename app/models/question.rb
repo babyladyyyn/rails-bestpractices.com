@@ -40,7 +40,8 @@ class Question < ActiveRecord::Base
   delegate :body, :formatted_html, :to => :question_body
 
   define_index do
-    indexes :title, :body
+    indexes :title
+    indexes question_body(:body), :as => :body
 
     has :id
 

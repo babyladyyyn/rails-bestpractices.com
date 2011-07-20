@@ -42,7 +42,8 @@ class Post < ActiveRecord::Base
   delegate :body, :formatted_html, :to => :post_body
 
   define_index do
-    indexes :title, :description, :body
+    indexes :title, :description
+    indexes post_body(:body), :as => :body
 
     has :id
 
