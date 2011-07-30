@@ -58,8 +58,8 @@ group :test do
 end
 
 group :cucumber do
-  gem "cucumber", "~> 0.9.2"
-  gem "cucumber-rails", "~> 0.3.2"
+  gem "cucumber"
+  gem "cucumber-rails"
   gem "capybara", "= 0.3.9"
   gem "database_cleaner", "~> 0.6.0.rc3"
   gem "launchy"
