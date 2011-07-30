@@ -80,19 +80,7 @@ module RailsBestPractices
         def should_be_user_ownable(factory_id = nil)
           factory_id ||= default_factory_id
           describe 'being user ownable' do
-
             should_belong_to :user, :counter_cache => true
-
-            it 'should belong to someone if he is the owner of it' do
-              someone = Factory(:user)
-              Factory(factory_id, :user => someone).belongs_to?(someone).should be_true
-            end
-
-            it 'should not belong to someone if he is not the owner of it' do
-              someone = Factory(:user)
-              Factory(factory_id).belongs_to?(someone).should be_false
-            end
-
           end
         end
 

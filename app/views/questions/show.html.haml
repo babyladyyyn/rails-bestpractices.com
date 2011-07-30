@@ -2,7 +2,7 @@
 
 .command
   = link_to 'Question', new_question_path, :class => 'question-button'
-  - if @question.belongs_to? current_user
+  - if can? :update, @question
     = link_to 'Edit', edit_question_path(@question)
 
 %h2

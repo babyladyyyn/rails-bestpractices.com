@@ -6,8 +6,4 @@ module UserOwnable
     end
   end
 
-  def belongs_to?(user)
-    user && user_id == user.id
-  end
-
 end

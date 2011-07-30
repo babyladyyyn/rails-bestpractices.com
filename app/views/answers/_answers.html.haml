@@ -11,7 +11,7 @@
               = vote_dislike_link(answer)
             %td
               .command
-                - if answer.belongs_to? current_user
+                - if can? :update, answer
                   = link_to 'Edit', edit_question_answer_path(question, answer)
                   &nbsp;&nbsp;|&nbsp;&nbsp;
                   = link_to 'Share', new_post_path(:answer_id => answer.id)

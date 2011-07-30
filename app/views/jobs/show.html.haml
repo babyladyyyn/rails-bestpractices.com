@@ -1,7 +1,9 @@
 - title @job.title
 
 .command
-  = link_to "< Back to job postings", jobs_path
+  = link_to "Back to Job Postings", jobs_path
+  - if can? :update, @job
+    %p= link_to "Edit", edit_job_path(@job)
 
 .job
   %h2= @job.title

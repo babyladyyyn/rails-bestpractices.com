@@ -2,7 +2,7 @@
 
 .command
   = link_to 'Share', new_post_path, :class => 'share-button'
-  - if @post.belongs_to? current_user
+  - if can? :update, @post
     = link_to 'Edit', edit_post_path(@post)
 
 %h2
