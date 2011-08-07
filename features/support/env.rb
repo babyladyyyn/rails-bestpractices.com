@@ -102,12 +102,6 @@ Spork.prefork do
       'token' => 'abcdefg',
     }
   }
-
-  Before do
-    require 'cross-stub'
-    CrossStub.setup :file => Rails.root.join('tmp', 'cross-stub.cache')
-  end
-
 end
 
 Spork.each_run do

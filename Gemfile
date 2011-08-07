@@ -64,5 +64,4 @@ group :cucumber do
   gem "database_cleaner", "~> 0.6.0.rc3"
   gem "launchy"
   gem "pickle", "~> 0.4.2"
-  gem "cross-stub", "= 0.2.0"
 end
