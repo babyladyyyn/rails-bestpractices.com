@@ -37,6 +37,3 @@ en:
         subject: 'Reset password instructions'
       unlock_instructions:
         subject: 'Unlock Instructions'
-    users:
-      user:
-        signed_up: 'You have signed up successfully.'

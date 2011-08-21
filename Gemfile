@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.0.10'
 
 gem 'mysql2', "~> 0.2.6"
 
@@ -24,7 +24,6 @@ gem "twitter"
 gem "bitly"
 gem "cancan"
 gem "recaptcha", :require => "recaptcha/rails"
-gem 'typus', "~> 3.0.2"
 gem 'whenever', "~> 0.6.1"
 gem "thinking-sphinx", :require => 'thinking_sphinx'
 gem "delayed_job", "~> 2.1.0"
@@ -33,6 +32,7 @@ gem "backup", "~> 2.4.4"
 gem "escape_utils"
 gem "dalli"
 gem "newrelic_rpm"
+gem "rails_admin", :git => 'git://github.com/sferik/rails_admin.git', :branch => "rails-3.0"
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'
