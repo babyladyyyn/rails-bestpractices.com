@@ -2,132 +2,203 @@
 #
 # Use the README file as a reference to customize settings.
 
-#ActsAsTaggableOn::Tag:
-  #fields:
-    #default: name
-    #form: name
-  #order_by:
-  #relationships:
-  #filters:
-  #search: name
-  #application: rails-bestpractices.com
-
-AdminUser:
-  fields:
-    default: first_name, last_name, role, email, status, token, preferences
-    form: first_name, last_name, role, email, status, token, preferences
-  order_by:
-  relationships:
-  filters:
-  search:
-  application: rails-bestpractices.com
-
 Answer:
   fields:
-    default: vote_points, question_id, question, user
-    form: body, formatted_html, vote_points, question_id, question, user
+    default: user_id, vote_points, question_id, comments_count, user, question
+    form: user_id, vote_points, question_id, comments_count, user, question
   order_by: -created_at
-  relationships: question, user, votes
-  filters:
-  search:
+  relationships: answer_body, comments, question, user, votes
+  filters: 
+  search: 
+  application: rails-bestpractices.com
+
+AnswerBody:
+  fields:
+    default: answer_id, answer
+    form: body, formatted_html, answer_id, answer
+  order_by: -created_at
+  relationships: answer
+  filters: 
+  search: 
+  application: rails-bestpractices.com
+
+# Authentication:
+#   fields:
+#     default: provider, uid, user_id, token, secret, user
+#     form: provider, uid, user_id, token, secret, user
+#   order_by: -created_at
+#   relationships: user
+#   filters: 
+#   search: 
+#   application: rails-bestpractices.com
+
+BlogPost:
+  fields:
+    default: title, user_id, comments_count, user
+    form: title, body, user_id, comments_count, user
+  order_by: -created_at
+  relationships: comments, user
+  filters: 
+  search: title
   application: rails-bestpractices.com
 
 Comment:
   fields:
-    default: user_id, username, email, commentable
-    form: body, user_id, username, email
+    default: body, user_id, username, email, user
+    form: body, user_id, username, email, user
   order_by: -created_at
   relationships: user
-  filters:
-  search:
-  application: rails-bestpractices.com
-
-BlogPost:
-  fields:
-    default: title, user
-    form: title, body, user_id
-  order_by: -created_at
-  relationships: comments, user
-  filters:
-  search: title
+  filters: 
+  search: 
   application: rails-bestpractices.com
 
 Drop:
   fields:
-    default: title, kind, tag_list, user
-    form: title, kind, description, body, formatted_html, tag_list, user
+    default: title, user_id, kind, tag_list, user
+    form: title, body, user_id, formatted_html, description, kind, tag_list, user
   order_by: -created_at
   relationships: user
-  filters:
+  filters: 
   search: title
   application: rails-bestpractices.com
 
-Notification:
+Job:
   fields:
-    default: user_id, notifierable_id, read, user
-    form: user_id, notifierable_id, read, user
+    default: title, company, company_url, country, state, city, address, salary, apply_email, user_id, published, user
+    form: title, description, company, company_url, country, state, city, address, salary, apply_email, user_id, published, user
   order_by: -created_at
-  relationships: user
-  filters:
-  search:
+  relationships: job_job_types, job_types, user
+  filters: 
+  search: title
   application: rails-bestpractices.com
 
-NotificationSetting:
+# JobJobType:
+#   fields:
+#     default: job_id, job_type_id, job, job_type
+#     form: job_id, job_type_id, job, job_type
+#   order_by: -created_at
+#   relationships: job, job_type
+#   filters: 
+#   search: 
+#   application: rails-bestpractices.com
+
+JobType:
   fields:
-    default: name, value, user_id, user
-    form: name, value, user_id, user
-  order_by:
-  relationships: user
-  filters:
+    default: name
+    form: name
+  order_by: -created_at
+  relationships: job_job_types, jobs
+  filters: 
   search: name
   application: rails-bestpractices.com
 
+# Notification:
+#   fields:
+#     default: user_id, notifierable_id, read, user
+#     form: user_id, notifierable_id, read, user
+#   order_by: -created_at
+#   relationships: user
+#   filters: 
+#   search: 
+#   application: rails-bestpractices.com
+
+# NotificationSetting:
+#   fields:
+#     default: name, value, user_id, user
+#     form: name, value, user_id, user
+#   order_by: -created_at
+#   relationships: user
+#   filters: 
+#   search: name
+#   application: rails-bestpractices.com
+
 Page:
   fields:
-    default: name
+    default: name, body
     form: name, body
   order_by: -created_at
-  redlationships:
-  filters:
+  relationships: 
+  filters: 
   search: name
   application: rails-bestpractices.com
 
 Post:
   fields:
-    default: title, comments_count, vote_points, view_count, tag_list, user, implemented
-    form: title, body, formatted_html, description, comments_count, vote_points, view_count, tag_list, user, implemented
+    default: title, user_id, description, comments_count, vote_points, view_count, implemented, published, user
+    form: title, user_id, description, comments_count, vote_points, view_count, implemented, published, user
   order_by: -created_at
-  relationships: base_tags, comments, tag_taggings, taggings, tags, user, votes
-  filters:
+  relationships: base_tags, comments, post_body, tag_taggings, taggings, tags, user, votes
+  filters: 
   search: title
+  application: rails-bestpractices.com
+
+PostBody:
+  fields:
+    default: post_id, post
+    form: body, formatted_html, post_id, post
+  order_by: -created_at
+  relationships: post
+  filters: 
+  search: 
   application: rails-bestpractices.com
 
 Question:
   fields:
-    default: title, vote_points, view_count, answers_count, user
-    form: title, body, formatted_html, vote_points, view_count, answers_count, user
+    default: title, user_id, vote_points, view_count, answers_count, comments_count, user
+    form: title, user_id, vote_points, view_count, answers_count, comments_count, user
   order_by: -created_at
-  relationships: answers, base_tags, tag_taggings, taggings, tags, user, votes
-  filters:
+  relationships: answers, base_tags, comments, question_body, tag_taggings, taggings, tags, user, votes
+  filters: 
   search: title
+  application: rails-bestpractices.com
+
+QuestionBody:
+  fields:
+    default: question_id, question
+    form: body, formatted_html, question_id, question
+  order_by: -created_at
+  relationships: question
+  filters: 
+  search: 
+  application: rails-bestpractices.com
+
+Sponsor:
+  fields:
+    default: name, website_url, image_url, active
+    form: name, website_url, image_url, active
+  order_by: -created_at
+  relationships: sponsor_tracks
+  filters: 
+  search: name
+  application: rails-bestpractices.com
+
+SponsorTrack:
+  fields:
+    default: sponsor_id, sponsor
+    form: sponsor_id, sponsor
+  order_by: -created_at
+  relationships: sponsor
+  filters: 
+  search: 
   application: rails-bestpractices.com
 
 User:
   fields:
-    default: login, email, url, developer, posts_count, comments_count, votes_count, questions_count, answers_count
-    form: login, email, url, developer, posts_count, comments_count, votes_count, questions_count, answers_count
+    default: login, email, url, posts_count, comments_count, votes_count, active_token_id, questions_count, answers_count, unread_notification_count, remember_token, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, authentication_token
+    form: login, email, url, posts_count, comments_count, votes_count, active_token_id, questions_count, answers_count, unread_notification_count, reset_password_token, remember_token, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, authentication_token
   order_by: -created_at
-  relationships: comments, posts, votes, questions, answers
-  filters:
-  search: login
+  relationships: answers, authentications, comments, drops, jobs, notification_settings, notifications, posts, questions, votes
+  filters: 
+  search: 
   application: rails-bestpractices.com
 
 Vote:
   fields:
-    default: like, user, voteable
-    form: like, user, voteable
+    default: like, user_id, voteable_id, user
+    form: like, user_id, voteable_id, user
   order_by: -created_at
-  relationships: voteable, user
-  filters:
-  search:
+  relationships: user
+  filters: 
+  search: 
   application: rails-bestpractices.com
+

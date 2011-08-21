@@ -3,16 +3,23 @@
 # Use the README file as a reference to customize settings.
 
 admin:
-  #ActsAsTaggableOn::Tag: read, delete
-  AdminUser: create, read, update, delete
   Answer: create, read, update, delete
+  AnswerBody: create, read, update, delete
+  Authentication: create, read, update, delete
   BlogPost: create, read, update, delete
   Comment: create, read, update, delete
   Drop: create, read, update, delete
+  Job: create, read, update, delete
+  JobJobType: create, read, update, delete
+  JobType: create, read, update, delete
   Notification: create, read, update, delete
   NotificationSetting: create, read, update, delete
   Page: create, read, update, delete
   Post: create, read, update, delete
+  PostBody: create, read, update, delete
   Question: create, read, update, delete
+  QuestionBody: create, read, update, delete
+  Sponsor: create, read, update, delete
+  SponsorTrack: create, read, update, delete
   User: create, read, update, delete
   Vote: create, read, update, delete
