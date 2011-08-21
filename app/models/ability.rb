@@ -9,6 +9,10 @@ class Ability
     can :manage, Question, :user_id => user.id
     can :manage, Answer, :user_id => user.id
     can :manage, Drop, :user_id => user.id
+
+    if user.admin?
+      can :access, :rails_admin
+    end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821132920) do
+ActiveRecord::Schema.define(:version => 20110821133356) do
 
   create_table "answer_bodies", :force => true do |t|
     t.text     "body"
@@ -282,13 +282,13 @@ ActiveRecord::Schema.define(:version => 20110821132920) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
-    t.integer  "posts_count",               :default => 0, :null => false
-    t.integer  "comments_count",            :default => 0, :null => false
-    t.integer  "votes_count",               :default => 0, :null => false
+    t.integer  "posts_count",               :default => 0,     :null => false
+    t.integer  "comments_count",            :default => 0,     :null => false
+    t.integer  "votes_count",               :default => 0,     :null => false
     t.integer  "active_token_id"
-    t.integer  "questions_count",           :default => 0, :null => false
-    t.integer  "answers_count",             :default => 0, :null => false
-    t.integer  "unread_notification_count", :default => 0, :null => false
+    t.integer  "questions_count",           :default => 0,     :null => false
+    t.integer  "answers_count",             :default => 0,     :null => false
+    t.integer  "unread_notification_count", :default => 0,     :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -298,6 +298,7 @@ ActiveRecord::Schema.define(:version => 20110821132920) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "authentication_token"
+    t.boolean  "admin",                     :default => false, :null => false
   end
 
   add_index "users", ["active_token_id"], :name => "index_users_on_active_token_id"
