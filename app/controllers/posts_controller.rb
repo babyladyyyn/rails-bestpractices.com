@@ -14,7 +14,6 @@ class PostsController < InheritedResources::Base
   end
 
   def show
-    @post = Post.published.find(params[:id])
     if params[:id] != @post.to_param
       redirect_to post_path(@post), :status => 301
       return false
