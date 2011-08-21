@@ -12,6 +12,7 @@ class Ability
 
     if user.admin?
       can :access, :rails_admin
+      can :manage, :all
     end
     # Define abilities for the passed in user here. For example:
     #
