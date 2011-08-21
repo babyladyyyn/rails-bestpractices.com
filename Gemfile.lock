@@ -17,6 +17,7 @@ GEM
       rack-mount (~> 0.6.14)
       rack-test (~> 0.5.7)
       tzinfo (~> 0.3.23)
+    active_reload (0.3.0)
     activemodel (3.0.9)
       activesupport (= 3.0.9)
       builder (~> 2.1.2)
@@ -331,6 +332,7 @@ PLATFORMS
 
 DEPENDENCIES
   ZenTest
+  active_reload
   acts-as-taggable-on (~> 2.0.6)
   annotate
   autotest

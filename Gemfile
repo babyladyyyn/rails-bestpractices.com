@@ -41,6 +41,7 @@ group :development do
   gem "bullet", "~> 2.0.1"
   gem "annotate"
   gem "rails-erd"
+  gem "active_reload"
 end
 
 group :test do
