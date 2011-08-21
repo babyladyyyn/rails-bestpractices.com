@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,21 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821100305) do
-
-  create_table "admin_users", :force => true do |t|
-    t.string   "first_name",       :default => "",    :null => false
-    t.string   "last_name",        :default => "",    :null => false
-    t.string   "role",                                :null => false
-    t.string   "email",                               :null => false
-    t.boolean  "status",           :default => false
-    t.string   "token",                               :null => false
-    t.string   "salt",                                :null => false
-    t.string   "crypted_password",                    :null => false
-    t.string   "preferences"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20110821133356) do
 
   create_table "answer_bodies", :force => true do |t|
     t.text     "body"
@@ -238,6 +225,19 @@ ActiveRecord::Schema.define(:version => 20110821100305) do
 
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
 
+  create_table "rails_admin_histories", :force => true do |t|
+    t.string   "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
   create_table "sponsor_tracks", :force => true do |t|
     t.integer  "sponsor_id"
     t.datetime "created_at"
@@ -282,13 +282,13 @@ ActiveRecord::Schema.define(:version => 20110821100305) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
-    t.integer  "posts_count",               :default => 0, :null => false
-    t.integer  "comments_count",            :default => 0, :null => false
-    t.integer  "votes_count",               :default => 0, :null => false
+    t.integer  "posts_count",               :default => 0,     :null => false
+    t.integer  "comments_count",            :default => 0,     :null => false
+    t.integer  "votes_count",               :default => 0,     :null => false
     t.integer  "active_token_id"
-    t.integer  "questions_count",           :default => 0, :null => false
-    t.integer  "answers_count",             :default => 0, :null => false
-    t.integer  "unread_notification_count", :default => 0, :null => false
+    t.integer  "questions_count",           :default => 0,     :null => false
+    t.integer  "answers_count",             :default => 0,     :null => false
+    t.integer  "unread_notification_count", :default => 0,     :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -298,6 +298,7 @@ ActiveRecord::Schema.define(:version => 20110821100305) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "authentication_token"
+    t.boolean  "admin",                     :default => false, :null => false
   end
 
   add_index "users", ["active_token_id"], :name => "index_users_on_active_token_id"

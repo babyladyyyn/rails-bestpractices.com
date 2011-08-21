@@ -1,5 +1,4 @@
 RailsBestpracticesCom::Application.routes.draw do
-  #match "admin/acts_as_taggable_on/tags", :to => "admin/acts_as_taggable_on/tags#index"
   devise_for :users, :controllers => {:registrations => "users", :sessions => "sessions"}
   devise_scope :user do
     resources :users, :only => [:index, :show]
