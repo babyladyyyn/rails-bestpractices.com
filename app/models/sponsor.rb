@@ -3,4 +3,6 @@ class Sponsor < ActiveRecord::Base
   validates_uniqueness_of :name
 
   has_many :sponsor_tracks
+
+  named_scope :active, where(:active => true)
 end

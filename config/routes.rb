@@ -39,6 +39,8 @@ RailsBestpracticesCom::Application.routes.draw do
 
   resources :jobs
 
+  resources :sponsors, :only => [:show]
+
   match 'search' => 'search#show', :as => :search
 
   match 'page/:name' => 'pages#show', :as => :page
