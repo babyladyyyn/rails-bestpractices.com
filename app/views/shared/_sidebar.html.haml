@@ -2,6 +2,12 @@
   = link_to "Sign in with Twitter", "/auth/twitter", :class => 'sign-in-twitter-button', :rel => "nofollow"
   = link_to "Login with Facebook", "/auth/facebook", :class => 'sign-in-facebook-button', :rel => "nofollow"
 
+.sponsors-section
+  %h3 Sponsors
+  %ul.sponsors
+    - Sponsor.active.each do |sponsor|
+      %li= link_to image_tag(sponsor.image_url), sponsor_path(sponsor)
+
 .jobs-section
   %h3 Top Ruby and Rails Jobs
   %ul.jobs

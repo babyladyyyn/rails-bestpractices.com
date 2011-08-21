@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110702131550) do
+ActiveRecord::Schema.define(:version => 20110821100305) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",       :default => "",    :null => false
@@ -237,6 +237,23 @@ ActiveRecord::Schema.define(:version => 20110702131550) do
   end
 
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"
+
+  create_table "sponsor_tracks", :force => true do |t|
+    t.integer  "sponsor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sponsor_tracks", ["sponsor_id"], :name => "index_sponsor_tracks_on_sponsor_id"
+
+  create_table "sponsors", :force => true do |t|
+    t.string   "name"
+    t.string   "website_url"
+    t.string   "image_url"
+    t.boolean  "active",      :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
