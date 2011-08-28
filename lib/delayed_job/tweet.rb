@@ -8,16 +8,19 @@ class DelayedJob::Tweet < Struct.new(:klass_name, :id, :force)
 
   def tweet(title, path)
     url = bitly.shorten("http://rails-bestpractices.com/#{path}").short_url
-    twitter.update("#{title} #{url} #railsbp")
+    Twitter.update("#{title} #{url} #railsbp")
   end
 
   def twitter
-    config = OMNIAUTH_CONFIG['twitter']
+    omniauth_config = OMNIAUTH_CONFIG['twitter']
     twitter_user = User.find_by_login("Rails BestPractices")
     provider = twitter_user.authentications.find_by_provider('twitter')
-    oauth = Twitter::OAuth.new(config['key'], config['secret'])
-    oauth.authorize_from_access(provider.token, provider.secret)
-    Twitter::Base.new(oauth)
+    Twitter.configure do |config|
+      config.consumer_key = omniauth_config['key']
+      config.consumer_secret = omniauth_config['secret']
+      config.oauth_token = provider.token
+      config.oauth_token_secret = provider.secret
+    end
   end
 
   def bitly
