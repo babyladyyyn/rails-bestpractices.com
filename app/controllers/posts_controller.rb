@@ -9,8 +9,27 @@ class PostsController < InheritedResources::Base
       @post = Answer.find(params[:answer_id]).to_post
     else
       @post = Post.new
+      @post.build_post_body(:body => " Before
+------
+
+description
+
+    # some codes
+    # before
+
+description
+
+Refactor
+--------
+
+description
+
+    # somes codes
+    # after refactor
+
+description
+")
     end
-    @post.build_post_body
   end
 
   def show
