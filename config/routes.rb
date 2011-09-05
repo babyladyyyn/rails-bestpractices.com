@@ -36,7 +36,9 @@ RailsBestpracticesCom::Application.routes.draw do
 
   resources :drops
 
-  resources :jobs
+  resources :jobs do
+    get :partner, :on => :collection
+  end
 
   resources :sponsors, :only => [:show]
 
