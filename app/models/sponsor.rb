@@ -4,5 +4,5 @@ class Sponsor < ActiveRecord::Base
 
   has_many :sponsor_tracks
 
-  named_scope :active, where(:active => true)
+  scope :active, where(:active => true)
 end

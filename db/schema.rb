@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110821133356) do
+ActiveRecord::Schema.define(:version => 20110905115325) do
 
   create_table "answer_bodies", :force => true do |t|
     t.text     "body"
@@ -122,6 +122,13 @@ ActiveRecord::Schema.define(:version => 20110821133356) do
 
   add_index "job_job_types", ["job_id"], :name => "index_job_job_types_on_job_id"
   add_index "job_job_types", ["job_type_id"], :name => "index_job_job_types_on_job_type_id"
+
+  create_table "job_partners", :force => true do |t|
+    t.string   "name"
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "job_types", :force => true do |t|
     t.string   "name"

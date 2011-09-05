@@ -3,7 +3,7 @@ require 'spec_helper'
 describe JobsController do
   context "index" do
     before :each do
-      user = mock_model(User)
+      user = mock_model(User, :admin? => false)
       controller.stub!(:authenticate_user!).and_return(true)
       controller.stub!(:current_user).and_return(user)
       user.stub!(:jobs).and_return([])
