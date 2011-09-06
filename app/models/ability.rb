@@ -8,7 +8,6 @@ class Ability
     can :manage, Post, :user_id => user.id
     can :manage, Question, :user_id => user.id
     can :manage, Answer, :user_id => user.id
-    can :manage, Drop, :user_id => user.id
 
     if user.admin?
       can :access, :rails_admin
