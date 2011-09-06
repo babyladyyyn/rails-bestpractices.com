@@ -34,8 +34,6 @@ RailsBestpracticesCom::Application.routes.draw do
 
   resources :notifications, :only => [:index, :destroy]
 
-  resources :drops
-
   resources :jobs do
     get :partner, :on => :collection
   end
@@ -45,8 +43,6 @@ RailsBestpracticesCom::Application.routes.draw do
   match 'search' => 'search#show', :as => :search
 
   match 'page/:name' => 'pages#show', :as => :page
-
-  match 'close_broadcast' => 'broadcasts#close', :as => :close_broadcast
 
   root :to => "posts#index"
 
