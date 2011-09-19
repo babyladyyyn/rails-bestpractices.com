@@ -33,6 +33,7 @@ gem "escape_utils"
 gem "dalli"
 gem "newrelic_rpm"
 gem "rails_admin", :git => 'git://github.com/sferik/rails_admin.git', :branch => "rails-3.0"
+gem "nokogiri"
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110905115325) do
+ActiveRecord::Schema.define(:version => 20110919010147) do
 
   create_table "answer_bodies", :force => true do |t|
     t.text     "body"
@@ -151,6 +151,8 @@ ActiveRecord::Schema.define(:version => 20110905115325) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.boolean  "published"
+    t.string   "source"
+    t.integer  "external_id"
   end
 
   add_index "jobs", ["user_id"], :name => "index_jobs_on_user_id"

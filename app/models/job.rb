@@ -3,7 +3,7 @@ class Job < ActiveRecord::Base
   has_many :job_types, :through => :job_job_types, :source => :job_type
   belongs_to :user
 
-  validates_presence_of :title, :company, :country, :state, :city, :description, :apply_email
+  validates_presence_of :title, :company, :country, :city, :description, :apply_email
 
   scope :published, where(:published => true)
 
