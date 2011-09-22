@@ -6,8 +6,13 @@ class Job < ActiveRecord::Base
   validates_presence_of :title, :company, :country, :city, :description, :apply_email
 
   scope :published, where(:published => true)
+  scope :owner, where("source IS NULL")
 
   after_create :notify_admin
+
+  def job_types
+    job.job_types.map(&:name)
+  end
 
   def location
     [self.state, self.city, self.country].join(', ')

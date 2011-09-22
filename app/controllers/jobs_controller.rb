@@ -10,7 +10,7 @@ class JobsController < InheritedResources::Base
   end
 
   def partner
-    @jobs = Job.published.order('created_at desc').where(["id > ?", params["last_id"].to_i])
+    @jobs = Job.published.owner.order('created_at desc').where(["id > ?", params["last_id"].to_i])
     render :xml => @jobs.to_xml
   end
 
