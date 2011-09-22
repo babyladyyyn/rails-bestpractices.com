@@ -10,8 +10,8 @@ class Job < ActiveRecord::Base
 
   after_create :notify_admin
 
-  def job_types
-    job.job_types.map(&:name)
+  def job_type_names
+    self.job_types.map(&:name)
   end
 
   def location

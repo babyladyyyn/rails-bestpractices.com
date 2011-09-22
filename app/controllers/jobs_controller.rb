@@ -11,7 +11,7 @@ class JobsController < InheritedResources::Base
 
   def partner
     @jobs = Job.published.owner.order('created_at desc').where(["id > ?", params["last_id"].to_i])
-    render :xml => @jobs.to_xml
+    render :xml => @jobs.to_xml(:methods => :job_type_names)
   end
 
   protected
