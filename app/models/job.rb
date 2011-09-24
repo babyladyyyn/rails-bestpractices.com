@@ -15,7 +15,7 @@ class Job < ActiveRecord::Base
   end
 
   def location
-    [self.state, self.city, self.country].join(', ')
+    [self.state, self.city, self.country].compact.join(', ')
   end
 
   def tweet_title
