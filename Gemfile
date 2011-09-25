@@ -30,10 +30,11 @@ gem "delayed_job", "~> 2.1.0"
 gem "switch_user", "~> 0.6.0"
 gem "backup", "~> 2.4.4"
 gem "escape_utils"
-gem "dalli"
 gem "newrelic_rpm"
 gem "rails_admin", :git => 'git://github.com/sferik/rails_admin.git', :branch => "rails-3.0"
 gem "nokogiri"
+gem "memcache-client"
+gem "memcached"
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'

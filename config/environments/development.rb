@@ -12,9 +12,11 @@ RailsBestpracticesCom::Application.configure do
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_view.debug_rjs             = true
-  config.action_controller.perform_caching = false
+  config.action_controller.perform_caching = true
 
   config.active_support.deprecation = :log
+
+  config.cache_store = ActiveSupport::Cache::MemCacheStore.new(Memcached::Rails.new("localhost:11211", :namespace => "railsbp"))
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
