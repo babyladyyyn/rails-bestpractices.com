@@ -31,7 +31,7 @@
         %span.implemented implemented
       .tags
         %strong tags:
-        - @post.tags.each do |tag|
+        - @post.cached_tags.each do |tag|
           = link_to tag.name, tag_path(tag.name)
       - if @post.related_posts.present?
         .related_posts
@@ -43,7 +43,8 @@
       - if Rails.env.production?
         .adsense= render 'shared/google_adsense'
 
-      = render 'comments/comments', :parent => @post
+      - cache "post/#{@post.id}/comments" do
+        = render 'comments/comments', :parent => @post
       = render 'comments/comment_form', {:parent => @post, :comment => @comment}
 
 - content_for :js do

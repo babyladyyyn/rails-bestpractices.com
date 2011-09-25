@@ -7,7 +7,9 @@ module Voteable
   end
 
   def vote(user)
-    self.votes.where(:user_id => user.id).first
+    cache.fetch "#{self.class.to_s.tableize}/#{self.id}/users/#{user.id}/vote" do
+      self.votes.where(:user_id => user.id).first
+    end
   end
 
 end

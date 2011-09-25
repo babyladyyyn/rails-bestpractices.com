@@ -39,7 +39,7 @@ class Post < ActiveRecord::Base
 
   paginates_per 10
 
-  delegate :body, :formatted_html, :to => :post_body
+  delegate :body, :to => :post_body
 
   define_index do
     indexes :title, :description
@@ -68,13 +68,27 @@ class Post < ActiveRecord::Base
     "#{id}-#{title.parameterize}"
   end
 
-  def related_posts
-    Post.select('id, title').where(['id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true)
-  end
-
   def publish!
     self.update_attribute(:published, true)
     Delayed::Job.enqueue(DelayedJob::Tweet.new('Post', self.id))
+  end
+
+  def related_posts
+    cache.fetch("posts/related") do
+      Post.select('id, title').where(['id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true).all
+    end
+  end
+
+  def formatted_html
+    cache.fetch("posts/#{self.id}/formatted_html") do
+      self.post_body.formatted_html
+    end
+  end
+
+  def cached_tags
+    cache.fetch("posts/#{self.id}/tags") do
+      self.tags.all
+    end
   end
 
   protected
