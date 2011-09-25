@@ -42,7 +42,6 @@ class User < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
   has_many :answers, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
-  has_many :drops, :dependent => :destroy
   has_many :notification_settings, :dependent => :destroy
   has_many :authentications
   has_many :jobs
