@@ -16,13 +16,9 @@ ActiveRecord::FinderMethods.class_eval do
   end
 
   def find_by_attributes_with_cache(match, attributes, *args)
-    cache.fetch("#{name.tableize}/#{attributes.join('/')}") do
-      find_by_attributes_without_cache
+    cache.fetch("#{name.tableize}/#{attributes.zip(args).flatten.join('/')}/#{match.finder}") do
+      find_by_attributes_without_cache(match, attributes, args)
     end
-  end
-
-  def cache_key(id)
-    "#{name.tableize}/#{id}"
   end
 
   alias_method_chain :find_one, :cache
