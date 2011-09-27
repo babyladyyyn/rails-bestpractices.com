@@ -11,5 +11,8 @@
 
 class Page < ActiveRecord::Base
   validates_presence_of :name
-end
 
+  after_update :expire_cache
+
+  index :name
+end

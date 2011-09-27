@@ -38,7 +38,7 @@ description
       return false
     end
     show! do |format|
-      Post.increment_counter(:view_count, 1)
+      Post.increment_counter(:view_count, @post.id)
       @comment = @post.comments.build
     end
   end

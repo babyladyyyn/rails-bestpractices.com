@@ -15,9 +15,9 @@ class Vote < ActiveRecord::Base
 
   include UserOwnable
 
-  belongs_to :voteable, :polymorphic => true, :touch => true
-  after_create :update_create_vote
-  before_destroy :update_destroy_vote
+  belongs_to :voteable, :polymorphic => true
+  after_create :update_create_vote, :expire_voteable_cache
+  before_destroy :update_destroy_vote, :expire_voteable_cache
 
   def voteable_name
     if voteable.is_a? Answer
@@ -31,18 +31,22 @@ class Vote < ActiveRecord::Base
 
     def update_create_vote
       if like?
-        voteable.increment!(:vote_points)
+        voteable_type.constantize.increment_counter(:vote_points, voteable_id)
       else
-        voteable.decrement!(:vote_points)
+        voteable_type.constantize.decrement_counter(:vote_points, voteable_id)
       end
     end
 
     def update_destroy_vote
       if like?
-        voteable.decrement!(:vote_points)
+        voteable_type.constantize.decrement_counter(:vote_points, voteable_id)
       else
-        voteable.increment!(:vote_points)
+        voteable_type.constantize.increment_counter(:vote_points, voteable_id)
       end
+    end
+
+    def expire_voteable_cache
+      voteable.expire_cache
     end
 
 end

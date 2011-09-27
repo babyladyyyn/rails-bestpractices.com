@@ -34,6 +34,8 @@ class Post < ActiveRecord::Base
   scope :published, where(:published => true)
 
   after_create :notify_admin
+  after_update :expire_cache
+
 
   accepts_nested_attributes_for :post_body
 
@@ -74,19 +76,19 @@ class Post < ActiveRecord::Base
   end
 
   def related_posts
-    cache.fetch("posts/related") do
+    model_cache.fetch("posts/related") do
       Post.select('id, title').where(['id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true).all
     end
   end
 
   def formatted_html
-    cache.fetch("posts/#{self.id}/formatted_html") do
+    model_cache.fetch("posts/#{self.id}/formatted_html") do
       self.post_body.formatted_html
     end
   end
 
   def cached_tags
-    cache.fetch("posts/#{self.id}/tags") do
+    model_cache.fetch("posts/#{self.id}/tags") do
       self.tags.all
     end
   end

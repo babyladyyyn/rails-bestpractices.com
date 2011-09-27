@@ -48,6 +48,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :notification_settings
 
+  index :email
+
   def name
     self.login
   end

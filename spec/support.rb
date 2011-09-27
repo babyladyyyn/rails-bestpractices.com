@@ -66,11 +66,12 @@ module RailsBestPractices
             should_have_many :votes, :dependent => :destroy
 
             it "should support retrieving of any user's 1st vote" do
-              jane, peter = (0..1).map{|_| Factory(:user) }
+              jane = Factory(:user)
+              peter = Factory(:user)
               instance = Factory(factory_id)
-              instance.votes.create(:user => peter)
-              instance.votes.create(:user => jane)
-              instance.votes.create(:user => jane)
+              Factory(:vote, :voteable => instance, :user => peter)
+              Factory(:vote, :voteable => instance, :user => jane)
+              Factory(:vote, :voteable => instance, :user => jane)
               instance.vote(jane).should == instance.votes[1]
             end
 
