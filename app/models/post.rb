@@ -40,7 +40,7 @@ class Post < ActiveRecord::Base
 
   paginates_per 10
 
-  delegate :body, :to => :post_body
+  delegate :body, :formatted_html, :to => :post_body
 
   define_index do
     indexes :title, :description
@@ -56,6 +56,9 @@ class Post < ActiveRecord::Base
 
     where "published = 1"
   end
+
+  cache_key
+  cache_method :formatted_html, :tags, :related_posts
 
   def tweet_title
     title
@@ -75,21 +78,7 @@ class Post < ActiveRecord::Base
   end
 
   def related_posts
-    model_cache.fetch("posts/related") do
-      Post.select('id, title').where(['id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true).all
-    end
-  end
-
-  def formatted_html
-    model_cache.fetch("posts/#{self.id}/formatted_html") do
-      self.post_body.formatted_html
-    end
-  end
-
-  def cached_tags
-    model_cache.fetch("posts/#{self.id}/tags") do
-      self.tags.all
-    end
+    Post.select('id, title').where(['id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true).all
   end
 
   protected

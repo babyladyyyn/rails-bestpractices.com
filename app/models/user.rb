@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :notification_settings
 
+  cache_key
   cache_by_attribute :email
 
   def name
