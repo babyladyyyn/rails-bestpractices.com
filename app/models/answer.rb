@@ -28,6 +28,8 @@ class Answer < ActiveRecord::Base
 
   delegate :body, :formatted_html, :to => :answer_body
 
+  cache_method :formatted_html
+
   def to_post
     Post.new(:title => self.question.title, :post_body => PostBody.new(:body => self.body), :cached_tag_list => self.question.tag_list)
   end

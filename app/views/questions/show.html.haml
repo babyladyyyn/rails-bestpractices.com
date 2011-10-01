@@ -22,10 +22,10 @@
         on
         = l(@question.created_at.to_date)
 
-      .wikistyle= raw @question.formatted_html
+      .wikistyle= raw @question.cached_formatted_html
 
       .tags
-        - @question.tags.each do |tag|
+        - @question.cached_tags.each do |tag|
           = link_to tag.name, tag_path(tag.name)
 
       = render 'comments/short_comments', :comments => @question.comments

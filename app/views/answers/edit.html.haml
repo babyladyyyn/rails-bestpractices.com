@@ -4,12 +4,9 @@
 
 = semantic_form_for [@question, @answer] do |form|
   = form.inputs do
-    = form.input :body, :label => false
-    .wmd-preview.wikistyle
-  = form.buttons do
-    = form.submit "Save"
-    = link_to 'Back', question_path(@question)
-
-:javascript
-  var tags = #{all_tags};
-  wmd_options = {"output": "Markdown"};
+    = form.input :user_id, :as => :hidden, :value => current_user.id
+    = form.semantic_fields_for :answer_body do |body_fields|
+      = body_fields.input :body, :label => false
+    = form.buttons do
+      = form.submit "Save"
+      = link_to 'Back', question_path(@question)

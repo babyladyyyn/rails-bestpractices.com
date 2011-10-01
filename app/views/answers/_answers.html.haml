@@ -23,6 +23,6 @@
                   on
                   = l(answer.created_at.to_date)
 
-                .wikistyle= raw answer.formatted_html
+                .wikistyle= raw answer.cached_formatted_html
                 = render 'comments/short_comments', :comments => answer.comments
                 = render 'comments/short_comment_form', :parent => answer
