@@ -14,7 +14,7 @@ gem "formtastic", "~> 1.1.0"
 gem "has_scope", "~> 0.5.0"
 gem "inherited_resources", "~> 1.1.2"
 gem 'exception_notification', :require => 'exception_notifier'
-gem "acts-as-taggable-on", "~> 2.0.6"
+gem "acts-as-taggable-on"
 gem "rdiscount"
 gem "gravtastic", "~> 3.0.0"
 gem "css_sprite", "~> 1.4.9"

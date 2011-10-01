@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :notification_settings
 
-  index :email
+  cache_by_attribute :email
 
   def name
     self.login

@@ -20,8 +20,7 @@ class Question < ActiveRecord::Base
   include UserOwnable
   include Voteable
   include Commentable
-
-  acts_as_taggable
+  include CacheTaggable
 
   has_many :answers, :dependent => :destroy
   has_one :question_body

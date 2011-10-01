@@ -29,7 +29,7 @@ class Answer < ActiveRecord::Base
   delegate :body, :formatted_html, :to => :answer_body
 
   def to_post
-    Post.new(:title => self.question.title, :post_body => PostBody.new(:body => self.body), :tag_list => self.question.tag_list)
+    Post.new(:title => self.question.title, :post_body => PostBody.new(:body => self.body), :cached_tag_list => self.question.tag_list)
   end
 
   def tweet_title

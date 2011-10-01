@@ -22,8 +22,7 @@ class Post < ActiveRecord::Base
   include UserOwnable
   include Voteable
   include Commentable
-
-  acts_as_taggable
+  include CacheTaggable
 
   has_one :post_body
 

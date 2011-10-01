@@ -14,5 +14,5 @@ class Page < ActiveRecord::Base
 
   after_update :expire_cache
 
-  index :name
+  cache_by_attribute :name
 end

@@ -22,7 +22,7 @@ describe Question do
   let(:question) { Factory.create(:question) }
 
   include RailsBestPractices::Spec::Support
-  should_act_as_taggable
+  should_be_taggable
   should_be_user_ownable
   should_be_commentable
   should_be_voteable
