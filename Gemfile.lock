@@ -99,7 +99,7 @@ GEM
     daemons (1.0.10)
     dalli (1.0.3)
     database_cleaner (0.6.0.rc.3)
-    delayed_job (2.1.1)
+    delayed_job (2.1.4)
       activesupport (~> 3.0)
       daemons
     devise (1.1.5)
@@ -357,7 +357,7 @@ DEPENDENCIES
   cucumber-rails
   dalli
   database_cleaner (~> 0.6.0.rc3)
-  delayed_job (~> 2.1.0)
+  delayed_job
   devise
   email_spec (~> 1.0.0)
   escape_utils
