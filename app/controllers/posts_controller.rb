@@ -62,7 +62,7 @@ description
     end
 
     def collection
-      @posts = Post.published.includes(:user, :tags)
+      @posts = Post.published
       @posts = @posts.where(:implemented => true) if params[:nav] == 'implemented'
       @posts = @posts.order(nav_order).page(params[:page].to_i)
     end
