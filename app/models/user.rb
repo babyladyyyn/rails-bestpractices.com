@@ -29,6 +29,9 @@
 #
 
 class User < ActiveRecord::Base
+
+  include Cacheable
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :login, :email, :password, :password_confirmation, :url

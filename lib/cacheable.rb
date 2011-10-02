@@ -1,0 +1,93 @@
+module Cacheable
+
+  def self.included(base)
+    base.class_eval do
+      class <<self
+        def model_cache(&block)
+          instance_exec &block
+        end
+
+        def with_key
+          class_eval <<-EOF
+            after_update :expire_key_cache
+
+            def self.find_cached(id)
+              Rails.cache.fetch "#{name.tableize}" + id.to_s do
+                self.find(id)
+              end
+            end
+          EOF
+        end
+
+        def with_attribute(*attributes)
+          class_eval <<-EOF
+            after_update :expire_attribute_cache
+          EOF
+
+          write_inheritable_attribute :cached_indices, attributes.inject({}) { |indices, attribute| indices[attribute] = [] }
+          attributes.each do |attribute|
+            class_eval <<-EOF
+              def self.find_cached_by_#{attribute}(value)
+                indices = read_inheritable_attribute :cached_indices
+                indices["#{attribute}"] << value
+                write_inheritable_attribute :cached_indices
+                Rails.cache.fetch "#{name.tableize}/#{attribute}/" + value.to_s do
+                  self.find_by_#{attribute}(value)
+                end
+              end
+            EOF
+          end
+        end
+
+        def with_method(*methods)
+          class_eval <<-EOF
+            after_update :expire_method_cache
+          EOF
+
+          write_inheritable_attribute :cached_methods, methods
+          methods.each do |meth|
+            class_eval <<-EOF
+              def cached_#{meth}
+                Rails.cache.fetch model_key + "/#{meth}" do
+                  #{meth}
+                end
+              end
+            EOF
+          end
+        end
+      end
+    end
+  end
+
+  def model_key
+    "#{self.class.name.tableize}/#{self.id}"
+  end
+
+  def expire_model_cache
+    expire_key_cache
+    expire_attribute_cache
+    expire_method_cache
+  end
+
+  def expire_key_cache
+    Rails.cache.delete model_key
+  end
+
+  def expire_attribute_cache
+    if indices = self.class.read_inheritable_attribute(:cached_indices)
+      indices.each do |attribute, values|
+        values.each do |value|
+          Rails.cache.delete "#{self.class.name.tableize}/attribute/#{key}/#{value}"
+        end
+      end
+    end
+  end
+
+  def expire_method_cache
+    if meths = self.class.read_inheritable_attribute(:cached_methods)
+      meths.each do |meth|
+        Rails.cache.delete "#{model_key}/method/#{meth}"
+      end
+    end
+  end
+end

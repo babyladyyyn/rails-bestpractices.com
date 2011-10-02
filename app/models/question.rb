@@ -21,6 +21,7 @@ class Question < ActiveRecord::Base
   include Voteable
   include Commentable
   include CacheTaggable
+  include Cacheable
 
   has_many :answers, :dependent => :destroy
   has_one :question_body

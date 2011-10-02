@@ -16,6 +16,7 @@
 class Comment < ActiveRecord::Base
 
   include UserOwnable
+  include Cacheable
 
   belongs_to :commentable, :counter_cache => true, :polymorphic => true, :touch => true
   validates_presence_of :body

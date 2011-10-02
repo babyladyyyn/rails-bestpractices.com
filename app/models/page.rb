@@ -10,6 +10,9 @@
 #
 
 class Page < ActiveRecord::Base
+
+  include Cacheable
+
   validates_presence_of :name
 
   model_cache do

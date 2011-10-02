@@ -14,10 +14,12 @@
 class Vote < ActiveRecord::Base
 
   include UserOwnable
+  include Cacheable
 
   belongs_to :voteable, :polymorphic => true
   after_create :update_create_vote, :expire_voteable_cache
-  before_destroy :update_destroy_vote, :expire_voteable_cache
+  before_destroy :update_destroy_vote
+  after_destroy :expire_voteable_cache
 
   def voteable_name
     if voteable.is_a? Answer
@@ -46,7 +48,8 @@ class Vote < ActiveRecord::Base
     end
 
     def expire_voteable_cache
-      voteable.expire_cache
+      voteable.expire_vote_cache
+      voteable.expire_model_cache
     end
 
 end

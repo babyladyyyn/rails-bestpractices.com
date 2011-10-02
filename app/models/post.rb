@@ -23,6 +23,7 @@ class Post < ActiveRecord::Base
   include Voteable
   include Commentable
   include CacheTaggable
+  include Cacheable
 
   has_one :post_body
 
@@ -78,7 +79,7 @@ class Post < ActiveRecord::Base
   end
 
   def related_posts
-    Post.select('id, title').where(['id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true).all
+    Post.where(['posts.id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true).all
   end
 
   protected

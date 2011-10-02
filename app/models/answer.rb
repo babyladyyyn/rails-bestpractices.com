@@ -18,6 +18,7 @@ class Answer < ActiveRecord::Base
   include UserOwnable
   include Voteable
   include Commentable
+  include Cacheable
 
   belongs_to :question, :counter_cache => true, :touch => true
   has_one :answer_body
