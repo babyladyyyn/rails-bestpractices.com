@@ -59,7 +59,7 @@ class Comment < ActiveRecord::Base
   private
     def expire_commentable_and_user_cache
       cached_commentable.expire_model_cache
-      cached_user.expire_model_cache
+      cached_user.expire_model_cache if cached_user
     end
 
 end
