@@ -29,7 +29,7 @@ class Answer < ActiveRecord::Base
   delegate :body, :formatted_html, :to => :answer_body
 
   model_cache do
-    with_method :formatted_html
+    with_method :formatted_html, :user
   end
 
   def to_post

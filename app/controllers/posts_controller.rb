@@ -6,7 +6,7 @@ class PostsController < InheritedResources::Base
 
   def new
     if params[:answer_id]
-      @post = Answer.find(params[:answer_id]).to_post
+      @post = Answer.find_cached(params[:answer_id]).to_post
     else
       @post = Post.new
       @post.build_post_body
@@ -39,7 +39,7 @@ class PostsController < InheritedResources::Base
     end
 
     def resource
-      @post = Post.find(params[:id])
+      @post = Post.find_cached(params[:id])
     end
 
     def collection

@@ -25,6 +25,10 @@ class Comment < ActiveRecord::Base
 
   paginates_per 10
 
+  model_cache do
+    with_method :user
+  end
+
   def user_name
     user ? user.login : username
   end

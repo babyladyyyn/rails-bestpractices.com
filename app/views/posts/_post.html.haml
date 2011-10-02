@@ -13,5 +13,5 @@
       %span.implemented implemented
   %td.author
     by
-    = link_to post.user.login, user_path(post.user)
-  %td.avatar= image_tag post.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => post.user.login
+    = link_to post.cached_user.login, user_path(post.cached_user)
+  %td.avatar= image_tag post.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => post.cached_user.login

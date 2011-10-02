@@ -1,7 +1,7 @@
 module CommentsHelper
   def comment_user_link(comment)
-    if comment.user
-      link_to comment.user.login, user_path(comment.user)
+    if comment.cached_user
+      link_to comment.cached_user.login, user_path(comment.cached_user)
     else
       comment.username
     end
