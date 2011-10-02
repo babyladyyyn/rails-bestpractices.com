@@ -29,6 +29,9 @@ class Answer < ActiveRecord::Base
 
   delegate :body, :formatted_html, :to => :answer_body
 
+  after_create :expire_question_and_user_cache
+  after_destroy :expire_question_and_user_cache
+
   model_cache do
     with_key
     with_method :formatted_html, :user, :question
@@ -45,6 +48,12 @@ class Answer < ActiveRecord::Base
   def tweet_path
     "questions/#{cached_question.to_param}"
   end
+
+  private
+    def expire_question_and_user_cache
+      cached_question.expire_model_cache
+      cached_user.expire_model_cache
+    end
 
 end
 

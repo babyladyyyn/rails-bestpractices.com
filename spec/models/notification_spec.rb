@@ -26,9 +26,11 @@ describe Notification do
       user = comment.commentable.user
       expect {
         user.notifications.create(:notifierable => comment)
+        user.reload
       }.to change(user, :unread_notification_count).by(1)
       expect {
         user.notifications.create(:notifierable => comment)
+        user.reload
       }.to change(user, :unread_notification_count).by(1)
     end
 
@@ -37,11 +39,14 @@ describe Notification do
       user = comment.commentable.user
       notification1 = user.notifications.create(:notifierable => comment)
       notification2 = user.notifications.create(:notifierable => comment)
+      user.reload
       expect {
         notification1.read!
+        user.reload
       }.to change(user, :unread_notification_count).by(-1)
       expect {
         notification2.read!
+        user.reload
       }.to change(user, :unread_notification_count).by(-1)
     end
 
@@ -50,11 +55,14 @@ describe Notification do
       user = comment.commentable.user
       notification1 = user.notifications.create(:notifierable => comment)
       notification2 = user.notifications.create(:notifierable => comment)
+      user.reload
       expect {
         notification1.destroy
+        user.reload
       }.to change(user, :unread_notification_count).by(-1)
       expect {
         notification2.destroy
+        user.reload
       }.to change(user, :unread_notification_count).by(-1)
     end
 
@@ -63,11 +71,14 @@ describe Notification do
       user = comment.commentable.user
       notification1 = user.notifications.create(:notifierable => comment)
       notification2 = user.notifications.create(:notifierable => comment)
+      user.reload
       expect {
         notification1.read!
+        user.reload
       }.to change(user, :unread_notification_count).by(-1)
       expect {
         notification1.destroy
+        user.reload
       }.to change(user, :unread_notification_count).by(0)
     end
   end

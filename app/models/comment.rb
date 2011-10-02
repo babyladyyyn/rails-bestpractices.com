@@ -26,7 +26,11 @@ class Comment < ActiveRecord::Base
 
   paginates_per 10
 
+  after_create :expire_commentable_and_user_cache
+  after_destroy :expire_commentable_and_user_cache
+
   model_cache do
+    with_key
     with_method :user, :commentable
   end
 
@@ -51,6 +55,12 @@ class Comment < ActiveRecord::Base
       "Blog Post #{commentable.title}"
     end
   end
+
+  private
+    def expire_commentable_and_user_cache
+      cached_commentable.expire_model_cache
+      cached_user.expire_model_cache
+    end
 
 end
 

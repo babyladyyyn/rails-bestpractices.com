@@ -75,6 +75,7 @@ class Post < ActiveRecord::Base
 
   def publish!
     self.update_attribute(:published, true)
+    expie_user_cache
     Delayed::Job.enqueue(DelayedJob::Tweet.new('Post', self.id))
   end
 
@@ -85,6 +86,10 @@ class Post < ActiveRecord::Base
   protected
     def notify_admin
       Delayed::Job.enqueue(DelayedJob::NotifyAdmin.new(self.id))
+    end
+
+    def expire_user_cache
+      cached_user.expire_model_cache
     end
 
 end

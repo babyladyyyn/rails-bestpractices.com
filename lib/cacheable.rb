@@ -78,7 +78,7 @@ module Cacheable
     if indices = self.class.read_inheritable_attribute(:cached_indices)
       indices.each do |attribute, values|
         values.each do |value|
-          Rails.cache.delete self.class.attribute_cache_key(attriubte, value)
+          Rails.cache.delete self.class.attribute_cache_key(attribute, value)
         end
       end
     end

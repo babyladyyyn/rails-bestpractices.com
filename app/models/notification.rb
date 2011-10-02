@@ -24,8 +24,11 @@ class Notification < ActiveRecord::Base
 
   paginates_per 10
 
+  after_create :expire_notify_user_cache
+  after_destroy :expire_notify_user_cache
+
   model_cache do
-    with_method :notifierable
+    with_method :notifierable, :notify_user
   end
 
   def read!
@@ -34,14 +37,13 @@ class Notification < ActiveRecord::Base
   end
 
   private
-
     def increase_notification_count
-      notify_user.increment! :unread_notification_count
+      User.increment_counter(:unread_notification_count, cached_notify_user.id)
     end
 
     def decrease_notification_count
       unless self.read?
-        notify_user.decrement! :unread_notification_count
+        User.decrement_counter(:unread_notification_count, cached_notify_user.id)
       end
     end
 
@@ -51,6 +53,10 @@ class Notification < ActiveRecord::Base
       elsif cached_notifierable.is_a? Answer
         cached_notifierable.cached_question.cached_user
       end
+    end
+
+    def expire_notify_user_cache
+      cached_notify_user.expire_model_cache
     end
 end
 
