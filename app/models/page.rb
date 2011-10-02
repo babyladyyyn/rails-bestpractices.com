@@ -12,7 +12,7 @@
 class Page < ActiveRecord::Base
   validates_presence_of :name
 
-  after_update :expire_cache
-
-  cache_by_attribute :name
+  model_cache do
+    with_attribute :name
+  end
 end

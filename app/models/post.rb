@@ -33,8 +33,6 @@ class Post < ActiveRecord::Base
   scope :published, where(:published => true)
 
   after_create :notify_admin
-  after_update :expire_cache
-
 
   accepts_nested_attributes_for :post_body
 
@@ -57,8 +55,10 @@ class Post < ActiveRecord::Base
     where "published = 1"
   end
 
-  cache_key
-  cache_method :formatted_html, :tags, :related_posts
+  model_cache do
+    with_key
+    with_method :formatted_html, :tags, :related_posts
+  end
 
   def tweet_title
     title

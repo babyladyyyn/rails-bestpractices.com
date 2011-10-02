@@ -50,8 +50,10 @@ class Question < ActiveRecord::Base
     }
   end
 
-  cache_key
-  cache_method :formatted_html, :tags
+  model_cache do
+    with_key
+    with_method :formatted_html, :tags
+  end
 
   def tweet_title
     "Question: #{title}"
