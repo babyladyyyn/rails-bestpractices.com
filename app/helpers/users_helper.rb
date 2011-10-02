@@ -12,8 +12,8 @@ module UsersHelper
   end
 
   def comment_avatar(comment)
-    if comment.user
-      image_tag comment.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => comment.user.login
+    if comment.cached_user
+      image_tag comment.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => comment.cached_user.login
     else
       default_gravatar
     end

@@ -2,7 +2,7 @@
 
 = strip_tags(@comment.body)
 
-View Comment: #{polymorphic_url(@comment.commentable)}
+View Comment: #{polymorphic_url(@comment.cached_commentable)}
 
 
 = render 'unsubscribe', :user => @user

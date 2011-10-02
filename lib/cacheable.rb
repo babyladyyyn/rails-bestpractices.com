@@ -12,7 +12,7 @@ module Cacheable
             after_update :expire_key_cache
 
             def self.find_cached(id)
-              Rails.cache.fetch "#{name.tableize}" + id.to_s do
+              Rails.cache.fetch "#{name.tableize}/" + id.to_i.to_s do
                 self.find(id)
               end
             end
@@ -24,14 +24,15 @@ module Cacheable
             after_update :expire_attribute_cache
           EOF
 
-          write_inheritable_attribute :cached_indices, attributes.inject({}) { |indices, attribute| indices[attribute] = [] }
+          write_inheritable_attribute :cached_indices, attributes.inject({}) { |indices, attribute| indices[attribute] = {} }
           attributes.each do |attribute|
             class_eval <<-EOF
               def self.find_cached_by_#{attribute}(value)
                 indices = read_inheritable_attribute :cached_indices
+                indices["#{attribute}"] ||= []
                 indices["#{attribute}"] << value
-                write_inheritable_attribute :cached_indices
-                Rails.cache.fetch "#{name.tableize}/#{attribute}/" + value.to_s do
+                write_inheritable_attribute :cached_indices, indices
+                Rails.cache.fetch attribute_cache_key("#{attribute}", value) do
                   self.find_by_#{attribute}(value)
                 end
               end
@@ -48,19 +49,19 @@ module Cacheable
           methods.each do |meth|
             class_eval <<-EOF
               def cached_#{meth}
-                Rails.cache.fetch model_key + "/#{meth}" do
+                Rails.cache.fetch method_cache_key("#{meth}") do
                   #{meth}
                 end
               end
             EOF
           end
         end
+
+        def attribute_cache_key(attribute, value)
+          "#{name.tableize}/attribute/#{attribute}/#{value}"
+        end
       end
     end
-  end
-
-  def model_key
-    "#{self.class.name.tableize}/#{self.id}"
   end
 
   def expire_model_cache
@@ -70,14 +71,14 @@ module Cacheable
   end
 
   def expire_key_cache
-    Rails.cache.delete model_key
+    Rails.cache.delete model_cache_key
   end
 
   def expire_attribute_cache
     if indices = self.class.read_inheritable_attribute(:cached_indices)
       indices.each do |attribute, values|
         values.each do |value|
-          Rails.cache.delete "#{self.class.name.tableize}/attribute/#{key}/#{value}"
+          Rails.cache.delete self.class.attribute_cache_key(attriubte, value)
         end
       end
     end
@@ -86,8 +87,16 @@ module Cacheable
   def expire_method_cache
     if meths = self.class.read_inheritable_attribute(:cached_methods)
       meths.each do |meth|
-        Rails.cache.delete "#{model_key}/method/#{meth}"
+        Rails.cache.delete method_cache_key(meth)
       end
     end
+  end
+
+  def model_cache_key
+    "#{self.class.name.tableize}/#{self.id.to_i}"
+  end
+
+  def method_cache_key(meth)
+    "#{model_cache_key}/method/#{meth}"
   end
 end

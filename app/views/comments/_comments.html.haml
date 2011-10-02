@@ -1,8 +1,8 @@
 .comments
   %a{:name => 'comments'}
-  - if parent.comments.size > 1
+  - if parent.comments.present?
     %h3 Comments
-    - parent.comments.includes(:user).each do |comment|
+    - parent.comments.each do |comment|
       - unless comment.new_record?
         .comment
           %p.info

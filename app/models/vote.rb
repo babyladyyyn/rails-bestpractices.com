@@ -21,11 +21,15 @@ class Vote < ActiveRecord::Base
   before_destroy :update_destroy_vote
   after_destroy :expire_voteable_cache
 
+  model_cache do
+    with_method :voteable, :body
+  end
+
   def voteable_name
-    if voteable.is_a? Answer
-      voteable.question.title
+    if cached_voteable.is_a? Answer
+      cached_voteable.cached_question.title
     else
-      voteable.title
+      cached_voteable.title
     end
   end
 

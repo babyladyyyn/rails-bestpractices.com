@@ -30,19 +30,20 @@ class Answer < ActiveRecord::Base
   delegate :body, :formatted_html, :to => :answer_body
 
   model_cache do
-    with_method :formatted_html, :user
+    with_key
+    with_method :formatted_html, :user, :question
   end
 
   def to_post
-    Post.new(:title => self.question.title, :post_body => PostBody.new(:body => self.body), :cached_tag_list => self.question.tag_list)
+    Post.new(:title => self.cached_question.title, :post_body => PostBody.new(:body => self.body), :cached_tag_list => self.cached_question.tag_list)
   end
 
   def tweet_title
-    "Answer for #{question.title}"
+    "Answer for #{cached_question.title}"
   end
 
   def tweet_path
-    "questions/#{question.to_param}"
+    "questions/#{cached_question.to_param}"
   end
 
 end

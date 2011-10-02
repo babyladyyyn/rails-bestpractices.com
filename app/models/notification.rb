@@ -12,6 +12,7 @@
 #
 
 class Notification < ActiveRecord::Base
+  include Cacheable
 
   belongs_to :notifierable, :polymorphic => true
   belongs_to :user
@@ -22,6 +23,10 @@ class Notification < ActiveRecord::Base
   default_scope order('notifications.created_at desc')
 
   paginates_per 10
+
+  model_cache do
+    with_method :notifierable
+  end
 
   def read!
     decrease_notification_count
@@ -41,10 +46,10 @@ class Notification < ActiveRecord::Base
     end
 
     def notify_user
-      if notifierable.is_a? Comment
-        notifierable.commentable.user
-      elsif notifierable.is_a? Answer
-        notifierable.question.user
+      if cached_notifierable.is_a? Comment
+        cached_notifierable.cached_commentable.cached_user
+      elsif cached_notifierable.is_a? Answer
+        cached_notifierable.cached_question.cached_user
       end
     end
 end

@@ -8,21 +8,21 @@ module CommentsHelper
   end
 
   def comment_parent_link(comment)
-    commentable = comment.commentable
+    commentable = comment.cached_commentable
     case commentable
     when Post
       post_url(commentable)
     when Question
       question_url(commentable)
     when Answer
-      question_url(commentable.question)
+      question_url(commentable.cached_question)
     when BlogPost
       blog_post_path(commentable)
     end
   end
 
   def comment_statistics(comment)
-    commentable = comment.commentable
+    commentable = comment.cached_commentable
     case commentable
     when Post
       <<-EOF

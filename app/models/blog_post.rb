@@ -12,11 +12,19 @@
 #
 
 class BlogPost < ActiveRecord::Base
+
   include Commentable
+  include Cacheable
+
   belongs_to :user
 
   validates_presence_of :title, :body
   validates_uniqueness_of :title
+
+  model_cache do
+    with_key
+    with_method :user, :body
+  end
 
   def self.per_page
     5

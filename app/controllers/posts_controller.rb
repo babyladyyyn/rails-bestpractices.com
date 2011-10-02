@@ -39,7 +39,7 @@ class PostsController < InheritedResources::Base
     end
 
     def resource
-      @post = Post.find_cached(params[:id])
+      @post = params[:action] == "update" ? Post.find(params[:id]) : Post.find_cached(params[:id])
     end
 
     def collection

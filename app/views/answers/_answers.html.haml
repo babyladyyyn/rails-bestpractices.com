@@ -1,5 +1,5 @@
 .answers
-  - if question.answers.size > 1
+  - if question.answers.present?
     %h3 Answers
     - question.answers.each do |answer|
       - unless answer.new_record?

@@ -27,23 +27,24 @@ class Comment < ActiveRecord::Base
   paginates_per 10
 
   model_cache do
-    with_method :user
+    with_method :user, :commentable
   end
 
   def user_name
-    user ? user.login : username
+    cached_user ? cached_user.login : username
   end
 
   def user_email
-    user ? user.email : email
+    cached_user ? cached_user.email : email
   end
 
   def parent_name
+    commentable = cached_commentable
     case commentable
     when Question
       "Question #{commentable.title}"
     when Answer
-      "Answer of #{commentable.question.title}"
+      "Answer of #{commentable.cached_question.title}"
     when Post
       "Post #{commentable.title}"
     when BlogPost

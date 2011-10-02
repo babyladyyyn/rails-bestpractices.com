@@ -43,8 +43,7 @@
       - if Rails.env.production?
         .adsense= render 'shared/google_adsense'
 
-      - cache "post/#{@post.id}/comments" do
-        = render 'comments/comments', :parent => @post
+      = render 'comments/comments', :parent => @post
       = render 'comments/comment_form', {:parent => @post, :comment => @comment}
 
 - content_for :js do

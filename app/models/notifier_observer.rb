@@ -11,10 +11,10 @@ class NotifierObserver < ActiveRecord::Observer
 
   private
     def notify(model)
-      if model.is_a? Comment and model.commentable.user != model.user
-        model.commentable.user.notifications.create(:notifierable => model)
-      elsif model.is_a? Answer and model.question.user != model.user
-        model.question.user.notifications.create(:notifierable => model)
+      if model.is_a? Comment && model.cached_commentable.cached_user != model.cached_user
+        model.cached_commentable.cached_user.notifications.create(:notifierable => model)
+      elsif model.is_a? Answer && model.cached_question.cached_user != model.cached_user
+        model.cached_question.cached_user.notifications.create(:notifierable => model)
       end
     end
 

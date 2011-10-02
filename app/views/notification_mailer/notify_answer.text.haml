@@ -1,8 +1,8 @@
-#{@answer.user.login} answer to #{@answer.question.title}
+#{@answer.cached_user.login} answer to #{@answer.cached_question.title}
 
 = @answer.body
 
-View Answer: #{question_url(@answer.question)}
+View Answer: #{question_url(@answer.cached_question)}
 
 
 = render 'unsubscribe', :user => @user

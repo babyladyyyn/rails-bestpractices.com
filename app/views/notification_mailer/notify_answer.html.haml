@@ -1,9 +1,9 @@
-%p= "#{@answer.user.login} answer to #{@answer.question.title}"
+%p= "#{@answer.cached_user.login} answer to #{@answer.cached_question.title}"
 
 %p= @answer.body
 
 %p
   View Answer:
-  = link_to question_url(@answer.question), question_url(@answer.question)
+  = link_to question_url(@answer.cached_question), question_url(@answer.cached_question)
 
 = render 'unsubscribe', :user => @user

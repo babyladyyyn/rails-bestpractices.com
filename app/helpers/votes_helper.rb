@@ -3,7 +3,7 @@ module VotesHelper
     unless current_user
       return link_to 'Like', new_user_session_path(:return_to => request.url), :class => 'like-icon'
     end
-    vote = voteable.vote current_user
+    vote = voteable.cached_vote current_user
     if vote
       if vote.like?
         link_to 'Like', "javascript:alert('You have voted like this best practices!');", :class => 'like-icon active'
@@ -19,7 +19,7 @@ module VotesHelper
     unless current_user
       return link_to 'Dislike', new_user_session_path(:return_to => request.url), :class => 'dislike-icon'
     end
-    vote = voteable.vote current_user
+    vote = voteable.cached_vote current_user
     if vote
       if vote.like?
         button_to 'Dislike', polymorphic_path([voteable, vote]), :method => :delete, :class => 'dislike-icon'
@@ -33,9 +33,9 @@ module VotesHelper
 
   def voteable_link(vote)
     if vote.voteable.is_a? Answer
-      question_path(vote.voteable.question)
+      question_path(vote.cached_voteable.cached_question)
     else
-      polymorphic_path(vote.voteable)
+      polymorphic_path(vote.cached_voteable)
     end
   end
 end

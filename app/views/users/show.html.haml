@@ -34,12 +34,12 @@
     - if @children.empty?
       .empty No Such Rails Best Practices
     - else
-      %table.posts= render @children.includes(:user, :tags)
+      %table.posts= render @children
   - when 'questions'
-    = render 'questions/questions', :questions => @children.includes(:user, :tags)
+    = render 'questions/questions', :questions => @children
   - when 'answers'
-    = render 'users/answers', :answers => @children.includes(:question => [:user, :tags])
+    = render 'users/answers', :answers => @children
   - when 'comments'
-    = render 'users/comments', :comments => @children.includes(:commentable => :user)
+    = render 'users/comments', :comments => @children
   - when 'votes'
-    = render 'users/votes', :votes => @children.includes(:voteable => :user)
+    = render 'users/votes', :votes => @children

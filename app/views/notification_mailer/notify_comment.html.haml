@@ -4,6 +4,6 @@
 
 %p
   View Comment:
-  = link_to polymorphic_url(@comment.commentable), polymorphic_url(@comment.commentable)
+  = link_to polymorphic_url(@comment.cached_commentable), polymorphic_url(@comment.cached_commentable)
 
 = render 'unsubscribe', :user => @user

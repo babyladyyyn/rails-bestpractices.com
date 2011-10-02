@@ -6,5 +6,5 @@
         %p.title= link_to comment.parent_name, comment_parent_link(comment)
       %td.author
         by
-        = link_to comment.commentable.user.login, user_path(comment.commentable.user)
-      %td.avatar= image_tag comment.commentable.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => comment.commentable.user.login
+        = link_to comment.cached_commentable.cached_user.login, user_path(comment.cached_commentable.cached_user)
+      %td.avatar= image_tag comment.cached_commentable.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => comment.cached_commentable.cached_user.login
