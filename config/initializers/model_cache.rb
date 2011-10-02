@@ -55,11 +55,14 @@ ActiveRecord::FinderMethods.class_eval do
   end
 
   def find_by_attributes_with_cache(match, attributes, *args)
-    cache_key = "#{name.tableize}/#{attributes.zip(args).flatten.join('/')}/#{match.finder}"
-    model_cache.fetch(cache_key) do
-      indices = read_inheritable_attribute :indices
-      indices[attributes[0]] << match.finder
-      write_inheritable_attribute :indices, indices
+    if indices = read_inheritable_attribute(:indices)
+      cache_key = "#{name.tableize}/#{attributes.zip(args).flatten.join('/')}/#{match.finder}"
+      model_cache.fetch(cache_key) do
+        indices[attributes[0]] << match.finder
+        write_inheritable_attribute :indices, indices
+        find_by_attributes_without_cache(match, attributes, args)
+      end
+    else
       find_by_attributes_without_cache(match, attributes, args)
     end
   end

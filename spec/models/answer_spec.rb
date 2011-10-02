@@ -35,7 +35,7 @@ describe Answer do
   describe 'converting to a post' do
 
     let(:question) { Factory(:question, :tag_list => 'tests', :title => 'Howto write awesome tests') }
-    let(:answer) { Factory(:answer, :question => question, :answer_body => Factory(:answer_body, :body => '(empty)')) }
+    let(:answer) { Factory(:answer, :question => question, :answer_body => Factory(:answer_body)) }
 
     it "should use question's title as post title" do
       answer.to_post.title.should == question.title

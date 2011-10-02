@@ -2,6 +2,8 @@
 
 .command
   = link_to 'Share', new_post_path, :class => 'share-button'
+  = current_user.id
+  = @post.user_id
   - if can? :update, @post
     = link_to 'Edit', edit_post_path(@post)
 
