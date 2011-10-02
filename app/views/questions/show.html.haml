@@ -16,16 +16,16 @@
       = vote_dislike_link(@question)
     %td.question-info
       %p
-        = image_tag @question.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @question.user.login
+        = image_tag @question.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @question.cached_user.login
         Posted by
-        = link_to @question.user.login, user_path(@question.user)
+        = link_to @question.cached_user.login, user_path(@question.cached_user)
         on
         = l(@question.created_at.to_date)
 
-      .wikistyle= raw @question.formatted_html
+      .wikistyle= raw @question.cached_formatted_html
 
       .tags
-        - @question.tags.each do |tag|
+        - @question.cached_tags.each do |tag|
           = link_to tag.name, tag_path(tag.name)
 
       = render 'comments/short_comments', :comments => @question.comments

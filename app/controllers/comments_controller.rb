@@ -28,13 +28,13 @@ class CommentsController < InheritedResources::Base
   private
     def parent
       if params[:question_id]
-        @question = Question.find(params[:question_id])
+        @question = Question.find_cached(params[:question_id])
       elsif params[:answer_id]
-        @answer = Answer.find(params[:answer_id])
+        @answer = Answer.find_cached(params[:answer_id])
       elsif params[:post_id]
-        @post = Post.find(params[:post_id])
+        @post = Post.find_cached(params[:post_id])
       elsif params[:blog_post_id]
-        @blog_post = BlogPost.find(params[:blog_post_id])
+        @blog_post = BlogPost.find_cached(params[:blog_post_id])
       end
     end
 
@@ -42,7 +42,7 @@ class CommentsController < InheritedResources::Base
       if params[:question_id]
         question_path(@question)
       elsif params[:answer_id]
-        question_path(@answer.question)
+        question_path(@answer.cached_question)
       elsif params[:post_id]
         post_path(@post)
       elsif params[:blog_post_id]

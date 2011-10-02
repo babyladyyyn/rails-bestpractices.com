@@ -21,11 +21,11 @@ class VotesController < InheritedResources::Base
 
     def parent
       if params[:post_id]
-        @post ||= Post.find(params[:post_id])
+        @post ||= Post.find_cached(params[:post_id])
       elsif params[:question_id]
-        @question ||= Question.find(params[:question_id])
+        @question ||= Question.find_cached(params[:question_id])
       elsif params[:answer_id]
-        @answer ||= Answer.find(params[:answer_id])
+        @answer ||= Answer.find_cached(params[:answer_id])
       end
     end
 
@@ -35,7 +35,7 @@ class VotesController < InheritedResources::Base
       elsif params[:question_id]
         question_path(@question)
       elsif params[:answer_id]
-        question_path(@answer.question)
+        question_path(@answer.cached_question)
       end
     end
 end

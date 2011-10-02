@@ -33,6 +33,10 @@ Spork.prefork do
 
     config.include(EmailSpec::Helpers)
     config.include(EmailSpec::Matchers)
+
+    config.after do
+      Rails.cache.clear
+    end
   end
 end
 

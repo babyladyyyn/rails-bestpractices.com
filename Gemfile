@@ -14,7 +14,7 @@ gem "formtastic", "~> 1.1.0"
 gem "has_scope", "~> 0.5.0"
 gem "inherited_resources", "~> 1.1.2"
 gem 'exception_notification', :require => 'exception_notifier'
-gem "acts-as-taggable-on", "~> 2.0.6"
+gem "acts-as-taggable-on"
 gem "rdiscount"
 gem "gravtastic", "~> 3.0.0"
 gem "css_sprite", "~> 1.4.9"
@@ -30,10 +30,11 @@ gem "delayed_job"
 gem "switch_user", "~> 0.6.0"
 gem "backup", "~> 2.4.4"
 gem "escape_utils"
-gem "dalli"
 gem "newrelic_rpm"
 gem "rails_admin", :git => 'git://github.com/sferik/rails_admin.git', :branch => "rails-3.0"
 gem "nokogiri"
+gem "memcache-client"
+gem "memcached"
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'

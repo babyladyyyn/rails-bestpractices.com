@@ -9,7 +9,7 @@ class QuestionsController < InheritedResources::Base
   end
 
   show! do |format|
-    @question.increment!(:view_count)
+    Question.increment_counter(:view_count, @question.id)
     @answer = @question.answers.build(:answer_body => AnswerBody.new)
   end
 
@@ -19,13 +19,12 @@ class QuestionsController < InheritedResources::Base
     end
 
     def resource
-      @question = Question.find(params[:id])
+      @question = params[:action] == "update" ? Question.find(params[:id]) : Question.find_cached(params[:id])
     end
 
     def collection
-      @questions = Question.includes(:user, :tags)
+      @questions = Question.order(nav_order).page(params[:page].to_i)
       @questions = @questions.where(:answers_count => 0) if params[:nav] == 'not_answered'
-      @questions = @questions.order(nav_order).page(params[:page].to_i)
     end
 
     def nav_order

@@ -1,5 +1,5 @@
 .answers
-  - if question.answers.size > 1
+  - if question.answers.present?
     %h3 Answers
     - question.answers.each do |answer|
       - unless answer.new_record?
@@ -17,12 +17,12 @@
                   = link_to 'Share', new_post_path(:answer_id => answer.id)
               .answer-info
                 %p
-                  = image_tag answer.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => answer.user.login
+                  = image_tag answer.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => answer.cached_user.login
                   Answered by
-                  = link_to answer.user.login, user_path(answer.user)
+                  = link_to answer.cached_user.login, user_path(answer.cached_user)
                   on
                   = l(answer.created_at.to_date)
 
-                .wikistyle= raw answer.formatted_html
+                .wikistyle= raw answer.cached_formatted_html
                 = render 'comments/short_comments', :comments => answer.comments
                 = render 'comments/short_comment_form', :parent => answer

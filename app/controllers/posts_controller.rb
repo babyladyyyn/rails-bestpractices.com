@@ -6,29 +6,10 @@ class PostsController < InheritedResources::Base
 
   def new
     if params[:answer_id]
-      @post = Answer.find(params[:answer_id]).to_post
+      @post = Answer.find_cached(params[:answer_id]).to_post
     else
       @post = Post.new
-      @post.build_post_body(:body => " Before
-------
-
-description
-
-    # some codes
-    # before
-
-description
-
-Refactor
---------
-
-description
-
-    # somes codes
-    # after refactor
-
-description
-")
+      @post.build_post_body
     end
   end
 
@@ -38,7 +19,7 @@ description
       return false
     end
     show! do |format|
-      @post.increment!(:view_count)
+      Post.increment_counter(:view_count, @post.id)
       @comment = @post.comments.build
     end
   end
@@ -58,11 +39,11 @@ description
     end
 
     def resource
-      @post = Post.find(params[:id])
+      @post = params[:action] == "update" ? Post.find(params[:id]) : Post.find_cached(params[:id])
     end
 
     def collection
-      @posts = Post.published.includes(:user, :tags)
+      @posts = Post.published
       @posts = @posts.where(:implemented => true) if params[:nav] == 'implemented'
       @posts = @posts.order(nav_order).page(params[:page].to_i)
     end

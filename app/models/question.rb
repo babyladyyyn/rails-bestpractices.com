@@ -20,8 +20,8 @@ class Question < ActiveRecord::Base
   include UserOwnable
   include Voteable
   include Commentable
-
-  acts_as_taggable
+  include CacheTaggable
+  include Cacheable
 
   has_many :answers, :dependent => :destroy
   has_one :question_body
@@ -31,7 +31,8 @@ class Question < ActiveRecord::Base
 
   scope :not_answered, where(:answers_count => 0)
 
-  after_create :tweet_it
+  after_create :tweet_it, :expire_user_cache
+  after_destroy :expire_user_cache
 
   accepts_nested_attributes_for :question_body
 
@@ -51,6 +52,11 @@ class Question < ActiveRecord::Base
     }
   end
 
+  model_cache do
+    with_key
+    with_method :formatted_html, :tags, :user
+  end
+
   def tweet_title
     "Question: #{title}"
   end
@@ -66,6 +72,10 @@ class Question < ActiveRecord::Base
   protected
     def tweet_it
       Delayed::Job.enqueue(DelayedJob::Tweet.new('Question', self.id))
+    end
+
+    def expire_user_cache
+      cached_user.expire_model_cache
     end
 
 end

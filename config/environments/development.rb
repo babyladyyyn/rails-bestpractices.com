@@ -16,10 +16,12 @@ RailsBestpracticesCom::Application.configure do
 
   config.active_support.deprecation = :log
 
+  config.cache_store = ActiveSupport::Cache::MemCacheStore.new(Memcached::Rails.new("localhost:11211", :namespace => "railsbp", :logger => Rails.logger))
+
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 
-  config.active_record.observers = :notifier_observer
+  config.active_record.observers = :notifier_observer, :job_sweeper
 
   config.action_mailer.default_url_options = { :host => "rails-bestpractices.com" }
 

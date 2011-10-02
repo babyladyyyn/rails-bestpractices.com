@@ -4,6 +4,8 @@ class JobsController < InheritedResources::Base
   before_filter :require_partner, :only => :partner
   respond_to :xml, :only => :index
 
+  caches_action :show
+
   create! do |success, failure|
     success.html { redirect_to posts_path }
     failure.html { render :new }

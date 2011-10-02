@@ -4,9 +4,9 @@
   %h2= link_to @blog_post.title, blog_post_path(@blog_post)
   = render 'shared/addthis'
   %p.author
-    = image_tag @blog_post.user.gravatar_url(:size => 16, :default => 'mm'), :class => 'user-avatar', :alt => @blog_post.user.login
+    = image_tag @blog_post.cached_user.gravatar_url(:size => 16, :default => 'mm'), :class => 'user-avatar', :alt => @blog_post.cached_user.login
     Posted by
-    = link_to @blog_post.user.login, user_path(@blog_post.user)
+    = link_to @blog_post.cached_user.login, user_path(@blog_post.cached_user)
     on
     = l(@blog_post.created_at.to_date)
   .body= raw @blog_post.body

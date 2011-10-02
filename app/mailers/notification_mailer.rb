@@ -19,21 +19,21 @@ class NotificationMailer < ActionMailer::Base
 
   def notify_comment(email, comment)
     @comment = comment
-    @user = User.find_by_email(email)
+    @user = User.find_cached_by_email(email)
     mail(:to => email,
          :subject => "Comment on #{comment.parent_name}")
   end
 
   def notify_answer(email, answer)
     @answer = answer
-    @user = User.find_by_email(email)
+    @user = User.find_cached_by_email(email)
     mail(:to => email,
-         :subject => "Answer to #{answer.question.title}")
+         :subject => "Answer to #{answer.cached_question.title}")
   end
 
   def notify_admin(post)
     @post = post
-    @user = post.user
+    @user = post.cached_user
     mail(:to => 'flyerhzm@gmail.com',
          :subject => "#{@user.login} post a best practice")
   end

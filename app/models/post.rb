@@ -22,8 +22,8 @@ class Post < ActiveRecord::Base
   include UserOwnable
   include Voteable
   include Commentable
-
-  acts_as_taggable
+  include CacheTaggable
+  include Cacheable
 
   has_one :post_body
 
@@ -56,6 +56,11 @@ class Post < ActiveRecord::Base
     where "published = 1"
   end
 
+  model_cache do
+    with_key
+    with_method :formatted_html, :tags, :related_posts, :user
+  end
+
   def tweet_title
     title
   end
@@ -68,18 +73,23 @@ class Post < ActiveRecord::Base
     "#{id}-#{title.parameterize}"
   end
 
-  def related_posts
-    Post.select('id, title').where(['id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true)
-  end
-
   def publish!
     self.update_attribute(:published, true)
+    expire_user_cache
     Delayed::Job.enqueue(DelayedJob::Tweet.new('Post', self.id))
+  end
+
+  def related_posts
+    Post.where(['posts.id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true).all
   end
 
   protected
     def notify_admin
       Delayed::Job.enqueue(DelayedJob::NotifyAdmin.new(self.id))
+    end
+
+    def expire_user_cache
+      cached_user.expire_model_cache
     end
 
 end

@@ -6,7 +6,7 @@ class UsersController < Devise::RegistrationsController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_cached(params[:id])
     if params[:id] != @user.to_param
       redirect_to user_path(@user), :status => 301
     else

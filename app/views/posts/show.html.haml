@@ -18,26 +18,26 @@
     %td
       = render 'shared/addthis'
       %p
-        = image_tag @post.user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @post.user.login
+        = image_tag @post.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @post.cached_user.login
         Posted by
-        = link_to @post.user.login, user_path(@post.user)
+        = link_to @post.cached_user.login, user_path(@post.cached_user)
         on
         = l(@post.created_at.to_date)
       .description
         .point-to-icon
         %p= @post.description
-      .wikistyle= raw @post.formatted_html
+      .wikistyle= raw @post.cached_formatted_html
       - if @post.implemented?
         %span.implemented implemented
       .tags
         %strong tags:
-        - @post.tags.each do |tag|
+        - @post.cached_tags.each do |tag|
           = link_to tag.name, tag_path(tag.name)
-      - if @post.related_posts.present?
+      - if @post.cached_related_posts.present?
         .related_posts
           %strong related best practices:
           %ul
-            - @post.related_posts.each do |rp|
+            - @post.cached_related_posts.each do |rp|
               %li= link_to rp.title, post_path(rp)
 
       - if Rails.env.production?

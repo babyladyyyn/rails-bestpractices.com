@@ -29,6 +29,9 @@
 #
 
 class User < ActiveRecord::Base
+
+  include Cacheable
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :login, :email, :password, :password_confirmation, :url
@@ -47,6 +50,11 @@ class User < ActiveRecord::Base
   has_many :jobs
 
   accepts_nested_attributes_for :notification_settings
+
+  model_cache do
+    with_key
+    with_attribute :email
+  end
 
   def name
     self.login

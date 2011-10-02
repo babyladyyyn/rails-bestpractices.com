@@ -14,35 +14,46 @@
 class Vote < ActiveRecord::Base
 
   include UserOwnable
+  include Cacheable
 
-  belongs_to :voteable, :polymorphic => true, :touch => true
-  after_create :update_create_vote
+  belongs_to :voteable, :polymorphic => true
+  after_create :update_create_vote, :expire_voteable_and_user_cache
   before_destroy :update_destroy_vote
+  after_destroy :expire_voteable_and_user_cache
+
+  model_cache do
+    with_method :voteable, :user
+  end
 
   def voteable_name
-    if voteable.is_a? Answer
-      voteable.question.title
+    if cached_voteable.is_a? Answer
+      cached_voteable.cached_question.title
     else
-      voteable.title
+      cached_voteable.title
     end
   end
 
   private
-
     def update_create_vote
       if like?
-        voteable.increment!(:vote_points)
+        voteable_type.constantize.increment_counter(:vote_points, voteable_id)
       else
-        voteable.decrement!(:vote_points)
+        voteable_type.constantize.decrement_counter(:vote_points, voteable_id)
       end
     end
 
     def update_destroy_vote
       if like?
-        voteable.decrement!(:vote_points)
+        voteable_type.constantize.decrement_counter(:vote_points, voteable_id)
       else
-        voteable.increment!(:vote_points)
+        voteable_type.constantize.increment_counter(:vote_points, voteable_id)
       end
+    end
+
+    def expire_voteable_and_user_cache
+      cached_voteable.expire_vote_cache
+      cached_voteable.expire_model_cache
+      cached_user.expire_model_cache
     end
 
 end
