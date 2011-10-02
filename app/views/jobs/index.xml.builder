@@ -10,7 +10,7 @@ xml.rss(:version => '2.0') do
       xml.item do
         xml.title "#{job.title} (#{job.location})"
         xml.description job.description
-        xml.author job.cached_user.try(:login)
+        xml.author job.user.try(:login)
         xml.pubDate job.created_at
         xml.link job_url(job)
         xml.guid job_url(job)
