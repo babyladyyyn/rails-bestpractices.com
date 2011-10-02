@@ -46,7 +46,7 @@ RailsBestpracticesCom::Application.configure do
 
   config.active_support.deprecation = :notify
 
-  config.active_record.observers = :notifier_observer
+  config.active_record.observers = :notifier_observer, :job_sweeper
 
   config.action_mailer.delivery_method = :smtp
 
