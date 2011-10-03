@@ -11,7 +11,7 @@ Given %r{^I fill in "([^"]*)" with "([^"]*)" under "([^"]*)"$} do |field, value,
 end
 
 Given %r{^I am already signed in as "([^"]*)"$} do |someone|
-  user = Factory.build(someone)
+  user = FactoryGirl.build(someone)
   Given "#{someone} exists" rescue nil
   And %|I go to sign in page|
   And %|I fill in "Login" with "#{user.login}"|

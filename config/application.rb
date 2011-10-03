@@ -11,7 +11,7 @@ module RailsBestpracticesCom
     config.generators do |g|
       g.template_engine :haml
       g.test_framework :rspec, :fixture => false, :views => false
-      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+      g.fixture_replacement :factory_girl
     end
 
     # Settings in config/environments/* take precedence over those specified here.
