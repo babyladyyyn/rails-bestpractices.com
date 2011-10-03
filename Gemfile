@@ -64,7 +64,7 @@ group :cucumber do
   gem "cucumber"
   gem "cucumber-rails"
   gem "capybara", "= 0.3.9"
-  gem "database_cleaner", "~> 0.6.0.rc3"
+  gem "database_cleaner"
   gem "launchy"
-  gem "pickle", "~> 0.4.2"
+  gem "pickle"
 end
