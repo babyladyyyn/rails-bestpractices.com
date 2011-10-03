@@ -1,4 +1,5 @@
 @import "partials/wikistyle";
+@import "partials/adsense";
 
 .blog_post {
   margin-bottom: 40px;
@@ -18,5 +19,8 @@
   }
   .body {
     @include wikistyle;
+  }
+  .adsense {
+    @include adsense;
   }
 }
