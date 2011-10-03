@@ -102,6 +102,10 @@ Spork.prefork do
       'token' => 'abcdefg',
     }
   }
+
+  Before do
+    Rails.cache.clear
+  end
 end
 
 Spork.each_run do
