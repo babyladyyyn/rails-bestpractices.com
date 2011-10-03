@@ -1,104 +1,106 @@
-Factory.define :answer do |p|
-  p.association :user
-  p.association :question
-  p.association :answer_body
-end
+FactoryGirl.define do
+  factory :answer do
+    association :user
+    association :question
+    association :answer_body
+  end
 
-Factory.define :answer_body do |ab|
-  ab.body "answer"
-end
+  factory :answer_body do
+    body "answer"
+  end
 
-Factory.define :comment do |p|
-  p.association :user
-  p.association :commentable, :factory => :post
-  p.body '(sample comment)'
-end
+  factory :comment do
+    association :user
+    association :commentable, :factory => :post
+    body '(sample comment)'
+  end
 
-Factory.define :notification_setting do |n|
-  n.association :user
-end
+  factory :notification_setting do
+    association :user
+  end
 
-Factory.define :notification do |n|
-  n.association :user
-  n.association :notifierable, :factory => :comment
-  n.read false
-end
+  factory :notification do
+    association :user
+    association :notifierable, :factory => :comment
+    read false
+  end
 
-Factory.define :page do |p|
-  p.sequence(:name) {|n| "Page #{n}" }
-  p.body "name\n=======\nbody\n-----"
-end
+  factory :page do
+    sequence(:name) {|n| "Page #{n}" }
+    body "name\n=======\nbody\n-----"
+  end
 
-Factory.define :post_body do |pb|
-  pb.body "subject\n=======\ntitle\n-----"
-end
+  factory :post_body do
+    body "subject\n=======\ntitle\n-----"
+  end
 
-Factory.define :code_post_body, :parent => :post_body do |pb|
-  pb.body "subject\n=======\ntitle\n-----\n    def test\n      puts 'test'\n    end"
-end
+  factory :code_post_body, :parent => :post_body do
+    body "subject\n=======\ntitle\n-----\n    def test\n      puts 'test'\n    end"
+  end
 
-Factory.define :post do |p|
-  p.sequence(:title) {|n| "Post #{n}" }
-  p.association :user
-  p.published true
-  p.association :post_body
-end
+  factory :post do
+    sequence(:title) {|n| "Post #{n}" }
+    association :user
+    published true
+    association :post_body
+  end
 
-Factory.define :code_post, :parent => :post do |p|
-  p.sequence(:title) {|n| "Code Post #{n}" }
-  p.association :post_body, :factory => :code_post_body
-end
+  factory :code_post, :parent => :post do
+    sequence(:title) {|n| "Code Post #{n}" }
+    association :post_body, :factory => :code_post_body
+  end
 
-Factory.define :question do |q|
-  q.sequence(:title) {|n| "Question #{n}" }
-  q.association :user
-end
+  factory :question do
+    sequence(:title) {|n| "Question #{n}" }
+    association :user
+  end
 
-Factory.define :question_body do |qb|
-  qb.body "subject\n=======\ntitle\n-----"
-end
+  factory :question_body do
+    body "subject\n=======\ntitle\n-----"
+  end
 
-Factory.define :code_question, :parent => :question do |q|
-  q.sequence(:title) {|n| "Code Question #{n}" }
-  q.association :user
-end
+  factory :code_question, :parent => :question do
+    sequence(:title) {|n| "Code Question #{n}" }
+    association :user
+  end
 
-Factory.define :code_question_body, :parent => :question_body do |qb|
-  qb.body "subject\n=======\ntitle\n-----\n    def test\n      puts 'test'\n    end"
-end
+  factory :code_question_body, :parent => :question_body do
+    body "subject\n=======\ntitle\n-----\n    def test\n      puts 'test'\n    end"
+  end
 
-Factory.define :sponsor do |s|
-  s.sequence(:name) {|n| "Sponsor #{n}" }
-  s.sequence(:website_url) {|n| "http://sponsor#{n}.com" }
-  s.sequence(:image_url) {|n| "/images/sponsor#{n}.png" }
-end
+  factory :sponsor do
+    sequence(:name) {|n| "Sponsor #{n}" }
+    sequence(:website_url) {|n| "http://sponsor#{n}.com" }
+    sequence(:image_url) {|n| "/images/sponsor#{n}.png" }
+  end
 
-Factory.define :user do |u|
-  u.sequence(:login) {|i| "user#{i}" }
-  u.password {|u| u.login.size < 6 ? u.login * 2 : u.login }
-  u.password_confirmation {|u| u.password }
-  u.email {|u| "#{u.login}@gmail.com" }
-end
+  factory :user do
+    sequence(:login) {|i| "user#{i}" }
+    password {|u| u.login.size < 6 ? u.login * 2 : u.login }
+    password_confirmation {|u| u.password }
+    email {|u| "#{u.login}@gmail.com" }
+  end
 
-Factory.define :flyerhzm, :parent => :user do |u|
-  u.login "flyerhzm"
-  u.password "flyerhzm"
-  u.password_confirmation "flyerhzm"
-  u.email "flyerhzm@gmail.com"
-end
+  factory :flyerhzm, :parent => :user do
+    login "flyerhzm"
+    password "flyerhzm"
+    password_confirmation "flyerhzm"
+    email "flyerhzm@gmail.com"
+  end
 
-Factory.define :richard, :parent => :user do |u|
-  u.login "richard"
-  u.email "richard@ekohe.com"
-  u.password "richard"
-  u.password_confirmation "richard"
-end
+  factory :richard, :parent => :user do
+    login "richard"
+    email "richard@ekohe.com"
+    password "richard"
+    password_confirmation "richard"
+  end
 
-Factory.define :invalid_user, :class => User do |u|
-end
+  factory :invalid_user, :class => User do
+  end
 
-Factory.define :vote do |p|
-  p.association :user
-  p.association :voteable, :factory => :post
-  p.sequence(:like) {|n| [false,true][n%2] }
+  factory :vote do
+    association :user
+    association :voteable, :factory => :post
+    sequence(:like) {|n| [false,true][n%2] }
+  end
 end
