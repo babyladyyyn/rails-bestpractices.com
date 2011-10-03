@@ -34,3 +34,6 @@
   .apply_by
     %span.label Apply by Email
     %p= @job.apply_email
+
+  - if Rails.env.production?
+    .adsense= render 'shared/google_adsense'

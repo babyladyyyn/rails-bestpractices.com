@@ -26,3 +26,4 @@ config/sphinx.yml
 public/javascripts/base_packaged.js
 public/stylesheets/base_packaged.css
 ERD.pdf
+log/newrelic_agent_store.db
