@@ -24,11 +24,16 @@ role :app, "rails-bestpractices.com"
 role :db,  "rails-bestpractices.com", :primary => true
 
 after "deploy:update_code", "config:init"
-after 'deploy:update_code', "asset:init"
+after "deploy:update_code", "asset:init"
+after "deploy:update_code", "asset:revision"
 
 namespace :asset do
   task :init do
     run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} css_sprite:build"
+  end
+
+  task :revision do
+    run "git ls-remote origin master | awk '{print $1}' > #{release_path}/public/REVISION"
   end
 end
 
