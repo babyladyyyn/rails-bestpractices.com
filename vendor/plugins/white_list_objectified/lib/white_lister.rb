@@ -1,19 +1,19 @@
 class WhiteLister
-  
+
   attr_reader :protocol_attributes, :protocol_separator
   attr_reader :bad_tags, :tags, :attributes, :protocols
-  
+
   BAD_TAGS   = %w( script )
-  TAGS       = %w( strong em b i p code pre tt output samp kbd 
-                   var sub sup dfn cite big small address hr 
-                   br div span h1 h2 h3 h4 h5 h6  ul ol li 
-                   dt dd abbr acronym a img blockquote 
+  TAGS       = %w( strong em b i p code pre tt output samp kbd
+                   var sub sup dfn cite big small address hr
+                   br div span h1 h2 h3 h4 h5 h6  ul ol li
+                   dt dd abbr acronym a img blockquote
                    del ins fieldset legend )
-  ATTRIBUTES = %w( href src width height alt cite datetime 
+  ATTRIBUTES = %w( href src width height alt cite datetime
                    title class )
-  PROTOCOLS  = %w( ed2k ftp http https irc mailto news 
+  PROTOCOLS  = %w( ed2k ftp http https irc mailto news
                    gopher nntp telnet webcal xmpp callto feed )
-  
+
   def initialize
     @protocol_attributes = Set.new %w(src href)
     @protocol_separator  = /:|(&#0*58)|(&#x70)|(%|&#37;)3A/
@@ -21,18 +21,18 @@ class WhiteLister
     @tags       = TAGS.to_set
     @attributes = ATTRIBUTES.to_set
     @protocols  = PROTOCOLS.to_set
-    @default_bad_tag_handler = lambda do |node, bad| 
+    @default_bad_tag_handler = lambda do |node, bad|
       @bad_tags.include?(bad) ? nil : node.to_s.gsub(/</, '&lt;')
     end
     @default_white_tag_handler = lambda { |node| node }
   end
-  
+
   def white_list(html, options = {}, &block)
     return html if html.blank? || !html.include?('<')
     attrs   = Set.new(options[:attributes]).merge(@attributes)
     tags    = Set.new(options[:tags]      ).merge(@tags)
     block ||= @default_bad_tag_handler
-    returning [] do |new_text|
+    [].tap do |new_text|
       tokenizer = HTML::Tokenizer.new(html)
       bad       = nil
       while token = tokenizer.next
@@ -63,7 +63,7 @@ class WhiteLister
       end
     end.join
   end
-  
+
 protected
 
   def contains_bad_protocols?(value)

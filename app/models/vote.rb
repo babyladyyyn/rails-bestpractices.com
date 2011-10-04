@@ -26,7 +26,7 @@ class Vote < ActiveRecord::Base
   after_destroy :expire_voteable_and_user_cache
 
   model_cache do
-    with_method :voteable, :user
+    with_association :voteable, :user
   end
 
   def voteable_name

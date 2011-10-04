@@ -57,6 +57,22 @@ module Cacheable
           end
         end
 
+        def with_association(*association_names)
+          association_names.each do |association_name|
+            association = reflect_on_association(association_name)
+            if :belongs_to == association.macro
+              polymorphic = association.options[:polymorphic]
+              class_eval <<-EOF
+                def cached_#{association_name}
+                  Rails.cache.fetch association_cache_key("#{association_name}", #{polymorphic}) do
+                    #{association_name}
+                  end
+                end
+              EOF
+            end
+          end
+        end
+
         def attribute_cache_key(attribute, value)
           "#{name.tableize}/attribute/#{attribute}/#{value}"
         end
@@ -98,5 +114,13 @@ module Cacheable
 
   def method_cache_key(meth)
     "#{model_cache_key}/method/#{meth}"
+  end
+
+  def association_cache_key(name, polymorphic=nil)
+    if polymorphic
+      "#{self.send("#{name}_type").tableize}/#{self.send("#{name}_id")}"
+    else
+      "#{name.tableize}/#{self.send(name + "_id")}"
+    end
   end
 end
