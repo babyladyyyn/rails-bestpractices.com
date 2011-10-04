@@ -20,7 +20,7 @@ class Answer < ActiveRecord::Base
   include Commentable
   include Cacheable
 
-  belongs_to :question, :counter_cache => true, :touch => true
+  belongs_to :question, :counter_cache => true
   has_one :answer_body
 
   accepts_nested_attributes_for :answer_body
