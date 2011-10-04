@@ -28,7 +28,8 @@ class Notification < ActiveRecord::Base
   after_destroy :expire_notify_user_cache
 
   model_cache do
-    with_method :notifierable, :notify_user
+    with_method :notify_user
+    with_association :notifierable
   end
 
   def read!

@@ -31,7 +31,7 @@ class Comment < ActiveRecord::Base
 
   model_cache do
     with_key
-    with_method :user, :commentable
+    with_association :user, :commentable
   end
 
   def user_name
