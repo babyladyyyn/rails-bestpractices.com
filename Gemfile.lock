@@ -305,6 +305,8 @@ GEM
       ffi (>= 0.6.1)
       json_pure
       rubyzip
+    simple_cacheable (1.0.0)
+      rails (>= 3.0.0)
     simple_oauth (0.1.5)
     sitemap_generator (0.3.3)
     spork (0.9.0.rc4)
@@ -388,6 +390,7 @@ DEPENDENCIES
   remarkable_activerecord (= 4.0.0.alpha4)
   rspec (~> 2.1.0)
   rspec-rails (~> 2.1.0)
+  simple_cacheable
   sitemap_generator (~> 0.3.3)
   spork (= 0.9.0.rc4)
   sqlite3-ruby

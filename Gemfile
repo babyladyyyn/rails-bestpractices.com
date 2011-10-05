@@ -35,6 +35,7 @@ gem "rails_admin", :git => 'git://github.com/sferik/rails_admin.git', :branch =>
 gem "nokogiri"
 gem "memcache-client"
 gem "memcached"
+gem "simple_cacheable", :require => "cacheable"
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'
