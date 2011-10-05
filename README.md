@@ -5,6 +5,11 @@ The rails-bestpractices.com is in progress. It is aimed to get the rails best pr
 
 If you have interests to join the development, please contact me: flyerhzm@gmail.com.
 
+rails_best_practices gem
+-----------------------
+
+<https://github.com/flyerhzm/rails_best_practices>
+
 Setup
 -----
 
