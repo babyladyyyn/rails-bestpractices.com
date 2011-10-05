@@ -33,7 +33,7 @@ namespace :asset do
   end
 
   task :revision do
-    run "git ls-remote origin master | awk '{print $1}' > #{release_path}/public/REVISION"
+    run "cd #{release_path}; git ls-remote origin master | awk '{print $1}' > #{release_path}/public/REVISION"
   end
 end
 
