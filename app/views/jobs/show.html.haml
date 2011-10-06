@@ -18,7 +18,7 @@
 
   .type
     %span.label Type:
-    = @job.job_types.collect(&:name).join(", ")
+    = @job.cached_job_type_names.join(", ")
 
   - if @job.address
     .clear

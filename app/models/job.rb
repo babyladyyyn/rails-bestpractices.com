@@ -1,4 +1,6 @@
 class Job < ActiveRecord::Base
+  include Cacheable
+
   has_many :job_job_types
   has_many :job_types, :through => :job_job_types, :source => :job_type
   belongs_to :user
@@ -9,6 +11,11 @@ class Job < ActiveRecord::Base
   scope :owner, where("source IS NULL")
 
   after_create :notify_admin
+
+  model_cache do
+    with_key
+    with_method :job_type_names
+  end
 
   def job_type_names
     self.job_types.map(&:name)
