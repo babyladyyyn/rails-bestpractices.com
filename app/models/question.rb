@@ -55,7 +55,7 @@ class Question < ActiveRecord::Base
   model_cache do
     with_key
     with_method :formatted_html, :tags
-    with_association :user
+    with_association :user, :comments, :answers
   end
 
   def tweet_title
