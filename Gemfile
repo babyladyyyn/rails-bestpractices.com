@@ -28,6 +28,7 @@ gem 'whenever', "~> 0.6.1"
 gem "thinking-sphinx", :require => 'thinking_sphinx'
 gem "delayed_job"
 gem "switch_user", "~> 0.6.0"
+gem "dropbox"
 gem "backup"
 gem "escape_utils"
 gem "newrelic_rpm"
