@@ -4,8 +4,6 @@ class JobsController < InheritedResources::Base
   before_filter :require_partner, :only => :partner
   respond_to :xml, :only => :index
 
-  caches_action :show
-
   create! do |success, failure|
     success.html { redirect_to posts_path }
     failure.html { render :new }
@@ -13,7 +11,7 @@ class JobsController < InheritedResources::Base
 
   def partner
     @jobs = Job.published.owner.order('created_at desc').where(["id > ?", params["last_id"].to_i])
-    render :xml => @jobs.to_xml(:methods => :job_type_names)
+    render :xml => @jobs.to_xml(:methods => :cached_job_type_names)
   end
 
   protected
@@ -22,7 +20,7 @@ class JobsController < InheritedResources::Base
     end
 
     def resource
-      @job = Job.find(params[:id])
+      @job = Job.find_cached(params[:id])
     end
 
     def collection
