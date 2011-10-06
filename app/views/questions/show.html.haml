@@ -28,7 +28,7 @@
         - @question.cached_tags.each do |tag|
           = link_to tag.name, tag_path(tag.name)
 
-      = render 'comments/short_comments', :comments => @question.comments
+      = render 'comments/short_comments', :comments => @question.cached_comments
       = render 'comments/short_comment_form', :parent => @question
 
       - if Rails.env.production?

@@ -35,7 +35,7 @@ class Answer < ActiveRecord::Base
   model_cache do
     with_key
     with_method :formatted_html
-    with_association :user, :question
+    with_association :user, :question, :comments
   end
 
   def to_post

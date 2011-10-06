@@ -1,8 +1,8 @@
 .comments
   %a{:name => 'comments'}
-  - if parent.comments.present?
+  - if parent.cached_comments.present?
     %h3 Comments
-    - parent.comments.each do |comment|
+    - parent.cached_comments.each do |comment|
       - unless comment.new_record?
         .comment
           %p.info
