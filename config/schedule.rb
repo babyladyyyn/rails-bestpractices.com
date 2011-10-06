@@ -17,8 +17,7 @@ every 12.hours do
   rake "ts:index"
 end
 every 1.day, :at => '1am' do
-  rake "backup:run trigger='mysql-backup-dropbox'"
-  rake "backup:run trigger='archive-backup-dropbox'"
+  command "backup perform -t railsbp"
 end
 
 every 1.day, :at => '3am' do
