@@ -1,2 +1,2 @@
-%p= "#{@user.login} post a job #{@job.title}"
+%p= "#{@user.try(:login)} post a job #{@job.title}"
 

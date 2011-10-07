@@ -40,8 +40,8 @@ class NotificationMailer < ActionMailer::Base
 
   def notify_job(job)
     @job = job
-    @user = job.user
+    @user = job.cached_user
     mail(:to => 'flyerhzm@gmail.com',
-         :subject => "#{@user.login} post a job")
+         :subject => "#{@user.try(:login)} post a job")
   end
 end

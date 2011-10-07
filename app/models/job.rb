@@ -15,6 +15,7 @@ class Job < ActiveRecord::Base
   model_cache do
     with_key
     with_method :job_type_names
+    with_association :user
   end
 
   def job_type_names
