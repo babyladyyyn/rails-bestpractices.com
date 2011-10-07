@@ -2,6 +2,7 @@ class DelayedJob::Tweet < Struct.new(:klass_name, :id, :force)
   def perform
     if Rails.env.production? || force
       model = klass_name.constantize.find_cached(id)
+      init_twitter
       tweet(model.tweet_title, model.tweet_path)
     end
   end
@@ -11,7 +12,7 @@ class DelayedJob::Tweet < Struct.new(:klass_name, :id, :force)
     Twitter.update("#{title} #{url} #railsbp")
   end
 
-  def twitter
+  def init_twitter
     omniauth_config = OMNIAUTH_CONFIG['twitter']
     twitter_user = User.find_cached(omniauth_config["user_id"])
     provider = twitter_user.authentications.find_by_provider('twitter')
