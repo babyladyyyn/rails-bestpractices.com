@@ -3,6 +3,7 @@ class CommentsController < InheritedResources::Base
   belongs_to :question, :answer, :post, :polymorphic => true, :optional => true
 
   def create
+    render_422 and return if params[:comment].blank?
     @comment = parent.comments.new(params[:comment].merge(:user => current_user))
     if current_user or params[:skip] == 'true' or verify_recaptcha(:model => @comment, :message => @comment.body)
       create! do |success, failure|
