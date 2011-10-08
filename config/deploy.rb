@@ -44,7 +44,6 @@ namespace :config do
     run "ln -nfs #{shared_path}/config/mailers.yml #{release_path}/config/mailers.yml"
     run "ln -nfs #{shared_path}/config/omniauth.yml #{release_path}/config/omniauth.yml"
     run "ln -nfs #{shared_path}/config/sphinx.yml #{release_path}/config/sphinx.yml"
-    run "ln -nfs #{shared_path}/config/backup.rb #{release_path}/config/backup.rb"
     run "ln -nfs #{shared_path}/config/initializers/action_mailer.rb #{release_path}/config/initializers/action_mailer.rb"
   end
 end
