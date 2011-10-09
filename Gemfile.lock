@@ -247,7 +247,8 @@ GEM
       hashie (~> 1.0.0)
     rcov (0.9.9)
     rdiscount (1.6.5)
-    rdoc (3.9.4)
+    rdoc (3.10)
+      json (~> 1.4)
     recaptcha (0.2.3)
     remarkable (4.0.0.alpha4)
       rspec (>= 2.0.0.alpha11)
@@ -284,7 +285,7 @@ GEM
       ffi (>= 0.6.1)
       json_pure
       rubyzip
-    simple_cacheable (1.1.1)
+    simple_cacheable (1.1.2)
       rails (>= 3.0.0)
     simple_oauth (0.1.5)
     sitemap_generator (0.3.3)
