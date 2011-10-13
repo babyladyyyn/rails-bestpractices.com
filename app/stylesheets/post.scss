@@ -53,9 +53,6 @@ table.posts {
 }
 .post {
   margin: 15px 0;
-  .addthis_toolbox {
-    @include float-right;
-  }
   .description {
     background-color: #e7f2fd;
     min-height: 50px;
@@ -76,12 +73,6 @@ table.posts {
   }
   .wikistyle {
     @include wikistyle;
-  }
-  .tags {
-    strong {
-      font-size: 18px;
-      @include inline-block;
-    }
   }
   .related_posts {
     margin-top: 10px;

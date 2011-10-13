@@ -46,9 +46,6 @@ table.questions {
 }
 .question {
   margin: 15px 0;
-  .addthis_toolbox {
-    @include float-right;
-  }
   .description {
     background-color: #e7f2fd;
     min-height: 50px;

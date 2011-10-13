@@ -10,6 +10,7 @@
     on
     = l(@blog_post.created_at.to_date)
   .body= raw @blog_post.body
+  = render 'shared/addthis'
 
   - if Rails.env.production?
     .adsense= render 'shared/google_adsense'
