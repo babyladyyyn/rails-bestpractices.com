@@ -16,7 +16,6 @@
         %p= @post.vote_points
         = vote_dislike_link(@post)
     %td
-      = render 'shared/addthis'
       %p
         = image_tag @post.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @post.cached_user.login
         Posted by
@@ -26,11 +25,11 @@
       .description
         .point-to-icon
         %p= @post.description
+      = render 'shared/addthis'
       .wikistyle= raw @post.cached_formatted_html
       - if @post.implemented?
         %span.implemented implemented
       .tags
-        %strong tags:
         - @post.cached_tags.each do |tag|
           = link_to tag.name, tag_path(tag.name)
       - if @post.cached_related_posts.present?
@@ -39,6 +38,7 @@
           %ul
             - @post.cached_related_posts.each do |rp|
               %li= link_to rp.title, post_path(rp)
+      = render 'shared/addthis'
 
       - if Rails.env.production?
         .adsense= render 'shared/google_adsense'

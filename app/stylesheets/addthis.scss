@@ -1,7 +1,3 @@
-@import "compass/utilities/general/float";
-
 .addthis_toolbox {
-  height: 19px;
-  margin-top: 16px;
-  @include float-right;
+  margin: 10px 0;
 }
