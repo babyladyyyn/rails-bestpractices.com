@@ -37,6 +37,7 @@ gem "nokogiri"
 gem "memcache-client"
 gem "memcached"
 gem "simple_cacheable", :require => "cacheable"
+gem "cells"
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'
