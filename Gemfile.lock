@@ -267,16 +267,22 @@ GEM
       mime-types (>= 1.16)
     riddle (1.3.3)
     rmagick (2.13.1)
-    rspec (2.1.0)
-      rspec-core (~> 2.1.0)
-      rspec-expectations (~> 2.1.0)
-      rspec-mocks (~> 2.1.0)
-    rspec-core (2.1.0)
-    rspec-expectations (2.1.0)
+    rspec (2.6.0)
+      rspec-core (~> 2.6.0)
+      rspec-expectations (~> 2.6.0)
+      rspec-mocks (~> 2.6.0)
+    rspec-cells (0.1.0)
+      rails (~> 3.0)
+      rspec-rails (~> 2.2)
+    rspec-core (2.6.0)
+    rspec-expectations (2.6.0)
       diff-lcs (~> 1.1.2)
-    rspec-mocks (2.1.0)
-    rspec-rails (2.1.0)
-      rspec (~> 2.1.0)
+    rspec-mocks (2.6.0)
+    rspec-rails (2.6.0)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      railties (~> 3.0)
+      rspec (~> 2.6.0)
     ruby-graphviz (0.9.21)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
@@ -377,8 +383,9 @@ DEPENDENCIES
   rdiscount
   recaptcha
   remarkable_activerecord (= 4.0.0.alpha4)
-  rspec (~> 2.1.0)
-  rspec-rails (~> 2.1.0)
+  rspec
+  rspec-cells
+  rspec-rails
   simple_cacheable
   sitemap_generator (~> 0.3.3)
   spork (= 0.9.0.rc4)
