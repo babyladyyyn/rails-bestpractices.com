@@ -13,7 +13,7 @@
   - if @children.empty?
     .empty No Such Rails Best Practices
   - else
-    %table.posts= render @children
+    .posts= render @children
 - elsif params[:nav] == 'questions'
   = render 'questions/questions', :questions => @children
 = paginate @children

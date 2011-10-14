@@ -13,7 +13,6 @@ class UsersController < Devise::RegistrationsController
       params[:nav] = params[:nav] || "posts"
       @children = @user.send(params[:nav])
       @children = @children.published if params[:nav] == "posts"
-      @children = VoteDecorator.decorate(@children) if params[:nav] == "votes"
     end
   end
 
