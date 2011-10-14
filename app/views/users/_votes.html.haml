@@ -7,7 +7,7 @@
         - else
           .dislike-icon.active Dislike
       %td.content
-        %p.title= link_to vote.voteable_name, voteable_link(vote)
+        %p.title= link_to vote.voteable_name, vote.voteable_link
       %td.author
         by
         = link_to vote.cached_voteable.cached_user.login, user_path(vote.cached_voteable.cached_user)

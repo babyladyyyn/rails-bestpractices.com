@@ -38,6 +38,7 @@ gem "memcache-client"
 gem "memcached"
 gem "simple_cacheable", :require => "cacheable"
 gem "cells"
+gem "draper"
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'

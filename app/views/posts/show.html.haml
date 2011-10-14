@@ -10,11 +10,7 @@
 
 %table.post
   %tr
-    %td.vote-info
-      %div
-        = vote_like_link(@post)
-        %p= @post.vote_points
-        = vote_dislike_link(@post)
+    %td.vote-info= render_cell :vote, :show, @post
     %td
       %p
         = image_tag @post.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @post.cached_user.login

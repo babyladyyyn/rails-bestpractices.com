@@ -29,14 +29,6 @@ class Vote < ActiveRecord::Base
     with_association :voteable, :user
   end
 
-  def voteable_name
-    if cached_voteable.is_a? Answer
-      cached_voteable.cached_question.title
-    else
-      cached_voteable.title
-    end
-  end
-
   private
     def update_create_vote
       if like?

@@ -5,10 +5,7 @@
       - unless answer.new_record?
         %table.answer
           %tr
-            %td.vote-info
-              = vote_like_link(answer)
-              %p= answer.vote_points
-              = vote_dislike_link(answer)
+            %td.vote-info= render_cell :vote, :show, AnswerDecorator.new(answer)
             %td
               .command
                 - if can? :update, answer

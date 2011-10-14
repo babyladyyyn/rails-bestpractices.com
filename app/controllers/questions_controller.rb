@@ -20,6 +20,7 @@ class QuestionsController < InheritedResources::Base
 
     def resource
       @question = params[:action] == "update" ? Question.find(params[:id]) : Question.find_cached(params[:id])
+      @question = QuestionDecorator.new(@question)
     end
 
     def collection
