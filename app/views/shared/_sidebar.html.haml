@@ -2,22 +2,5 @@
   = link_to "Sign in with Twitter", "/auth/twitter", :class => 'sign-in-twitter-button', :rel => "nofollow"
   = link_to "Login with Facebook", "/auth/facebook", :class => 'sign-in-facebook-button', :rel => "nofollow"
 
-- cache("sponsors", :expires_in => 1.day) do
-  .sponsors-section
-    %h3 Sponsors
-    %ul.sponsors
-      - Sponsor.active.each do |sponsor|
-        %li= link_to image_tag(sponsor.image_url), sponsor_path(sponsor)
-
-- cache("jobs", :expires_in => 1.day) do
-  .jobs-section
-    %h3 Top Ruby and Rails Jobs
-    %ul.jobs
-      - Job.published.order("created_at desc").limit(5).each do |job|
-        %li
-          %p.title= link_to job.title, job_path(job)
-          %p.company= job.company
-          %p.location= job.location
-      %li.links
-        = link_to "View All Jobs", jobs_path, :class => 'all'
-        = link_to "Post a Job", new_job_path, :class => 'add'
+= render_cell :sponsor, :active
+= render_cell :job, :recent

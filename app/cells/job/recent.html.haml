@@ -1,0 +1,11 @@
+.jobs-section
+  %h3 Top Ruby and Rails Jobs
+  %ul.jobs
+    - @jobs.each do |job|
+      %li
+        %p.title= link_to job.title, job_path(job)
+        %p.company= job.company
+        %p.location= job.location
+    %li.links
+      = link_to "View All Jobs", jobs_path, :class => 'all'
+      = link_to "Post a Job", new_job_path, :class => 'add'
