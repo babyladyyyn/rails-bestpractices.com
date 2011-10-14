@@ -1,51 +1,16 @@
 @import "partials/wikistyle";
 @import "partials/adsense";
 @import "compass/utilities/general/float";
+@import "compass/utilities/general/clearfix";
 @import "compass/css3/inline-block";
 @import "compass/css3/border-radius";
 
-table.questions {
-  tr {
-    td {
-      border-bottom: 1px dotted #b7b7b7;
-    }
-    .stat {
-      text-align: right;
-      width: 100px;
-      p {
-        font-size: 14px;
-        line-height: 20px;
-        color: #616161;
-      }
-    }
-    .content {
-      padding: 10px 20px;
-      font-size: 12px;
-      p.title {
-        line-height: 20px;
-        margin-bottom: 10px;
-      }
-      .title a {
-        font-size: 16px;
-        font-weight: bold;
-      }
-    }
-    .author {
-      width: 80px;
-      text-align: left;
-      font-size: 12px;
-    }
-    .avatar {
-      width: 50px;
-      img.user-avatar {
-        padding: 2px;
-        border: 1px solid #eee;
-      }
-    }
-  }
-}
 .question {
   margin: 15px 0;
+  .question-info {
+    @include float-left;
+    width: 630px;
+  }
   .description {
     background-color: #e7f2fd;
     min-height: 50px;
@@ -69,5 +34,51 @@ table.questions {
   }
   .adsense {
     @include adsense;
+  }
+}
+.questions {
+  .render-question {
+    @include clearfix;
+    border-bottom: 1px dotted #b7b7b7;
+    .stat {
+      @include float-left;
+      width: 100px;
+      margin-top: 5px;
+      text-align: right;
+      p {
+        font-size: 14px;
+        line-height: 20px;
+        color: #616161;
+      }
+    }
+    .content {
+      @include float-left;
+      width: 410px;
+      padding: 10px 20px;
+      font-size: 12px;
+      p.title {
+        line-height: 20px;
+        margin-bottom: 10px;
+      }
+      .title a {
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+    .author {
+      @include float-left;
+      width: 80px;
+      margin-top: 30px;
+      font-size: 12px;
+    }
+    .avatar {
+      @include float-left;
+      width: 50px;
+      margin-top: 20px;
+      img.user-avatar {
+        padding: 2px;
+        border: 1px solid #eee;
+      }
+    }
   }
 }

@@ -1,4 +1,7 @@
+@import "compass/utilities/general/float";
+
 @mixin vote-info {
+  @include float-left;
   width: 50px;
   vertical-align: top;
   p {

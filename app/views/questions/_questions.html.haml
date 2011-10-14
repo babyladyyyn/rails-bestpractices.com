@@ -1,19 +1,19 @@
 - if questions.empty?
   .empty No Such Questions
 - else
-  %table.questions
+  .questions
     - questions.each do |question|
-      %tr
-        %td.stat
+      .render-question
+        .stat
           %p= "#{question.vote_points} votes"
           %p= "#{question.answers_count} answers"
           %p= "#{question.view_count} views"
-        %td.content
+        .content
           %p.title= link_to question.title, question_path(question)
           %p.tags
             - question.cached_tags.each do |tag|
               = link_to tag.name, tag_path(tag.name)
-        %td.author
+        .author
           by
           = link_to question.cached_user.login, user_path(question.cached_user)
-        %td.avatar= image_tag question.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => question.cached_user.login
+        .avatar= image_tag question.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => question.cached_user.login

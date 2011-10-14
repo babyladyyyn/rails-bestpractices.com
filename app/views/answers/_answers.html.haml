@@ -3,23 +3,21 @@
     %h3 Answers
     - question.cached_answers.each do |answer|
       - unless answer.new_record?
-        %table.answer
-          %tr
-            %td.vote-info= render_cell :vote, :show, AnswerDecorator.new(answer)
-            %td
-              .command
-                - if can? :update, answer
-                  = link_to 'Edit', edit_question_answer_path(question, answer)
-                  &nbsp;&nbsp;|&nbsp;&nbsp;
-                  = link_to 'Share', new_post_path(:answer_id => answer.id)
-              .answer-info
-                %p
-                  = image_tag answer.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => answer.cached_user.login
-                  Answered by
-                  = link_to answer.cached_user.login, user_path(answer.cached_user)
-                  on
-                  = l(answer.created_at.to_date)
+        .answer
+          .vote-info= render_cell :vote, :show, AnswerDecorator.new(answer)
+          .answer-info
+            .command
+              - if can? :update, answer
+                = link_to 'Edit', edit_question_answer_path(question, answer)
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                = link_to 'Share', new_post_path(:answer_id => answer.id)
+            %p
+              = image_tag answer.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => answer.cached_user.login
+              Answered by
+              = link_to answer.cached_user.login, user_path(answer.cached_user)
+              on
+              = l(answer.created_at.to_date)
 
-                .wikistyle= raw answer.cached_formatted_html
-                = render 'comments/short_comments', :comments => answer.cached_comments
-                = render 'comments/short_comment_form', :parent => answer
+            .wikistyle= raw answer.cached_formatted_html
+            = render 'comments/short_comments', :comments => answer.cached_comments
+            = render 'comments/short_comment_form', :parent => answer
