@@ -1,6 +1,6 @@
 class DelayedJob::NotifyComment < Struct.new(:comment_id)
   def perform
-    comment = Comment.find_cached(comment_id)
+    comment = CommentDecorator.new(Comment.find_cached(comment_id))
     commentable = comment.cached_commentable
     emails = []
 
@@ -13,7 +13,7 @@ class DelayedJob::NotifyComment < Struct.new(:comment_id)
     end
 
     comments = commentable.comments
-    comments.each do |c|
+    CommentDecorator.decorate_each(comments) do |c|
       email = c.user_email
       if email.present? and email != comment.user_email and !emails.include? email
         emails << email

@@ -30,4 +30,14 @@ class ApplicationDecorator < Draper::Base
       h.button_to 'Dislike', h.polymorphic_path([model, :votes], :like => false), :class => 'dislike-icon'
     end
   end
+
+  def default_gravatar(size = 32)
+    h.image_tag "http://gravatar.com/avatar/b642b4217b34b1e8d3bd915fc65c4452.png?d=mm&r=PG&s=#{size}", :class => 'user-avatar', :alt => 'anonymous'
+  end
+
+  def self.decorate_each(objects)
+    objects.each do |object|
+      yield decorate(object)
+    end
+  end
 end

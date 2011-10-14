@@ -18,10 +18,10 @@ class NotificationMailer < ActionMailer::Base
   default :from => "notification@rails-bestpractices.com"
 
   def notify_comment(email, comment)
-    @comment = comment
+    @comment = CommentDecorator.new(comment)
     @user = User.find_cached_by_email(email)
     mail(:to => email,
-         :subject => "Comment on #{comment.parent_name}")
+         :subject => "Comment on #{@comment.parent_name}")
   end
 
   def notify_answer(email, answer)

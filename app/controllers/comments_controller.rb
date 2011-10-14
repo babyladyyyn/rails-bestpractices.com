@@ -21,9 +21,7 @@ class CommentsController < InheritedResources::Base
   end
 
   def index
-    #if params[:post]
-      @comments = Comment.post.includes(:user).page(params[:page].to_i)
-    #end
+    @comments = Comment.for_post.includes(:user).page(params[:page].to_i)
   end
 
   private
