@@ -37,6 +37,8 @@ gem "nokogiri"
 gem "memcache-client"
 gem "memcached"
 gem "simple_cacheable", :require => "cacheable"
+gem "cells"
+gem "draper"
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'
@@ -46,6 +48,7 @@ group :development do
   gem "annotate"
   gem "rails-erd"
   gem "active_reload"
+  gem "ruby-debug19", :require => 'ruby-debug'
 end
 
 group :test do
@@ -54,12 +57,13 @@ group :test do
   gem "autotest-rails", "~> 4.1.0"
   gem "rcov", "~> 0.9.9"
   gem "spork", "0.9.0.rc4"
-  gem "rspec", "~> 2.1.0"
-  gem "rspec-rails", "~> 2.1.0"
+  gem "rspec"
+  gem "rspec-rails"
   gem "factory_girl_rails"
   gem 'remarkable_activerecord', '4.0.0.alpha4'
   gem 'email_spec', '~> 1.0.0'
   gem 'watchr'
+  gem "rspec-cells"
 end
 
 group :cucumber do

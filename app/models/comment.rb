@@ -22,7 +22,7 @@ class Comment < ActiveRecord::Base
   validates_presence_of :body
   validates_presence_of :username, :if => Proc.new { |comment| !comment.user_id }
 
-  scope :post, where(:commentable_type => 'Post').order("comments.created_at desc")
+  scope :for_post, where(:commentable_type => 'Post').order("comments.created_at desc")
 
   paginates_per 10
 
@@ -32,28 +32,6 @@ class Comment < ActiveRecord::Base
   model_cache do
     with_key
     with_association :user, :commentable
-  end
-
-  def user_name
-    cached_user ? cached_user.login : username
-  end
-
-  def user_email
-    cached_user ? cached_user.email : email
-  end
-
-  def parent_name
-    commentable = cached_commentable
-    case commentable
-    when Question
-      "Question #{commentable.title}"
-    when Answer
-      "Answer of #{commentable.cached_question.title}"
-    when Post
-      "Post #{commentable.title}"
-    when BlogPost
-      "Blog Post #{commentable.title}"
-    end
   end
 
   private

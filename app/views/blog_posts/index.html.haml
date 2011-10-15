@@ -1,5 +1,4 @@
 - set_meta_tags :title => 'Team Blog'
 
-.blog_posts= render @blog_posts
-
+= render 'blog_posts', :blog_posts => @blog_posts
 = paginate @blog_posts

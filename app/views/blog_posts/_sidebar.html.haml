@@ -1,7 +1,2 @@
 .blog-section= link_to 'Subscribe to our team blog', 'http://feeds.feedburner.com/rails-bestpractices-team-blog', :class => 'blog-rss-icon'
-- cache('recent_blog_posts', :expires_in => 1.day) do
-  .blog-section
-    %h3 Recent Blog Post
-    - @recent_blog_posts.each do |post|
-      %ul
-        %li= link_to post.title, blog_post_path(post)
+= render_cell :blog_post, :recent

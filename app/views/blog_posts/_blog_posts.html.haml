@@ -1,0 +1,12 @@
+.blog_posts
+  - BlogPostDecorator.decorate_each(blog_posts) do |blog_post|
+    .blog_post
+      %h2= blog_post.link
+      %p.author
+        = blog_post.user_avatar
+        Posted by
+        = blog_post.user_link
+        on
+        = blog_post.created_date
+      %p.comments_count= blog_post.comments_count_link
+      .body= raw blog_post.body

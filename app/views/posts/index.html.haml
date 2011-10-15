@@ -1,23 +1,8 @@
 - set_meta_tags :title => 'rails best practices list'
 
-.command
-  = link_to 'Share', new_post_path, :class => 'share-button'
-%h2
-  Rails Best Practices
-.navs
-  %ul
-    = nav_class('created_at') do
-      = posts_order_link("created_at")
-    = nav_class('vote_points') do
-      = posts_order_link("vote_points")
-    = nav_class('comments_count') do
-      = posts_order_link("comments_count")
-    = nav_class('implemented') do
-      = link_to 'Implemented', posts_path(:implemented => true, :nav => 'implemented')
+.command= link_to 'Share', new_post_path, :class => 'share-button'
+%h2 Rails Best Practices
+= render_cell :tab, :post
 
-- if @posts.empty?
-  .empty No Such Rails Best Practices
-- else
-  %table.posts= render @posts
-
+= render 'posts', :posts => @posts
 = paginate @posts

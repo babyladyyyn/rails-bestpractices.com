@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927115641) do
+ActiveRecord::Schema.define(:version => 20111015113342) do
 
   create_table "answer_bodies", :force => true do |t|
     t.text     "body"
@@ -187,13 +187,12 @@ ActiveRecord::Schema.define(:version => 20110927115641) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.text     "description",     :limit => 16777215
-    t.integer  "comments_count",                      :default => 0
-    t.integer  "vote_points",                         :default => 0
+    t.text     "description",    :limit => 16777215
+    t.integer  "comments_count",                     :default => 0
+    t.integer  "vote_points",                        :default => 0
     t.integer  "view_count"
-    t.boolean  "implemented",                         :default => false, :null => false
-    t.boolean  "published",                           :default => false, :null => false
-    t.string   "cached_tag_list"
+    t.boolean  "implemented",                        :default => false, :null => false
+    t.boolean  "published",                          :default => false, :null => false
   end
 
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
@@ -211,13 +210,12 @@ ActiveRecord::Schema.define(:version => 20110927115641) do
   create_table "questions", :force => true do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.integer  "vote_points",     :default => 0
-    t.integer  "view_count",      :default => 0
-    t.integer  "answers_count",   :default => 0
+    t.integer  "vote_points",    :default => 0
+    t.integer  "view_count",     :default => 0
+    t.integer  "answers_count",  :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count",  :default => 0
-    t.string   "cached_tag_list"
+    t.integer  "comments_count", :default => 0
   end
 
   add_index "questions", ["user_id"], :name => "index_questions_on_user_id"

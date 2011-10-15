@@ -1,0 +1,5 @@
+.job_partner
+  %p
+    All jobs will be synchronized with
+    - @job_partners.each do |partner|
+      = link_to partner.name, "http://#{partner.name}"

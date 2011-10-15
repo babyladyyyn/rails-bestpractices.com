@@ -1,58 +1,16 @@
 @import "partials/wikistyle";
 @import "partials/adsense";
 @import "compass/utilities/general/float";
+@import "compass/utilities/general/clearfix";
 @import "compass/css3/inline-block";
 @import "compass/css3/border-radius";
 
-table.posts {
-  &.archive .post {
-    min-height: 10px
-  }
-  tr {
-    td {
-      border-bottom: 1px dotted #b7b7b7;
-    }
-    .stat {
-      text-align: right;
-      width: 100px;
-      p {
-        font-size: 14px;
-        line-height: 20px;
-        color: #616161;
-      }
-    }
-    .content {
-      padding: 10px 20px;
-      font-size: 12px;
-      .title {
-        a {
-          font-size: 16px;
-          font-weight: bold;
-        }
-      }
-      .description {
-        padding: 5px 0;
-        color: #727272;
-        line-height: 18px;
-        min-height: 10px;
-      }
-    }
-    .author {
-      width: 80px;
-      text-align: left;
-      font-size: 12px;
-    }
-    .avatar {
-      width: 50px;
-      img.user-avatar {
-        padding: 2px;
-        border: 1px solid #eee;
-      }
-    }
-  }
-}
 .post {
   margin: 15px 0;
+  .post-info {
+    @include float-left;
+    width: 630px;
+  }
   .description {
     background-color: #e7f2fd;
     min-height: 50px;
@@ -99,4 +57,57 @@ table.posts {
   color: #fff;
   display: block;
   @include float-right;
+}
+.posts {
+  &.archive .post {
+    min-height: 10px
+  }
+  .render-post {
+    @include clearfix;
+    border-bottom: 1px dotted #b7b7b7;
+    .stat {
+      @include float-left;
+      width: 100px;
+      margin-top: 20px;
+      text-align: right;
+      p {
+        font-size: 14px;
+        line-height: 20px;
+        color: #616161;
+      }
+    }
+    .content {
+      @include float-left;
+      width: 410px;
+      padding: 10px 20px;
+      font-size: 12px;
+      .title {
+        a {
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+      .description {
+        padding: 5px 0;
+        color: #727272;
+        line-height: 18px;
+        min-height: 10px;
+      }
+    }
+    .author {
+      @include float-left;
+      width: 80px;
+      margin-top: 50px;
+      font-size: 12px;
+    }
+    .avatar {
+      @include float-left;
+      width: 50px;
+      margin-top: 40px;
+      img.user-avatar {
+        padding: 2px;
+        border: 1px solid #eee;
+      }
+    }
+  }
 }

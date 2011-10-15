@@ -1,0 +1,4 @@
+%div
+  = @voteable.vote_like_link(@user)
+  %p= @voteable.vote_points
+  = @voteable.vote_dislike_link(@user)

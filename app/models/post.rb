@@ -22,7 +22,6 @@ class Post < ActiveRecord::Base
   include UserOwnable
   include Voteable
   include Commentable
-  include CacheTaggable
   include Cacheable
 
   has_one :post_body
@@ -40,6 +39,8 @@ class Post < ActiveRecord::Base
   paginates_per 10
 
   delegate :body, :formatted_html, :to => :post_body
+
+  acts_as_taggable
 
   define_index do
     indexes :title, :description
