@@ -1,10 +1,10 @@
 .answers
   - if question.cached_answers.present?
     %h3 Answers
-    - question.cached_answers.each do |answer|
+    - AnswerDecorator.decorate_each(question.cached_answers) do |answer|
       - unless answer.new_record?
         .answer
-          .vote-info= render_cell :vote, :show, AnswerDecorator.new(answer)
+          .vote-info= render_cell :vote, :show, answer
           .answer-info
             .command
               - if can? :update, answer
@@ -12,11 +12,11 @@
                 &nbsp;&nbsp;|&nbsp;&nbsp;
                 = link_to 'Share', new_post_path(:answer_id => answer.id)
             %p
-              = image_tag answer.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => answer.cached_user.login
+              = image_tag answer.user_gravatar
               Answered by
-              = link_to answer.cached_user.login, user_path(answer.cached_user)
+              = answer.user_link
               on
-              = l(answer.created_at.to_date)
+              = answer.created_date
 
             .wikistyle= raw answer.cached_formatted_html
             = render 'comments/short_comments', :comments => answer.cached_comments
