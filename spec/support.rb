@@ -63,7 +63,7 @@ module RailsBestPractices
               Factory(:vote, :voteable => instance, :user => peter)
               Factory(:vote, :voteable => instance, :user => jane)
               Factory(:vote, :voteable => instance, :user => jane)
-              instance.cached_vote(jane).should == instance.votes[1]
+              instance.vote(jane).should == instance.votes[1]
             end
           end
         end

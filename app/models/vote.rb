@@ -20,8 +20,6 @@ class Vote < ActiveRecord::Base
   after_create :update_create_vote
   before_destroy :update_destroy_vote
 
-  after_create :expire_vote_cache
-  before_destroy :expire_vote_cache
   after_create :expire_voteable_and_user_cache
   after_destroy :expire_voteable_and_user_cache
 
@@ -44,11 +42,6 @@ class Vote < ActiveRecord::Base
       else
         voteable_type.constantize.increment_counter(:vote_points, voteable_id)
       end
-    end
-
-    def expire_vote_cache
-      cached_voteable.expire_vote_cache(self.user)
-      true
     end
 
     def expire_voteable_and_user_cache
