@@ -10,7 +10,7 @@
             Posted by
             = comment.user_link
             on
-            = l(comment.created_at)
+            = comment.created_time
           .content
             .point-to-icon
-            .wikistyle= raw white_list(comment.body.gsub("\n", "<br/>"), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
+            .wikistyle= comment.wikistyle_body

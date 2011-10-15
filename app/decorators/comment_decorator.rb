@@ -36,4 +36,8 @@ class CommentDecorator < ApplicationDecorator
       h.link_to "Blog Post #{commentable.title}", h.blog_post_url(commentable)
     end
   end
+
+  def wikistyle_body
+    white_list(model.body.gsub("\n", "<br/>"), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href)).html_safe
+  end
 end

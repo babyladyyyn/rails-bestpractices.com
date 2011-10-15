@@ -56,6 +56,10 @@ class ApplicationDecorator < Draper::Base
     h.l created_at.to_date
   end
 
+  def created_time
+    h.l created_at
+  end
+
   def tag_links
     links = []
     TagDecorator.decorate_each(cached_tags) do |tag|
