@@ -1,0 +1,14 @@
+- if posts.empty?
+  .empty No Such Rails Best Practices
+- else
+  .posts
+    - PostDecorator.decorate_each(posts) do |post|
+      .render-post
+        .stat= post.statistics
+        .content
+          %p.title= post.link
+          %p.description= post.description
+          %p.tags= post.tag_links
+          = post.implemented_icon
+        .author by #{post.user_link}
+        .avatar= post.user_avatar

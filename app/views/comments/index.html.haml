@@ -3,16 +3,16 @@
 %h2 Recent Comments
 
 .comments
-  - @comments.each do |comment|
+  - CommentDecorator.decorate_each(@comments) do |comment|
     .comment
       .info
-        = comment_avatar(comment)
+        = comment.user_avatar
         %p
           Comments on
-          = link_to comment.parent_name, comment_parent_link(comment)
+          = comment.parent_link
         %p
           Posted by
-          = comment_user_link(comment)
+          = comment.user_link
           on
           = l(comment.created_at)
       .content

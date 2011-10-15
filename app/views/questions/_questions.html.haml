@@ -1,19 +1,12 @@
 - if questions.empty?
   .empty No Such Questions
 - else
-  %table.questions
-    - questions.each do |question|
-      %tr
-        %td.stat
-          %p= "#{question.vote_points} votes"
-          %p= "#{question.answers_count} answers"
-          %p= "#{question.view_count} views"
-        %td.content
-          %p.title= link_to question.title, question_path(question)
-          %p.tags
-            - question.cached_tags.each do |tag|
-              = link_to tag.name, tag_path(tag.name)
-        %td.author
-          by
-          = link_to question.cached_user.login, user_path(question.cached_user)
-        %td.avatar= image_tag question.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => question.cached_user.login
+  .questions
+    - QuestionDecorator.decorate_each(questions) do |question|
+      .render-question
+        .stat= question.statistics
+        .content
+          %p.title= question.link
+          %p.tags= question.tag_links
+        .author by #{question.user_link}
+        .avatar= question.user_avatar

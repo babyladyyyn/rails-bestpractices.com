@@ -1,6 +1,0 @@
-- cache('tag_section', :expires_in => 1.day) do
-  .tag-section
-    %h3 Tags
-    %ul.tags
-      - ActsAsTaggableOn::Tag.important_tags.order("name asc").each do |tag|
-        %li= link_to tag.name, tag_path(tag.name)

@@ -1,0 +1,5 @@
+.tag-section
+  %h3 Tags
+  %ul.tags
+    - @tags.each do |tag|
+      %li= link_to tag.name, tag_path(tag.name)

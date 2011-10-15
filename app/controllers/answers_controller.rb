@@ -4,11 +4,14 @@ class AnswersController < InheritedResources::Base
   belongs_to :question
 
   create! do |success, failure|
-    success.html {
+    success.html do
       job = Delayed::Job.enqueue(DelayedJob::NotifyAnswer.new(@answer.id))
       redirect_to question_path(@question)
-    }
-    failure.html { render 'questions/show' }
+    end
+    failure.html do
+      @question = QuestionDecorator.new(@question)
+      render 'questions/show'
+    end
   end
 
   update! do |success, failure|

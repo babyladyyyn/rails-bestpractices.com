@@ -3,19 +3,8 @@
 .command
   = link_to 'Question', new_question_path, :class => 'question-button'
 
-%h2
-  Questions
-
-.navs
-  %ul
-    = nav_class('created_at') do
-      = questions_order_link("created_at")
-    = nav_class('vote_points') do
-      = questions_order_link("vote_points")
-    = nav_class('answers_count') do
-      = questions_order_link("answers_count")
-    = nav_class('not_answered') do
-      = link_to 'Not Answered', questions_path(:not_answered => true, :nav => 'not_answered')
+%h2 Questions
+= render_cell :tab, :question
 
 = render 'questions', :questions => @questions
 = paginate @questions

@@ -22,7 +22,6 @@ class Post < ActiveRecord::Base
   include UserOwnable
   include Voteable
   include Commentable
-  include CacheTaggable
   include Cacheable
 
   has_one :post_body
@@ -41,6 +40,8 @@ class Post < ActiveRecord::Base
 
   delegate :body, :formatted_html, :to => :post_body
 
+  acts_as_taggable
+
   define_index do
     indexes :title, :description
     indexes post_body(:body), :as => :body
@@ -58,7 +59,7 @@ class Post < ActiveRecord::Base
 
   model_cache do
     with_key
-    with_method :formatted_html, :tags, :related_posts
+    with_method :formatted_html, :tags
     with_association :user, :comments
   end
 

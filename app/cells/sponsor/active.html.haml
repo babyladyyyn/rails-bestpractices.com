@@ -1,0 +1,5 @@
+.sponsors-section
+  %h3 Sponsors
+  %ul.sponsors
+    - @sponsors.each do |sponsor|
+      %li= link_to image_tag(sponsor.image_url), sponsor_path(sponsor)

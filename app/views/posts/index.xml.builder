@@ -8,9 +8,9 @@ xml.rss(:version => '2.0') do
 
     @posts.each do |post|
       descriptions = ["#{post.description}    #{link_to 'see more', post_url(post)}"]
-      if post.cached_related_posts.present?
+      if post.related_posts.present?
         descriptions << "<div><p><b>Related Posts</b></p><ul>"
-        post.cached_related_posts.each do |p|
+        post.related_posts.each do |p|
           descriptions << "<li>#{link_to p.title, post_url(p)}</li>"
         end
         descriptions << "</ul></div>"

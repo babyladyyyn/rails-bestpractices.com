@@ -1,19 +1,10 @@
 - set_meta_tags :title => "tag #{@tag.name}", :noindex => true
 
-%h2
-  = "Tag #{@tag.name}"
-.navs
-  %ul
-    = nav_class('posts') do
-      = link_to "Rails Best Practices", tag_path(@tag.name, :nav => 'posts')
-    = nav_class('questions') do
-      = link_to "Questions", tag_path(@tag.name, :nav => 'questions')
+%h2= "Tag #{@tag.name}"
+= render_cell :tab, :tag, @tag
 
 - if params[:nav] == 'posts'
-  - if @children.empty?
-    .empty No Such Rails Best Practices
-  - else
-    %table.posts= render @children
+  = render 'posts/posts', :posts => @children
 - elsif params[:nav] == 'questions'
   = render 'questions/questions', :questions => @children
 = paginate @children

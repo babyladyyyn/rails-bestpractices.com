@@ -8,31 +8,25 @@
 %h2
   = @question.title
 
-%table.question
-  %tr
-    %td.vote-info
-      = vote_like_link(@question)
-      %p= @question.vote_points
-      = vote_dislike_link(@question)
-    %td.question-info
-      %p
-        = image_tag @question.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @question.cached_user.login
-        Posted by
-        = link_to @question.cached_user.login, user_path(@question.cached_user)
-        on
-        = l(@question.created_at.to_date)
+.question
+  .vote-info= render_cell :vote, :show, @question, current_user
+  .question-info
+    %p
+      = @question.user_avatar
+      Posted by
+      = @question.user_link
+      on
+      = @question.created_date
 
-      .wikistyle= raw @question.cached_formatted_html
+    .wikistyle= raw @question.cached_formatted_html
 
-      .tags
-        - @question.cached_tags.each do |tag|
-          = link_to tag.name, tag_path(tag.name)
+    .tags= @question.tag_links
 
-      = render 'comments/short_comments', :comments => @question.cached_comments
-      = render 'comments/short_comment_form', :parent => @question
+    = render 'comments/short_comments', :comments => @question.cached_comments
+    = render 'comments/short_comment_form', :parent => @question
 
-      - if Rails.env.production?
-        .adsense= render 'shared/google_adsense'
+    - if Rails.env.production?
+      .adsense= render 'shared/google_adsense'
 
 = render 'answers/answers', :question => @question
 = render 'answers/answer_form', :question => @question, :answer => @answer
