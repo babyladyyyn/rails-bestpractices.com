@@ -49,12 +49,6 @@ module RailsBestPractices
             it "should acts_ast_taggable" do
               described_class.ancestors.should be_include(ActsAsTaggableOn::Taggable::Core)
             end
-
-            it "should cache tag_list" do
-              instance = Factory(described_class.to_s.underscore)
-              instance.cached_tag_list = "ruby, rails"
-              instance.tag_list.should == "ruby, rails"
-            end
           end
         end
 
