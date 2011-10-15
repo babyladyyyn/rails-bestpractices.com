@@ -1,7 +1,7 @@
-- if @post.cached_related_posts.present?
+- if @post.related_posts.present?
   .related_posts
     %strong related best practices:
     %ul
-      - PostDecorator.decorate_each(@post.cached_related_posts) do |post|
+      - PostDecorator.decorate_each(@post.related_posts) do |post|
         %li= post.link
 
