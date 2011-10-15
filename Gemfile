@@ -48,6 +48,7 @@ group :development do
   gem "annotate"
   gem "rails-erd"
   gem "active_reload"
+  gem "ruby-debug19", :require => 'ruby-debug'
 end
 
 group :test do
