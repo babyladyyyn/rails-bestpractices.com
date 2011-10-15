@@ -52,6 +52,18 @@ class ApplicationDecorator < Draper::Base
     h.image_tag "http://gravatar.com/avatar/b642b4217b34b1e8d3bd915fc65c4452.png?d=mm&r=PG&s=#{size}", :class => 'user-avatar', :alt => 'anonymous'
   end
 
+  def created_date
+    h.l created_at.to_date
+  end
+
+  def tag_links
+    links = []
+    TagDecorator.decorate_each(cached_tags) do |tag|
+      links << tag.link
+    end
+    links.join("").html_safe
+  end
+
   def self.decorate_each(objects)
     objects.each do |object|
       yield decorate(object)

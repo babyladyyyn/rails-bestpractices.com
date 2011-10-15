@@ -12,17 +12,15 @@
   .vote-info= render_cell :vote, :show, @question
   .question-info
     %p
-      = image_tag @question.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @question.cached_user.login
+      = @question.user_avatar
       Posted by
-      = link_to @question.cached_user.login, user_path(@question.cached_user)
+      = @question.user_link
       on
-      = l(@question.created_at.to_date)
+      = @question.created_date
 
     .wikistyle= raw @question.cached_formatted_html
 
-    .tags
-      - @question.cached_tags.each do |tag|
-        = link_to tag.name, tag_path(tag.name)
+    .tags= @question.tag_links
 
     = render 'comments/short_comments', :comments => @question.cached_comments
     = render 'comments/short_comment_form', :parent => @question
