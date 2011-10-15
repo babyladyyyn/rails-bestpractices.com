@@ -5,8 +5,7 @@
   - if can? :update, @post
     = link_to 'Edit', edit_post_path(@post)
 
-%h2
-  = @post.title
+%h2= @post.title
 
 .post
   .vote-info= render_cell :vote, :show, @post
