@@ -12,29 +12,20 @@
   .vote-info= render_cell :vote, :show, @post
   .post-info
     %p
-      = image_tag @post.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => @post.cached_user.login
+      = @post.user_avatar
       Posted by
-      = link_to @post.cached_user.login, user_path(@post.cached_user)
+      = @post.user_link
       on
-      = l(@post.created_at.to_date)
+      = @post.created_date
     .description
       .point-to-icon
       %p= @post.description
     = render 'shared/addthis'
     .wikistyle= raw @post.cached_formatted_html
-    - if @post.implemented?
-      %span.implemented implemented
-    .tags
-      - @post.cached_tags.each do |tag|
-        = link_to tag.name, tag_path(tag.name)
-    - if @post.cached_related_posts.present?
-      .related_posts
-        %strong related best practices:
-        %ul
-          - @post.cached_related_posts.each do |rp|
-            %li= link_to rp.title, post_path(rp)
+    = @post.implemented_icon
+    .tags= @post.tag_links
+    = render_cell :post, :related, @post
     = render 'shared/addthis'
-
     - if Rails.env.production?
       .adsense= render 'shared/google_adsense'
 

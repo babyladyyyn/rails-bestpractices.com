@@ -15,9 +15,5 @@
     = nav_class('implemented') do
       = link_to 'Implemented', posts_path(:implemented => true, :nav => 'implemented')
 
-- if @posts.empty?
-  .empty No Such Rails Best Practices
-- else
-  .posts= render @posts
-
+= render 'posts', :posts => @posts
 = paginate @posts

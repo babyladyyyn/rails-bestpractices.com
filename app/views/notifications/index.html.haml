@@ -9,7 +9,7 @@
       .render-notification
         .icon
           %div{:class => "#{notification.notifierable_type.downcase}-icon"}
-        %div{:class => notification.read? ? "read" : "unread"}= raw notification.message
+        %div{:class => notification.read? ? "read" : "unread"}= notification.message
         .time= "#{time_ago_in_words(notification.created_at)} ago"
         .delete= link_to 'Delete', notification_path(notification), :method => :delete, :class => 'delete-icon'
 = paginate @notifications
