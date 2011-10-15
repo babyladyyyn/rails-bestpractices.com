@@ -1,4 +1,21 @@
 class ApplicationDecorator < Draper::Base
+
+  def user_link
+    if model.cached_user
+      h.link_to model.cached_user.login, h.user_path(model.cached_user)
+    else
+      model.username
+    end
+  end
+
+  def user_avatar
+    if model.cached_user
+      h.image_tag model.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => model.cached_user.login
+    else
+      default_gravatar
+    end
+  end
+
   def vote_like_link(user)
     unless user
       return h.link_to 'Like', h.new_user_session_path(:return_to => h.polymorphic_path(model)), :class => 'like-icon'
