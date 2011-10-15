@@ -1,14 +1,14 @@
 - title @blog_post.title
 
 .blog_post
-  %h2= link_to @blog_post.title, blog_post_path(@blog_post)
+  %h2= @blog_post.link
   = render 'shared/addthis'
   %p.author
-    = image_tag @blog_post.cached_user.gravatar_url(:size => 16, :default => 'mm'), :class => 'user-avatar', :alt => @blog_post.cached_user.login
+    = @blog_post.user_avatar
     Posted by
-    = link_to @blog_post.cached_user.login, user_path(@blog_post.cached_user)
+    = @blog_post.user_link
     on
-    = l(@blog_post.created_at.to_date)
+    = @blog_post.created_date
   .body= raw @blog_post.body
   = render 'shared/addthis'
 

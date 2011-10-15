@@ -1,4 +1,5 @@
 class CommentDecorator < ApplicationDecorator
+  include WhiteListHelper
   decorates :comment
 
   def user_name

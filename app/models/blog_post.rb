@@ -23,7 +23,6 @@ class BlogPost < ActiveRecord::Base
 
   model_cache do
     with_key
-    with_method :body
     with_association :user, :comments
   end
 
