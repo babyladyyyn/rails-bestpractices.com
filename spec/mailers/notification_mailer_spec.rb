@@ -4,7 +4,7 @@ describe NotificationMailer do
   describe "notify_comment" do
     before :each do
       @post = Factory(:post, :title => 'email post')
-      @comment = Factory(:comment, :commentable => @post, :body => 'comment body')
+      @comment = CommentDecorator.new(Factory(:comment, :commentable => @post, :body => 'comment body'))
       @user = Factory(:user, :email => 'flyerhzm@gmail.com')
       @email = NotificationMailer.notify_comment("flyerhzm@gmail.com", @comment)
     end

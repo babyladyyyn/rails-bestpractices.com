@@ -39,7 +39,7 @@ class Answer < ActiveRecord::Base
   end
 
   def to_post
-    Post.new(:title => self.cached_question.title, :post_body => PostBody.new(:body => self.body), :cached_tag_list => self.cached_question.tag_list)
+    Post.new(:title => self.cached_question.title, :post_body => PostBody.new(:body => self.body), :tag_list => self.cached_question.tag_list)
   end
 
   def tweet_title

@@ -1,0 +1,6 @@
+.navs
+  %ul
+    %li{:class => nav_class("posts")}
+      = link_to "Rails Best Practices", tag_path(@tag.name, :nav => 'posts')
+    %li{:class => nav_class("questions")}
+      = link_to "Questions", tag_path(@tag.name, :nav => 'questions')

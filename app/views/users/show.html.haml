@@ -17,14 +17,7 @@
         = link_to @user.url, @user.url, :rel => 'nofollow', :target => '_blank'
 
 .statistics
-  .header.navs
-    %ul
-      = nav_class('posts') do
-        = link_to "#{@user.posts_count} Rails Best Practices", user_path(@user, :nav => 'posts')
-      = nav_class('questions') do
-        = link_to "#{@user.questions_count} Questions", user_path(@user, :nav => 'questions')
-      = nav_class('answers') do
-        = link_to "#{@user.answers_count} Answers", user_path(@user, :nav => 'answers')
+  = render_cell :tab, :user, @user
   - case params[:nav]
   - when 'posts'
     = render 'posts/posts', :posts => @children

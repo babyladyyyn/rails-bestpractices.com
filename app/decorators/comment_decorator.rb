@@ -9,11 +9,25 @@ class CommentDecorator < ApplicationDecorator
     cached_user ? cached_user.email : email
   end
 
+  def parent_name
+    commentable = model.cached_commentable
+    case commentable
+    when Post
+      "Post #{commentable.title}"
+    when Question
+      "Question #{commentable.title}"
+    when Answer
+      "Answer of #{commentable.cached_question.title}"
+    when BlogPost
+      "Blog Post #{commentable.title}"
+    end
+  end
+
   def parent_link
     commentable = model.cached_commentable
     case commentable
     when Post
-      h.link_to "Post #{commentable.title}",  h.post_url(commentable)
+      h.link_to "Post #{commentable.title}", h.post_url(commentable)
     when Question
       h.link_to "Question #{commentable.title}", h.question_url(commentable)
     when Answer

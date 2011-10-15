@@ -1,0 +1,10 @@
+.navs
+  %ul
+    %li{:class => nav_class("created_at")}
+      = link_to nav_title("created_at"), questions_path(:nav => "created_at", :order => nav_order("created_at")), :class => nav_order_class("created_at")
+    %li{:class => nav_class("vote_points")}
+      = link_to nav_title("vote_points"), questions_path(:nav => "vote_points", :order => nav_order("vote_points")), :class => nav_order_class("vote_points")
+    %li{:class => nav_class("answers_count")}
+      = link_to nav_title("answers_count"), questions_path(:nav => "answers_count", :order => nav_order("answers_count")), :class => nav_order_class("answers_count")
+    %li{:class => nav_class("not_answered")}
+      = link_to 'Not Answered', questions_path(:not_answered => true, :nav => 'not_answered')

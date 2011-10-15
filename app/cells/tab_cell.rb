@@ -5,6 +5,20 @@ class TabCell < Cell::Rails
     render
   end
 
+  def question
+    render
+  end
+
+  def tag(tag)
+    @tag = tag
+    render
+  end
+
+  def user(user)
+    @user = user
+    render
+  end
+
   def nav_class(name)
     params[:nav] == name ? "nav active" : "nav"
   end
@@ -17,6 +31,8 @@ class TabCell < Cell::Rails
       "Votes"
     when "comments_count"
       "Comments"
+    when "answers_count"
+      "Answers"
     end
   end
 
