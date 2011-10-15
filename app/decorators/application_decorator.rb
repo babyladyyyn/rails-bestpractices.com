@@ -20,7 +20,7 @@ class ApplicationDecorator < Draper::Base
     unless user
       return h.link_to 'Like', h.new_user_session_path(:return_to => h.polymorphic_path(model)), :class => 'like-icon'
     end
-    vote = model.cached_vote user
+    vote = model.vote user
     if vote
       if vote.like?
         h.link_to 'Like', "javascript:alert('You have voted like this best practices!');", :class => 'like-icon active'
@@ -36,7 +36,7 @@ class ApplicationDecorator < Draper::Base
     unless user
       return h.link_to 'Dislike', h.new_user_session_path(:return_to => h.polymorphic_path(model)), :class => 'dislike-icon'
     end
-    vote = model.cached_vote user
+    vote = model.vote user
     if vote
       if vote.like?
         h.button_to 'Dislike', h.polymorphic_path([model, vote]), :method => :delete, :class => 'dislike-icon'

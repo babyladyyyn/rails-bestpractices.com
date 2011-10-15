@@ -8,7 +8,7 @@
 %h2= @post.title
 
 .post
-  .vote-info= render_cell :vote, :show, @post
+  .vote-info= render_cell :vote, :show, @post, current_user
   .post-info
     %p
       = @post.user_avatar

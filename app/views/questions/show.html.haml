@@ -9,7 +9,7 @@
   = @question.title
 
 .question
-  .vote-info= render_cell :vote, :show, @question
+  .vote-info= render_cell :vote, :show, @question, current_user
   .question-info
     %p
       = @question.user_avatar

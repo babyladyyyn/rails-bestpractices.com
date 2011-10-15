@@ -4,7 +4,7 @@
     - AnswerDecorator.decorate_each(question.cached_answers) do |answer|
       - unless answer.new_record?
         .answer
-          .vote-info= render_cell :vote, :show, answer
+          .vote-info= render_cell :vote, :show, answer, current_user
           .answer-info
             .command
               - if can? :update, answer
@@ -12,7 +12,7 @@
                 &nbsp;&nbsp;|&nbsp;&nbsp;
                 = link_to 'Share', new_post_path(:answer_id => answer.id)
             %p
-              = image_tag answer.user_gravatar
+              = answer.user_avatar
               Answered by
               = answer.user_link
               on
