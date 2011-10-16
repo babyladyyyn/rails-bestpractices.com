@@ -60,6 +60,7 @@ class CommentsController < InheritedResources::Base
         @post = PostDecorator.new(@post)
         'posts/show'
       elsif params[:blog_post_id]
+        @blog_post = BlogPostDecorator.new(@blog_post)
         'blog_posts/show'
       end
     end
