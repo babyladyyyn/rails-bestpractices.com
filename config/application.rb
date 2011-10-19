@@ -13,7 +13,6 @@ module RailsBestpracticesCom
       g.test_framework :rspec, :fixture => false, :views => false
       g.fixture_replacement :factory_girl
       g.helper false
-      g.orm :decorator, :invoke_after_finished => "active_record:model"
     end
 
     # Settings in config/environments/* take precedence over those specified here.
