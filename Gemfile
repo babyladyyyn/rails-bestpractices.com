@@ -59,7 +59,7 @@ group :test do
   gem "spork", "0.9.0.rc9"
   gem "rspec"
   gem "rspec-rails"
-  gem "factory_girl_rails"
+  gem "factory_girl_rails", :require => false
   gem 'remarkable_activerecord', '4.0.0.alpha4'
   gem 'email_spec', '~> 1.0.0'
   gem 'watchr'

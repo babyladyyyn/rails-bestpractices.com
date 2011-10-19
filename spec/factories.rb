@@ -109,4 +109,23 @@ FactoryGirl.define do
     sequence(:body) {|n| "post body #{n}" }
     association :user
   end
+
+  factory :job do
+    sequence(:title) {|n| "Job #{n}" }
+    sequence(:company) {|n| "Company #{n}" }
+    sequence(:country) {|n| "Country #{n}" }
+    sequence(:city) {|n| "City #{n}" }
+    sequence(:description) {|n| "Description #{n}" }
+    sequence(:apply_email) {|n| "company#{n}@test.com" }
+    association :user
+  end
+
+  factory :job_partner do
+    sequence(:name) {|n| "www.partner#{n}.com" }
+    sequence(:token) {|n| "token#{n}" }
+  end
+
+  factory :tag, :class => ActsAsTaggableOn::Tag do
+    sequence(:name) {|n| "tag #{n}" }
+  end
 end

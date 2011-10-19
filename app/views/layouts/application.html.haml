@@ -59,7 +59,7 @@
           = render 'shared/sidebar'
           = render 'sidebar' rescue nil
           -# = render 'shared/twitter_widget'
-          .static-section= render_cell :page, :sidebar
+          .static-section= render_cell :page, :sidebar, :params[:controller]
           = render_cell :tag, :important
 
     #footer
