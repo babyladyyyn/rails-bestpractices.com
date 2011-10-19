@@ -16,8 +16,8 @@ Feature: Update Question
     When I press "Save"
     Then I should see success message "Question was successfully updated."
     And I should see "edit question" page
-    And I should see "edit" within ".tags a"
-    And I should see "test" within ".tags a"
+    And I should see "edit" within ".tags a:first"
+    And I should see "test" within ".tags a:last"
     And I should see "edit-italic" within ".wikistyle em"
     And I should see "bold" within ".wikistyle strong"
 

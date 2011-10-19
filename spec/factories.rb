@@ -103,4 +103,10 @@ FactoryGirl.define do
     association :voteable, :factory => :post
     sequence(:like) {|n| [false,true][n%2] }
   end
+
+  factory :blog_post do
+    sequence(:title) {|n| "Post #{n}" }
+    sequence(:body) {|n| "post body #{n}" }
+    association :user
+  end
 end

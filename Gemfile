@@ -56,7 +56,7 @@ group :test do
   gem "autotest"
   gem "autotest-rails", "~> 4.1.0"
   gem "rcov", "~> 0.9.9"
-  gem "spork", "0.9.0.rc4"
+  gem "spork", "0.9.0.rc9"
   gem "rspec"
   gem "rspec-rails"
   gem "factory_girl_rails"
@@ -69,7 +69,7 @@ end
 group :cucumber do
   gem "cucumber"
   gem "cucumber-rails"
-  gem "capybara", "= 0.3.9"
+  gem "capybara"
   gem "database_cleaner"
   gem "launchy"
   gem "pickle"

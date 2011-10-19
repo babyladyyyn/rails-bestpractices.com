@@ -1,5 +1,5 @@
 Given /^the (\w+) indexes are processed$/ do |model|
-  model = model.titleize.gsub(/\s/, '').constantize
+  model = model.classify.constantize
   ThinkingSphinx::Test.index *model.sphinx_index_names
-  sleep(1.00)
+  sleep(0.2)
 end

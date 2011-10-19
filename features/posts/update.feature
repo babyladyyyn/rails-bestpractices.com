@@ -15,12 +15,9 @@ Feature: Update Post
     When I press "Save"
     Then I should see success message "Your Best Practice was successfully updated!"
     And I should see "edit best practices" page
-    # TODO: The following works, but too cryptic ... ideally, feature file shouldn't
-    # deal with such low level stuff. Anyway, will leave it as it is for now,
-    # till we can find a better way to express it.
     And I should see "edit short description" within ".description"
-    And I should see "edit" within ".tags a"
-    And I should see "test" within ".tags a"
+    And I should see "edit" within ".tags a:first"
+    And I should see "test" within ".tags a:last"
     And I should see "edit-italic" within ".wikistyle em"
     And I should see "bold" within ".wikistyle strong"
 
