@@ -13,11 +13,21 @@ describe TagCell do
       it { should have_selector("h3", :content => "Tags") }
       it { should have_link(@tag1.name) }
       it { should have_link(@tag2.name) }
+
+      it "not rendering important" do
+        response = render_cell(:tag, :important, "blog_posts")
+        response.native.should be_nil
+      end
     end
 
-    it "not rendering important" do
-      response = render_cell(:tag, :important, "blog_posts")
-      response.native.should be_nil
+    context "renderding list" do
+      before do
+        @post = Factory(:post, :tag_list => "ruby, rails")
+      end
+      subject { render_cell(:tag, :list, @post) }
+
+      it { should have_link("ruby") }
+      it { should have_link("rails") }
     end
 
   end

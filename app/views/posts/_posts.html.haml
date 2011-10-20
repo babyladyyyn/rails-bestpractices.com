@@ -2,13 +2,19 @@
   .empty No Such Rails Best Practices
 - else
   .posts
-    - PostDecorator.decorate_each(posts) do |post|
+    - posts.each do |post|
       .render-post
-        .stat= post.statistics
+        .stat
+          %p #{post.vote_points} votes
+          %p #{post.comments_count} comments
+          %p #{post.view_count} views
         .content
-          %p.title= post.link
+          %p.title= link_to post.title, post_path(post)
           %p.description= post.description
-          %p.tags= post.tag_links
-          = post.implemented_icon
-        .author by #{post.user_link}
-        .avatar= post.user_avatar
+          = render_cell :tag, :list, post
+          - if post.implemented?
+            %span.implemeneted implemented
+        .author
+          by
+          = link_to post.cached_user.login, user_path(post.cached_user)
+        = render_cell :avatar, :show, post.cached_user

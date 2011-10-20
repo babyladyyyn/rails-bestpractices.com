@@ -8,6 +8,11 @@ class TagCell < Cell::Rails
     end
   end
 
+  def list(parent)
+    @tags = parent.cached_tags
+    render
+  end
+
   private
     def available(name)
       %w(posts questions commments tags search).include? name

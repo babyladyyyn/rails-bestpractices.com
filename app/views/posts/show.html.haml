@@ -8,21 +8,22 @@
 %h2= @post.title
 
 .post
-  .vote-info= render_cell :vote, :show, @post, current_user
+  = render_cell :vote, :show, @post, current_user
   .post-info
     %p
-      = @post.user_avatar
+      = render_cell :avatar, :show, @post.cached_user
       Posted by
-      = @post.user_link
+      = link_to @post.cached_user.login, user_path(@post.cached_user)
       on
-      = @post.created_date
+      = l @post.created_at.to_date
     .description
       .point-to-icon
       %p= @post.description
     = render 'shared/addthis'
     .wikistyle= raw @post.cached_formatted_html
-    = @post.implemented_icon
-    .tags= @post.tag_links
+    - if @post.implemented?
+      %span.implemeneted implemented
+    = render_cell :tag, :list, @post
     = render_cell :post, :related, @post
     = render 'shared/addthis'
     - if Rails.env.production?

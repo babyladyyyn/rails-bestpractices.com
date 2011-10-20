@@ -3,18 +3,21 @@
 %h2 Recent Comments
 
 .comments
-  - CommentDecorator.decorate_each(@comments) do |comment|
+  - @comments.each do |comment|
     .comment
       .info
-        = comment.user_avatar
+        = render_cell :avatar, :show, comment.cached_user
         %p
           Comments on
-          = comment.parent_link
+          = link_to comment.cached_commentable.title, post_path(comment.cached_commentable)
         %p
           Posted by
-          = comment.user_link
+          - if comment.cached_user
+            = link_to comment.cached_user.login, user_path(comment.cached_user)
+          - else
+            = comment.username
           on
-          = l(comment.created_at)
+          = l comment.created_at
       .content
         .point-to-icon
         .wikistyle= raw white_list(comment.body.gsub("\n", "<br/>"), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
