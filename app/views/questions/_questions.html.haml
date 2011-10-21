@@ -14,4 +14,4 @@
         .author
           by
           = link_to question.cached_user.login, user_path(question.cached_user)
-        = render_cell :avatar, :show, question.cached_user
+        .avatar= render_cell :avatar, :show, question.cached_user

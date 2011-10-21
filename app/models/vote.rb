@@ -34,6 +34,7 @@ class Vote < ActiveRecord::Base
       else
         voteable_type.constantize.decrement_counter(:vote_points, voteable_id)
       end
+      true
     end
 
     def update_destroy_vote
@@ -42,6 +43,7 @@ class Vote < ActiveRecord::Base
       else
         voteable_type.constantize.increment_counter(:vote_points, voteable_id)
       end
+      true
     end
 
     def expire_voteable_and_user_cache

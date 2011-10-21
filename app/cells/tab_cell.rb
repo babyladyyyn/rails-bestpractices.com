@@ -2,19 +2,19 @@ class TabCell < Cell::Rails
   helper_method :nav_class, :nav_title, :nav_order, :nav_order_class
 
   cache :post do |cell|
-    "#{cell.params[:nav]}/#{cell.params[:order]}"
+    "tab/post/#{cell.params[:nav]}/#{cell.params[:order]}"
   end
 
   cache :question do |cell|
-    "#{cell.params[:nav]}/#{cell.params[:order]}"
+    "tab/question/#{cell.params[:nav]}/#{cell.params[:order]}"
   end
 
   cache :tag do |cell|
-    cell.params[:nav]
+    "tab/tag/#{cell.params[:nav]}"
   end
 
   cache :user do |cell|
-    cell.params[:nav]
+    "tab/user/#{cell.params[:nav]}"
   end
 
   def post

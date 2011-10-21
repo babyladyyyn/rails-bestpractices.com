@@ -9,7 +9,7 @@ class BlogPostsController < InheritedResources::Base
 
   protected
     def resource
-      @blog_post = BlogPostDecorator.new(BlogPost.find_cached(params[:id]))
+      @blog_post = BlogPost.find_cached(params[:id])
     end
 
     def collection

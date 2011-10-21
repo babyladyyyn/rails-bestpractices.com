@@ -1,7 +1,7 @@
 - title @blog_post.title
 
 .blog_post
-  %h2= @blog_post.link
+  %h2= @blog_post.title
   = render 'shared/addthis'
   %p.author
     = render_cell :avatar, :show, @blog_post.cached_user

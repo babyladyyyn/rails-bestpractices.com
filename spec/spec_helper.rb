@@ -15,6 +15,9 @@ Spork.prefork do
 
     config.use_transactional_fixtures = true
 
+    config.filter_run :focus => true
+    config.run_all_when_everything_filtered = true
+
     config.include(EmailSpec::Helpers)
     config.include(EmailSpec::Matchers)
 
