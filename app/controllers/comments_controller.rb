@@ -5,7 +5,7 @@ class CommentsController < InheritedResources::Base
   def create
     render_422 and return if params[:comment].blank?
     @comment = parent.comments.new(params[:comment].merge(:user => current_user))
-    if current_user or params[:skip] == 'true' or verify_recaptcha(:model => @comment, :message => @comment.body)
+    if current_user || params[:skip] == 'true' || verify_recaptcha(:model => @comment, :message => @comment.body)
       create! do |success, failure|
         success.html {
           job = Delayed::Job.enqueue(DelayedJob::NotifyComment.new(@comment.id))

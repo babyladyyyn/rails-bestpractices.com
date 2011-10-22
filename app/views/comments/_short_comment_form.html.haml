@@ -1,7 +1,0 @@
-.comment_form
-  %p= link_to 'not clear? leave a comment', '#', :class => 'leave-comment'
-  = semantic_form_for [parent, parent.comments.build], :html => {:class => 'hide'} do |form|
-    = form.inputs do
-      = form.input :body, :label => 'Content', :input_html => { :class => 'wmd-ignore', :rows => 2 }
-    = form.buttons do
-      = form.submit "Comment"

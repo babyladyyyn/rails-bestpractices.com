@@ -58,7 +58,7 @@ class Post < ActiveRecord::Base
   model_cache do
     with_key
     with_method :formatted_html
-    with_association :user, :comments
+    with_association :user
   end
 
   def tweet_title

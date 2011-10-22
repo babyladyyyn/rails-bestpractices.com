@@ -18,5 +18,5 @@
               on
               = l answer.created_at.to_date
             .wikistyle= raw answer.cached_formatted_html
-            = render 'comments/short_comments', :comments => answer.cached_comments
-            = render 'comments/short_comment_form', :parent => answer
+            = render_cell :comment, :show_short, answer
+            = render_cell :comment, :new_short, answer, current_user

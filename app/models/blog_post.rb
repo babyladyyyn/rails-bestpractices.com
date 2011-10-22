@@ -23,7 +23,7 @@ class BlogPost < ActiveRecord::Base
 
   model_cache do
     with_key
-    with_association :user, :comments
+    with_association :user
   end
 
   def self.per_page

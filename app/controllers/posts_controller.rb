@@ -43,9 +43,8 @@ class PostsController < InheritedResources::Base
     end
 
     def collection
-      @posts = Post.published
+      @posts = Post.published.order(nav_order).page(params[:page] || 1)
       @posts = @posts.where(:implemented => true) if params[:nav] == 'implemented'
-      @posts = @posts.order(nav_order).page(params[:page] || 1)
     end
 
     def nav_order

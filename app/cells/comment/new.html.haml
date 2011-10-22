@@ -1,6 +1,6 @@
-= semantic_form_for [parent, comment] do |form|
+= semantic_form_for [@parent, @comment] do |form|
   = form.inputs :name => "Post a comment" do
-    - unless current_user
+    - unless @user
       = form.input :username, :hint => "Note: if you are a registered user, you can log in without input username."
       = form.input :email, :hint => "Optional and will not be shown."
     .wmd-notice
@@ -12,7 +12,7 @@
       %p
         %b= "Do not use <p> tags. Just use newlines."
     = form.input :body, :label => 'Content', :input_html => { :class => 'wmd-ignore', :rows => 4 }
-    - unless current_user
+    - unless @user
       = raw recaptcha_tags(:display => {:theme => 'white'})
   = form.buttons do
     = form.submit "Comment"
