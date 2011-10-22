@@ -47,15 +47,15 @@ class Notification < ActiveRecord::Base
     end
 
     def notify_user
-      if cached_notifierable.is_a? Comment
-        cached_notifierable.cached_commentable.cached_user
-      elsif cached_notifierable.is_a? Answer
-        cached_notifierable.cached_question.cached_user
+      if notifierable.is_a? Comment
+        notifierable.commentable.user
+      elsif notifierable.is_a? Answer
+        notifierable.question.user
       end
     end
 
     def expire_notify_user_cache
-      cached_notify_user.expire_model_cache
+      notify_user.expire_model_cache
     end
 end
 

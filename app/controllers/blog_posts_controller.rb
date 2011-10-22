@@ -13,6 +13,6 @@ class BlogPostsController < InheritedResources::Base
     end
 
     def collection
-      @blog_posts ||= BlogPost.order("created_at desc").page(params[:page] || 1)
+      @blog_posts = BlogPost.order("created_at desc").page(params[:page] || 1)
     end
 end

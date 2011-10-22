@@ -33,7 +33,7 @@ class Answer < ActiveRecord::Base
   model_cache do
     with_key
     with_method :formatted_html
-    with_association :user, :question, :comments
+    with_association :user, :question
   end
 
   def to_post
@@ -50,8 +50,8 @@ class Answer < ActiveRecord::Base
 
   private
     def expire_question_and_user_cache
-      cached_question.expire_model_cache
-      cached_user.expire_model_cache
+      question.expire_model_cache
+      user.expire_model_cache
     end
 
 end

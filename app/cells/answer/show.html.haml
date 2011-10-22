@@ -1,0 +1,21 @@
+.answers
+  %h3 Answers
+  - @answers.each do |answer|
+    - unless answer.new_record?
+      .answer
+        = render_cell :vote, :show, answer, @user
+        .answer-info
+          .command
+            - if Ability.new(@user).can? :update, answer
+              = link_to 'Edit', edit_question_answer_path(@question, answer)
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              = link_to 'Share', new_post_path(:answer_id => answer.id)
+          %p
+            = render_cell :avatar, :show, answer.cached_user
+            Answered by
+            = link_to answer.cached_user.login, user_path(answer.cached_user)
+            on
+            = l answer.created_at.to_date
+          .wikistyle= raw answer.cached_formatted_html
+          = render_cell :comment, :show_short, answer
+          = render_cell :comment, :new_short, answer, @user

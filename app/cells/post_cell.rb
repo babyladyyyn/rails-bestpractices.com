@@ -1,6 +1,6 @@
 class PostCell < Cell::Rails
   cache :related do |cell, post|
-    "#{post.cache_key}/post/related"
+    "#{post.model_cache_key}/post/related"
   end
 
   def related(post)

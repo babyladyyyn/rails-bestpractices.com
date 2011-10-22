@@ -47,8 +47,8 @@ class Vote < ActiveRecord::Base
     end
 
     def expire_voteable_and_user_cache
-      cached_voteable.expire_model_cache
-      cached_user.expire_model_cache
+      voteable.expire_model_cache
+      user.expire_model_cache
     end
 
 end
