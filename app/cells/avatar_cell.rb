@@ -1,9 +1,9 @@
 class AvatarCell < Cell::Rails
   cache :show do |cell, user, size|
     if user
-      "#{user.model_cache_key}/avatar/show/#{size}"
+      "#{user.model_cache_key}/#{size}"
     else
-      "avatar/show/#{size}"
+      size
     end
   end
 
