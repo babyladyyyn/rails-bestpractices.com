@@ -1,6 +1,6 @@
 class SidebarCell < Cell::Rails
   cache :display, :expires_in => 1.day do |cell, controller, action, user|
-    "sidebar/#{controller}/#{action}/#{!!user}"
+    "#{controller}/#{action}/#{!!user}"
   end
 
   cache :login
