@@ -8,10 +8,8 @@
         %p= "#{question.view_count} views"
       .content
         %p.title= link_to question.title, question_path(question)
-        %p.tags
-          - question.cached_tags.each do |tag|
-            = link_to tag.name, tag_path(tag.name)
+        = render_cell :tag, :list, question
       .author
         by
         = link_to question.cached_user.login, user_path(question.cached_user)
-      .avatar= image_tag question.cached_user.gravatar_url(:size => 32, :default => 'mm'), :class => 'user-avatar', :alt => question.cached_user.login
+      .avatar= render_cell :avatar, :show, question.cached_user

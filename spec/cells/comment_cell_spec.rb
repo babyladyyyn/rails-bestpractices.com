@@ -23,9 +23,10 @@ describe CommentCell do
       before do
         @post = Factory(:post)
         @user = Factory(:user)
+        @comment = @post.comments.build
       end
 
-      subject { render_cell(:comment, :new, @post, @user) }
+      subject { render_cell(:comment, :new, @post, @comment, @user) }
 
       it { should have_selector("form.comment") }
       it { should have_button("Comment") }

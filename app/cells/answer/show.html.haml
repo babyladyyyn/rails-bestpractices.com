@@ -6,7 +6,7 @@
         = render_cell :vote, :show, answer, @user
         .answer-info
           .command
-            - if can? :update, answer
+            - if Ability.new(@user).can? :update, answer
               = link_to 'Edit', edit_question_answer_path(@question, answer)
               &nbsp;&nbsp;|&nbsp;&nbsp;
               = link_to 'Share', new_post_path(:answer_id => answer.id)
