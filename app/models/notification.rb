@@ -22,8 +22,6 @@ class Notification < ActiveRecord::Base
 
   default_scope order('notifications.created_at desc')
 
-  paginates_per 10
-
   after_create :expire_notify_user_cache
   after_destroy :expire_notify_user_cache
 

@@ -22,7 +22,7 @@
     = render 'shared/addthis'
     .wikistyle= raw @post.cached_formatted_html
     - if @post.implemented?
-      %span.implemeneted implemented
+      %span.implemented implemented
     = render_cell :tag, :list, @post
     = render_cell :post, :related, @post
     = render 'shared/addthis'

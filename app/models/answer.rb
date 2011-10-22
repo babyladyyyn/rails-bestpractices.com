@@ -25,8 +25,6 @@ class Answer < ActiveRecord::Base
 
   accepts_nested_attributes_for :answer_body
 
-  paginates_per 10
-
   delegate :body, :formatted_html, :to => :answer_body
 
   after_create :expire_question_and_user_cache

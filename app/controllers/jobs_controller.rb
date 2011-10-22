@@ -24,7 +24,7 @@ class JobsController < InheritedResources::Base
     end
 
     def collection
-      @jobs = Job.published.order('created_at desc').page(params[:page].to_i)
+      @jobs = Job.published.order('created_at desc').page(params[:page] || 1)
     end
 
     def require_partner

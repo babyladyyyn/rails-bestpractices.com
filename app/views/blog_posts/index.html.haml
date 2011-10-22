@@ -1,4 +1,4 @@
 - set_meta_tags :title => 'Team Blog'
 
 = render 'blog_posts', :blog_posts => @blog_posts
-= paginate @blog_posts
+= render_cell :paginate, :show, @blog_posts

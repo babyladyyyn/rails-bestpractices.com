@@ -41,7 +41,7 @@ class TabCell < Cell::Rails
 
   def nav_title(name)
     case name
-    when "created_at"
+    when "id"
       "Created"
     when "vote_points"
       "Votes"

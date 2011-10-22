@@ -9,7 +9,6 @@ class SidebarCell < Cell::Rails
   cache :posts_navigation
   cache :blog_rss
   cache :recent_blog_posts
-  cache :dynamic_sidebar
   cache :important_tags
 
   def display(controller="posts", action="index", user=nil)
@@ -68,7 +67,7 @@ class SidebarCell < Cell::Rails
     page1 = Page.find_cached_by_name(name)
     body += page1.body if page1
 
-    if action == 'new' or action == 'edit'
+    if action == 'new' || action == 'edit'
       name = "#{controller}-form-sidebar"
     else
       name = "#{controller}-sidebar"

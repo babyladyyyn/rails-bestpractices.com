@@ -36,8 +36,6 @@ class Post < ActiveRecord::Base
 
   accepts_nested_attributes_for :post_body
 
-  paginates_per 10
-
   delegate :body, :formatted_html, :to => :post_body
 
   acts_as_taggable

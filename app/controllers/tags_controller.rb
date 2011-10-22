@@ -6,7 +6,7 @@ class TagsController < InheritedResources::Base
       params[:nav] ||= "posts"
       @children = @tag.send(params[:nav])
       @children = @children.published if params[:nav] == "posts"
-      @children = @children.page(params[:page].to_i)
+      @children = @children.page(params[:page] || 1)
     else
       format.html { render_404 }
     end

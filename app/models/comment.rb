@@ -24,8 +24,6 @@ class Comment < ActiveRecord::Base
 
   scope :for_post, where(:commentable_type => 'Post').order("comments.created_at desc")
 
-  paginates_per 10
-
   after_create :expire_commentable_and_user_cache
   after_destroy :expire_commentable_and_user_cache
 

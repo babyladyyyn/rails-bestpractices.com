@@ -45,12 +45,12 @@ class PostsController < InheritedResources::Base
     def collection
       @posts = Post.published
       @posts = @posts.where(:implemented => true) if params[:nav] == 'implemented'
-      @posts = @posts.order(nav_order).page(params[:page].to_i)
+      @posts = @posts.order(nav_order).page(params[:page] || 1)
     end
 
     def nav_order
-      params[:nav] = "created_at" unless %w(created_at vote_points comments_count implemented).include?(params[:nav])
+      params[:nav] = "id" unless %w(id vote_points comments_count implemented).include?(params[:nav])
       params[:order] = "desc" unless %w(desc asc).include?(params[:order])
-      "posts.#{params[:nav] == 'implemented' ? 'created_at' : params[:nav]} #{params[:order]}"
+      "posts.#{params[:nav] == 'implemented' ? 'id' : params[:nav]} #{params[:order]}"
     end
 end

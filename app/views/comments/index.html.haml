@@ -22,4 +22,4 @@
         .point-to-icon
         .wikistyle= raw white_list(comment.body.gsub("\n", "<br/>"), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
 
-= paginate @comments
+= render_cell :paginate, :show, @comments

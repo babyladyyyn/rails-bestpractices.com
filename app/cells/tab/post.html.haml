@@ -1,7 +1,7 @@
 .navs
   %ul
-    %li{:class => nav_class("created_at")}
-      = link_to nav_title("created_at"), posts_path(:nav => "created_at", :order => nav_order("created_at")), :class => nav_order_class("created_at")
+    %li{:class => nav_class("id")}
+      = link_to nav_title("id"), posts_path(:nav => "id", :order => nav_order("id")), :class => nav_order_class("id")
     %li{:class => nav_class("vote_points")}
       = link_to nav_title("vote_points"), posts_path(:nav => "vote_points", :order => nav_order("vote_points")), :class => nav_order_class("vote_points")
     %li{:class => nav_class("comments_count")}

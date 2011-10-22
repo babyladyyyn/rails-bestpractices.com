@@ -35,8 +35,6 @@ class Question < ActiveRecord::Base
 
   accepts_nested_attributes_for :question_body
 
-  paginates_per 10
-
   delegate :body, :formatted_html, :to => :question_body
 
   acts_as_taggable
