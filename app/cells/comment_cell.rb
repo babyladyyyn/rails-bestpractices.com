@@ -3,7 +3,15 @@ class CommentCell < Cell::Rails
     "#{parent.model_cache_key}/comment/show/#{parent.comments_count}"
   end
 
-  cache :new do |cell, parent, user|
+  cache :new, :if => proc { |cell, parent, comment, user| comment.errors.empty? } do |cell, parent, comment, user|
+    "#{parent.model_cache_key}/comment/new/#{!!user}"
+  end
+
+  cache :show_short do |cell, parent|
+    "#{parent.model_cache_key}/comment/show_short/#{parent.comments_count}"
+  end
+
+  cache :new_short do |cell, parent, user|
     "#{parent.model_cache_key}/comment/new/#{!!user}"
   end
 

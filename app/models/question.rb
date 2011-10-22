@@ -54,7 +54,7 @@ class Question < ActiveRecord::Base
   model_cache do
     with_key
     with_method :formatted_html
-    with_association :user, :answers
+    with_association :user
   end
 
   def tweet_title
@@ -75,7 +75,7 @@ class Question < ActiveRecord::Base
     end
 
     def expire_user_cache
-      cached_user.expire_model_cache
+      user.expire_model_cache
     end
 
 end

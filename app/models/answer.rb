@@ -50,8 +50,8 @@ class Answer < ActiveRecord::Base
 
   private
     def expire_question_and_user_cache
-      cached_question.expire_model_cache
-      cached_user.expire_model_cache
+      question.expire_model_cache
+      user.expire_model_cache
     end
 
 end
