@@ -24,14 +24,34 @@ class Comment < ActiveRecord::Base
 
   scope :for_post, where(:commentable_type => 'Post').order("comments.created_at desc")
 
-  paginates_per 10
-
   after_create :expire_commentable_and_user_cache
   after_destroy :expire_commentable_and_user_cache
 
   model_cache do
     with_key
     with_association :user, :commentable
+  end
+
+  def user_name
+    cached_user ? cached_user.login : username
+  end
+
+  def user_email
+    cached_user ? cached_user.email : email
+  end
+
+  def parent_name
+    commentable = cached_commentable
+    case commentable
+    when Question
+      "Question #{commentable.title}"
+    when Answer
+      "Answer of #{commentable.cached_question.title}"
+    when Post
+      "Post #{commentable.title}"
+    when BlogPost
+      "Blog Post #{commentable.title}"
+    end
   end
 
   private

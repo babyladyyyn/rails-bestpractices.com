@@ -18,7 +18,7 @@ module RailsBestPractices
 
         def should_have_entries_per_page(count)
           it "should have #{count} entries per page" do
-            described_class.default_per_page.should equal(count)
+            described_class.per_page.should equal(count)
           end
         end
 

@@ -8,10 +8,7 @@ class AnswersController < InheritedResources::Base
       job = Delayed::Job.enqueue(DelayedJob::NotifyAnswer.new(@answer.id))
       redirect_to question_path(@question)
     end
-    failure.html do
-      @question = QuestionDecorator.new(@question)
-      render 'questions/show'
-    end
+    failure.html { render 'questions/show' }
   end
 
   update! do |success, failure|

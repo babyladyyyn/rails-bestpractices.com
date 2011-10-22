@@ -5,11 +5,12 @@
   .empty No Notifications Yet
 - else
   .notifications
-    - NotificationDecorator.decorate_each(@notifications) do |notification|
+    - @notifications.each do |notification|
       .render-notification
         .icon
           %div{:class => "#{notification.notifierable_type.downcase}-icon"}
-        %div{:class => notification.read? ? "read" : "unread"}= notification.message
+        %div{:class => notification.read? ? "read" : "unread"}= notification_message(notification)
         .time= "#{time_ago_in_words(notification.created_at)} ago"
         .delete= link_to 'Delete', notification_path(notification), :method => :delete, :class => 'delete-icon'
-= paginate @notifications
+
+= render_cell :paginate, :show, @notifications

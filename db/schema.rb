@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111015113342) do
+ActiveRecord::Schema.define(:version => 20111022024211) do
 
   create_table "answer_bodies", :force => true do |t|
     t.text     "body"
@@ -195,7 +195,8 @@ ActiveRecord::Schema.define(:version => 20111015113342) do
     t.boolean  "published",                          :default => false, :null => false
   end
 
-  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+  add_index "posts", ["published"], :name => "index_posts_on_published"
+  add_index "posts", ["user_id", "published"], :name => "index_posts_on_user_id_and_published"
 
   create_table "question_bodies", :force => true do |t|
     t.text     "body"

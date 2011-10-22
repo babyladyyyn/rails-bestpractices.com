@@ -1,7 +1,7 @@
-- if @post.related_posts.present?
+- if @related_posts.present?
   .related_posts
     %strong related best practices:
     %ul
-      - PostDecorator.decorate_each(@post.related_posts) do |post|
-        %li= post.link
+      - @related_posts.each do |post|
+        %li= link_to post.title, post_path(post)
 

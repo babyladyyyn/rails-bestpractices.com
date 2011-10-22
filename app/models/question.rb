@@ -35,8 +35,6 @@ class Question < ActiveRecord::Base
 
   accepts_nested_attributes_for :question_body
 
-  paginates_per 10
-
   delegate :body, :formatted_html, :to => :question_body
 
   acts_as_taggable
@@ -55,7 +53,7 @@ class Question < ActiveRecord::Base
 
   model_cache do
     with_key
-    with_method :formatted_html, :tags
+    with_method :formatted_html
     with_association :user, :comments, :answers
   end
 

@@ -9,10 +9,10 @@ class BlogPostsController < InheritedResources::Base
 
   protected
     def resource
-      @blog_post = BlogPostDecorator.new(BlogPost.find_cached(params[:id]))
+      @blog_post = BlogPost.find_cached(params[:id])
     end
 
     def collection
-      @blog_posts ||= BlogPost.order("created_at desc").page(params[:page].to_i)
+      @blog_posts ||= BlogPost.order("created_at desc").page(params[:page] || 1)
     end
 end

@@ -7,4 +7,4 @@
 = render_cell :tab, :question
 
 = render 'questions', :questions => @questions
-= paginate @questions
+= render_cell :paginate, :show, @questions

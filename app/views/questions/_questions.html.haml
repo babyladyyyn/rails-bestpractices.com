@@ -2,11 +2,16 @@
   .empty No Such Questions
 - else
   .questions
-    - QuestionDecorator.decorate_each(questions) do |question|
+    - questions.each do |question|
       .render-question
-        .stat= question.statistics
+        .stat
+          %p #{question.vote_points} votes
+          %p #{question.answers_count} answers
+          %p #{question.view_count} views
         .content
-          %p.title= question.link
-          %p.tags= question.tag_links
-        .author by #{question.user_link}
-        .avatar= question.user_avatar
+          %p.title= link_to question.title, question_path(question)
+          = render_cell :tag, :list, question
+        .author
+          by
+          = link_to question.cached_user.login, user_path(question.cached_user)
+        .avatar= render_cell :avatar, :show, question.cached_user

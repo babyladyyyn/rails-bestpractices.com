@@ -5,4 +5,4 @@
 = render_cell :tab, :post
 
 = render 'posts', :posts => @posts
-= paginate @posts
+= render_cell :paginate, :show, @posts

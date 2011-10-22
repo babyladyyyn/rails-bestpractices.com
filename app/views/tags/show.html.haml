@@ -7,4 +7,4 @@
   = render 'posts/posts', :posts => @children
 - elsif params[:nav] == 'questions'
   = render 'questions/questions', :questions => @children
-= paginate @children
+= render_cell :paginate, :show, @children

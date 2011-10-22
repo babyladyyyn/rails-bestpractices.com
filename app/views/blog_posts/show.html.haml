@@ -1,14 +1,14 @@
 - title @blog_post.title
 
 .blog_post
-  %h2= @blog_post.link
+  %h2= @blog_post.title
   = render 'shared/addthis'
   %p.author
-    = @blog_post.user_avatar
+    = render_cell :avatar, :show, @blog_post.cached_user
     Posted by
-    = @blog_post.user_link
+    = link_to @blog_post.cached_user.login, user_path(@blog_post.cached_user)
     on
-    = @blog_post.created_date
+    = l @blog_post.created_at.to_date
   .body= raw @blog_post.body
   = render 'shared/addthis'
 

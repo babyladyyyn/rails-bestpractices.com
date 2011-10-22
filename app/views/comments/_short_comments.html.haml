@@ -1,10 +1,13 @@
 .comments
-  - CommentDecorator.decorate_each(comments) do |comment|
+  - comments.each do |comment|
     .comment
       = comment.body.gsub("\n", "<br/>")
       %span
         Posted by
-        = comment.user_link
+        - if comment.cached_user
+          = link_to comment.cached_user.login, user_path(comment.cached_user)
+        - else
+          = comment.username
         on
-        = comment.created_time
+        = l comment.created_at
       .clear

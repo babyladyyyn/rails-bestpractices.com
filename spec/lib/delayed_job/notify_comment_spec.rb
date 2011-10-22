@@ -8,7 +8,7 @@ describe DelayedJob::NotifyComment do
     comment = Factory(:comment, :commentable => post)
 
     mailer.stub!(:deliver)
-    NotificationMailer.should_receive(:notify_comment).with('post@gmail.com', CommentDecorator.new(comment)).and_return(mailer)
+    NotificationMailer.should_receive(:notify_comment).with('post@gmail.com', comment).and_return(mailer)
     DelayedJob::NotifyComment.new(comment.id).perform
   end
 
@@ -34,9 +34,9 @@ describe DelayedJob::NotifyComment do
     comment = Factory(:comment, :commentable => post, :user => nil, :username => 'comment2', :email => 'comment2@gmail.com', :body => 'comment')
 
     mailer.stub!(:deliver)
-    NotificationMailer.should_receive(:notify_comment).with('post@gmail.com', CommentDecorator.new(comment)).and_return(mailer)
-    NotificationMailer.should_receive(:notify_comment).with('comment1@gmail.com', CommentDecorator.new(comment)).ordered.and_return(mailer)
-    NotificationMailer.should_receive(:notify_comment).with('comment3@gmail.com', CommentDecorator.new(comment)).ordered.and_return(mailer)
+    NotificationMailer.should_receive(:notify_comment).with('post@gmail.com', comment).and_return(mailer)
+    NotificationMailer.should_receive(:notify_comment).with('comment1@gmail.com', comment).ordered.and_return(mailer)
+    NotificationMailer.should_receive(:notify_comment).with('comment3@gmail.com', comment).ordered.and_return(mailer)
     DelayedJob::NotifyComment.new(comment.id).perform
   end
 end

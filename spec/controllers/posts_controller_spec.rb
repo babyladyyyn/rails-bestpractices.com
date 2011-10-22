@@ -12,7 +12,7 @@ describe PostsController do
     it "should not allow invalid nav param" do
       posts = mock([Post])
       Post.should_receive(:published).and_return(posts)
-      posts.should_receive(:order).with("posts.created_at desc").and_return(posts)
+      posts.should_receive(:order).with("posts.id desc").and_return(posts)
       posts.should_receive(:page).and_return(posts)
       get :index, :nav => "wssiasbhpnlgw", :order => "desc"
       response.should render_template("posts/index")
@@ -23,7 +23,7 @@ describe PostsController do
       posts = mock([Post])
       Post.should_receive(:published).and_return(posts)
       posts.should_receive(:where).with(:implemented => true).and_return(posts)
-      posts.should_receive(:order).with("posts.created_at desc").and_return(posts)
+      posts.should_receive(:order).with("posts.id desc").and_return(posts)
       posts.should_receive(:page).and_return(posts)
       get :index, :nav => "implemented"
       response.should render_template("posts/index")

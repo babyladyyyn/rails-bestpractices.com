@@ -21,7 +21,7 @@ class CommentsController < InheritedResources::Base
   end
 
   def index
-    @comments = Comment.for_post.includes(:user).page(params[:page].to_i)
+    @comments = Comment.for_post.includes(:user).page(params[:page] || 1)
   end
 
   private
@@ -51,16 +51,12 @@ class CommentsController < InheritedResources::Base
 
     def failure_page
       if params[:question_id]
-        @question = QuestionDecorator.new(@question)
         'questions/show'
       elsif params[:answer_id]
-        @question = QuestionDecorator.new(@answer.cached_question)
         'questions/show'
       elsif params[:post_id]
-        @post = PostDecorator.new(@post)
         'posts/show'
       elsif params[:blog_post_id]
-        @blog_post = BlogPostDecorator.new(@blog_post)
         'blog_posts/show'
       end
     end

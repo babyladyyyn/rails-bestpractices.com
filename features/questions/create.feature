@@ -15,8 +15,8 @@ Feature: Create Question
     When I press "Post"
     Then I should see success message "Question was successfully created."
     And I should see "first question" page
-    And I should see "rails" within ".tags a"
-    And I should see "test" within ".tags a"
+    And I should see "rails" within ".tags a:first"
+    And I should see "test" within ".tags a:last"
     And I should see "italic" within ".wikistyle em"
     And I should see "bold" within ".wikistyle strong"
 

@@ -27,6 +27,6 @@
       %td &nbsp;
       %td{:colspan=>3}
         %strong Job Type:
-        = job.job_types.collect(&:name).join(', ')
+        = job.cached_job_type_names.join(', ')
 
-= paginate @jobs
+= render_cell :paginate, :show, @jobs

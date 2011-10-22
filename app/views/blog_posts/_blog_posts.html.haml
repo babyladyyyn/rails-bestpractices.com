@@ -1,12 +1,12 @@
 .blog_posts
-  - BlogPostDecorator.decorate_each(blog_posts) do |blog_post|
+  - blog_posts.each do |blog_post|
     .blog_post
-      %h2= blog_post.link
+      %h2= link_to blog_post.title, blog_post_path(blog_post)
       %p.author
-        = blog_post.user_avatar
+        = render_cell :avatar, :show, blog_post.cached_user
         Posted by
-        = blog_post.user_link
+        = link_to blog_post.cached_user.login, user_path(blog_post.cached_user)
         on
-        = blog_post.created_date
-      %p.comments_count= blog_post.comments_count_link
+        = l blog_post.created_at.to_date
+      %p.comments_count= link_to "#{blog_post.comments_count} Comments", blog_post_path(blog_post, :anchor => "comments")
       .body= raw blog_post.body

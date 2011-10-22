@@ -7,7 +7,7 @@ gem 'mysql2', "~> 0.2.6"
 gem "json"
 gem "haml"
 gem "compass"
-gem "kaminari"
+gem "will_paginate"
 gem "devise"
 gem "omniauth"
 gem "formtastic", "~> 1.1.0"
@@ -38,7 +38,6 @@ gem "memcache-client"
 gem "memcached"
 gem "simple_cacheable", :require => "cacheable"
 gem "cells"
-gem "draper"
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'
@@ -56,10 +55,10 @@ group :test do
   gem "autotest"
   gem "autotest-rails", "~> 4.1.0"
   gem "rcov", "~> 0.9.9"
-  gem "spork", "0.9.0.rc4"
+  gem "spork", "0.9.0.rc9"
   gem "rspec"
   gem "rspec-rails"
-  gem "factory_girl_rails"
+  gem "factory_girl_rails", :require => false
   gem 'remarkable_activerecord', '4.0.0.alpha4'
   gem 'email_spec', '~> 1.0.0'
   gem 'watchr'
@@ -69,7 +68,7 @@ end
 group :cucumber do
   gem "cucumber"
   gem "cucumber-rails"
-  gem "capybara", "= 0.3.9"
+  gem "capybara"
   gem "database_cleaner"
   gem "launchy"
   gem "pickle"

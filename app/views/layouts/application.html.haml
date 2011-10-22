@@ -55,12 +55,7 @@
                 .message{:class => type}= message
           #tweet= render 'shared/tweet_button'
           = yield
-        #sidebar
-          = render 'shared/sidebar'
-          = render 'sidebar' rescue nil
-          -# = render 'shared/twitter_widget'
-          .static-section= render_cell :page, :sidebar
-          = render_cell :tag, :important
+        #sidebar= render_cell :sidebar, :display, params[:controller], params[:action], current_user
 
     #footer
       .container

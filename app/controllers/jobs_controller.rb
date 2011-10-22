@@ -24,11 +24,11 @@ class JobsController < InheritedResources::Base
     end
 
     def collection
-      @jobs = Job.published.order('created_at desc').page(params[:page].to_i)
+      @jobs = Job.published.order('created_at desc').page(params[:page] || 1)
     end
 
     def require_partner
-      @partner = JobPartner.find_by_token(params[:token])
+      @partner = Job.find_by_token(params[:token])
       render_422 and return unless @partner
     end
 end

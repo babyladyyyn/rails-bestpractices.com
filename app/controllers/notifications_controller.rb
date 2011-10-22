@@ -15,6 +15,6 @@ class NotificationsController < InheritedResources::Base
     end
 
     def collection
-      @notifications ||= end_of_association_chain.page(params[:page].to_i)
+      @notifications ||= end_of_association_chain.page(params[:page] || 1)
     end
 end
