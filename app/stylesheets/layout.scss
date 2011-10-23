@@ -128,7 +128,6 @@ body {
   }
   .main-nav {
     font-size: 16px;
-    margin-top: 12px;
     height: 29px;
     background-color: #971920;
     .home-icon {
@@ -179,6 +178,11 @@ body {
       }
     }
   }
+  .community {
+    margin: 0 auto;
+    display: block;
+    width: 600px;
+  }
 }
 #flash {
   margin: 20px 0;
@@ -207,9 +211,6 @@ body {
   @include float-left;
   width: 680px;
   margin-left: 30px;
-  #tweet {
-    text-align: center;
-  }
   > h2 {
     font: 20px verdana;
     margin-bottom: 20px;
