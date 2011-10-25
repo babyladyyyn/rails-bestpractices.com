@@ -90,5 +90,35 @@ describe Post do
     end
   end
 
+  context "prev" do
+    before :each do
+      @post1 = Factory(:post)
+      @post2 = Factory(:post)
+    end
+
+    it "should get nil for @post1" do
+      @post1.prev.should be_nil
+    end
+
+    it "should get @post1 for @post2" do
+      @post2.prev.should == @post1
+    end
+  end
+
+  context "next" do
+    before :each do
+      @post1 = Factory(:post)
+      @post2 = Factory(:post)
+    end
+
+    it "should get nil for @post2" do
+      @post2.next.should be_nil
+    end
+
+    it "should get @post2 for @post1" do
+      @post1.next.should == @post2
+    end
+  end
+
 end
 

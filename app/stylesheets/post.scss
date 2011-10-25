@@ -47,6 +47,13 @@
   .adsense {
     @include adsense;
   }
+  .prev_next {
+    @include clearfix;
+    margin: 20px 0;
+    .next {
+      @include float-right;
+    }
+  }
 }
 .implemented {
   font-size: 12px;

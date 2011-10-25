@@ -83,6 +83,14 @@ class Post < ActiveRecord::Base
     Post.where(['posts.id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true).all
   end
 
+  def prev
+    Post.published.where(["id < ?", self.id]).order("id desc").limit(1).first
+  end
+
+  def next
+    Post.published.where(["id > ?", self.id]).order("id asc").limit(1).first
+  end
+
   protected
     def notify_admin
       Delayed::Job.enqueue(DelayedJob::NotifyAdmin.new(self.id))

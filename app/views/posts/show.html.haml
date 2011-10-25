@@ -24,6 +24,7 @@
     - if @post.implemented?
       %span.implemented implemented
     = render_cell :tag, :list, @post
+    = render_cell :post, :prev_next, @post
     = render_cell :post, :related, @post
     = render 'shared/addthis'
     - if Rails.env.production?
