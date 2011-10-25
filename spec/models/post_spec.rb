@@ -92,31 +92,57 @@ describe Post do
 
   context "prev" do
     before :each do
-      @post1 = Factory(:post)
-      @post2 = Factory(:post)
+      @post1 = Factory(:post, :vote_points => 20, :comments_count => 10)
+      @post2 = Factory(:post, :vote_points => 10, :comments_count => 20, :implemented => true)
     end
 
-    it "should get nil for @post1" do
-      @post1.prev.should be_nil
+    it "should order by id" do
+      @post1.prev("id").should be_nil
+      @post2.prev("id").should == @post1
     end
 
-    it "should get @post1 for @post2" do
-      @post2.prev.should == @post1
+    it "should order by vote_points" do
+      @post1.prev("vote_points").should == @post2
+      @post2.prev("vote_points").should be_nil
+    end
+
+    it "should order by comments_count" do
+      @post1.prev("comments_count").should be_nil
+      @post2.prev("comments_count").should == @post1
+    end
+
+    it "should order by implemented" do
+      @post3 = Factory(:post, :implemented => true)
+      @post2.prev("implemented").should be_nil
+      @post3.prev("implemented").should == @post2
     end
   end
 
   context "next" do
     before :each do
-      @post1 = Factory(:post)
-      @post2 = Factory(:post)
+      @post1 = Factory(:post, :vote_points => 20, :comments_count => 10, :implemented => true)
+      @post2 = Factory(:post, :vote_points => 10, :comments_count => 20, :implemented => true)
     end
 
-    it "should get nil for @post2" do
-      @post2.next.should be_nil
+    it "should order by id" do
+      @post1.next("id").should == @post2
+      @post2.next("id").should be_nil
     end
 
-    it "should get @post2 for @post1" do
-      @post1.next.should == @post2
+    it "should order by vote_points" do
+      @post1.next("vote_points").should be_nil
+      @post2.next("vote_points").should == @post1
+    end
+
+    it "should order by comments_count" do
+      @post1.next("comments_count").should == @post2
+      @post2.next("comments_count").should be_nil
+    end
+
+    it "should order by implemented" do
+      @post3 = Factory(:post)
+      @post1.next("implemented").should == @post2
+      @post2.next("implemented").should be_nil
     end
   end
 

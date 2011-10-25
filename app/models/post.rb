@@ -83,12 +83,20 @@ class Post < ActiveRecord::Base
     Post.where(['posts.id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true).all
   end
 
-  def prev
-    Post.published.where(["id < ?", self.id]).order("id desc").limit(1).first
+  def prev(order)
+    if order == "implemented"
+      Post.published.implemented.where(["id < ?", self.id]).order("id desc").limit(1).first
+    else
+      Post.published.where(["#{order} < ?", self.send(order)]).order("#{order} desc").limit(1).first
+    end
   end
 
-  def next
-    Post.published.where(["id > ?", self.id]).order("id asc").limit(1).first
+  def next(order)
+    if order == "implemented"
+      Post.published.implemented.where(["id > ?", self.id]).order("id asc").limit(1).first
+    else
+      Post.published.where(["#{order} > ?", self.send(order)]).order("#{order} asc").limit(1).first
+    end
   end
 
   protected

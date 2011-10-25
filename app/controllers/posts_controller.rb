@@ -1,6 +1,7 @@
 class PostsController < InheritedResources::Base
   load_and_authorize_resource
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
+  before_filter :set_post_order, :only => :index
   has_scope :implemented
   respond_to :xml, :only => :index
 
@@ -44,12 +45,16 @@ class PostsController < InheritedResources::Base
 
     def collection
       @posts = Post.published.order(nav_order).page(params[:page] || 1)
-      @posts = @posts.where(:implemented => true) if params[:nav] == 'implemented'
+      @posts = @posts.implemented if params[:nav] == 'implemented'
     end
 
     def nav_order
       params[:nav] = "id" unless %w(id vote_points comments_count implemented).include?(params[:nav])
       params[:order] = "desc" unless %w(desc asc).include?(params[:order])
       "posts.#{params[:nav] == 'implemented' ? 'id' : params[:nav]} #{params[:order]}"
+    end
+
+    def set_post_order
+      session[:post_order] = params[:nav] || "id"
     end
 end
