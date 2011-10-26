@@ -6,7 +6,7 @@ Disallow: /drops/*
 Disallow: /implementations/*
 Disallow: /auth/*
 Allow: /
-Sitemap: http://rails-bestpractices/sitemap1.xml.gz
+Sitemap: http://rails-bestpractices.com/sitemap_index.xml.gz
 
 User-agent: Sosospider
 Disallow:
