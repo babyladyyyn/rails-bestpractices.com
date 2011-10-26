@@ -3,6 +3,10 @@ class PostCell < Cell::Rails
     post.model_cache_key
   end
 
+  cache :prev_next, :if => proc { |cell, post| !cell.session[:post_order] || cell.session[:post_order] == "id" } do |cell, post|
+    post.model_cache_key
+  end
+
   def related(post)
     @related_posts = post.related_posts
     render

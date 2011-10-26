@@ -22,7 +22,7 @@ describe PostsController do
     it "should not use implemented" do
       posts = mock([Post])
       Post.should_receive(:published).and_return(posts)
-      posts.should_receive(:where).with(:implemented => true).and_return(posts)
+      posts.should_receive(:implemented).and_return(posts)
       posts.should_receive(:order).with("posts.id desc").and_return(posts)
       posts.should_receive(:page).and_return(posts)
       get :index, :nav => "implemented"

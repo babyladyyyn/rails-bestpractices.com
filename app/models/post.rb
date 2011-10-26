@@ -76,6 +76,7 @@ class Post < ActiveRecord::Base
   def publish!
     self.update_attribute(:published, true)
     expire_user_cache
+    expire_post_cell_cache
     Delayed::Job.enqueue(DelayedJob::Tweet.new('Post', self.id))
   end
 
@@ -106,6 +107,10 @@ class Post < ActiveRecord::Base
 
     def expire_user_cache
       user.expire_model_cache
+    end
+
+    def expire_post_cell_cache
+      Rails.cache.delete "cells/post/prev_next/#{prev("id").model_cache_key}" if prev("id")
     end
 
 end

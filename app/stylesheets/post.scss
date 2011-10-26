@@ -50,6 +50,10 @@
   .prev_next {
     @include clearfix;
     margin: 20px 0;
+    a {
+      font-size: 14px;
+      font-weight: bold;
+    }
     .next {
       @include float-right;
     }
