@@ -28,7 +28,7 @@ class JobsController < InheritedResources::Base
     end
 
     def require_partner
-      @partner = Job.find_by_token(params[:token])
+      @partner = JobPartner.find_by_token(params[:token])
       render_422 and return unless @partner
     end
 end

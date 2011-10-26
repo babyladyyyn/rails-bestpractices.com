@@ -1,5 +1,5 @@
 class PaginateCell < Cell::Rails
-  cache :show, :if => proc { |cell, collection| collection.total_pages > 1 } do |cell, collection|
+  cache :show, :if => proc { |cell, collection| collection.total_pages > 1 && collection.size > 0 } do |cell, collection|
     "#{collection.first.model_cache_key}/#{cell.params[:page] || 1}"
   end
 

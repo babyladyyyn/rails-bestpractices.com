@@ -16,6 +16,33 @@ describe PostCell do
       it { should have_link(@post2.title) }
     end
 
+    context "rednering prev_next" do
+      before do
+        @post1 = Factory(:post)
+        @post2 = Factory(:post)
+        @post3 = Factory(:post)
+      end
+
+      context "@post1" do
+        subject { render_cell(:post, :prev_next, @post1) }
+
+        it { should have_link(@post2.title) }
+      end
+
+      context "@post2" do
+        subject { render_cell(:post, :prev_next, @post2) }
+
+        it { should have_link(@post1.title) }
+        it { should have_link(@post3.title) }
+      end
+
+      context "@post3" do
+        subject { render_cell(:post, :prev_next, @post3) }
+
+        it { should have_link(@post2.title) }
+      end
+    end
+
   end
 
 

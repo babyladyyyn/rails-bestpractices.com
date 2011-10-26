@@ -90,6 +90,7 @@ describe NotifierObserver do
       post_user.notifications.size.should == 1
 
       comment.destroy
+      post_user.reload
       post_user.notifications.size.should == 0
     end
   end
@@ -102,6 +103,7 @@ describe NotifierObserver do
       question_user.notifications.size.should == 1
 
       answer.destroy
+      question_user.reload
       question_user.notifications.size.should == 0
     end
   end

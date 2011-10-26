@@ -76,11 +76,28 @@ class Post < ActiveRecord::Base
   def publish!
     self.update_attribute(:published, true)
     expire_user_cache
+    expire_post_cell_cache
     Delayed::Job.enqueue(DelayedJob::Tweet.new('Post', self.id))
   end
 
   def related_posts
     Post.where(['posts.id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true).all
+  end
+
+  def prev(order)
+    if order == "implemented"
+      Post.published.implemented.where(["id < ?", self.id]).order("id desc").limit(1).first
+    else
+      Post.published.where(["#{order} < ?", self.send(order)]).order("#{order} desc").limit(1).first
+    end
+  end
+
+  def next(order)
+    if order == "implemented"
+      Post.published.implemented.where(["id > ?", self.id]).order("id asc").limit(1).first
+    else
+      Post.published.where(["#{order} > ?", self.send(order)]).order("#{order} asc").limit(1).first
+    end
   end
 
   protected
@@ -90,6 +107,10 @@ class Post < ActiveRecord::Base
 
     def expire_user_cache
       user.expire_model_cache
+    end
+
+    def expire_post_cell_cache
+      Rails.cache.delete "cells/post/prev_next/#{prev("id").model_cache_key}" if prev("id")
     end
 
 end
