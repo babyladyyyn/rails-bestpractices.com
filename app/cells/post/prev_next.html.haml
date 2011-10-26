@@ -1,0 +1,9 @@
+.prev_next
+  - if @prev_post
+    .prev
+      = "<<"
+      = link_to @prev_post.title, post_path(@prev_post)
+  - if @next_post
+    .next
+      = link_to @next_post.title, post_path(@next_post)
+      = ">>"
