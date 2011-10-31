@@ -5,8 +5,9 @@ Disallow: /tags/*
 Disallow: /drops/*
 Disallow: /implementations/*
 Disallow: /auth/*
+Disallow: /jobs/*
 Allow: /
 Sitemap: http://rails-bestpractices.com/sitemap_index.xml.gz
 
-User-agent: Sosospider
+User-agent: Sosospider+
 Disallow:

@@ -1,5 +1,5 @@
 RailsBestpracticesCom::Application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "users", :sessions => "sessions"}
+  devise_for :users, :controllers => {:registrations => "users", :sessions => "sessions", :passwords => "passwords"}
   devise_scope :user do
     resources :users, :only => [:index, :show]
   end
