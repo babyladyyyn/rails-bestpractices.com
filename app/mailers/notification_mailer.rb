@@ -1,4 +1,6 @@
 class NotificationMailer < ActionMailer::Base
+  include Devise::Controllers::ScopedViews
+
   if Rails.env.production?
     class <<self
       def smtp_settings
@@ -43,5 +45,10 @@ class NotificationMailer < ActionMailer::Base
     @user = job.cached_user
     mail(:to => 'flyerhzm@gmail.com',
          :subject => "#{@user.try(:login)} post a job")
+  end
+
+  def reset_password_instructions(user)
+    @resource = user
+    mail(:to => user.email, :subject => "Reset password instructions")
   end
 end
