@@ -1,0 +1,10 @@
+- if @user
+  - if @vote
+    - if @vote.like?
+      = link_to 'Like', "javascript:alert('You have voted like this best practices!');", :class => 'like-icon active'
+    - else
+      = button_to 'Like', polymorphic_path([@voteable, @vote]), :method => :delete, :class => 'like-icon'
+  - else
+    = button_to 'Like', polymorphic_path([@voteable, :votes], :like => true), :class => 'like-icon'
+- else
+  = link_to 'Like', new_user_session_path(:return_to => polymorphic_path(@voteable)), :class => 'like-icon'

@@ -17,11 +17,8 @@ class Vote < ActiveRecord::Base
   include Cacheable
 
   belongs_to :voteable, :polymorphic => true
-  after_create :update_create_vote
-  before_destroy :update_destroy_vote
-
-  after_create :expire_voteable_and_user_cache
-  after_destroy :expire_voteable_and_user_cache
+  after_create :update_create_vote, :expire_voteable_and_user_cache
+  after_destroy :update_destroy_vote, :expire_voteable_and_user_cache
 
   model_cache do
     with_association :voteable, :user
