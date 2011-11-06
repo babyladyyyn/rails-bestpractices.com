@@ -10,43 +10,7 @@
     = auto_discovery_link_tag(:rss, "http://feeds.feedburner.com/rails-bestpractices-team-blog", {:title => "rails-bestpractices.com team blog"})
     = auto_discovery_link_tag(:rss, "http://feeds.feedburner.com/rails-bestpractices-jobs", {:title => "jobs on rails-bestpractices.com"})
   %body
-    #header
-      .container
-        .logo
-          %h1 Rails Best Practices
-          %p.first Follow The Rails Best Practices Here
-          %p.second Share Your Rails Best Practices Here
-        .nav
-          %ul.user
-            %li= link_to "Home", root_path
-            - if user_signed_in?
-              %li
-                = link_to current_user.login, user_path(current_user), :class => "user-link"
-                = link_to "#{current_user.unread_notification_count}", notifications_path, :class => "notification-link #{'active' if current_user.unread_notification_count > 0}"
-              %li= link_to "Sign out", destroy_user_session_path
-            - else
-              %li= link_to "Sign up", new_user_registration_path
-              %li= link_to "Sign in", new_user_session_path
-            %li.last= link_to "Leaders", users_path
-          %ul.team
-            %li= link_to "About", page_path(:name => 'about-us')
-            %li= link_to "RDoc", "http://rdoc.rails-bestpractices.com"
-            %li.last= link_to "Blog", blog_posts_path
-        .pledgie= render 'shared/pledgie'
-        .share
-          = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
-          = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
-      .community
-        .addthis= render 'shared/global_addthis.html'
-      .main-nav
-        .container
-          %ul
-            %li= link_to 'Rails Best Practices', root_path
-            %li= link_to 'Questions', questions_path
-          = form_tag search_path, :method => :get do
-            .search-label
-            = text_field_tag 'search', '', :class => 'search-text'
-            = submit_tag 'Search', :class => 'search-icon'
+    = render_cell :header, :show, current_user
 
     #container
       .container
@@ -58,17 +22,7 @@
           = yield
         #sidebar= render_cell :sidebar, :display, params[:controller], params[:action], current_user
 
-    #footer
-      .container
-        .share
-          = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
-          = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
-        %ul
-          %li= link_to 'Contact Us', page_path('contact-us')
-          %li= link_to 'About Us', page_path('about-us')
-          %li= link_to 'Team Blog', blog_posts_path
-          %li= link_to 'Advertise', page_path('advertise')
-        .copyright &copy; 2010 rails-bestpractices.com
+    = render_cell :footer, :show
     = render 'shared/fork_me_on_github'
 
     = raw javascript_include_merged :base
