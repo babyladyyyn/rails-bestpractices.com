@@ -1,5 +1,5 @@
 .blog-section
   %h3 Recent Blog Post
-  - @recent_blog_posts.each do |post|
-    %ul
+  %ul
+    - @recent_blog_posts.each do |post|
       %li= link_to post.title, blog_post_path(post)
