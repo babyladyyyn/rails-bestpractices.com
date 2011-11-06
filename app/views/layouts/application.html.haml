@@ -32,7 +32,7 @@
             %li= link_to "About", page_path(:name => 'about-us')
             %li= link_to "RDoc", "http://rdoc.rails-bestpractices.com"
             %li.last= link_to "Blog", blog_posts_path
-        -# .pledgie= render 'shared/pledgie'
+        .pledgie= render 'shared/pledgie'
         .share
           = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
           = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
@@ -64,7 +64,6 @@
           = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
           = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
         %ul
-          / %li= link_to 'Help', page_path('help')
           %li= link_to 'Contact Us', page_path('contact-us')
           %li= link_to 'About Us', page_path('about-us')
           %li= link_to 'Team Blog', blog_posts_path
