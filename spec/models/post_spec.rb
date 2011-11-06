@@ -37,7 +37,7 @@ describe Post do
     }
   end
 
-  should_validate_presence_of :title
+  should_validate_presence_of :title, :description
 
   describe 'when title validation is required' do
     before { Factory.create(:post) }

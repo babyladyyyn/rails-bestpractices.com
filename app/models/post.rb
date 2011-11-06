@@ -26,7 +26,7 @@ class Post < ActiveRecord::Base
 
   has_one :post_body
 
-  validates_presence_of :title
+  validates_presence_of :title, :description
   validates_uniqueness_of :title
 
   scope :implemented, where(:implemented => true)

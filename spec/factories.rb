@@ -40,6 +40,7 @@ FactoryGirl.define do
 
   factory :post do
     sequence(:title) {|n| "Post #{n}" }
+    description "description"
     association :user
     published true
     association :post_body
