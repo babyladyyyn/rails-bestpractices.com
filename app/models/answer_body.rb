@@ -3,5 +3,5 @@ class AnswerBody < ActiveRecord::Base
 
   belongs_to :answer
 
-  validates_presence_of :body
+  validates :body, :presence => true
 end

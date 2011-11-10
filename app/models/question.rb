@@ -25,8 +25,7 @@ class Question < ActiveRecord::Base
   has_many :answers, :dependent => :destroy
   has_one :question_body
 
-  validates_presence_of :title
-  validates_uniqueness_of :title
+  validates :title, :presence => true, :uniqueness => true
 
   scope :not_answered, where(:answers_count => 0)
 

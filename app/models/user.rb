@@ -35,8 +35,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :login, :email, :password, :password_confirmation, :url
-  validates_presence_of :login
-  validates_uniqueness_of :login
+  validates :login, :presence => true, :uniqueness => true
   is_gravtastic!
 
   has_many :posts, :dependent => :destroy

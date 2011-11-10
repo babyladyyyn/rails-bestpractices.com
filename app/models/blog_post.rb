@@ -18,8 +18,8 @@ class BlogPost < ActiveRecord::Base
 
   belongs_to :user
 
-  validates_presence_of :title, :body
-  validates_uniqueness_of :title
+  validates :title, :presence => true, :uniqueness => true
+  validates :body, :presence => true
 
   model_cache do
     with_key

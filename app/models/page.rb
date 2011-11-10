@@ -13,7 +13,7 @@ class Page < ActiveRecord::Base
 
   include Cacheable
 
-  validates_presence_of :name
+  validates :name, :presence => true
 
   model_cache do
     with_attribute :name
