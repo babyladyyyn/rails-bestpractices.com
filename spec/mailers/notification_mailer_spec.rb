@@ -93,4 +93,31 @@ describe NotificationMailer do
       @email.should have_body_text(/#{rails_admin_edit_url(:model_name => 'Post', :id => @post.id).gsub(/\//, '&#47;')}/)
     end
   end
+
+  describe "notify_job" do
+    before :each do
+      @job = Factory(:job)
+      @email = NotificationMailer.notify_job(@job)
+    end
+
+    it "should be set be delivered to admin" do
+      @email.should deliver_to("flyerhzm@gmail.com")
+    end
+
+    it "should have the correct subject" do
+      @email.should have_subject(/post a job/)
+    end
+
+    it "should contain text in the mail body" do
+      @email.should have_body_text(/post a job/)
+    end
+
+    it "should have job url" do
+      @email.should have_body_text(/#{job_url(@job).gsub(/\//, '&#47;')}/)
+    end
+
+    it "should have admin job url" do
+      @email.should have_body_text(/#{rails_admin_edit_url(:model_name => 'Job', :id => @job.id).gsub(/\//, '&#47;')}/)
+    end
+  end
 end
