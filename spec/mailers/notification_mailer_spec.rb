@@ -84,5 +84,13 @@ describe NotificationMailer do
     it "should contain text in the mail body" do
       @email.should have_body_text(/post a best practice/)
     end
+
+    it "should have post url" do
+      @email.should have_body_text(/#{post_url(@post).gsub(/\//, '&#47;')}/)
+    end
+
+    it "should have admin post url" do
+      @email.should have_body_text(/#{rails_admin_edit_url(:model_name => 'Post', :id => @post.id).gsub(/\//, '&#47;')}/)
+    end
   end
 end
