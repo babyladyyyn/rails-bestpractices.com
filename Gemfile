@@ -49,6 +49,7 @@ group :development do
   gem "rb-fsevent", :require => false
   gem "rb-fchange", :require => false
   gem "guard-annotate"
+  gem "guard-bundler"
 end
 
 group :test do
