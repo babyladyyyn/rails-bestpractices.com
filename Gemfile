@@ -44,6 +44,11 @@ group :development do
   gem "annotate"
   gem "rails-erd"
   gem "active_reload"
+  gem "guard"
+  gem "rb-inotify", :require => false
+  gem "rb-fsevent", :require => false
+  gem "rb-fchange", :require => false
+  gem "guard-annotate"
 end
 
 group :test do

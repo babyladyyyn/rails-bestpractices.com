@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: jobs
+#
+#  id          :integer(4)      not null, primary key
+#  title       :string(255)
+#  description :text
+#  company     :string(255)
+#  company_url :string(255)
+#  country     :string(255)
+#  state       :string(255)
+#  city        :string(255)
+#  address     :string(255)
+#  salary      :string(255)
+#  apply_email :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  user_id     :integer(4)
+#  published   :boolean(1)
+#  source      :string(255)
+#  external_id :integer(4)
+#
+
 class Job < ActiveRecord::Base
   has_many :job_job_types
   has_many :job_types, :through => :job_job_types, :source => :job_type
