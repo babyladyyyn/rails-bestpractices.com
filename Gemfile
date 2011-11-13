@@ -52,6 +52,7 @@ group :development do
   gem "guard-annotate"
   gem "guard-bundler"
   gem "guard-livereload"
+  gem "guard-rails"
 end
 
 group :test do

@@ -16,3 +16,9 @@ guard 'livereload' do
   #watch(%r{(app/assets/.+\.js)\.coffee}) { |m| m[1] }
   watch(%r{config/locales/.+\.yml})
 end
+
+guard 'rails' do
+  watch('Gemfile.lock')
+  watch(%r{^(config|lib)/.*})
+end
+
