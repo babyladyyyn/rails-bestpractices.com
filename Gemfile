@@ -60,7 +60,7 @@ group :test do
   gem "rspec-rails"
   gem "factory_girl_rails", :require => false
   gem 'remarkable_activerecord', '4.0.0.alpha4'
-  gem 'email_spec', '~> 1.0.0'
+  gem 'email_spec'
   gem 'watchr'
   gem "rspec-cells"
 end

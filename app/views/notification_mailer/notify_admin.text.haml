@@ -1,2 +1,6 @@
-= "#{@user.login} post a best practice #{@post.title}"
+#{@user.login} post a best practice #{@post.title}
+
+post url: #{post_url(@post)}
+
+admin post url: #{rails_admin_edit_url(:model_name => 'Post', :id => @post.id)}
 
