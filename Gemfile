@@ -35,6 +35,7 @@ gem "rails_admin", :git => 'git://github.com/sferik/rails_admin.git', :branch =>
 gem "nokogiri"
 gem "memcache-client"
 gem "memcached"
+gem "yajl-ruby"
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'
@@ -50,6 +51,7 @@ group :development do
   gem "rb-fchange", :require => false
   gem "guard-annotate"
   gem "guard-bundler"
+  gem "guard-livereload"
 end
 
 group :test do
