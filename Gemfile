@@ -38,6 +38,7 @@ gem "memcache-client"
 gem "memcached"
 gem "simple_cacheable", :require => "cacheable"
 gem "cells"
+gem "yajl-ruby"
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'
@@ -48,6 +49,15 @@ group :development do
   gem "rails-erd"
   gem "active_reload"
   gem "ruby-debug19", :require => 'ruby-debug'
+  gem "guard"
+  gem "rb-inotify", :require => false
+  gem "rb-fsevent", :require => false
+  gem "rb-fchange", :require => false
+  gem "guard-annotate"
+  gem "guard-bundler"
+  gem "guard-livereload"
+  gem "guard-rails"
+  gem "guard-migrate"
 end
 
 group :test do
@@ -56,13 +66,13 @@ group :test do
   gem "autotest-rails", "~> 4.1.0"
   gem "rcov", "~> 0.9.9"
   gem "spork", "0.9.0.rc9"
-  gem "rspec"
-  gem "rspec-rails"
-  gem "factory_girl_rails", :require => false
-  gem 'remarkable_activerecord', '4.0.0.alpha4'
-  gem 'email_spec'
-  gem 'watchr'
-  gem "rspec-cells"
+  gem "rspec", "2.7.0"
+  gem "rspec-rails", "2.7.0"
+  gem "factory_girl_rails"
+  gem "remarkable_activerecord", '4.0.0.alpha4'
+  gem "email_spec"
+  gem "guard-spork"
+  gem "guard-rspec"
 end
 
 group :cucumber do

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: sponsors
+#
+#  id          :integer(4)      not null, primary key
+#  name        :string(255)
+#  website_url :string(255)
+#  image_url   :string(255)
+#  active      :boolean(1)      default(TRUE)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Sponsor < ActiveRecord::Base
   include Cacheable
 
