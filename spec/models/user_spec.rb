@@ -1,33 +1,3 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                        :integer(4)      not null, primary key
-#  login                     :string(255)
-#  email                     :string(255)
-#  encrypted_password        :string(255)
-#  password_salt             :string(255)
-#  created_at                :datetime
-#  updated_at                :datetime
-#  url                       :string(255)
-#  posts_count               :integer(4)      default(0), not null
-#  comments_count            :integer(4)      default(0), not null
-#  votes_count               :integer(4)      default(0), not null
-#  active_token_id           :integer(4)
-#  questions_count           :integer(4)      default(0), not null
-#  answers_count             :integer(4)      default(0), not null
-#  unread_notification_count :integer(4)      default(0), not null
-#  reset_password_token      :string(255)
-#  remember_token            :string(255)
-#  remember_created_at       :datetime
-#  sign_in_count             :integer(4)
-#  current_sign_in_at        :datetime
-#  last_sign_in_at           :datetime
-#  current_sign_in_ip        :string(255)
-#  last_sign_in_ip           :string(255)
-#  authentication_token      :string(255)
-#
-
 require 'spec_helper'
 
 describe User do
