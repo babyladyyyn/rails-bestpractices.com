@@ -164,6 +164,8 @@ GEM
       em-websocket (>= 0.2.0)
       guard (>= 0.4.0)
       multi_json (~> 1.0.3)
+    guard-migrate (0.0.2)
+      guard (>= 0.2.2)
     guard-rails (0.0.3)
       guard (>= 0.2.2)
     guard-rspec (0.5.3)
@@ -401,6 +403,7 @@ DEPENDENCIES
   guard-annotate
   guard-bundler
   guard-livereload
+  guard-migrate
   guard-rails
   guard-rspec
   guard-spork

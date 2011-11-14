@@ -53,6 +53,7 @@ group :development do
   gem "guard-bundler"
   gem "guard-livereload"
   gem "guard-rails"
+  gem "guard-migrate"
 end
 
 group :test do
