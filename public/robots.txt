@@ -6,6 +6,8 @@ Disallow: /drops/*
 Disallow: /implementations/*
 Disallow: /auth/*
 Disallow: /jobs/*
+Disallow: /jobs/*/edit
+Disallow: /questions/new
 Allow: /
 Sitemap: http://rails-bestpractices.com/sitemap_index.xml.gz
 

@@ -4,8 +4,6 @@
 #
 #  id             :integer(4)      not null, primary key
 #  title          :string(255)
-#  body           :text(16777215)
-#  formatted_html :text(16777215)
 #  user_id        :integer(4)
 #  vote_points    :integer(4)      default(0)
 #  view_count     :integer(4)      default(0)
@@ -25,8 +23,7 @@ class Question < ActiveRecord::Base
   has_many :answers, :dependent => :destroy
   has_one :question_body
 
-  validates_presence_of :title
-  validates_uniqueness_of :title
+  validates :title, :presence => true, :uniqueness => true
 
   scope :not_answered, where(:answers_count => 0)
 

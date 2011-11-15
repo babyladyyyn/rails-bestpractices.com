@@ -26,6 +26,7 @@
 #  current_sign_in_ip        :string(255)
 #  last_sign_in_ip           :string(255)
 #  authentication_token      :string(255)
+#  admin                     :boolean(1)      default(FALSE), not null
 #
 
 class User < ActiveRecord::Base
@@ -35,8 +36,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :login, :email, :password, :password_confirmation, :url
-  validates_presence_of :login
-  validates_uniqueness_of :login
+  validates :login, :presence => true, :uniqueness => true
   is_gravtastic!
 
   has_many :posts, :dependent => :destroy

@@ -1,2 +1,6 @@
-= "#{@user.try(:login)} post a job #{@job.title}"
+#{@user.try(:login)} post a job #{@job.title}
+
+job url: #{job_url(@job)}
+
+admin job url: #{rails_admin_edit_url(:model_name => 'Job', :id => @job.id)}
 

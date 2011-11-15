@@ -4,11 +4,9 @@
 #
 #  id             :integer(4)      not null, primary key
 #  title          :string(255)
-#  body           :text(16777215)
 #  created_at     :datetime
 #  updated_at     :datetime
 #  user_id        :integer(4)
-#  formatted_html :text(16777215)
 #  description    :text(16777215)
 #  comments_count :integer(4)      default(0)
 #  vote_points    :integer(4)      default(0)
@@ -26,8 +24,8 @@ class Post < ActiveRecord::Base
 
   has_one :post_body
 
-  validates_presence_of :title, :description
-  validates_uniqueness_of :title
+  validates :title, :presence => true, :uniqueness => true
+  validates :description, :presence => true
 
   scope :implemented, where(:implemented => true)
   scope :published, where(:published => true)

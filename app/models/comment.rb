@@ -19,8 +19,8 @@ class Comment < ActiveRecord::Base
   include Cacheable
 
   belongs_to :commentable, :counter_cache => true, :polymorphic => true
-  validates_presence_of :body
-  validates_presence_of :username, :if => Proc.new { |comment| !comment.user_id }
+  validates :body, :presence => true
+  validates :username, :presence => true, :if => Proc.new { |comment| !comment.user_id }
 
   scope :for_post, where(:commentable_type => 'Post').order("comments.created_at desc")
 

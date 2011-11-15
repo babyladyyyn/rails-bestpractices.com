@@ -1,15 +1,3 @@
-# == Schema Information
-#
-# Table name: notification_settings
-#
-#  id         :integer(4)      not null, primary key
-#  name       :string(255)
-#  value      :boolean(1)      default(TRUE)
-#  user_id    :integer(4)
-#  created_at :datetime
-#  updated_at :datetime
-#
-
 require 'spec_helper'
 
 describe NotificationSetting do
