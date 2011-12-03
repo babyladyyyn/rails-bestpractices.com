@@ -4,7 +4,7 @@ class SidebarCell < Cell::Rails
   end
 
   cache :login
-  cache :sponsors
+  cache :sponsors, :expires_in => 1.day
   cache :jobs, :expires_in => 1.day
   cache :posts_navigation
   cache :blog_rss
