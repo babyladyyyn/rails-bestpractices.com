@@ -86,4 +86,11 @@ $(function() {
       theme_advanced_statusbar_location : "bottom"
     });
   }
+
+  var addthis_config = {
+    /* your GA property ID goes here: */
+    data_ga_property: 'UA-17454114-1',
+    /* set to true to enable social tracking */
+    data_ga_social : true
+  };
 });
