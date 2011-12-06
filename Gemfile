@@ -71,6 +71,7 @@ group :test do
   gem "factory_girl_rails"
   gem "remarkable_activerecord", '4.0.0.alpha4'
   gem "email_spec"
+  gem "rspec-cells"
   gem "guard-spork"
   gem "guard-rspec"
 end
