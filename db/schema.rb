@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20111022024211) do
   add_index "blog_posts", ["user_id"], :name => "index_blog_posts_on_user_id"
 
   create_table "comments", :force => true do |t|
-    t.text     "body",             :limit => 16777215
+    t.text     "body"
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
@@ -167,7 +167,7 @@ ActiveRecord::Schema.define(:version => 20111022024211) do
 
   create_table "pages", :force => true do |t|
     t.string   "name"
-    t.text     "body",       :limit => 16777215
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -187,12 +187,12 @@ ActiveRecord::Schema.define(:version => 20111022024211) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.text     "description",    :limit => 16777215
-    t.integer  "comments_count",                     :default => 0
-    t.integer  "vote_points",                        :default => 0
+    t.text     "description"
+    t.integer  "comments_count", :default => 0
+    t.integer  "vote_points",    :default => 0
     t.integer  "view_count"
-    t.boolean  "implemented",                        :default => false, :null => false
-    t.boolean  "published",                          :default => false, :null => false
+    t.boolean  "implemented",    :default => false, :null => false
+    t.boolean  "published",      :default => false, :null => false
   end
 
   add_index "posts", ["published"], :name => "index_posts_on_published"

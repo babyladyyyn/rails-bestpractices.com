@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.10'
+gem 'rails', '3.0.11'
 
 gem 'mysql2', "~> 0.2.6"
 
@@ -71,6 +71,7 @@ group :test do
   gem "factory_girl_rails"
   gem "remarkable_activerecord", '4.0.0.alpha4'
   gem "email_spec"
+  gem "rspec-cells"
   gem "guard-spork"
   gem "guard-rspec"
 end

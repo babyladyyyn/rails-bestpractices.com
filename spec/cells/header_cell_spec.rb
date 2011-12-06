@@ -4,7 +4,8 @@ describe HeaderCell do
   context "cell rendering" do
 
     context "rendering show" do
-      subject { render_cell(:header, :show) }
+      before { @user = Factory(:user) }
+      subject { render_cell(:header, :show, @user) }
 
       it { should have_selector("h1", :content => "Rails Best Practices") }
     end

@@ -7,7 +7,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  user_id        :integer(4)
-#  description    :text(16777215)
+#  description    :text
 #  comments_count :integer(4)      default(0)
 #  vote_points    :integer(4)      default(0)
 #  view_count     :integer(4)
