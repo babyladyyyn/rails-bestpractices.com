@@ -108,6 +108,9 @@ body {
       color: #332222;
       margin: 30px 0 0 45px;
       @include text-shadow;
+      a {
+        color: #000;
+      }
     }
     p {
       font-size: 14px;
