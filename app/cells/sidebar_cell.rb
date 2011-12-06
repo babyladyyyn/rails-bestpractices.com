@@ -8,8 +8,8 @@ class SidebarCell < Cell::Rails
   cache :jobs, :expires_in => 1.day
   cache :posts_navigation
   cache :blog_rss
-  cache :recent_blog_posts
-  cache :important_tags
+  cache :recent_blog_posts, :expires_in => 1.day
+  cache :important_tags, :expires_in => 1.day
 
   def display(controller="posts", action="index", user=nil)
     sidebar = []
