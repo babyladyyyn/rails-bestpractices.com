@@ -15,4 +15,4 @@
           = l comment.created_at
         .content
           .point-to-icon
-          .wikistyle= raw white_list(comment.body.gsub("\n", "<br/>"), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
+          .wikistyle= raw white_list(simple_format(comment.body, :sanitize => false), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
