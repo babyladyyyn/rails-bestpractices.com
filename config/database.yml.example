@@ -1,4 +1,4 @@
-mysql:&mysql
+mysql: &mysql
   adapter: mysql2
   host: localhost
   port: 3306
