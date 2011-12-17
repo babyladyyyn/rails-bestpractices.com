@@ -1,2 +1,6 @@
 rvm: 1.9.2
 env: DB=mysql
+before_script:
+  - "cp config/database.yml.example config/database.yml"
+  - "bundle exec rake db:create"
+  - "bundle exec rake db:load:schema"
