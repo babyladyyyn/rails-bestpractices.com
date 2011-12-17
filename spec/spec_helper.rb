@@ -10,6 +10,9 @@ Spork.prefork do
 
   Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
+  Devise.stretches = 1
+  Rails.logger.level = 4
+
   RSpec.configure do |config|
     config.mock_with :rspec
 
