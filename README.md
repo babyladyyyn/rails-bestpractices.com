@@ -1,7 +1,11 @@
 Rails Best Practices Website
 ----------------------------
 
-The rails-bestpractices.com is in progress. It is aimed to get the rails best practices and share your rails best practices.
+[![Build Status](https://secure.travis-ci.org/flyerhzm/rails-bestpractices.com.png)](http://travis-ci.org/flyerhzm/rails-bestpractices.com)
+
+[![Click here to lend your support to: rails-bestpractices.com and make a donation at www.pledgie.com !](https://www.pledgie.com/campaigns/12057.png?skin_name=chrome)](http://www.pledgie.com/campaigns/12057)
+
+rails-bestpractices.com is aimed to share everyone's rails best practices.
 
 If you have interests to join the development, please contact me: flyerhzm@gmail.com.
 

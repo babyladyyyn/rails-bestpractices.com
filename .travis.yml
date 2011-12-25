@@ -1,1 +1,10 @@
 rvm: 1.9.2
+env: DB=mysql
+before_script:
+  - "cp config/database.yml.example config/database.yml"
+  - "cp config/bitly.yml.example config/bitly.yml"
+  - "cp config/mailers.yml.example config/mailers.yml"
+  - "cp config/omniauth.yml.example config/omniauth.yml"
+  - "cp config/sphinx.yml.example config/sphinx.yml"
+  - "bundle exec rake db:create"
+  - "bundle exec rake db:schema:load"
