@@ -14,7 +14,6 @@ set :application, "rails-bestpractices"
 set :repository,  "git@github.com:railsbp/rails-bestpractices.com.git"
 
 set :scm, :git
-set :deploy_via, :remote_cache
 set :user, 'huangzhi'
 
 set :rake, "bundle exec rake"
