@@ -1,7 +1,7 @@
 Rails Best Practices Website
 ----------------------------
 
-[![Build Status](https://secure.travis-ci.org/flyerhzm/rails-bestpractices.com.png)](http://travis-ci.org/flyerhzm/rails-bestpractices.com)
+[![Build Status](https://secure.travis-ci.org/railsbp/rails-bestpractices.com.png)](http://travis-ci.org/railsbp/rails-bestpractices.com)
 
 [![Click here to lend your support to: rails-bestpractices.com and make a donation at www.pledgie.com !](https://www.pledgie.com/campaigns/12057.png?skin_name=chrome)](http://www.pledgie.com/campaigns/12057)
 

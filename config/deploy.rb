@@ -11,7 +11,7 @@ set :rvm_ruby_string, 'ruby-1.9.2-p180@rails-bestpractices.com'
 set :rvm_type, :user
 
 set :application, "rails-bestpractices"
-set :repository,  "git@github.com:flyerhzm/rails-bestpractices.com.git"
+set :repository,  "git@github.com:railsbp/rails-bestpractices.com.git"
 
 set :scm, :git
 set :deploy_via, :remote_cache
