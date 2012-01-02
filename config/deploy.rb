@@ -7,21 +7,20 @@ require 'thinking_sphinx/deploy/capistrano'
 
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require 'rvm/capistrano'
-set :rvm_ruby_string, 'ruby-1.9.2-p180@rails-bestpractices.com'
+set :rvm_ruby_string, 'ruby-1.9.2-p290@rails-bestpractices.com'
 set :rvm_type, :user
 
 set :application, "rails-bestpractices"
 set :repository,  "git@github.com:railsbp/rails-bestpractices.com.git"
 
 set :scm, :git
-set :deploy_via, :remote_cache
 set :user, 'huangzhi'
 
 set :rake, "bundle exec rake"
 
-role :web, "rails-bestpractices.com"
-role :app, "rails-bestpractices.com"
-role :db,  "rails-bestpractices.com", :primary => true
+role :web, "app.rails-bestpractices.com"
+role :app, "app.rails-bestpractices.com"
+role :db,  "db.rails-bestpractices.com", :primary => true
 
 after "deploy:update_code", "config:init"
 after "deploy:update_code", "asset:init"
@@ -44,6 +43,7 @@ namespace :config do
     run "ln -nfs #{shared_path}/config/mailers.yml #{release_path}/config/mailers.yml"
     run "ln -nfs #{shared_path}/config/omniauth.yml #{release_path}/config/omniauth.yml"
     run "ln -nfs #{shared_path}/config/sphinx.yml #{release_path}/config/sphinx.yml"
+    run "ln -nfs #{shared_path}/config/memcache.yml #{release_path}/config/memcache.yml"
     run "ln -nfs #{shared_path}/config/initializers/action_mailer.rb #{release_path}/config/initializers/action_mailer.rb"
   end
 end

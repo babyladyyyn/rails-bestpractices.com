@@ -13,6 +13,7 @@ public/*.xml.gz
 config/database.yml
 config/bitly.yml
 config/omniauth.yml
+config/memcache.yml
 *.swp
 dump.rdb
 tmp/cross-stub.cache

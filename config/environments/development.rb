@@ -16,8 +16,6 @@ RailsBestpracticesCom::Application.configure do
 
   config.active_support.deprecation = :log
 
-  config.cache_store = ActiveSupport::Cache::MemCacheStore.new(Memcached::Rails.new("localhost:11211", :namespace => "railsbp", :logger => Rails.logger))
-
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 
