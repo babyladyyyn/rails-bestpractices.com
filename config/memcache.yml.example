@@ -1,0 +1,14 @@
+development:
+  hosts:
+    - 127.0.0.1:11211
+  namespace: rails-bp
+
+test:
+  hosts:
+    - 127.0.0.1:11211
+  namespace: rails-bp
+
+production:
+  hosts:
+    - 127.0.0.1:11211
+  namespace: rails-bp
