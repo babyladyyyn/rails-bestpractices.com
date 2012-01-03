@@ -56,4 +56,6 @@ RailsBestpracticesCom::Application.configure do
     :email_prefix => "[rails-bestpractices.com] ",
     :sender_address => %{"Application Error" <exception.notifier@rails-bestpractices.com>},
     :exception_recipients => %w(flyerhzm@rails-bestpractices.com flyerhzm@gmail.com)
+
+  ThinkingSphinx.remoete_sphinx = true
 end

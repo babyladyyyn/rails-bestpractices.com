@@ -10,16 +10,20 @@
 set :output, "/home/huangzhi/sites/rails-bestpractices.com/production/shared/log/cron_log.log"
 job_type :rake, "cd :path && RAILS_ENV=:environment bundle exec rake :task :output"
 
-every 1.day, :at => '2am' do
-  rake "sitemap:refresh"
-end
-every 12.hours do
-  rake "ts:index"
-end
-every 1.day, :at => '1am' do
-  command "backup perform -t railsbp"
-end
+case @role
+when 'db'
+  every 12.hours do
+    rake "ts:index"
+  end
+  every 1.day, :at => '1am' do
+    command "backup perform -t railsbp"
+  end
 
-every 1.day, :at => '3am' do
-  rake "job_share:rubyonjobs"
+  every 1.day, :at => '3am' do
+    rake "job_share:rubyonjobs"
+  end
+when 'app'
+  every 1.day, :at => '2am' do
+    rake "sitemap:refresh"
+  end
 end
