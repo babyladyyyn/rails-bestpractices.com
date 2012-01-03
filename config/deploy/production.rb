@@ -10,7 +10,7 @@ after "deploy:update_code", "thinking_sphinx:symlink_sphinx_indexes"
 after "deploy:symlink", "thinking_sphinx:restart"
 
 namespace :env do
-  task :init do
+  task :init, :roles => :app do
     run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} -s sitemap:refresh:no_ping"
     run "ln -nfs #{shared_path}/public/google9df66a0aeacea061.html #{release_path}/public/google9df66a0aeacea061.html"
     run "ln -nfs #{shared_path}/public/BingSiteAuth.xml #{release_path}/public/BingSiteAuth.xml"
@@ -19,12 +19,12 @@ end
 
 namespace :deploy do
   desc "Update the crontab file"
-  task :update_crontab do
+  task :update_crontab, :roles => :db do
     run "cd #{release_path} && bundle exec whenever --update-crontab #{application}"
   end
 end
 
-namespace :delayed_job do
+namespace :delayed_job, :roles => :db do
   desc "restart delayed job"
   task :restart do
     run "sudo monit restart delayed_job"
@@ -32,12 +32,12 @@ namespace :delayed_job do
 end
 
 namespace :thinking_sphinx do
-  task :symlink_sphinx_indexes do
+  task :symlink_sphinx_indexes, :roles => :db do
     run "ln -nfs #{shared_path}/db/sphinx #{release_path}/db/sphinx"
   end
 
   desc "restart thinking_sphinx"
-  task :restart do
+  task :restart, :roles => :db do
     run "sudo monit restart searchd"
   end
 end

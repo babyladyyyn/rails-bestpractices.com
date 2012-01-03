@@ -6,5 +6,6 @@ before_script:
   - "cp config/mailers.yml.example config/mailers.yml"
   - "cp config/omniauth.yml.example config/omniauth.yml"
   - "cp config/sphinx.yml.example config/sphinx.yml"
+  - "cp config/memcache.yml.example config/memcache.yml"
   - "bundle exec rake db:create"
   - "bundle exec rake db:schema:load"
