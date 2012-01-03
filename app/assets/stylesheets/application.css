@@ -3,5 +3,25 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require_tree .
+ *= require screen
+ *= require layout
+ *= require sidebar
+ *= require user
+ *= require post
+ *= require page
+ *= require prettify
+ *= require addthis
+ *= require question
+ *= require answer
+ *= require blog_post
+ *= require comment
+ *= require css_sprite
+ *= require formtastic
+ *= require formtastic_changes
+ *= require job
+ *= require jquery.autocomplete
+ *= require login_register
+ *= require notification
+ *= require wmd
+ *= require print
 */
