@@ -35,6 +35,7 @@ gem "backup"
 gem "escape_utils"
 gem "newrelic_rpm"
 gem "rails_admin", :git => 'git://github.com/sferik/rails_admin.git'
+gem "ckeditor"
 gem "nokogiri"
 gem "memcache-client"
 gem "memcached"
