@@ -26,9 +26,7 @@ class BlogPost < ActiveRecord::Base
     with_association :user
   end
 
-  def self.per_page
-    5
-  end
+  paginates_per 5
 
   def to_param
     "#{id}-#{title.parameterize}"

@@ -30,6 +30,8 @@ class Notification < ActiveRecord::Base
     with_association :notifierable
   end
 
+  paginates_per 10
+
   def read!
     decrease_notification_count
     self.update_attribute(:read, true)

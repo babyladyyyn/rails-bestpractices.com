@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe NotificationSetting do
-  should_belong_to :user
+  it { should belong_to(:user) }
 
   describe "description" do
     it "should get global email description" do

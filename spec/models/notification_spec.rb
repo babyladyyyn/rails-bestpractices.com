@@ -4,8 +4,7 @@ describe Notification do
 
   include RailsBestPractices::Spec::Support
 
-  should_have_entries_per_page 10
-  should_belong_to :notifierable, :polymorphic => true
+  it { should belong_to(:notifierable) }
 
   describe "notification count" do
     it "should increase notification count" do
