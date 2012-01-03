@@ -24,9 +24,9 @@ namespace :deploy do
   end
 end
 
-namespace :delayed_job, :roles => :db do
+namespace :delayed_job do
   desc "restart delayed job"
-  task :restart do
+  task :restart, :roles => :db do
     run "sudo monit restart delayed_job"
   end
 end
