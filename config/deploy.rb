@@ -27,11 +27,11 @@ after "deploy:update_code", "asset:init"
 after "deploy:update_code", "asset:revision"
 
 namespace :asset do
-  task :init do
+  task :init, :roles => :app do
     run "cd #{release_path}; #{rake} RAILS_ENV=#{rails_env} css_sprite:build"
   end
 
-  task :revision do
+  task :revision, :roles => :app do
     run "cd #{release_path}; git ls-remote origin master | awk '{print $1}' > #{release_path}/public/REVISION"
   end
 end
