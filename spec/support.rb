@@ -16,15 +16,9 @@ module RailsBestPractices
           end
         end
 
-        def should_have_entries_per_page(count)
-          it "should have #{count} entries per page" do
-            described_class.per_page.should equal(count)
-          end
-        end
-
         def should_be_commentable
           describe 'being commentable' do
-            should_have_many :comments, :dependent => :destroy
+            it { should have_many(:comments) }
           end
         end
 
@@ -54,7 +48,7 @@ module RailsBestPractices
 
         def should_be_voteable
           describe 'being voteable' do
-            should_have_many :votes, :dependent => :destroy
+            it { should have_many(:votes) }
 
             it "should support retrieving of any user's 1st vote" do
               jane = Factory(:user)
@@ -70,7 +64,7 @@ module RailsBestPractices
 
         def should_be_user_ownable
           describe 'being user ownable' do
-            should_belong_to :user, :counter_cache => true
+            it { should belong_to(:user) }
           end
         end
 

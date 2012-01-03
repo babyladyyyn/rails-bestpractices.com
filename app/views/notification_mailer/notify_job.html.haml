@@ -1,4 +1,2 @@
 %p #{@user.try(:login)} post a job #{@job.title}
-%p job url: #{job_url(@job)}
-%p admin job url: #{rails_admin_edit_url(:model_name => 'Job', :id => @job.id)}
-
+%p= link_to "job url", job_url(@job)

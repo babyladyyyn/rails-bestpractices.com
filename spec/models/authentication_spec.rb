@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe Authentication do
-  should_belong_to :user
+  it { should belong_to(:user) }
 end

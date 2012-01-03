@@ -9,7 +9,6 @@ describe Post do
   should_be_user_ownable
   should_be_commentable
   should_be_voteable
-  should_have_entries_per_page 10
 
   should_be_tweetable do |post|
     {
@@ -18,12 +17,13 @@ describe Post do
     }
   end
 
-  should_validate_presence_of :title, :description
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:description) }
 
   describe 'when title validation is required' do
     before { Factory.create(:post) }
-    should_validate_presence_of :title
-    should_validate_uniqueness_of :title
+    it { should validate_presence_of(:title) }
+    it { should validate_uniqueness_of(:title) }
   end
 
   it 'should be scopable by implemented posts' do

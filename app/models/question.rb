@@ -20,6 +20,8 @@ class Question < ActiveRecord::Base
   include Commentable
   include Cacheable
 
+  paginates_per 10
+
   has_many :answers, :dependent => :destroy
   has_one :question_body
 

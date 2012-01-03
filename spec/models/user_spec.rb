@@ -5,18 +5,18 @@ describe User do
   include RailsBestPractices::Spec::Support
   should_be_gravastic
 
-  should_have_many :posts, :dependent => :destroy
-  should_have_many :comments, :dependent => :destroy
-  should_have_many :votes, :dependent => :destroy
-  should_have_many :questions, :dependent => :destroy
-  should_have_many :answers, :dependent => :destroy
-  should_have_many :notifications, :dependent => :destroy
-  should_have_many :notification_settings, :dependent => :destroy
+  it { should have_many(:posts) }
+  it { should have_many(:comments) }
+  it { should have_many(:votes) }
+  it { should have_many(:questions) }
+  it { should have_many(:answers) }
+  it { should have_many(:notifications) }
+  it { should have_many(:notification_settings) }
 
   context "validations" do
     before { Factory(:user) }
-    it { should validate_presence_of :login }
-    it { should validate_uniqueness_of :login }
+    it { should validate_presence_of(:login) }
+    it { should validate_uniqueness_of(:login) }
   end
 
   it "should reflect :id & :login when converted to param" do

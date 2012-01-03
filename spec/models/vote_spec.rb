@@ -5,7 +5,7 @@ describe Vote do
   include RailsBestPractices::Spec::Support
   should_be_user_ownable
 
-  should_belong_to :voteable, :polymorphic => true
+  it { should belong_to(:voteable) }
 
   let(:post) { Factory(:post) }
   let(:vote) { Factory(:vote) }

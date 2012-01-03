@@ -7,7 +7,7 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  user_id        :integer(4)
-#  description    :text
+#  description    :text(16777215)
 #  comments_count :integer(4)      default(0)
 #  vote_points    :integer(4)      default(0)
 #  view_count     :integer(4)
@@ -37,6 +37,8 @@ class Post < ActiveRecord::Base
   delegate :body, :formatted_html, :to => :post_body
 
   acts_as_taggable
+
+  paginates_per 10
 
   define_index do
     indexes :title, :description

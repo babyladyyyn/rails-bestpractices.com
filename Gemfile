@@ -1,18 +1,19 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.11'
+gem 'rails', '3.1.3'
 
-gem 'mysql2', "~> 0.2.6"
+gem 'mysql2'
 
 gem "json"
 gem "haml"
-gem "compass"
-gem "will_paginate"
+gem "kaminari"
 gem "devise"
 gem "omniauth"
+gem "omniauth-facebook"
+gem "omniauth-twitter"
 gem "formtastic", "~> 1.1.0"
-gem "has_scope", "~> 0.5.0"
-gem "inherited_resources", "~> 1.1.2"
+gem "has_scope"
+gem "inherited_resources"
 gem 'exception_notification', :require => 'exception_notifier'
 gem "acts-as-taggable-on"
 gem "rdiscount"
@@ -27,18 +28,32 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem 'whenever', "~> 0.6.1"
 gem "thinking-sphinx", :require => 'thinking_sphinx'
 gem "delayed_job"
+gem "delayed_job_active_record"
 gem "switch_user", "~> 0.6.0"
 gem "dropbox"
 gem "backup"
 gem "escape_utils"
 gem "newrelic_rpm"
-gem "rails_admin", :git => 'git://github.com/sferik/rails_admin.git', :branch => "rails-3.0"
+gem "rails_admin", :git => 'git://github.com/sferik/rails_admin.git'
 gem "nokogiri"
 gem "memcache-client"
 gem "memcached"
 gem "simple_cacheable", :require => "cacheable"
 gem "cells"
 gem "yajl-ruby"
+
+group :assets do
+  gem 'sass-rails',   '~> 3.1.4'
+  gem 'coffee-rails', '~> 3.1.1'
+  gem 'uglifier', '>= 1.0.3'
+  gem "compass"
+end
+
+gem 'jquery-rails'
+
+group :production do
+  gem 'therubyracer'
+end
 
 group :development do
   gem 'mongrel', '1.2.0.pre2'
@@ -61,15 +76,12 @@ group :development do
 end
 
 group :test do
-  gem "ZenTest"
-  gem "autotest"
-  gem "autotest-rails", "~> 4.1.0"
   gem "rcov", "~> 0.9.9"
   gem "spork", "0.9.0.rc9"
   gem "rspec", "2.7.0"
   gem "rspec-rails", "2.7.0"
   gem "factory_girl_rails"
-  gem "remarkable_activerecord", '4.0.0.alpha4'
+  gem 'shoulda-matchers'
   gem "email_spec"
   gem "rspec-cells"
   gem "guard-spork"

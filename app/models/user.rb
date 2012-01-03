@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
   include Cacheable
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :encryptable, :encryptor => :authlogic_sha512
 
   attr_accessible :login, :email, :password, :password_confirmation, :url
   validates :login, :presence => true, :uniqueness => true

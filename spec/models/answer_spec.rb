@@ -6,7 +6,6 @@ describe Answer do
   should_be_user_ownable
   should_be_voteable
   should_be_commentable
-  should_have_entries_per_page 10
 
   should_be_tweetable do |answer|
     {
@@ -15,7 +14,7 @@ describe Answer do
     }
   end
 
-  should_belong_to :question, :counter_cache => true
+  it { should belong_to(:question) }
 
   describe 'converting to a post' do
 

@@ -3,7 +3,7 @@
 # Table name: comments
 #
 #  id               :integer(4)      not null, primary key
-#  body             :text
+#  body             :text(16777215)
 #  commentable_id   :integer(4)
 #  commentable_type :string(255)
 #  user_id          :integer(4)
@@ -17,6 +17,8 @@ class Comment < ActiveRecord::Base
 
   include UserOwnable
   include Cacheable
+
+  paginates_per 10
 
   belongs_to :commentable, :counter_cache => true, :polymorphic => true
   validates :body, :presence => true

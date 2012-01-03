@@ -4,19 +4,18 @@ describe Comment do
 
   include RailsBestPractices::Spec::Support
   should_be_user_ownable
-  should_have_entries_per_page 10
 
-  should_belong_to :commentable, :polymorphic => true
-  should_validate_presence_of :body
+  it { should belong_to(:commentable) }
+  it { should validate_presence_of(:body) }
 
   describe 'validating username when it is required' do
     subject { Factory(:comment, :user => nil, :username => 'flyerhzm') }
-    should_validate_presence_of :username
+    it { should validate_presence_of(:username) }
   end
 
   describe 'validating username when it is not required' do
     subject { Factory(:comment) }
-    should_not_validate_presence_of :username
+    it { should_not validate_presence_of(:username) }
   end
 
   it 'should be scopable by post type (sorted by creation timing)' do

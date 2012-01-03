@@ -1,6 +1,6 @@
 require 'spec_helper'
 
 describe JobJobType do
-  should_belong_to :job
-  should_belong_to :job_type
+  it { should belong_to(:job) }
+  it { should belong_to(:job_type) }
 end

@@ -27,6 +27,7 @@ describe NotifierObserver do
       post_user = Factory(:user, :login => 'post_user')
       post = Factory(:post, :title => 'notifierable post', :user => post_user)
       comment = Factory(:comment, :commentable => post)
+      post_user.reload
       post_user.notifications.size.should == 1
 
       notification = post_user.notifications.first
@@ -40,6 +41,7 @@ describe NotifierObserver do
       question_user = Factory(:user, :login => 'question_user')
       question = Factory(:question, :title => 'notifierable question', :user => question_user)
       comment = Factory(:comment, :commentable => question)
+      question_user.reload
       question_user.notifications.size.should == 1
 
       notification = question_user.notifications.first
@@ -53,6 +55,7 @@ describe NotifierObserver do
       answer_user = Factory(:user, :login => 'answer_user')
       answer = Factory(:answer, :user => answer_user)
       comment = Factory(:comment, :commentable => answer)
+      answer_user.reload
       answer_user.notifications.size.should == 1
 
       notification = answer_user.notifications.first
@@ -66,6 +69,7 @@ describe NotifierObserver do
       question_user = Factory(:user, :login => 'question_user')
       question = Factory(:question, :title => 'notifierable question', :user => question_user)
       answer = Factory(:answer, :question => question)
+      question_user.reload
       question_user.notifications.size.should == 1
 
       notification = question_user.notifications.first
@@ -87,6 +91,7 @@ describe NotifierObserver do
       post_user = Factory(:user, :login => 'post_user')
       post = Factory(:post, :title => 'notifierable post', :user => post_user)
       comment = Factory(:comment, :commentable => post)
+      post_user.reload
       post_user.notifications.size.should == 1
 
       comment.destroy
@@ -100,6 +105,7 @@ describe NotifierObserver do
       question_user = Factory(:user, :login => 'question_user')
       question = Factory(:question, :title => 'notifierable question', :user => question_user)
       answer = Factory(:answer, :question => question)
+      question_user.reload
       question_user.notifications.size.should == 1
 
       answer.destroy
@@ -113,6 +119,7 @@ describe NotifierObserver do
       post_user = Factory(:user, :login => 'post_user')
       post = Factory(:post, :title => 'notifierable post', :user => post_user)
       comment = Factory(:comment, :commentable => post, :user => post_user)
+      post_user.reload
       post_user.notifications.size.should == 0
     end
   end
