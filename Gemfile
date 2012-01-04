@@ -18,7 +18,7 @@ gem 'exception_notification', :require => 'exception_notifier'
 gem "acts-as-taggable-on"
 gem "rdiscount"
 gem "gravtastic", "~> 3.0.0"
-gem "css_sprite", "~> 1.4.9"
+gem "css_sprite", "1.5.0"
 gem "meta-tags", :require => 'meta_tags'
 gem "sitemap_generator", "~> 0.3.3"
 gem "twitter"
