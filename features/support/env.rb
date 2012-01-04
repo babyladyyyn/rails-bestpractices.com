@@ -22,7 +22,7 @@ Spork.prefork do
   OmniAuth.config.mock_auth[:twitter] = {
     'provider' => 'twitter',
     'uid' => '123456',
-    'user_info' => {
+    'info' => {
       'nickname' => 'flyerhzm'
     },
     'credentials' => {
@@ -33,7 +33,7 @@ Spork.prefork do
   OmniAuth.config.mock_auth[:facebook] = {
     'provider' => 'facebook',
     'uid' => '123456',
-    'user_info' => {
+    'info' => {
       'nickname' => 'flyerhzm'
     },
     'credentials' => {

@@ -22,8 +22,8 @@ role :web, "app.rails-bestpractices.com"
 role :app, "app.rails-bestpractices.com"
 role :db,  "db.rails-bestpractices.com", :primary => true
 
-after "deploy:update_code", "config:init"
-after "deploy:update_code", "asset:init"
+before "deploy:assets:precompile", "config:init"
+before "deploy:assets:precompile", "asset:init"
 after "deploy:update_code", "asset:revision"
 
 namespace :asset do
