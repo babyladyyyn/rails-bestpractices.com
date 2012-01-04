@@ -28,3 +28,4 @@ public/stylesheets/base_packaged.css
 ERD.pdf
 log/newrelic_agent_store.db
 .sass-cache/
+public/assets/
