@@ -1,5 +1,3 @@
-require 'devise/encryptors/bcrypt'
-
 class MigrateUsers < ActiveRecord::Migration
   def self.up
     add_column :users, :reset_password_token, :string

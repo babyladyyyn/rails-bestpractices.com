@@ -79,8 +79,9 @@ end
 group :test do
   gem "rcov", "~> 0.9.9"
   gem "spork", "0.9.0.rc9"
-  gem "rspec", "2.7.0"
-  gem "rspec-rails", "2.7.0"
+  gem "rspec"
+  gem "rspec-rails"
+  gem "factory_girl"
   gem "factory_girl_rails"
   gem 'shoulda-matchers'
   gem "email_spec"
