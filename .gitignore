@@ -1,8 +1,5 @@
 .DS_Store
 .bundle
-.rvmrc
-.rspec
-.watchr
 db/*.sqlite3
 log/*.log
 tmp/**/*
