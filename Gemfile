@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
+gem 'rails'
 
 gem 'mysql2'
 
@@ -11,14 +11,14 @@ gem "devise"
 gem "omniauth"
 gem "omniauth-facebook"
 gem "omniauth-twitter"
-gem "formtastic", "~> 1.1.0"
+gem "formtastic"
 gem "has_scope"
 gem "inherited_resources"
 gem 'exception_notification', :require => 'exception_notifier'
 gem "acts-as-taggable-on"
 gem "rdiscount"
 gem "gravtastic", "~> 3.0.0"
-gem "css_sprite", "1.5.0"
+gem "css_sprite"
 gem "meta-tags", :require => 'meta_tags'
 gem "sitemap_generator", "~> 0.3.3"
 gem "twitter"
@@ -44,10 +44,10 @@ gem "cells"
 gem "yajl-ruby"
 
 group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
-  gem 'coffee-rails', '~> 3.1.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'compass', '0.12.alpha.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+  gem 'compass', '0.12.alpha.4'
 end
 
 gem 'jquery-rails'
@@ -79,8 +79,9 @@ end
 group :test do
   gem "rcov", "~> 0.9.9"
   gem "spork", "0.9.0.rc9"
-  gem "rspec", "2.7.0"
-  gem "rspec-rails", "2.7.0"
+  gem "rspec"
+  gem "rspec-rails"
+  gem "factory_girl"
   gem "factory_girl_rails"
   gem 'shoulda-matchers'
   gem "email_spec"
@@ -93,7 +94,7 @@ group :cucumber do
   gem "cucumber"
   gem "cucumber-rails"
   gem "capybara"
-  gem "database_cleaner"
+  gem "database_cleaner", "0.7.1"
   gem "launchy"
   gem "pickle"
 end

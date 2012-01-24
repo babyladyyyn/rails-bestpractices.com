@@ -1,8 +1,5 @@
 .DS_Store
 .bundle
-.rvmrc
-.rspec
-.watchr
 db/*.sqlite3
 log/*.log
 tmp/**/*
@@ -26,3 +23,4 @@ ERD.pdf
 log/newrelic_agent_store.db
 .sass-cache/
 public/assets/
+bin/

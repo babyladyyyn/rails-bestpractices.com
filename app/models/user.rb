@@ -29,6 +29,7 @@
 #  admin                     :boolean(1)      default(FALSE), not null
 #
 
+require 'devise/orm/active_record'
 class User < ActiveRecord::Base
 
   include Cacheable

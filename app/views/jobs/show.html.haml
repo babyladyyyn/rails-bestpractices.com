@@ -29,7 +29,7 @@
   .clear
   .description
     %span.label Description:
-    .wikistyle= raw white_list(@job.description, :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
+    .wikistyle= sanitize(@job.description, :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
 
   .apply_by
     %span.label Apply by Email
