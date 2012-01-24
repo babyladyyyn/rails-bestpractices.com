@@ -63,8 +63,12 @@ group :development do
   gem "bullet", "~> 2.0.1"
   gem "annotate"
   gem "rails-erd"
-  gem "active_reload"
   gem "ruby-debug19", :require => 'ruby-debug'
+
+  gem "capistrano"
+  gem "capistrano_colors"
+  gem "capistrano-ext"
+
   gem "guard"
   gem "rb-inotify", :require => false
   gem "rb-fsevent", :require => false
