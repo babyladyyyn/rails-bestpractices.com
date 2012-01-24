@@ -20,6 +20,7 @@ RailsAdmin.config do |config|
       field :title
       field :published
       field :source
+      field :apply_email
     end
     edit do
       field :title
@@ -28,6 +29,7 @@ RailsAdmin.config do |config|
       end
       field :published
       field :source
+      field :apply_email
     end
   end
 end
