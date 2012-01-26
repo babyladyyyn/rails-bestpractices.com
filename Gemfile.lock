@@ -360,7 +360,8 @@ GEM
     simple_cacheable (1.1.3)
       rails (>= 3.0.0)
     simple_oauth (0.1.5)
-    sitemap_generator (0.3.3)
+    sitemap_generator (3.0.0)
+      builder
     spork (0.9.0.rc9)
     sprockets (2.0.3)
       hike (~> 1.2)
@@ -477,7 +478,7 @@ DEPENDENCIES
   sass-rails
   shoulda-matchers
   simple_cacheable
-  sitemap_generator (~> 0.3.3)
+  sitemap_generator
   spork (= 0.9.0.rc9)
   sqlite3-ruby
   switch_user (~> 0.6.0)
