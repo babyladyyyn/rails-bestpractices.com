@@ -95,7 +95,12 @@ form.formtastic.user {
     display: inline-block;
   }
 }
-form.post, form.comment, form.question, form.answer {
+form.post, form.comment, form.question, form.answer, form.job {
+  li.string, li.url, li.email {
+    input {
+      width: 70%;
+    }
+  }
   li.text {
     width: 100%;
   }

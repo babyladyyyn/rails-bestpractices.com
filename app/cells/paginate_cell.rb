@@ -1,12 +1,14 @@
 class PaginateCell < Cell::Rails
-  cache :show do |cell, collection|
+  cache :show, :if => lambda { |cell, collection, name=nil| collection.present? } do |cell, collection, name=nil|
     "#{collection.first.model_cache_key}/#{cell.params[:page] || 1}"
   end
 
   def show(collection, name=nil)
-    @collection = collection
-    @name = name || "page"
-    render
+    if collection.present?
+      @collection = collection
+      @name = name || "page"
+      render
+    end
   end
 
 end

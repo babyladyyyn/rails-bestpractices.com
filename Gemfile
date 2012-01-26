@@ -20,7 +20,7 @@ gem "rdiscount"
 gem "gravtastic", "~> 3.0.0"
 gem "css_sprite"
 gem "meta-tags", :require => 'meta_tags'
-gem "sitemap_generator", "~> 0.3.3"
+gem "sitemap_generator"
 gem "twitter"
 gem "bitly"
 gem "cancan"
@@ -42,6 +42,7 @@ gem "memcached"
 gem "simple_cacheable", :require => "cacheable"
 gem "cells"
 gem "yajl-ruby"
+gem "country-select"
 
 group :assets do
   gem 'sass-rails'
