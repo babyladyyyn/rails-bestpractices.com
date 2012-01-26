@@ -73,19 +73,6 @@ $(function() {
       preview: "wmd-preview"
     });
   }
-  if (typeof(tinyMCE) != 'undefined') {
-    tinyMCE.init({
-      mode: 'exact',
-      elements: 'job_description',
-      theme : "advanced",
-      theme_advanced_buttons1 : "mylistbox,mysplitbutton,bold,italic,underline,separator,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,bullist,numlist,undo,redo,link,unlink",
-      theme_advanced_buttons2 : "",
-      theme_advanced_buttons3 : "",
-      theme_advanced_toolbar_location : "top",
-      theme_advanced_toolbar_align : "left",
-      theme_advanced_statusbar_location : "bottom"
-    });
-  }
 
   var addthis_config = {
     /* your GA property ID goes here: */
