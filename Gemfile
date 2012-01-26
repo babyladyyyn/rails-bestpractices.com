@@ -42,6 +42,7 @@ gem "memcached"
 gem "simple_cacheable", :require => "cacheable"
 gem "cells"
 gem "yajl-ruby"
+gem "country-select"
 
 group :assets do
   gem 'sass-rails'
