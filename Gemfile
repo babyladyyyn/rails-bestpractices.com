@@ -93,6 +93,7 @@ group :test do
   gem "rspec-cells"
   gem "guard-spork"
   gem "guard-rspec"
+  gem "rails_best_practices"
 end
 
 group :cucumber do
