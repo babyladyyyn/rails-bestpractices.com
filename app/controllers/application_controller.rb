@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
       end
 
       respond_to do |format|
-        format.html { render :file => "#{Rails.root}/public/404.html", :status => :not_found, :layout => false }
+        format.html { render :file => "#{RAILS_ROOT}/public/404.html", :status => :not_found, :layout => false }
         format.xml  { head :not_found }
         format.any  { head :not_found }
       end
