@@ -13,6 +13,8 @@ $(function() {
   });
   // pretty print the wikistyle pre code
   prettyPrint();
+  // time ago
+  $("abbr.timeago").timeago();
 
   $(window).scroll(function() {
     $votes = $('.post .vote-info >div');

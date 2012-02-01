@@ -9,5 +9,5 @@
         - else
           = comment.username
         on
-        = l comment.created_at
+        %abbr.timeago{:title => comment.created_at.getutc.iso8601}= comment.created_at.getutc.iso8601
       .clear
