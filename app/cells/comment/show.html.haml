@@ -12,7 +12,7 @@
           - else
             = comment.username
           on
-          = l comment.created_at
+          %abbr.timeago{:title => comment.created_at.getutc.iso8601}= comment.created_at.getutc.iso8601
         .content
           .point-to-icon
           .wikistyle= sanitize(simple_format(comment.body, :sanitize => false), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))

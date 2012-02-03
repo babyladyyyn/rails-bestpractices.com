@@ -10,7 +10,7 @@
         .icon
           %div{:class => "#{notification.notifierable_type.downcase}-icon"}
         %div{:class => notification.read? ? "read" : "unread"}= notification_message(notification)
-        .time= "#{time_ago_in_words(notification.created_at)} ago"
+        %abbr.timeago{:title => notification.created_at.getutc.iso8601}= notification.created_at.getutc.iso8601
         .delete= link_to 'Delete', notification_path(notification), :method => :delete, :class => 'delete-icon'
 
 = render_cell :paginate, :show, @notifications
