@@ -2,7 +2,8 @@ set :rails_env, :production
 set :deploy_to, "/home/huangzhi/sites/rails-bestpractices.com/production"
 
 after "deploy:update_code", "env:init"
-after "deploy:symlink", "deploy:update_crontab"
+after "deploy:symlink", "deploy:update_crontab:db"
+after "deploy:symlink", "deploy:update_crontab:app"
 
 after "deploy:symlink", "delayed_job:restart"
 
@@ -18,9 +19,16 @@ namespace :env do
 end
 
 namespace :deploy do
-  desc "Update the crontab file"
-  task :update_crontab, :roles => :db do
-    run "cd #{release_path} && bundle exec whenever --update-crontab #{application}"
+  namespace :update_crontab do
+    desc "Update the crontab file on db server"
+    task :db, :roles => :db do
+      run "cd #{release_path} && bundle exec whenever --update-crontab #{application} -i config/schedule/db.rb"
+    end
+
+    desc "Update the crontab file on app server"
+    task :app, :roles => :app do
+      run "cd #{release_path} && bundle exec whenever --update-crontab #{application} -i config/schedule/app.rb"
+    end
   end
 end
 
