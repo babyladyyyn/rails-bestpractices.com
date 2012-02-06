@@ -1,3 +1,5 @@
+require 'open-uri'
+
 namespace :job_share do
   task :rubyonjobs => :environment do
     JOB_TYPES = {
