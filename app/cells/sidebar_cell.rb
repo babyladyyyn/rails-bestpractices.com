@@ -4,6 +4,7 @@ class SidebarCell < Cell::Rails
   end
 
   cache :login
+  cache :links
   cache :sponsors, :expires_in => 1.day
   cache :jobs, :expires_in => 1.day
   cache :posts_navigation
@@ -16,6 +17,7 @@ class SidebarCell < Cell::Rails
     unless user
       sidebar << render(:state => :login)
     end
+    sidebar << render(:state => :services)
     sidebar << render(:state => :sponsors)
     sidebar << render(:state => :jobs)
     case controller
@@ -34,6 +36,10 @@ class SidebarCell < Cell::Rails
   end
 
   def login
+    render
+  end
+
+  def services
     render
   end
 
