@@ -7,12 +7,12 @@ Rails Best Practices Website
 
 rails-bestpractices.com is aimed to share everyone's rails best practices.
 
-If you have interests to join the development, please contact me: flyerhzm@gmail.com.
+Any questions and suggestions are welcome, please contact me: flyerhzm@rails-bestpractices.com.
 
 rails_best_practices gem
 -----------------------
 
-<https://github.com/flyerhzm/rails_best_practices>
+<https://github.com/railsbp/rails_best_practices>
 
 Setup
 -----
