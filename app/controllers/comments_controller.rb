@@ -8,7 +8,7 @@ class CommentsController < InheritedResources::Base
     if current_user || params[:skip] == 'true' || verify_recaptcha(:model => @comment, :message => @comment.body)
       create! do |success, failure|
         success.html {
-          job = Delayed::Job.enqueue(DelayedJob::NotifyComment.new(@comment.id))
+          #job = Delayed::Job.enqueue(DelayedJob::NotifyComment.new(@comment.id))
           redirect_to parent_url
         }
         failure.html { render failure_page }
