@@ -27,6 +27,7 @@ gem "cancan"
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'whenever', "~> 0.6.1"
 gem "thinking-sphinx", :require => 'thinking_sphinx'
+gem "daemons"
 gem "delayed_job"
 gem "delayed_job_active_record"
 gem "switch_user", "~> 0.6.0"
