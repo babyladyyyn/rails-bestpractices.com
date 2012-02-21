@@ -441,6 +441,7 @@ DEPENDENCIES
   css_sprite
   cucumber
   cucumber-rails
+  daemons
   database_cleaner (= 0.7.1)
   delayed_job
   delayed_job_active_record
