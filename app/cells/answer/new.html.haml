@@ -3,5 +3,5 @@
     = form.input :user_id, :as => :hidden, :value => @user.id
     = form.semantic_fields_for :answer_body do |body_fields|
       = body_fields.input :body, :label => false
-  = form.buttons do
+  = form.actions do
     = form.submit "Post Your Answer"

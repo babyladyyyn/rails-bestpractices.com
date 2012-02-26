@@ -7,14 +7,14 @@
     = form.input :login
     = form.input :email
     = form.input :url, :label => "Your Website"
-  = form.buttons do
+  = form.actions do
     = form.submit "Save"
 
 = semantic_form_for current_user, :url => user_registration_path do |form|
   = form.inputs :name => 'Change Password' do
     = form.input :password
     = form.input :password_confirmation
-  = form.buttons do
+  = form.actions do
     = form.submit "Change"
 
 = semantic_form_for current_user, :url => user_registration_path do |form|
@@ -24,5 +24,5 @@
         = setting_form.input :name, :as => :hidden, :wrapper_html => { :class => 'setting_name' }
         = setting_form.input :description, :label => false, :wrapper_html => { :class => 'setting_description' }, :input_html => { :disabled => 'disabled' }
         = setting_form.input :value, :label => '', :wrapper_html => { :class => 'setting_value' }
-  = form.buttons do
+  = form.actions do
     = form.submit "Save"

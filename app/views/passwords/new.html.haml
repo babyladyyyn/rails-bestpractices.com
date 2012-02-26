@@ -4,5 +4,5 @@
 = semantic_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |form|
   = form.inputs do
     = form.input :email
-  = form.buttons do
+  = form.actions do
     = form.submit "Send me reset password instructions"

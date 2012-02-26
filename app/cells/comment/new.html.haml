@@ -14,5 +14,5 @@
     = form.input :body, :label => 'Content', :input_html => { :class => 'wmd-ignore', :rows => 4 }
     - unless @user
       = raw recaptcha_tags(:display => {:theme => 'white'})
-  = form.buttons do
+  = form.actions do
     = form.submit "Comment"
