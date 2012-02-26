@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
       end
 
       respond_to do |format|
-        format.html { render :file => "#{Rails.root}/public/404.html", :status => :not_found, :layout => false }
+        format.html { render :file => "#{Rails.root}/public/404", :formats => [:html], :status => :not_found, :layout => false }
         format.xml  { head :not_found }
         format.any  { head :not_found }
       end
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
       end
 
       respond_to do |format|
-        format.html { render :file => "#{Rails.root}/public/422.html", :status => :unprocessable_entity, :layout => false }
+        format.html { render :file => "#{Rails.root}/public/422", :formats => [:html], :status => :unprocessable_entity, :layout => false }
         format.xml  { header :unprocessable_entity }
         format.any  { header :unprocessable_entity }
       end
