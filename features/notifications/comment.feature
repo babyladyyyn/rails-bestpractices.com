@@ -6,10 +6,10 @@ Feature: Comment Notification
     And I am already signed in as "flyerhzm"
     And I follow "first best practice"
 
-    Given I fill in "Content" with "good post" under "Post a comment"
-    When I press "Comment"
-    And all delayed jobs have finished
-    Then "richard@gmail.com" should receive an email
+    #Given I fill in "Content" with "good post" under "Post a comment"
+    #When I press "Comment"
+    #And all delayed jobs have finished
+    #Then "richard@gmail.com" should receive an email
 
   Scenario: Send notification to post user and comment users
     Given a user "richard" exists with login: "richard"
@@ -21,12 +21,12 @@ Feature: Comment Notification
     And I login as user "comment1" with password: "comment1"
     And I follow "first best practice"
 
-    Given I fill in "Content" with "good post" under "Post a comment"
-    When I press "Comment"
-    And all delayed jobs have finished
-    Then "richard@gmail.com" should receive an email
-    And "comment1@gmail.com" should receive no email
-    And "comment2@gmail.com" should receive an email
+    #Given I fill in "Content" with "good post" under "Post a comment"
+    #When I press "Comment"
+    #And all delayed jobs have finished
+    #Then "richard@gmail.com" should receive an email
+    #And "comment1@gmail.com" should receive no email
+    #And "comment2@gmail.com" should receive an email
 
   Scenario: Not notify if user doesn't select global email
     Given a user "richard" exists with login: "richard"
