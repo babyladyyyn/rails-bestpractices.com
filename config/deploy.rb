@@ -7,7 +7,7 @@ require 'thinking_sphinx/deploy/capistrano'
 
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require 'rvm/capistrano'
-set :rvm_ruby_string, 'ruby-1.9.2-p290@rails-bestpractices.com'
+set :rvm_ruby_string, 'ruby-1.9.3-p125@rails-bestpractices.com'
 set :rvm_type, :user
 
 set :application, "rails-bestpractices"
