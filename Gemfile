@@ -28,7 +28,6 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem 'whenever'
 gem "thinking-sphinx", :require => 'thinking_sphinx'
 gem "daemons"
-gem "delayed_job"
 gem "delayed_job_active_record"
 gem "switch_user"
 gem "dropbox"
