@@ -7,5 +7,5 @@
   = semantic_form_for [@parent, @comment], :html => {:class => 'hide'} do |form|
     = form.inputs do
       = form.input :body, :label => 'Content', :input_html => { :class => 'wmd-ignore', :rows => 2 }
-    = form.buttons do
+    = form.actions do
       = form.submit "Comment"

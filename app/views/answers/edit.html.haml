@@ -7,6 +7,6 @@
     = form.input :user_id, :as => :hidden, :value => current_user.id
     = form.semantic_fields_for :answer_body do |body_fields|
       = body_fields.input :body, :label => false
-    = form.buttons do
+    = form.actions do
       = form.submit "Save"
       = link_to 'Back', question_path(@question)

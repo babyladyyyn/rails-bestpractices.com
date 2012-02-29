@@ -4,6 +4,6 @@
 
 = semantic_form_for @question do |form|
   = render 'form', :f => form
-  = form.buttons do
+  = form.actions do
     = form.submit "Post"
     = link_to 'Back', questions_path
