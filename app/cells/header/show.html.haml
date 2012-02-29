@@ -11,7 +11,7 @@
           %li
             = link_to @user.login, user_path(@user), :class => "user-link"
             = link_to "#{@user.unread_notification_count}", notifications_path, :class => "notification-link #{'active' if @user.unread_notification_count > 0}"
-          %li= link_to "Sign out", destroy_user_session_path
+          %li= link_to "Sign out", destroy_user_session_path, :method => :delete
         - else
           %li= link_to "Sign up", new_user_registration_path
           %li= link_to "Sign in", new_user_session_path
@@ -25,7 +25,7 @@
       = link_to 'SUBSCRIBE TO OUR RSS FEED', "http://feeds.feedburner.com/rails-bestpractices", :class => 'rss-icon'
       = link_to 'FOLLOW US ON TWITTER', "http://twitter.com/railsbp", :class => 'twitter-icon'
   .community
-    .addthis= render 'header/addthis.html'
+    .addthis= render 'header/addthis'
   .main-nav
     .container
       %ul
