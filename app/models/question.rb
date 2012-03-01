@@ -23,7 +23,7 @@ class Question < ActiveRecord::Base
   paginates_per 10
 
   has_many :answers, :dependent => :destroy
-  has_one :question_body
+  has_one :question_body, :dependent => :destroy
 
   validates :title, :presence => true, :uniqueness => true
 
