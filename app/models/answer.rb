@@ -21,7 +21,7 @@ class Answer < ActiveRecord::Base
   paginates_per 10
 
   belongs_to :question, :counter_cache => true
-  has_one :answer_body
+  has_one :answer_body, :dependent => :destroy
 
   accepts_nested_attributes_for :answer_body
 

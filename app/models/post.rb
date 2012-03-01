@@ -22,7 +22,7 @@ class Post < ActiveRecord::Base
   include Commentable
   include Cacheable
 
-  has_one :post_body
+  has_one :post_body, :dependent => :destroy
 
   validates :title, :presence => true, :uniqueness => true
   validates :description, :presence => true

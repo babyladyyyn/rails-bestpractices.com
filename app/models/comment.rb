@@ -58,6 +58,7 @@ class Comment < ActiveRecord::Base
 
   private
     def expire_commentable_and_user_cache
+      commentable.touch
       commentable.expire_model_cache
       user.expire_model_cache if user
     end
