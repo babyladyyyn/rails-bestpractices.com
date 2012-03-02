@@ -1,9 +1,13 @@
+ActsAsTaggableOn::Tag.class_eval do
+  attr_accessible :name, :important
+end
+
 RailsAdmin.config do |config|
 
   config.current_user_method { current_user } #auto-generated
   config.authorize_with :cancan
 
-  config.excluded_models << "Authentication"
+  config.included_models = %w(Answer AnswerBody BlogPost Comment Job JobType JobJobType JobPartner Notification NotificationSetting Page Post PostBody Question QuestionBody Sponsor SponsorTrack User Vote Delayed::Job ActsAsTaggableOn::Tag)
 
   config.model BlogPost do
     edit do
