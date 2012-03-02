@@ -1,6 +1,6 @@
 class CommentCell < Cell::Rails
   cache :show do |cell, parent|
-    parent.model_cache_key
+    parent.cache_key
   end
 
   cache :new, :if => proc { |cell, parent, comment, user| comment.try(:errors).blank? } do |cell, parent, comment, user|
@@ -8,7 +8,7 @@ class CommentCell < Cell::Rails
   end
 
   cache :show_short do |cell, parent|
-    parent.model_cache_key
+    parent.cache_key
   end
 
   cache :new_short do |cell, parent, user|
