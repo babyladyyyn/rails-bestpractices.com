@@ -58,7 +58,7 @@ group :production do
 end
 
 group :development do
-  gem 'mongrel', '1.2.0.pre2'
+  gem 'thin'
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem "awesome_print", :require => 'ap'
   gem "bullet"
