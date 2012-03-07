@@ -20,6 +20,6 @@
           %abbr.timeago{:title => comment.created_at.getutc.iso8601}= comment.created_at.getutc.iso8601
       .content
         .point-to-icon
-        .wikistyle= sanitize(comment.body.gsub("\n", "<br/>"), :tags => %w(a b blockquote pre code em i strong), :attributes => %w(title href))
+        .wikistyle= sanitize(comment.body.gsub("\n", "<br/>"), :tags => %w(p br a b blockquote pre code em i strong), :attributes => %w(title href))
 
 = render_cell :paginate, :show, @comments
