@@ -1,9 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails'
-
 gem 'mysql2'
-
 gem "json"
 gem "haml"
 gem "kaminari"
