@@ -76,6 +76,11 @@ $(function() {
     });
   }
 
+  if (CKEDITOR.instances['job_description']) {
+    CKEDITOR.remove(CKEDITOR.instances['job_description']);
+  }
+  CKEDITOR.replace('job_description', { "autofocus": false,"id": 'job_description',"language": 'en',"required": false,"toolbar": 'Basic' });
+
   var addthis_config = {
     /* your GA property ID goes here: */
     data_ga_property: 'UA-17454114-1',

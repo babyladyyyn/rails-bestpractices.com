@@ -8,5 +8,5 @@
   = f.input :address, :label => "Job Address"
   = f.input :salary, :label => "Job Salary (optional)", :hint => "Hourly/Monthly/Yearly"
   = f.input :apply_email, :label => "Apply Email Address"
-  = f.input :description, :label => "Job Description", :hint => "Allow html elements"
+  = f.input :description, :label => "Job Description"
   = f.input :job_types, :label => "Job Types", :as => :check_boxes, :collection => JobType.all
