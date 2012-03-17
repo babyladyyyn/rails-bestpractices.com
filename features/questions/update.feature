@@ -14,7 +14,7 @@ Feature: Update Question
       | Tag list           | edit, test                    |
       | Content            | *edit-italic* **bold**        |
     When I press "Save"
-    Then I should see success message "Question was successfully updated."
+    Then I should see success message "Your Question was successfully updated!"
     And I should see "edit question" page
     And I should see "edit" within ".tags a:first"
     And I should see "test" within ".tags a:last"

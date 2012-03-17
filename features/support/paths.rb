@@ -32,8 +32,10 @@ module NavigationHelpers
       questions_path
     when /update question failure page/
       question_path(Question.last)
-    when /answer question failure page/
+    when /create answer failure page/
       question_answers_path(Question.last)
+    when /update answer failure page/
+      question_answer_path(Answer.last.question, Answer.last)
     when /the user show page for (.*)/
       user = User.find_by_login($1)
       user_path(user)

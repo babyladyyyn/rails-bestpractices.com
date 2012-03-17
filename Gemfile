@@ -13,7 +13,6 @@ gem "omniauth-facebook"
 gem "omniauth-twitter"
 gem "formtastic"
 gem "has_scope"
-gem "inherited_resources"
 gem 'exception_notification', :require => 'exception_notifier'
 gem "acts-as-taggable-on"
 gem "rdiscount"

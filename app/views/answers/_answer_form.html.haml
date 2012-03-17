@@ -1,7 +1,6 @@
 - if current_user
   = semantic_form_for [question, answer] do |form|
     = form.inputs :name => "Your Answer" do
-      = form.input :user_id, :as => :hidden, :value => current_user.id
       = form.semantic_fields_for :answer_body do |body_fields|
         = body_fields.input :body, :label => false
     = form.actions do

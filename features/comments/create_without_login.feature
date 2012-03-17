@@ -11,7 +11,7 @@ Feature: Comment Post without Login
       | Username | flyerhzm  |
       | Content  | good post |
     When I press "Comment"
-    Then I should see "Comment was successfully created"
+    Then I should see "Your Comment was successfully created!"
     And I should see "Posted by flyerhzm"
     And I should see "good post"
 

@@ -16,8 +16,7 @@ class AuthenticationsController < ApplicationController
         :token => omniauth['credentials']['token'],
         :secret => omniauth['credentials']['secret']
       )
-      flash[:notice] = "Authentication successful."
-      redirect_to authentications_url
+      redirect_to authentications_url, notice: "Authentication successful."
     else
       user = User.new
       user.authentications.build(
@@ -39,7 +38,6 @@ class AuthenticationsController < ApplicationController
   def destroy
     @authentication = current_user.authentications.find(params[:id])
     @authentication.destroy
-    flash[:notice] = "Successfully destroyed authentication."
-    redirect_to authentications_url
+    redirect_to authentications_url, notice: "Successfully destroyed authentication."
   end
 end

@@ -9,7 +9,7 @@ Feature: Comment Post with Login
   Scenario: Successful comment with valid info
     Given I fill in "Content" with "good post" under "Post a comment"
     When I press "Comment"
-    Then I should see "Comment was successfully created"
+    Then I should see "Your Comment was successfully created!"
     And I should see "Posted by flyerhzm"
     And I should see "good post"
 

@@ -30,8 +30,7 @@ class UsersController < Devise::RegistrationsController
   def update
     return create unless current_user
     if current_user.update_attributes(params[:user])
-      flash[:notice] = "Account updated."
-      redirect_to :action => :edit
+      redirect_to current_user, notice: "Account updated."
     else
       render :edit
     end
