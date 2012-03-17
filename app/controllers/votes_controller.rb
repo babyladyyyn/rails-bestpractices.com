@@ -1,17 +1,16 @@
-class VotesController < InheritedResources::Base
+class VotesController < ApplicationController
   before_filter :authenticate_user!
-  actions :create, :destroy
-  belongs_to :post, :question, :answer, :polymorphic => true
 
   def create
     @vote = parent.votes.create(:user_id => current_user.id, :like => like_value)
-    create! do |format|
-      format.html { redirect_to parent_url }
-    end
+    @vote.save
+    redirect_to parent_url
   end
 
-  destroy! do |format|
-    format.html { redirect_to parent_url }
+  def destroy
+    @vote = parent.votes.find(params[:id])
+    @vote.destroy
+    redirect_to parent_url
   end
 
   private

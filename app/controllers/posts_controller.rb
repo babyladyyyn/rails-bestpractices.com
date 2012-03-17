@@ -1,9 +1,24 @@
-class PostsController < InheritedResources::Base
+class PostsController < ApplicationController
   load_and_authorize_resource
   before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
   before_filter :set_post_order, :only => :index
   has_scope :implemented
   respond_to :xml, :only => :index
+
+  def show
+    @post = Post.find_cached(params[:id])
+    if params[:id] != @post.to_param
+      redirect_to post_path(@post), :status => 301
+      return false
+    end
+    Post.increment_counter(:view_count, @post.id)
+    @comment = @post.comments.build
+  end
+
+  def index
+    @posts = Post.published.order(nav_order).page(params[:page] || 1)
+    @posts = @posts.implemented if params[:nav] == 'implemented'
+  end
 
   def new
     if params[:answer_id]
@@ -14,20 +29,26 @@ class PostsController < InheritedResources::Base
     end
   end
 
-  def show
-    if params[:id] != @post.to_param
-      redirect_to post_path(@post), :status => 301
-      return false
-    end
-    show! do |format|
-      Post.increment_counter(:view_count, @post.id)
-      @comment = @post.comments.build
+  def create
+    @post = current_user.posts.build(params[:post])
+    if @post.save
+      redirect_to posts_path, notice: "Your Best Practice has been submitted and is pending approval."
+    else
+      render 'new'
     end
   end
 
-  create! do |success, failure|
-    success.html { redirect_to posts_path }
-    failure.html { render :new }
+  def edit
+    @post = current_user.posts.find(params[:id])
+  end
+
+  def update
+    @post = current_user.posts.find(params[:id])
+    if @post.update_attributes(params[:post])
+      redirect_to @post, notice: "Your Best Practice was successfully updated!"
+    else
+      render 'edit'
+    end
   end
 
   def archive
@@ -35,19 +56,6 @@ class PostsController < InheritedResources::Base
   end
 
   protected
-    def begin_of_association_chain
-      current_user
-    end
-
-    def resource
-      @post = params[:action] == "update" ? Post.find(params[:id]) : Post.find_cached(params[:id])
-    end
-
-    def collection
-      @posts = Post.published.order(nav_order).page(params[:page] || 1)
-      @posts = @posts.implemented if params[:nav] == 'implemented'
-    end
-
     def nav_order
       params[:nav] = "id" unless %w(id vote_points comments_count implemented).include?(params[:nav])
       params[:order] = "desc" unless %w(desc asc).include?(params[:order])

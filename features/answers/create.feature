@@ -1,4 +1,4 @@
-Feature: Answer an question
+Feature: Answer an answer
 
   Background:
     Given a user "richard" exists with login: "richard"
@@ -10,12 +10,12 @@ Feature: Answer an question
   Scenario: Successful answer
     Given I fill in "answer_answer_body_attributes_body" with "good question" under "Your Answer"
     When I press "Post Your Answer"
-    Then I should see "Answer was successfully created"
+    Then I should see "Your Answer was successfully created!"
     And I should see "Answered by flyerhzm"
     And I should see "good question"
 
   Scenario: Unsuccessful answer
     Given I fill in "answer_answer_body_attributes_body" with "" under "Your Answer"
     When I press "Post Your Answer"
-    Then I should be on answer question failure page
+    Then I should be on create answer failure page
     And I should see "can't be blank"

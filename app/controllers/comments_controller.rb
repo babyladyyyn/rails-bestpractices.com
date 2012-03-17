@@ -1,22 +1,16 @@
-class CommentsController < InheritedResources::Base
-  actions :create, :index
-  belongs_to :question, :answer, :post, :polymorphic => true, :optional => true
-
+class CommentsController < ApplicationController
   def create
     render_422 and return if params[:comment].blank?
     @comment = parent.comments.new(params[:comment].merge(:user => current_user))
     if current_user || params[:skip] == 'true' || verify_recaptcha(:model => @comment, :message => @comment.body)
-      create! do |success, failure|
-        success.html {
-          #job = Delayed::Job.enqueue(DelayedJob::NotifyComment.new(@comment.id))
-          redirect_to parent_url
-        }
-        failure.html { render failure_page }
+      if @comment.save
+        redirect_to parent_url, notice: "Your Comment was successfully created!"
+      else
+        render failure_page
       end
     else
-      flash[:error] = "Not correct captcha!"
       flash.delete :recaptcha_error
-      render failure_page
+      render failure_page, error: "Not correct captcha!"
     end
   end
 

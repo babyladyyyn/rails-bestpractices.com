@@ -13,7 +13,7 @@ Feature: Create Question
       | Content            | *italic* **bold**        |
       | Tag list           | rails, test              |
     When I press "Post"
-    Then I should see success message "Question was successfully created."
+    Then I should see success message "Your Question was successfully created!"
     And I should see "first question" page
     And I should see "rails" within ".tags a:first"
     And I should see "test" within ".tags a:last"
