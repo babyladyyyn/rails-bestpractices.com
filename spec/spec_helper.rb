@@ -4,8 +4,8 @@ Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
-  require "email_spec"
-  require "database_cleaner"
+  require 'email_spec'
+  require 'database_cleaner'
   DatabaseCleaner.strategy = :truncation
 
   Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
@@ -35,6 +35,9 @@ Spork.prefork do
 end
 
 Spork.each_run do
+  require 'simplecov'
+  SimpleCov.start 'rails'
+
   require 'factory_girl_rails'
   require File.join(File.dirname(__FILE__), 'support')
 end
