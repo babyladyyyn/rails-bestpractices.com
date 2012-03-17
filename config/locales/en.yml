@@ -4,6 +4,11 @@ en:
       user:
         signed_up: You have signed up successfully.
 
+  admin:
+    actions:
+      publish:
+        menu: Publish
+
   date:
     formats:
       default: "%B %d, %Y"
