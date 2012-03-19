@@ -43,6 +43,7 @@ gem "simple_cacheable", :require => "cacheable"
 gem "cells"
 gem "yajl-ruby"
 gem "country-select"
+gem "multiple_mailers"
 
 group :assets do
   gem 'sass-rails'

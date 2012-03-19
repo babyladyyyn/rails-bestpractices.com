@@ -242,6 +242,7 @@ GEM
     multi_json (1.1.0)
     multi_xml (0.4.1)
     multipart-post (1.1.5)
+    multiple_mailers (1.0.0)
     mysql2 (0.3.11)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -459,6 +460,7 @@ DEPENDENCIES
   memcache-client
   memcached
   meta-tags
+  multiple_mailers
   mysql2
   newrelic_rpm
   nokogiri
