@@ -1,21 +1,7 @@
 class NotificationMailer < ActionMailer::Base
   include Devise::Controllers::ScopedViews
 
-  if Rails.env.production?
-    class <<self
-      def smtp_settings
-        options = YAML.load_file("#{Rails.root}/config/mailers.yml")[Rails.env]['notification']
-        @@smtp_settings = {
-          :address              => options["address"],
-          :port                 => options["port"],
-          :domain               => options["domain"],
-          :authentication       => options["authentication"],
-          :user_name            => options["user_name"],
-          :password             => options["password"]
-        }
-      end
-    end
-  end
+  mailer_account "notification"
 
   default :from => "notification@rails-bestpractices.com"
 
