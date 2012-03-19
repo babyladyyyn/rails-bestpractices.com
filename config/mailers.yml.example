@@ -1,15 +1,16 @@
-common: &common
-  address: 'smtp.gmail.com'
-  port: 587
-  domain: 'rails-bestpractices.com'
-  authentication: 'plain'
+production:
+  common: &common
+    address: 'smtp.gmail.com'
+    port: 587
+    domain: 'rails-bestpractices.com'
+    authentication: 'plain'
 
-notification:
-  <<: *common
-  user_name: 'notification@rails-bestpractices.com'
-  password: 'password'
+  notification:
+    <<: *common
+    user_name: 'notification@rails-bestpractices.com'
+    password: 'password'
 
-exception.notifier:
-  <<: *common
-  user_name: 'exception.notifier@rails-bestpractices.com'
-  password: 'password'
+  exception.notifier:
+    <<: *common
+    user_name: 'exception.notifier@rails-bestpractices.com'
+    password: 'password'
