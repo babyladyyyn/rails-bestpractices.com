@@ -14,4 +14,3 @@ production:
     <<: *common
     user_name: 'exception.notifier@rails-bestpractices.com'
     password: 'password'
-
