@@ -6,6 +6,10 @@ mysql: &mysql
   password:
   encoding: utf8
 
+development:
+  <<: *mysql
+  database: railsbp_development
+
 test:
   <<: *mysql
   database: railsbp_test
