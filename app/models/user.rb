@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :encryptable, :encryptor => :authlogic_sha512
 
-  attr_accessible :login, :email, :password, :password_confirmation, :url
+  attr_accessible :login, :email, :password, :password_confirmation, :url, :remember_me
   validates :login, :presence => true, :uniqueness => true
 
   has_many :posts, :dependent => :destroy
