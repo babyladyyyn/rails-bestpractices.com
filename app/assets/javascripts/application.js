@@ -8,5 +8,5 @@
 //= require jquery_ujs
 //= require jquery.timeago.js
 //= require jquery.autocomplete.js
-//= require ckeditor/init
+//= require ckeditor-jquery
 //= require_tree .

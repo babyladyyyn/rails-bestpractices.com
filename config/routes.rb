@@ -47,5 +47,4 @@ RailsBestpracticesCom::Application.routes.draw do
   root :to => "posts#index"
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-  mount Ckeditor::Engine => '/ckeditor'
 end
