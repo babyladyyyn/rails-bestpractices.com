@@ -8,5 +8,10 @@
 //= require jquery_ujs
 //= require jquery.timeago.js
 //= require jquery.autocomplete.js
-//= require ckeditor/init
+//= require prettify.js
+//= require showdown.js
+//= require wmd.js
 //= require_tree .
+//= require ckeditor-jquery
+//= require uservoice.js
+//= require google_analytics.js

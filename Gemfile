@@ -35,7 +35,7 @@ gem "escape_utils"
 gem "newrelic_rpm"
 gem "rails_admin", :git => 'git://github.com/sferik/rails_admin.git'
 gem "paperclip"
-gem "ckeditor", "3.7.0.rc3"
+gem "ckeditor_rails", :require => "ckeditor-rails"
 gem "nokogiri"
 gem "memcache-client"
 gem "memcached"
@@ -65,6 +65,7 @@ group :development do
   gem "bullet"
   gem "annotate"
   gem "rails-erd"
+  gem "debugger"
 
   gem "capistrano"
   gem "capistrano_colors"
