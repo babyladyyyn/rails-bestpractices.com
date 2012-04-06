@@ -44,6 +44,7 @@ gem "cells"
 gem "yajl-ruby"
 gem "country-select"
 gem "multiple_mailers"
+gem "wmd-rails"
 
 group :assets do
   gem 'sass-rails'

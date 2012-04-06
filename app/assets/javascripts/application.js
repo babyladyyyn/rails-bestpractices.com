@@ -9,9 +9,9 @@
 //= require jquery.timeago.js
 //= require jquery.autocomplete.js
 //= require prettify.js
-//= require showdown.js
-//= require wmd.js
-//= require_tree .
+//= require wmd/wmd
+//= require wmd/showdown
 //= require ckeditor-jquery
+//= require_tree .
 //= require uservoice.js
 //= require google_analytics.js
