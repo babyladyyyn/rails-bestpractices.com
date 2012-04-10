@@ -19,9 +19,13 @@
   }
   .sponsors-section {
     margin-top: 20px;
-    h3 {
+    h3, p {
       color: #971920;
       font-weight: bold;
+    }
+    p {
+      text-align: center;
+      margin: 20px 0;
     }
   }
   .jobs-section {
