@@ -66,6 +66,4 @@ RailsBestpracticesCom::Application.configure do
     :sender_address => %{"Application Error" <exception.notifier@rails-bestpractices.com>},
     :exception_recipients => %w(flyerhzm@rails-bestpractices.com flyerhzm@gmail.com),
     :ignore_exceptions => %w(ActionView::MissingTemplate)
-
-  ThinkingSphinx.remote_sphinx = true
 end
