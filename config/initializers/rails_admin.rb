@@ -1,7 +1,3 @@
-ActsAsTaggableOn::Tag.class_eval do
-  attr_accessible :name, :important
-end
-
 module RailsAdmin
   module Config
     module Actions

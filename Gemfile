@@ -67,6 +67,7 @@ group :development do
   gem "annotate"
   gem "rails-erd"
   gem "debugger"
+  gem "quiet_assets"
 
   gem "capistrano"
   gem "capistrano_colors"

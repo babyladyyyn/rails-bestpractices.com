@@ -5,4 +5,4 @@
       - @sponsors.each do |sponsor|
         %li= link_to image_tag(sponsor.image_url), sponsor_path(sponsor), :rel => "nofollow"
   - else
-    %p Looking for Sponsors
+    %p= link_to "Looking for Sponsors", "mailto:contact-us@rails-bestpractices.com"
