@@ -10,13 +10,35 @@ module RailsBestPractices
 
         def start_ifop(node)
           conditional_statement = node.conditional_statement
-          first_body = node[2]
+          true_body = node[2]
           second_body = node[3]
-          if :vcall == conditional_statement.sexp_type && :call == first_body.sexp_type && conditional_statement.to_s == first_body.subject.to_s && "nil" == second_body.to_s
+          if assert_type?(conditional_statement, :vcall) &&
+             assert_type?(true_body, :call) &&
+             str_equal?(conditional_statement, true_body.subject) &&
+             assert_str?(second_body, "nil")
+            # user ? user.name : nil
             add_error("use try (#{conditional_statement})")
-          elsif :call == conditional_statement.sexp_type && :call == second_body.sexp_type && conditional_statement.subject.to_s == second_body.subject.to_s && "nil?" == conditional_statement.message.to_s && "nil" == first_body.to_s
+          elsif assert_type?(conditional_statement, :call) &&
+                assert_type?(second_body, :call) &&
+                str_equal?(conditional_statement.subject, second_body.subject) &&
+                assert_str?(conditional_statement.message, "nil?") &&
+                assert_str?(true_body, "nil")
+            # user.nil? ? nil : user.name
             add_error("use try (#{conditional_statement.subject})")
           end
+        end
+
+        private
+        def assert_type?(node, type)
+          type == node.sexp_type
+        end
+
+        def assert_str?(node, str)
+          str == node.to_s
+        end
+
+        def str_equal?(node1, node2)
+          node1.to_s == node2.to_s
         end
       end
     end
