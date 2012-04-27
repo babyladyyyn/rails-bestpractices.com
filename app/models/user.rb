@@ -27,6 +27,7 @@
 #  last_sign_in_ip           :string(255)
 #  authentication_token      :string(255)
 #  admin                     :boolean(1)      default(FALSE), not null
+#  reset_password_sent_at    :datetime
 #
 
 require 'devise/orm/active_record'
