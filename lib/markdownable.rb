@@ -7,8 +7,7 @@ module Markdownable
   end
 
   def init_body
-    self.body ||= " Before
-------
+    self.body ||= "## Before
 
 description
 
@@ -17,16 +16,14 @@ description
 
 description
 
-Refactor
---------
+## Refactor
 
 description
 
     # somes codes
     # after refactor
 
-description
-"
+description"
   end
 
   def generate_formatted_html

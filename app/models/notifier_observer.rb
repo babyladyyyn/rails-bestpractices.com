@@ -19,6 +19,6 @@ class NotifierObserver < ActiveRecord::Observer
     end
 
     def destroy(model)
-      Notification.where(:notifierable_id => model.id, :notifierable_type => model.class.to_s).first.destroy
+      Notification.where(:notifierable_id => model.id, :notifierable_type => model.class.to_s).map(&:destroy)
     end
 end

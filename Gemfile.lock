@@ -286,6 +286,7 @@ GEM
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)
       mime-types
+    perftools.rb (2.0.0)
     pickle (0.4.10)
       cucumber (>= 0.8)
       rake
@@ -296,6 +297,10 @@ GEM
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-perftools_profiler (0.6.0)
+      open4 (~> 1.0)
+      perftools.rb (~> 2.0.0)
+      rack (~> 1.0)
     rack-pjax (0.5.7)
       hpricot (~> 0.8.6)
       rack (~> 1.3)
@@ -484,6 +489,7 @@ DEPENDENCIES
   paperclip
   pickle
   quiet_assets
+  rack-perftools_profiler
   rails
   rails-erd
   rails_admin!

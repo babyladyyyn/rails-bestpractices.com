@@ -12,8 +12,6 @@ $ ->
   $("abbr.timeago").timeago()
 
   $votes = $(".post .vote-info")
-  console.log($votes)
-  console.log($votes.length)
   if $votes.length > 0
     $(window).scroll ->
       if $(this).scrollTop() > 230
