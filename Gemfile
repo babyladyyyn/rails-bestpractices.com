@@ -68,6 +68,7 @@ group :development do
   gem "rails-erd"
   gem "debugger"
   gem "quiet_assets"
+  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 
   gem "capistrano"
   gem "capistrano_colors"
