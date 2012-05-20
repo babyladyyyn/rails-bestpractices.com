@@ -68,8 +68,10 @@ RailsBestpracticesCom::Application.configure do
     :ignore_exceptions => %w(ActionView::MissingTemplate)
 
   config.after_initialize do
-    class ContactUs::ContactMailer
-      mailer_account "notification"
+    if ContactUs.const_defined? :ContactMailer
+      class ContactUs::ContactMailer
+        mailer_account "notification"
+      end
     end
 
     class ExceptionNotifier::Notifier
