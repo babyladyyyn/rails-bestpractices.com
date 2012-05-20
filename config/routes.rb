@@ -5,7 +5,7 @@ RailsBestpracticesCom::Application.routes.draw do
   end
   match '/auth/:provider/callback' => 'authentications#create'
   match '/auth/failure' => redirect('/')
-  resources :authentications
+  resources :authentications, :only => [:create, :destroy, :index]
 
   resources :tags, :only => :show
 
@@ -16,12 +16,12 @@ RailsBestpracticesCom::Application.routes.draw do
   end
   resources :comments, :only => :index
 
-  resources :questions do
-    resources :answers
+  resources :questions, :only => [:show, :new, :create, :edit, :update, :index] do
+    resources :answers, :only => [:create, :update]
     resources :votes, :only => [:create, :destroy]
     resources :comments, :only => :create
   end
-  resources :answers do
+  resources :answers, :only => [:create, :update] do
     resources :votes, :only => [:create, :destroy]
     resources :comments, :only => :create
   end
@@ -34,7 +34,7 @@ RailsBestpracticesCom::Application.routes.draw do
 
   resources :notifications, :only => [:index, :destroy]
 
-  resources :jobs do
+  resources :jobs, :only => [:show, :new, :create, :edit, :update, :index] do
     get :partner, :on => :collection
   end
 

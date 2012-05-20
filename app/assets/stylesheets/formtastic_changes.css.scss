@@ -14,6 +14,28 @@ form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
 --------------------------------------------------------------------------------------------------*/
 @import "partials/wikistyle";
 
+form.contact_us_contact {
+  li {
+    display: block;
+    line-height: 20px;
+    label {
+      width: 100%;
+      font-weight: bold;
+      display: block;
+    }
+    textarea {
+      width: 80%;
+      height: 80px;
+    }
+    input[type=text] {
+      width: 50%;
+    }
+    input[type=submit] {
+      padding: 3px 9px;
+    }
+  }
+}
+
 form.formtastic {
   legend {
     font-size: 20px;

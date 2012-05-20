@@ -64,6 +64,16 @@ RailsBestpracticesCom::Application.configure do
   config.middleware.use ExceptionNotifier,
     :email_prefix => "[rails-bestpractices.com] ",
     :sender_address => %{"Application Error" <exception.notifier@rails-bestpractices.com>},
-    :exception_recipients => %w(flyerhzm@rails-bestpractices.com flyerhzm@gmail.com),
+    :exception_recipients => %w(flyerhzm@rails-bestpractices.com),
     :ignore_exceptions => %w(ActionView::MissingTemplate)
+
+  config.after_initialize do
+    class ContactUs::ContactMailer
+      mailer_account "notification"
+    end
+
+    class ExceptionNotifier::Notifier
+      mailer_account "exception.notifier"
+    end
+  end
 end
