@@ -9,7 +9,7 @@ RailsBestpracticesCom::Application.routes.draw do
 
   resources :tags, :only => :show
 
-  resources :posts do
+  resources :posts, :except => :destroy do
     get :archive, :on => :collection
     resources :comments, :only => :create
     resources :votes, :only => [:create, :destroy]
