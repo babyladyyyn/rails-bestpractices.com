@@ -13,5 +13,4 @@
 //= require wmd/showdown
 //= require ckeditor-jquery
 //= require_tree .
-//= require uservoice.js
 //= require google_analytics.js

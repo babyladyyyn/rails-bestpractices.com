@@ -45,6 +45,7 @@ gem "yajl-ruby"
 gem "country-select"
 gem "multiple_mailers"
 gem "wmd-rails"
+gem "contact_us", :git => "git://github.com/flyerhzm/contact_us.git"
 
 group :assets do
   gem 'sass-rails'
