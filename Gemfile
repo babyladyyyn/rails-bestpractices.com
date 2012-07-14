@@ -67,7 +67,6 @@ group :development do
   gem "bullet"
   gem "annotate"
   gem "rails-erd"
-  gem "debugger"
   gem "quiet_assets"
   gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 
