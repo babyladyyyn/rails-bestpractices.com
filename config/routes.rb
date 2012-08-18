@@ -17,7 +17,7 @@ RailsBestpracticesCom::Application.routes.draw do
   resources :comments, :only => :index
 
   resources :questions, :only => [:show, :new, :create, :edit, :update, :index] do
-    resources :answers, :only => [:create, :update]
+    resources :answers, :only => [:create, :update, :edit]
     resources :votes, :only => [:create, :destroy]
     resources :comments, :only => :create
   end
