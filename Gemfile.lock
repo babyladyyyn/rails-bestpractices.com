@@ -358,6 +358,8 @@ GEM
       rspec (~> 2.8.0)
     ruby-graphviz (0.9.21)
     rubyzip (0.9.6.1)
+    rvm-capistrano (1.2.5)
+      capistrano (>= 2.0.0)
     sass (3.1.15)
     sass-rails (3.2.4)
       railties (~> 3.2.0)
@@ -501,6 +503,7 @@ DEPENDENCIES
   rspec
   rspec-cells
   rspec-rails
+  rvm-capistrano
   sass-rails
   shoulda-matchers
   simple_cacheable
