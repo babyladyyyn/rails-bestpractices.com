@@ -133,12 +133,6 @@ body {
     font-size: 16px;
     height: 29px;
     background-color: #971920;
-    .home-icon {
-      text-indent: -9999px;
-      margin: 10px 12px 0 62px;
-      @include inline-block;
-      @include float-left;
-    }
     ul {
       @include inline-block;
       @include no-bullets;
