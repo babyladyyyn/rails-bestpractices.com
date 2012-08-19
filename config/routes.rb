@@ -5,7 +5,6 @@ RailsBestpracticesCom::Application.routes.draw do
   end
   match '/auth/:provider/callback' => 'authentications#create'
   match '/auth/failure' => redirect('/')
-  resources :authentications, :only => [:create, :destroy, :index]
 
   resources :tags, :only => :show
 
