@@ -6,5 +6,5 @@ Given %r{^(\w+) "([^"]+)" & "([^"]+)" exist$} do |model, thing_1, thing_2|
     else
       %|a #{model}: "%s" exists|
     end
-  [thing_1, thing_2].each{|thing| Given template % [thing, thing] }
+  [thing_1, thing_2].each{|thing| step template % [thing, thing] }
 end

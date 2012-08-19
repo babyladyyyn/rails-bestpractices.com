@@ -69,8 +69,5 @@ table.users {
   .command {
     margin: 0 10px 0 0;
     @include float-left;
-    .minus-sign-icon, .plus-sign-icon {
-      text-indent: 9999px;
-    }
   }
 }

@@ -13,8 +13,12 @@ class TabCell < Cell::Rails
     cell.params[:nav]
   end
 
-  cache :user do |cell|
-    cell.params[:nav]
+  cache :user do |cell, user|
+    if user
+      "users/#{user.id}/#{cell.params[:nav]}"
+    else
+      cell.params[:nav]
+    end
   end
 
   def post

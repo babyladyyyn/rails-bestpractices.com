@@ -1,22 +1,22 @@
 Given %r{^I fill in the following under "([^"]*)":$} do |fieldset, table|
   within_fieldset(fieldset) do
-    Given 'I fill in the following:', table
+    step 'I fill in the following:', table
   end
 end
 
 Given %r{^I fill in "([^"]*)" with "([^"]*)" under "([^"]*)"$} do |field, value, fieldset|
   within_fieldset(fieldset) do
-    Given %|I fill in "#{field}" with "#{value}"|
+    step %|I fill in "#{field}" with "#{value}"|
   end
 end
 
 Given %r{^I am already signed in as "([^"]*)"$} do |someone|
   user = FactoryGirl.build(someone)
-  Given "#{someone} exists" rescue nil
-  And %|I go to sign in page|
-  And %|I fill in "Login" with "#{user.login}"|
-  And %|I fill in "Password" with "#{user.password}"|
-  And %|I press "Sign in"|
+  step "#{someone} exists" rescue nil
+  step %|I go to sign in page|
+  step %|I fill in "Login" with "#{user.login}"|
+  step %|I fill in "Password" with "#{user.password}"|
+  step %|I press "Sign in"|
 end
 
 Then %r{^I should see (success|error) message "([^"]*)"$} do |type, message|
@@ -31,7 +31,7 @@ Then %r{^I should see (success|error) message "([^"]*)"$} do |type, message|
 end
 
 Given %r{^I follow "([^"]*)" \/ "([^"]*)"$} do |link1, link2|
-  [link1, link2].each{|link| Given %|I follow "#{link}"| }
+  [link1, link2].each{|link| step %|I follow "#{link}"| }
 end
 
 Then %r{^I should see error fields?:? (.*)$} do |fields|
@@ -60,11 +60,11 @@ Then %r{^I should see "([^"]*)" with error "([^"]*)"$} do |field, message|
 end
 
 Then %r{^I should see "([^"]*)" page$} do |title|
-  Then 'I should see "%s" within "h2"' % title
+  step 'I should see "%s" within "h2"' % title
 end
 
 Then %r{^I should see "([^"]*)" in (\w+) search result$} do |title, model|
-  Then %|I should see "#{title}" within ".#{model} .title"|
+  step %|I should see "#{title}" within ".#{model} .title"|
 end
 
 Then %r{^I should see empty (\w+) search result$} do |model|
@@ -77,5 +77,5 @@ Then %r{^I should see empty (\w+) search result$} do |model|
 end
 
 Then %r{^I should not be able to press "([^"]*)"$} do |button|
-  lambda{ When %|I press "#{button}"| }.should raise_error(Capybara::ElementNotFound)
+  lambda{ step %|I press "#{button}"| }.should raise_error(Capybara::ElementNotFound)
 end
