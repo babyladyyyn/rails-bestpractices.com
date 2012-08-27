@@ -45,7 +45,7 @@ gem "yajl-ruby"
 gem "country-select"
 gem "multiple_mailers"
 gem "wmd-rails"
-gem "contact_us", :git => "git://github.com/flyerhzm/contact_us.git"
+gem "contact_us", "~> 0.4.0.beta"
 
 group :assets do
   gem 'sass-rails'
@@ -62,7 +62,6 @@ end
 
 group :development do
   gem 'thin'
-  gem 'sqlite3-ruby', :require => 'sqlite3'
   gem "awesome_print", :require => 'ap'
   gem "bullet"
   gem "annotate"
@@ -98,7 +97,7 @@ group :test do
   gem "rspec-cells"
   gem "guard-spork"
   gem "guard-rspec"
-  gem "rails_best_practices", :git => "git://github.com/railsbp/rails_best_practices.git"
+  gem "rails_best_practices"
 end
 
 group :cucumber do
