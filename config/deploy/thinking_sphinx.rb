@@ -1,6 +1,6 @@
 require 'thinking_sphinx/deploy/capistrano'
 
-before "deploy:assets:precompile", "thinking_sphinx:symlink_sphinx_configs"
+after "deploy:update_code", "thinking_sphinx:symlink_sphinx_configs"
 after "deploy:update_code", "thinking_sphinx:symlink_sphinx_indexes"
 after "deploy:symlink", "thinking_sphinx:restart"
 
