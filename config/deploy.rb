@@ -17,13 +17,15 @@ role :web, "app.rails-bestpractices.com"
 role :app, "app.rails-bestpractices.com"
 role :db,  "db.rails-bestpractices.com", :primary => true
 
-load "config/deploy/asset_pipeline"
-load "config/deploy/css_sprite"
-load "config/deploy/cron"
-load "config/deploy/delayed_job"
+before "deploy:finalize_update", "shared_symlink:create"
+before "deploy:finalize_update", "asset:revision"
 
-before "deploy:assets:precompile", "shared_symlink:create"
-after "deploy:update_code", "asset:revision"
+load "config/deploy/asset_pipeline"
+load "config/deploy/cron"
+load "config/deploy/css_sprite"
+load "config/deploy/delayed_job"
+load "config/deploy/sitemap"
+load "config/deploy/thinking_sphinx"
 
 namespace :shared_symlink do
   task :create do

@@ -1,6 +1,6 @@
 require "delayed/recipes"
 
-role :delayed_job, 'db.rails-brakeman.com'
+role :delayed_job, 'db.rails-bestpractices.com'
 set :delayed_job_server_role, :delayed_job
 
 before "deploy:restart", "delayed_job:stop"
