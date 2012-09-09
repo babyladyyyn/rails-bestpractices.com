@@ -18,9 +18,11 @@ role :app, "app.rails-bestpractices.com"
 role :db,  "db.rails-bestpractices.com", :primary => true
 
 load "config/deploy/asset_pipeline"
-load "config/deploy/css_sprite"
 load "config/deploy/cron"
+load "config/deploy/css_sprite"
 load "config/deploy/delayed_job"
+load "config/deploy/sitemap"
+load "config/deploy/thinking_sphinx"
 
 before "deploy:assets:precompile", "shared_symlink:create"
 after "deploy:update_code", "asset:revision"
