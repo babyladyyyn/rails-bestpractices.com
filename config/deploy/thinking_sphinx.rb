@@ -1,7 +1,7 @@
 require 'thinking_sphinx/deploy/capistrano'
 
-after "deploy:update_code", "thinking_sphinx:symlink_sphinx_configs"
-after "deploy:update_code", "thinking_sphinx:symlink_sphinx_indexes"
+before "deploy:finalize_update", "thinking_sphinx:symlink_sphinx_configs"
+before "deploy:finalize_update", "thinking_sphinx:symlink_sphinx_indexes"
 after "deploy:symlink", "thinking_sphinx:restart"
 
 namespace :thinking_sphinx do

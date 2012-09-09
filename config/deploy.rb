@@ -17,8 +17,8 @@ role :web, "app.rails-bestpractices.com"
 role :app, "app.rails-bestpractices.com"
 role :db,  "db.rails-bestpractices.com", :primary => true
 
-after "deploy:update_code", "shared_symlink:create"
-after "deploy:update_code", "asset:revision"
+before "deploy:finalize_update", "shared_symlink:create"
+before "deploy:finalize_update", "asset:revision"
 
 load "config/deploy/asset_pipeline"
 load "config/deploy/cron"
