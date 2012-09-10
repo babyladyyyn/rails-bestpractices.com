@@ -1,5 +1,4 @@
-after "deploy:symlink", "deploy:update_crontab:db"
-after "deploy:symlink", "deploy:update_crontab:app"
+after "deploy:symlink", "deploy:update_crontab:db", "deploy:update_crontab:app"
 
 namespace :deploy do
   namespace :update_crontab do

@@ -10,15 +10,13 @@ set :deploy_to, "/home/huangzhi/sites/rails-bestpractices.com/production"
 
 set :scm, :git
 set :user, 'huangzhi'
-
-set :rake, "bundle exec rake"
+set :git_shallow_clone, 1
 
 role :web, "app.rails-bestpractices.com"
 role :app, "app.rails-bestpractices.com"
 role :db,  "db.rails-bestpractices.com", :primary => true
 
-before "deploy:finalize_update", "shared_symlink:create"
-before "deploy:finalize_update", "asset:revision"
+before "deploy:finalize_update", "shared_symlink:create", "asset:revision"
 
 load "config/deploy/asset_pipeline"
 load "config/deploy/cron"
@@ -29,11 +27,7 @@ load "config/deploy/thinking_sphinx"
 
 namespace :shared_symlink do
   task :create do
-    run "ln -nfs #{shared_path}/config/bitly.yml #{release_path}/config/bitly.yml"
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/config/mailers.yml #{release_path}/config/mailers.yml"
-    run "ln -nfs #{shared_path}/config/omniauth.yml #{release_path}/config/omniauth.yml"
-    run "ln -nfs #{shared_path}/config/memcache.yml #{release_path}/config/memcache.yml"
+    run "ln -nfs #{shared_path}/config/*.yml #{release_path}/config/"
   end
 end
 
