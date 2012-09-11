@@ -23,7 +23,6 @@
         #sidebar= render_cell :sidebar, :display, params[:controller], params[:action], current_user
 
     = render_cell :footer, :show
-    = render 'shared/fork_me_on_github'
 
     = javascript_include_tag "application"
     = yield :js
