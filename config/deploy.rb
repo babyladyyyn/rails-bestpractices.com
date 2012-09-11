@@ -18,13 +18,6 @@ role :db,  "db.rails-bestpractices.com", :primary => true
 
 before "deploy:finalize_update", "shared_symlink:create", "asset:revision"
 
-load "config/deploy/asset_pipeline"
-load "config/deploy/cron"
-load "config/deploy/css_sprite"
-load "config/deploy/delayed_job"
-load "config/deploy/sitemap"
-load "config/deploy/thinking_sphinx"
-
 namespace :shared_symlink do
   task :create do
     run "ln -nfs #{shared_path}/config/*.yml #{release_path}/config/"
