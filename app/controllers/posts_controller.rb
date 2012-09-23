@@ -38,12 +38,8 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    @post = current_user.posts.find(params[:id])
-  end
-
   def update
-    @post = current_user.posts.find(params[:id])
+    @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
       redirect_to @post, notice: "Your Best Practice was successfully updated!"
     else
