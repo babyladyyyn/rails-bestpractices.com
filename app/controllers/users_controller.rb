@@ -29,7 +29,7 @@ class UsersController < Devise::RegistrationsController
 
   def update
     return create unless current_user
-    if current_user.update_attributes(params[:user])
+    if current_user.update_attributes(resource_params)
       redirect_to current_user, notice: "Account updated."
     else
       render :edit
@@ -43,5 +43,9 @@ class UsersController < Devise::RegistrationsController
         @user.apply_omniauth(session[:omniauth])
         @user.valid?
       end
+    end
+
+    def resource_params
+      params.require(:user).permit(:login, :email, :password, :password_confirmation)
     end
 end

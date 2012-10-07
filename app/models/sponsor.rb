@@ -12,6 +12,8 @@
 #
 
 class Sponsor < ActiveRecord::Base
+
+  include ActiveModel::ForbiddenAttributesProtection
   include Cacheable
 
   validates_presence_of :name, :website_url, :image_url

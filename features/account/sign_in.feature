@@ -19,7 +19,7 @@ Feature: Account sign in
        | Password | <password> |
     When I press "Sign in"
     Then I should be on sign in failure page
-    And I should see "Invalid email or password."
+    And I should see "Invalid login or password."
 
     Examples:
       | username | password | field    |
@@ -32,7 +32,7 @@ Feature: Account sign in
       | Password | <password> |
     When I press "Sign in"
     Then I should be on sign in failure page
-    And I should see "Invalid email or password."
+    And I should see "Invalid login or password."
 
     Examples:
       | username | password | field    |

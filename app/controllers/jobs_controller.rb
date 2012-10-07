@@ -17,7 +17,7 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = current_user.jobs.build(params[:job])
+    @job = current_user.jobs.build(resource_params)
     if @job.save
       redirect_to jobs_path, notice: "Your Job has been submitted and is pending approval."
     else
@@ -30,7 +30,7 @@ class JobsController < ApplicationController
   end
 
   def update
-    @job = current_user.jobs.build(params[:job])
+    @job = current_user.jobs.build(resource_params)
     if @job.save
       redirect_to @job, notice: "Your Job was successfully updated!"
     else
@@ -44,6 +44,10 @@ class JobsController < ApplicationController
   end
 
   protected
+    def resource_params
+      params.require(:job).permit(:title, :company, :company_url, :country, :state, :city, :address, :salary, :apply_email, :description)
+    end
+
     def require_partner
       @partner = JobPartner.find_by_token(params[:token])
       render_422 and return unless @partner

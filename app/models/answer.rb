@@ -13,6 +13,7 @@
 
 class Answer < ActiveRecord::Base
 
+  include ActiveModel::ForbiddenAttributesProtection
   include UserOwnable
   include Voteable
   include Commentable

@@ -11,6 +11,7 @@
 #
 
 class AnswerBody < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   include Markdownable
 
   belongs_to :answer

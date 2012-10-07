@@ -13,6 +13,7 @@
 
 class Vote < ActiveRecord::Base
 
+  include ActiveModel::ForbiddenAttributesProtection
   include UserOwnable
   include Cacheable
 

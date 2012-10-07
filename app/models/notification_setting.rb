@@ -11,6 +11,9 @@
 #
 
 class NotificationSetting < ActiveRecord::Base
+
+  include ActiveModel::ForbiddenAttributesProtection
+
   attr_accessor :description
 
   belongs_to :user

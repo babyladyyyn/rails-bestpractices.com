@@ -11,6 +11,7 @@
 #
 
 class QuestionBody < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   include Markdownable
 
   belongs_to :question

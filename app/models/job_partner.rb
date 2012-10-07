@@ -10,5 +10,7 @@
 #
 
 class JobPartner < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+
   validates_presence_of :name, :token
 end

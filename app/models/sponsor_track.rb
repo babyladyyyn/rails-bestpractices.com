@@ -9,5 +9,8 @@
 #
 
 class SponsorTrack < ActiveRecord::Base
+
+  include ActiveModel::ForbiddenAttributesProtection
+
   belongs_to :sponsor
 end
