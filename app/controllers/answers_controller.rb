@@ -13,8 +13,12 @@ class AnswersController < ApplicationController
     end
   end
 
+  def edit
+    @answer = Answer.find_cached(params[:id])
+  end
+
   def update
-    @answer = current_user.answers.find_cached(params[:id])
+    @answer = Answer.find_cached(params[:id])
     if @answer.update_attributes(resource_params)
       redirect_to @question, notice: "Your Answer was successfully updated!"
     else
