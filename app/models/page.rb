@@ -11,6 +11,7 @@
 
 class Page < ActiveRecord::Base
 
+  include ActiveModel::ForbiddenAttributesProtection
   include Cacheable
 
   validates :name, :presence => true

@@ -25,3 +25,4 @@ log/newrelic_agent_store.db
 public/assets/
 bin/
 coverage/
+zeus.json

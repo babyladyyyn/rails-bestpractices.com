@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     render_422 and return if params[:comment].blank?
-    @comment = parent.comments.new(params[:comment].merge(:user => current_user))
+    @comment = parent.comments.new(resource_params.merge(:user => current_user))
     if current_user || params[:skip] == 'true' || verify_recaptcha(:model => @comment, :message => @comment.body)
       if @comment.save
         redirect_to parent_url, notice: "Your Comment was successfully created!"
@@ -19,6 +19,10 @@ class CommentsController < ApplicationController
   end
 
   private
+    def resource_params
+      params.require(:comment).permit(:body, :username, :email)
+    end
+
     def parent
       if params[:question_id]
         @question = Question.find_cached(params[:question_id])

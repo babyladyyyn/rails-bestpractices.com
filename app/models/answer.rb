@@ -13,6 +13,7 @@
 
 class Answer < ActiveRecord::Base
 
+  include ActiveModel::ForbiddenAttributesProtection
   include UserOwnable
   include Voteable
   include Commentable
@@ -34,10 +35,6 @@ class Answer < ActiveRecord::Base
     with_key
     with_method :formatted_html
     with_association :user, :question
-  end
-
-  def to_post
-    Post.new(:title => self.cached_question.title, :post_body => PostBody.new(:body => self.body), :tag_list => self.cached_question.tag_list)
   end
 
   def tweet_title

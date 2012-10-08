@@ -22,6 +22,7 @@
 #
 
 class Job < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   include Cacheable
 
   has_many :job_job_types

@@ -11,4 +11,4 @@ Feature: Edit user
        | Your Website | http://new_user.com |
     And I press "Save"
     Then I should see "Account updated."
-    And a user should exist with login: "new_user", email: "new_user@gmail.com", url: "http://new_user.com"
+    And a user should exist with login: "new_user", url: "http://new_user.com"

@@ -15,6 +15,7 @@
 
 class Question < ActiveRecord::Base
 
+  include ActiveModel::ForbiddenAttributesProtection
   include UserOwnable
   include Voteable
   include Commentable

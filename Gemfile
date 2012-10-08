@@ -8,6 +8,7 @@ gem "json"
 gem "haml"
 gem "kaminari"
 gem "devise"
+gem "devise-encryptable"
 gem "omniauth"
 gem "omniauth-facebook"
 gem "omniauth-twitter"
@@ -22,7 +23,7 @@ gem "meta-tags", :require => 'meta_tags'
 gem "sitemap_generator"
 gem "twitter"
 gem "bitly"
-gem "cancan"
+gem "cancan", github: "flyerhzm/cancan", branch: "allow-override-resource_params"
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'whenever'
 gem "thinking-sphinx", :require => 'thinking_sphinx'
@@ -46,6 +47,7 @@ gem "country-select"
 gem "multiple_mailers"
 gem "wmd-rails"
 gem "contact_us", "~> 0.4.0.beta"
+gem "strong_parameters"
 
 group :assets do
   gem 'sass-rails'

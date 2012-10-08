@@ -33,13 +33,13 @@
 require 'devise/orm/active_record'
 class User < ActiveRecord::Base
 
+  include ActiveModel::ForbiddenAttributesProtection
   include Cacheable
   include Gravtastic
   gravtastic
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :encryptable, :encryptor => :authlogic_sha512
 
-  attr_accessible :login, :email, :password, :password_confirmation, :url, :remember_me
   validates :login, :presence => true, :uniqueness => true
 
   has_many :posts, :dependent => :destroy
@@ -91,4 +91,3 @@ class User < ActiveRecord::Base
     EOF
   end
 end
-

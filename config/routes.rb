@@ -16,11 +16,11 @@ RailsBestpracticesCom::Application.routes.draw do
   resources :comments, :only => :index
 
   resources :questions, :only => [:show, :new, :create, :edit, :update, :index] do
-    resources :answers, :only => [:create, :update, :edit]
+    resources :answers, :only => :create
     resources :votes, :only => [:create, :destroy]
     resources :comments, :only => :create
   end
-  resources :answers, :only => [:create, :update] do
+  resources :answers, :only => :create do
     resources :votes, :only => [:create, :destroy]
     resources :comments, :only => :create
   end

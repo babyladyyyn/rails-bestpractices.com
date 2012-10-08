@@ -21,16 +21,12 @@ class PostsController < ApplicationController
   end
 
   def new
-    if params[:answer_id]
-      @post = Answer.find_cached(params[:answer_id]).to_post
-    else
-      @post = Post.new
-      @post.build_post_body
-    end
+    @post = Post.new
+    @post.build_post_body
   end
 
   def create
-    @post = current_user.posts.build(params[:post])
+    @post = current_user.posts.build(resource_params)
     if @post.save
       redirect_to posts_path, notice: "Your Best Practice has been submitted and is pending approval."
     else
@@ -38,9 +34,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = Post.find_cached(params[:id])
+  end
+
   def update
-    @post = Post.find(params[:id])
-    if @post.update_attributes(params[:post])
+    @post = Post.find_cached(params[:id])
+    if @post.update_attributes(resource_params)
       redirect_to @post, notice: "Your Best Practice was successfully updated!"
     else
       render 'edit'
@@ -52,6 +52,10 @@ class PostsController < ApplicationController
   end
 
   protected
+    def resource_params
+      params.require(:post).permit(:title, :description, :tag_list, post_body_attributes: [:body]) if params[:post]
+    end
+
     def nav_order
       params[:nav] = "id" unless %w(id vote_points comments_count implemented).include?(params[:nav])
       params[:order] = "desc" unless %w(desc asc).include?(params[:order])

@@ -11,6 +11,7 @@
 #
 
 class PostBody < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   include Markdownable
 
   belongs_to :post

@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = current_user.questions.build(params[:question])
+    @question = current_user.questions.build(resource_params)
     if @question.save
       flash[:notice] = "Your Question was successfully created!"
       redirect_to @question
@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
 
   def update
     @question = current_user.questions.find(params[:id])
-    if @question.update_attributes(params[:question])
+    if @question.update_attributes(resource_params)
       flash[:notice] = "Your Question was successfully updated!"
       redirect_to @question
     else
@@ -44,6 +44,10 @@ class QuestionsController < ApplicationController
   end
 
   protected
+    def resource_params
+      params.require(:question).permit(:title, :tag_list, question_body_attributes: [:body]) if params[:question]
+    end
+
     def nav_order
       params[:nav] = "id" unless %w(id vote_points answers_count not_answered).include?(params[:nav])
       params[:order] = "desc" unless %w(desc asc).include?(params[:order])

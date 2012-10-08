@@ -12,6 +12,8 @@
 #
 
 class Notification < ActiveRecord::Base
+
+  include ActiveModel::ForbiddenAttributesProtection
   include Cacheable
 
   belongs_to :notifierable, :polymorphic => true

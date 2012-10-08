@@ -13,6 +13,7 @@
 
 class BlogPost < ActiveRecord::Base
 
+  include ActiveModel::ForbiddenAttributesProtection
   include Commentable
   include Cacheable
 

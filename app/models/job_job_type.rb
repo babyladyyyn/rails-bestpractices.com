@@ -10,6 +10,8 @@
 #
 
 class JobJobType < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
+
   belongs_to :job
   belongs_to :job_type
 end
