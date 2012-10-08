@@ -60,6 +60,7 @@ gem 'jquery-rails'
 
 group :production do
   gem 'therubyracer'
+  gem 'sass-rails'
 end
 
 group :development do
