@@ -46,6 +46,6 @@ class UsersController < Devise::RegistrationsController
     end
 
     def resource_params
-      params.require(:user).permit(:login, :email, :password, :password_confirmation, :url)
+      params.require(:user).permit(:login, :email, :password, :password_confirmation, :url, :notification_settings_attributes)
     end
 end
