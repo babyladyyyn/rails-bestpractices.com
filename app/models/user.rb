@@ -56,7 +56,6 @@ class User < ActiveRecord::Base
 
   model_cache do
     with_key
-    with_attribute :email
   end
 
   def name
