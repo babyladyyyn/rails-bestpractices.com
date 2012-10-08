@@ -21,12 +21,8 @@ class PostsController < ApplicationController
   end
 
   def new
-    if params[:answer_id]
-      @post = Answer.find_cached(params[:answer_id]).to_post
-    else
-      @post = Post.new
-      @post.build_post_body
-    end
+    @post = Post.new
+    @post.build_post_body
   end
 
   def create
