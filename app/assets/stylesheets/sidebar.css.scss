@@ -17,17 +17,6 @@
     margin: 20px 0;
     line-height: 2;
   }
-  .sponsors-section {
-    margin-top: 20px;
-    h3, p {
-      color: #971920;
-      font-weight: bold;
-    }
-    p {
-      text-align: center;
-      margin: 20px 0;
-    }
-  }
   .jobs-section {
     margin-top: 20px;
     background-color: #d6eff6;
@@ -110,10 +99,13 @@
       line-height: 1.2;
     }
   }
-  .services-section {
+  .referrals-section {
     h3 {
       color: #971920;
       font-weight: bold;
+    }
+    .referral {
+      margin-bottom: 10px
     }
     img {
       float: left;
