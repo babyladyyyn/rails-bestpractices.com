@@ -1,8 +1,0 @@
-.sponsors-section
-  %h3 Sponsors
-  - if @sponsors.present?
-    %ul.sponsors
-      - @sponsors.each do |sponsor|
-        %li= link_to image_tag(sponsor.image_url), sponsor_path(sponsor), :rel => "nofollow"
-  - else
-    %p= link_to "Looking for Sponsors", "mailto:contact-us@rails-bestpractices.com"

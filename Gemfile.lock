@@ -73,7 +73,7 @@ GEM
       httparty (>= 0.7.6)
       oauth2 (~> 0.5.0)
     bootstrap-sass (2.1.0.0)
-    builder (3.0.3)
+    builder (3.0.4)
     bullet (2.2.1)
       uniform_notifier (~> 1.0.0)
     capistrano (2.11.2)

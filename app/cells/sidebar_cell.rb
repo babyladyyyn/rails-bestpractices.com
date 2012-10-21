@@ -5,7 +5,7 @@ class SidebarCell < Cell::Rails
 
   cache :login
   cache :links
-  cache :sponsors, :expires_in => 1.day
+  cache :referrals, :expires_in => 1.day
   cache :jobs, :expires_in => 1.day
   cache :posts_navigation
   cache :blog_rss
@@ -17,8 +17,7 @@ class SidebarCell < Cell::Rails
     unless user
       sidebar << render(:state => :login)
     end
-    sidebar << render(:state => :services)
-    sidebar << render(:state => :sponsors)
+    sidebar << render(:state => :referrals)
     sidebar << render(:state => :jobs)
     case controller
     when "posts", "comments"
@@ -39,12 +38,7 @@ class SidebarCell < Cell::Rails
     render
   end
 
-  def services
-    render
-  end
-
-  def sponsors
-    @sponsors = Sponsor.active
+  def referrals
     render
   end
 
