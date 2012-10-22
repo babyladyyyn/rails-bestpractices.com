@@ -21,16 +21,6 @@ describe SidebarCell do
       it { should have_link("Post a Job") }
     end
 
-    context "rendering sponsors" do
-      before do
-        @sponsor = Factory(:sponsor, :active => true)
-      end
-      subject { render_cell(:sidebar, :display) }
-
-      it { should have_selector("h3", :content => "Sponsors") }
-      it { should have_selector("a img[src='#{@sponsor.image_url}']") }
-    end
-
     context "rendering posts-navigation" do
       subject { render_cell(:sidebar, :display) }
 
