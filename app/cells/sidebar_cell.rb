@@ -1,14 +1,5 @@
 class SidebarCell < Cell::Rails
-  cache :display, :expires_in => 1.day do |cell, controller, action, user|
-    "#{controller}/#{action}/#{!!user}"
-  end
-
-  cache :login
-  cache :links
-  cache :referrals, :expires_in => 1.day
   cache :jobs, :expires_in => 1.day
-  cache :posts_navigation
-  cache :blog_rss
   cache :recent_blog_posts, :expires_in => 1.day
   cache :important_tags, :expires_in => 1.day
 
