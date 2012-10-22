@@ -1,4 +1,4 @@
-set :assets_dependencies, %w(app/assets lib/assets vendor/assets Gemfile.lock config/routes.rb)
+set :assets_dependencies, %w(app/assets vendor/assets Gemfile.lock config/routes.rb)
 
 namespace :deploy do
   namespace :assets do
