@@ -1,5 +1,6 @@
 $ ->
-  $("#post_tag_list, #question_tag_list, #answer_tag_list").autocomplete tags,
-    multiple: true
-    matchContains: true
-    autoFill: true
+  unless typeof tags is "undefined"
+    $("#post_tag_list, #question_tag_list, #answer_tag_list").autocomplete tags,
+      multiple: true
+      matchContains: true
+      autoFill: true
