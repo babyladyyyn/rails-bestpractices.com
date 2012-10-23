@@ -3,7 +3,7 @@ $ ->
     $referrals = $(".referrals-section")
     $.each refs, (i, ref) ->
       $img = $("<img/>").attr("src", ref.image_url)
-      $link = $("<a/>").attr("href", ref.url).text(ref.title)
+      $link = $("<a/>").attr("href", "http://referral.herokuapp.com/websites/5/refs/" + ref.id + "?position=web").text(ref.title)
       $text = $("<p/>").text(ref.description)
       $referral = $("<div/>").addClass("referral")
       $referral.append($img).append($link).append($text).appendTo($referrals)
