@@ -1,3 +1,4 @@
+source 'http://bundler-api.herokuapp.com'
 source 'http://rubygems.org'
 
 gem 'rails'
