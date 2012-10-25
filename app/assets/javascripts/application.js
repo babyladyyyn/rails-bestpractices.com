@@ -11,6 +11,7 @@
 //= require prettify.js
 //= require wmd/wmd
 //= require wmd/showdown
+//= require disqus
 //= require ckeditor-jquery
 //= require_tree .
 //= require google_analytics.js

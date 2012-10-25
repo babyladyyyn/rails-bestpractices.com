@@ -25,6 +25,7 @@ GIT
       sass-rails (~> 3.1)
 
 GEM
+  remote: http://bundler-api.herokuapp.com/
   remote: http://rubygems.org/
   specs:
     POpen4 (0.1.4)
@@ -339,6 +340,8 @@ GEM
       json (~> 1.4)
     recaptcha (0.3.4)
     remotipart (1.0.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     riddle (1.5.1)
     rmagick (2.13.1)
     rspec (2.8.0)
@@ -506,6 +509,7 @@ DEPENDENCIES
   rb-inotify
   rdiscount
   recaptcha
+  rest-client
   rspec
   rspec-cells
   rspec-rails
