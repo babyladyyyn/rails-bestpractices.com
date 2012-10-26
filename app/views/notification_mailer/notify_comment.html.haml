@@ -1,9 +1,0 @@
-%p= "#{@comment.user_name} comment on #{@comment.parent_name}"
-
-%p= @comment.body
-
-%p
-  View Comment:
-  = link_to polymorphic_url(@comment.cached_commentable), polymorphic_url(@comment.cached_commentable)
-
-= render 'unsubscribe', :user => @user

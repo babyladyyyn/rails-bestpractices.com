@@ -56,7 +56,7 @@ class PostsController < ApplicationController
     end
 
     def nav_order
-      params[:nav] = "id" unless %w(id vote_points comments_count implemented).include?(params[:nav])
+      params[:nav] = "id" unless %w(id vote_points implemented).include?(params[:nav])
       params[:order] = "desc" unless %w(desc asc).include?(params[:order])
       "posts.#{params[:nav] == 'implemented' ? 'id' : params[:nav]} #{params[:order]}"
     end

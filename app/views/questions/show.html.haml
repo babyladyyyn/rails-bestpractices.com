@@ -19,8 +19,6 @@
       = l @question.created_at.to_date
     .wikistyle= raw @question.cached_formatted_html
     = render_cell :tag, :list, @question
-    = render_cell :comment, :show_short, @question
-    = render_cell :comment, :new_short, @question, current_user
     - if Rails.env.production?
       .adsense= render 'shared/google_adsense'
 

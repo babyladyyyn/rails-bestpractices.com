@@ -11,7 +11,7 @@ class SidebarCell < Cell::Rails
     sidebar << render(:state => :referrals)
     sidebar << render(:state => :jobs)
     case controller
-    when "posts", "comments"
+    when "posts"
       sidebar << render(:state => :posts_navigation)
     when "blog_posts"
       sidebar << render(:state => :blog_rss)

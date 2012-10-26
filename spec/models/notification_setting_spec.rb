@@ -8,9 +8,8 @@ describe NotificationSetting do
       Factory(:notification_setting, :name => 'global_email').description.should == 'Receive email notification (global setting)'
     end
 
-    it "should get comment post description" do
-      Factory(:notification_setting, :name => 'comment_post').description.should == 'Comment on my Rails Best Practice'
+    it "should get question answer description" do
+      Factory(:notification_setting, :name => 'answer_question').description.should == 'Answer on my Question'
     end
   end
 end
-

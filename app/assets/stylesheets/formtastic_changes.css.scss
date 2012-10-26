@@ -85,19 +85,6 @@ form#new_answer {
     }
   }
 }
-form#new_comment {
-  margin: 32px 0;
-  fieldset {
-    width: 100%;
-    ol li {
-      margin-bottom: 1em;
-      width: 100%;
-      p {
-        margin-top: 0
-      }
-    }
-  }
-}
 form.post, form.question, form.answer, form.job, form.formtastic.user_session, form.formtastic.user {
   margin: 32px 20px;
 }
@@ -117,7 +104,7 @@ form.formtastic.user {
     display: inline-block;
   }
 }
-form.post, form.comment, form.question, form.answer, form.job {
+form.post, form.question, form.answer, form.job {
   li.string, li.url, li.email {
     input {
       width: 70%;

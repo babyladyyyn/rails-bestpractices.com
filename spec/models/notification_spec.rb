@@ -8,23 +8,23 @@ describe Notification do
 
   describe "notification count" do
     it "should increase notification count" do
-      comment = Factory(:comment)
-      user = comment.commentable.user
+      answer = Factory(:answer)
+      user = answer.question.user
       expect {
-        user.notifications.create(:notifierable => comment)
+        user.notifications.create(:notifierable => answer)
         user.reload
       }.to change(user, :unread_notification_count).by(1)
       expect {
-        user.notifications.create(:notifierable => comment)
+        user.notifications.create(:notifierable => answer)
         user.reload
       }.to change(user, :unread_notification_count).by(1)
     end
 
     it "should decrease notification count when read" do
-      comment = Factory(:comment)
-      user = comment.commentable.user
-      notification1 = user.notifications.create(:notifierable => comment)
-      notification2 = user.notifications.create(:notifierable => comment)
+      answer = Factory(:answer)
+      user = answer.question.user
+      notification1 = user.notifications.create(:notifierable => answer)
+      notification2 = user.notifications.create(:notifierable => answer)
       user.reload
       expect {
         notification1.read!
@@ -37,10 +37,10 @@ describe Notification do
     end
 
     it "should decrease notification count before destroy" do
-      comment = Factory(:comment)
-      user = comment.commentable.user
-      notification1 = user.notifications.create(:notifierable => comment)
-      notification2 = user.notifications.create(:notifierable => comment)
+      answer = Factory(:answer)
+      user = answer.question.user
+      notification1 = user.notifications.create(:notifierable => answer)
+      notification2 = user.notifications.create(:notifierable => answer)
       user.reload
       expect {
         notification1.destroy
@@ -53,10 +53,10 @@ describe Notification do
     end
 
     it "should not decrease notification count when delete after read" do
-      comment = Factory(:comment)
-      user = comment.commentable.user
-      notification1 = user.notifications.create(:notifierable => comment)
-      notification2 = user.notifications.create(:notifierable => comment)
+      answer = Factory(:answer)
+      user = answer.question.user
+      notification1 = user.notifications.create(:notifierable => answer)
+      notification2 = user.notifications.create(:notifierable => answer)
       user.reload
       expect {
         notification1.read!
@@ -68,6 +68,4 @@ describe Notification do
       }.to change(user, :unread_notification_count).by(0)
     end
   end
-
 end
-

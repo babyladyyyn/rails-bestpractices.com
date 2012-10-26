@@ -51,9 +51,7 @@ class Notification < ActiveRecord::Base
     end
 
     def notify_user
-      if notifierable.is_a? Comment
-        notifierable.commentable.user
-      elsif notifierable.is_a? Answer
+      if notifierable.is_a? Answer
         notifierable.question.user
       end
     end

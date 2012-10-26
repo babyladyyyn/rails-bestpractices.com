@@ -49,8 +49,6 @@ class TabCell < Cell::Rails
       "Created"
     when "vote_points"
       "Votes"
-    when "comments_count"
-      "Comments"
     when "answers_count"
       "Answers"
     end

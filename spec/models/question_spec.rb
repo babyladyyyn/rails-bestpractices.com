@@ -7,7 +7,6 @@ describe Question do
   include RailsBestPractices::Spec::Support
   should_be_taggable
   should_be_user_ownable
-  should_be_commentable
   should_be_voteable
 
   should_be_tweetable do |question|

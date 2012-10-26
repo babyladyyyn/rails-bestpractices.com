@@ -14,7 +14,6 @@
  *= require question
  *= require answer
  *= require blog_post
- *= require comment
  *= require css_sprite
  *= require formtastic
  *= require formtastic_changes

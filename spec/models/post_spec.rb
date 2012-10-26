@@ -7,7 +7,6 @@ describe Post do
   include RailsBestPractices::Spec::Support
   should_be_taggable
   should_be_user_ownable
-  should_be_commentable
   should_be_voteable
 
   should_be_tweetable do |post|
@@ -73,8 +72,8 @@ describe Post do
 
   context "prev" do
     before :each do
-      @post1 = Factory(:post, :vote_points => 20, :comments_count => 10)
-      @post2 = Factory(:post, :vote_points => 10, :comments_count => 20, :implemented => true)
+      @post1 = Factory(:post, :vote_points => 20)
+      @post2 = Factory(:post, :vote_points => 10, :implemented => true)
     end
 
     it "should order by id" do
@@ -87,11 +86,6 @@ describe Post do
       @post2.prev("vote_points").should be_nil
     end
 
-    it "should order by comments_count" do
-      @post1.prev("comments_count").should be_nil
-      @post2.prev("comments_count").should == @post1
-    end
-
     it "should order by implemented" do
       @post3 = Factory(:post, :implemented => true)
       @post2.prev("implemented").should be_nil
@@ -101,8 +95,8 @@ describe Post do
 
   context "next" do
     before :each do
-      @post1 = Factory(:post, :vote_points => 20, :comments_count => 10, :implemented => true)
-      @post2 = Factory(:post, :vote_points => 10, :comments_count => 20, :implemented => true)
+      @post1 = Factory(:post, :vote_points => 20, :implemented => true)
+      @post2 = Factory(:post, :vote_points => 10, :implemented => true)
     end
 
     it "should order by id" do
@@ -115,17 +109,10 @@ describe Post do
       @post2.next("vote_points").should == @post1
     end
 
-    it "should order by comments_count" do
-      @post1.next("comments_count").should == @post2
-      @post2.next("comments_count").should be_nil
-    end
-
     it "should order by implemented" do
       @post3 = Factory(:post)
       @post1.next("implemented").should == @post2
       @post2.next("implemented").should be_nil
     end
   end
-
 end
-

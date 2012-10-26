@@ -7,6 +7,7 @@
 
 .question {
   margin: 15px 0;
+  @include clearfix;
   .question-info {
     @include float-left;
     width: 630px;

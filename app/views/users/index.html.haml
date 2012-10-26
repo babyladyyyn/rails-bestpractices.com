@@ -9,7 +9,6 @@
     %th Answers
     %th Questions
     %th Votes
-    %th Comments
     %th Score
   - @users.each_with_index do |user, index|
     %tr
@@ -19,10 +18,9 @@
       %td.answers= user.answers_count
       %td.questions= user.questions_count
       %td.votes= user.votes_count
-      %td.comments= user.comments_count
-      %td.score= user.posts_count * 10 + user.answers_count * 8 + user.questions_count * 4 + user.comments_count * 2 + user.votes_count
+      %td.score= user.posts_count * 10 + user.answers_count * 8 + user.questions_count * 4 + user.votes_count
 
 .rank-hint
   %p lower scoring users not shown
-  %p score = posts * 10 + answers * 8 + questions * 4  + comments * 2 + votes.
+  %p score = posts * 10 + answers * 8 + questions * 4 + votes.
 

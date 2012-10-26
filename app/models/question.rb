@@ -18,7 +18,6 @@ class Question < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   include UserOwnable
   include Voteable
-  include Commentable
   include Cacheable
 
   paginates_per 10

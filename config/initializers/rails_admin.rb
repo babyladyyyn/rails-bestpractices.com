@@ -57,7 +57,7 @@ RailsAdmin.config do |config|
   config.current_user_method { current_user } #auto-generated
   config.authorize_with :cancan
 
-  config.included_models = %w(Answer AnswerBody BlogPost Comment Job JobType JobJobType JobPartner Notification NotificationSetting Page Post PostBody Question QuestionBody Sponsor SponsorTrack User Vote Delayed::Job ActsAsTaggableOn::Tag)
+  config.included_models = %w(Answer AnswerBody BlogPost Job JobType JobJobType JobPartner Notification NotificationSetting Page Post PostBody Question QuestionBody Sponsor SponsorTrack User Vote Delayed::Job ActsAsTaggableOn::Tag)
 
   config.model BlogPost do
     edit do

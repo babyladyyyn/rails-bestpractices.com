@@ -24,7 +24,6 @@ describe SidebarCell do
     context "rendering posts-navigation" do
       subject { render_cell(:sidebar, :display) }
 
-      it { should have_link("Recent Comments") }
       it { should have_link("All Best Practices") }
     end
 

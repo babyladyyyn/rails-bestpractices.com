@@ -1,5 +1,5 @@
 class NotifierObserver < ActiveRecord::Observer
-  observe :comment, :answer
+  observe :answer
 
   def after_create(model)
     notify(model)
@@ -11,9 +11,7 @@ class NotifierObserver < ActiveRecord::Observer
 
   private
     def notify(model)
-      if model.is_a?(Comment) && model.commentable.user != model.user
-        model.commentable.user.notifications.create(:notifierable => model)
-      elsif model.is_a?(Answer) && model.question.user != model.user
+      if model.is_a?(Answer) && model.question.user != model.user
         model.question.user.notifications.create(:notifierable => model)
       end
     end

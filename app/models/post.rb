@@ -20,7 +20,6 @@ class Post < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   include UserOwnable
   include Voteable
-  include Commentable
   include Cacheable
 
   has_one :post_body, :dependent => :destroy

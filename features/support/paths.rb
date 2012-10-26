@@ -26,8 +26,6 @@ module NavigationHelpers
       posts_path
     when /update post failure page/
       post_path(Post.last) # this is super brittle
-    when /comment post failure page/
-      post_comments_path(Post.last) # this is super brittle
     when /create question failure page/
       questions_path
     when /update question failure page/

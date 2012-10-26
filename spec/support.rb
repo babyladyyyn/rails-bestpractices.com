@@ -16,12 +16,6 @@ module RailsBestPractices
           end
         end
 
-        def should_be_commentable
-          describe 'being commentable' do
-            it { should have_many(:comments) }
-          end
-        end
-
         def should_be_tweetable(&block)
           describe "being tweetable" do
             before do

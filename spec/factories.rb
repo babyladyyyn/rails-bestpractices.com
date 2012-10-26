@@ -9,19 +9,13 @@ FactoryGirl.define do
     body "answer"
   end
 
-  factory :comment do
-    association :user
-    association :commentable, :factory => :post
-    body '(sample comment)'
-  end
-
   factory :notification_setting do
     association :user
   end
 
   factory :notification do
     association :user
-    association :notifierable, :factory => :comment
+    association :notifierable, :factory => :answer
     read false
   end
 

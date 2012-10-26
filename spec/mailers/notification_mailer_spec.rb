@@ -1,22 +1,6 @@
 require "spec_helper"
 
 describe NotificationMailer do
-  describe "notify_comment" do
-    before :each do
-      @post = Factory(:post, :title => 'email post')
-      @comment = Factory(:comment, :commentable => @post, :body => 'comment body')
-      @user = Factory(:user, :email => 'flyerhzm@gmail.com')
-    end
-    subject { NotificationMailer.notify_comment("flyerhzm@gmail.com", @comment) }
-
-    it { should deliver_to("flyerhzm@gmail.com") }
-    it { should have_subject(/Comment on Post email post/) }
-    it { should have_body_text(/comment body/) }
-    it { should have_body_text(/#{post_url(@post)}/) }
-    it { should have_body_text(/If you don't want to receive email notification, please unsubscribe it/) }
-    it { should have_body_text(/#{edit_user_registration_url}/) }
-  end
-
   describe "notify_answer" do
     before :each do
       @question = Factory(:question, :title => 'email question')
