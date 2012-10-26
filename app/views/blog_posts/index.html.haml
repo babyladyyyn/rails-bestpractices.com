@@ -1,4 +1,16 @@
 - set_meta_tags :title => 'Team Blog'
 
-= render 'blog_posts', :blog_posts => @blog_posts
+.blog_posts
+  - @blog_posts.each do |blog_post|
+    .blog_post
+      %h2= link_to blog_post.title, blog_post_path(blog_post)
+      %p.author
+        = render_cell :avatar, :show, blog_post.cached_user
+        Posted by
+        = link_to blog_post.cached_user.login, user_path(blog_post.cached_user)
+        on
+        = l blog_post.created_at.to_date
+      %p.comments_count= link_to "Comments", blog_post_url(blog_post, :anchor => "disqus_thread")
+      .body= raw blog_post.body
+
 = render_cell :paginate, :show, @blog_posts
