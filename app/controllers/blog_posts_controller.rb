@@ -3,7 +3,6 @@ class BlogPostsController < ApplicationController
 
   def show
     @blog_post = BlogPost.find_cached(params[:id])
-    @comment = @blog_post.comments.build
   end
 
   def index

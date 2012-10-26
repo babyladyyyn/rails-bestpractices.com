@@ -15,5 +15,4 @@
   - if Rails.env.production?
     .adsense= render 'shared/google_adsense'
 
-  = render_cell :comment, :show, @blog_post
-  = render_cell :comment, :new, @blog_post, @comment, current_user
+  = render 'shared/disqus'

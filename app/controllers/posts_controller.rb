@@ -12,7 +12,6 @@ class PostsController < ApplicationController
       return false
     end
     Post.increment_counter(:view_count, @post.id)
-    @comment = @post.comments.build
   end
 
   def index
