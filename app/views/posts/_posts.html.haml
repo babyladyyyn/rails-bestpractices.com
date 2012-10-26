@@ -6,7 +6,6 @@
       .render-post
         .stat
           %p #{post.vote_points} votes
-          %p #{post.comments_count} comments
           %p #{post.view_count} views
         .content
           %p.title= link_to post.title, post_path(post)
@@ -14,6 +13,7 @@
           = render_cell :tag, :list, post
           - if post.implemented?
             %span.implemented implemented
+          %p.comments_count= link_to "Comments", post_url(post, :anchor => "disqus_thread")
         .author
           by
           = link_to post.cached_user.login, user_path(post.cached_user)

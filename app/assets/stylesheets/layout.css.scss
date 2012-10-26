@@ -287,6 +287,9 @@ body {
     }
   }
 }
+.comments_count {
+  margin: 10px 0 0 0;
+}
 .pagination {
   @include pagination;
 }

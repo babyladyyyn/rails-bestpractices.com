@@ -108,13 +108,13 @@
     .author {
       @include float-left;
       width: 80px;
-      margin-top: 50px;
+      margin-top: 30px;
       font-size: 12px;
     }
     .avatar {
       @include float-left;
       width: 50px;
-      margin-top: 40px;
+      margin-top: 20px;
       img.user-avatar {
         padding: 2px;
         border: 1px solid #eee;
