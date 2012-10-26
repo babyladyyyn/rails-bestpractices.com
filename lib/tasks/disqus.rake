@@ -1,49 +1,38 @@
 namespace :disqus do
-  task :migrate_posts => :environment do
-    require 'rest_client'
-
-    disqus_url = 'http://disqus.com/api/3.0'
-
-    secret_key = 'AAOKf17nUhL6UwWuYpbsEpsIEMdplYR7p80mPpA4yAFFtMD08oIHpl2b3n9EVwmE'
-    current_blog_base_url = 'http://rails-bestpractices.com'
-
-    resource = RestClient::Resource.new disqus_url
-
-    forum_id = 'railsbestpractices'
-
-    Comment.for_post.each do |comment|
-      post = comment.commentable
-      post_url = "#{current_blog_base_url}/posts/#{post.to_param}"
-      title = "Rails Best Practices | #{post.title}"
-
-      begin
-        thread_id = nil
-        JSON.parse(resource['/threads/list.json?api_secret='+secret_key+'&forum='+forum_id].get)["response"].each do |thread|
-          thread_id = thread["id"] if thread["link"] == post_url
+  task :dump_posts => :environment do
+    File.open("comments.xml", "w+") do |file|
+      file.write '<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dsq="http://www.disqus.com/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:wp="http://wordpress.org/export/1.0/"
+>
+  <channel>'
+      Post.published.all.each do |post|
+        file.write "<item>
+      <title>#{post.title}</title>
+      <link>http://rails-bestpractices.com/posts/#{post.to_param}</link>
+      <dsq:thread_identifier>#{post.to_param}</dsq:thread_identifier>
+      <wp:post_date_gmt>#{post.created_at.to_s(:db)}</wp:post_date_gmt>
+      <wp:comment_status>open</wp:comment_status>"
+        post.comments.all.each do |comment|
+          file.write "<wp:comment>
+        <wp:comment_id>#{comment.id}</wp:comment_id>
+        <wp:comment_author>#{comment.user ? comment.user.login : comment.username}</wp:comment_author>
+        <wp:comment_author_email>#{comment.user ? comment.user.email : comment.email}</wp:comment_author_email>
+        <wp:comment_author_url>#{comment.user ? comment.user.url : ''}</wp:comment_author_url>
+        <wp:comment_author_IP></wp:comment_author_IP>
+        <wp:comment_date_gmt>#{comment.created_at.to_s(:db)}</wp:comment_date_gmt>
+        <wp:comment_content><![CDATA[#{comment.body}]]></wp:comment_content>
+        <wp:comment_approved>1</wp:comment_approved>
+        <wp:comment_parent>0</wp:comment_parent>
+      </wp:comment>"
         end
-
-        unless thread_id
-          request_body = {:forum => forum_id, :title => title, :url => post_url}
-          thread = JSON.parse(resource['/threads/create.json?api_secret='+secret_key].post(request_body))["response"]
-          thread_id = thread["id"]
-        end
-
-        request_body = {:thread => thread_id, :message => comment.body.strip, :date => comment.created_at.to_i}
-        if comment.user
-          request_body.merge!(:author_email => comment.user.email)
-          request_body.merge!(:author_name => comment.user.login)
-          request_body.merge!(:author_url => comment.user.url)
-        else
-          request_body.merge!(:author_name => comment.username)
-        end
-        if JSON.parse(resource['/posts/create.json?api_secret='+secret_key].post(request_body))["code"] == 0
-          puts "Success: #{comment.id} on #{post.title}"
-        else
-          puts "FAIL: #{comment.id} on #{post.title}"
-        end
-      rescue
-        puts "Rescue: #{post_url} {$!}"
+        file.write "</item>"
       end
+      file.write '</channel>
+</rss>'
     end
   end
 end
