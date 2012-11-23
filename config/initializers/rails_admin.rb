@@ -100,5 +100,11 @@ RailsAdmin.config do |config|
       field :published
       field :user
     end
+    edit do
+      field :title
+      field :implemented
+      field :published
+      field :user
+    end
   end
 end

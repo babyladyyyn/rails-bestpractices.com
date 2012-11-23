@@ -1,5 +1,4 @@
-source 'http://bundler-api.herokuapp.com'
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rails'
 
@@ -35,7 +34,7 @@ gem "dropbox"
 gem "backup"
 gem "escape_utils"
 gem "newrelic_rpm"
-gem "rails_admin", :git => 'git://github.com/sferik/rails_admin.git'
+gem "rails_admin"
 gem "paperclip"
 gem "ckeditor_rails", :require => "ckeditor-rails"
 gem "nokogiri"
