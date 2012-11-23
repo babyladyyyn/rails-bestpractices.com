@@ -406,8 +406,8 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    turbo-sprockets-rails3 (0.1.16)
-      railties (>= 3.1.0)
+    turbo-sprockets-rails3 (0.3.2)
+      railties (> 3.2.8, < 4.0.0)
       sprockets (>= 2.0.0)
     twitter (2.1.0)
       activesupport (>= 2.3.9, < 4)
