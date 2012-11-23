@@ -60,6 +60,11 @@ RailsAdmin.config do |config|
   config.included_models = %w(Answer AnswerBody BlogPost Job JobType JobJobType JobPartner Notification NotificationSetting Page Post PostBody Question QuestionBody Sponsor SponsorTrack User Vote Delayed::Job ActsAsTaggableOn::Tag)
 
   config.model BlogPost do
+    list do
+      field :id
+      field :title
+      field :user
+    end
     edit do
       field :title
       field :body do
@@ -71,6 +76,7 @@ RailsAdmin.config do |config|
 
   config.model Job do
     list do
+      field :id
       field :title
       field :published
       field :source
@@ -89,6 +95,7 @@ RailsAdmin.config do |config|
 
   config.model Post do
     list do
+      field :id
       field :title
       field :published
       field :user
