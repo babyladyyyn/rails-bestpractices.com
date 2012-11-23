@@ -49,13 +49,13 @@ gem "multiple_mailers"
 gem "wmd-rails"
 gem "contact_us", "~> 0.4.0.beta"
 gem "strong_parameters"
-gem "turbo-sprockets-rails3"
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'compass'
+  gem "turbo-sprockets-rails3"
 end
 
 gem 'jquery-rails'
