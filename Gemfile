@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source :rubygems
 
 gem 'rails'
 
@@ -54,7 +54,7 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'compass'
-  gem "turbo-sprockets-rails3"
+  gem 'turbo-sprockets-rails3'
 end
 
 gem 'jquery-rails'
