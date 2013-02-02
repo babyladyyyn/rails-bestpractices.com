@@ -23,7 +23,7 @@ gem "meta-tags", :require => 'meta_tags'
 gem "sitemap_generator"
 gem "twitter"
 gem "bitly"
-gem "cancan", github: "flyerhzm/cancan", branch: "allow-override-resource_params"
+gem "cancan"
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'whenever'
 gem "thinking-sphinx", :require => 'thinking_sphinx'
@@ -46,7 +46,7 @@ gem "yajl-ruby"
 gem "country-select"
 gem "multiple_mailers"
 gem "wmd-rails"
-gem "contact_us", "~> 0.4.0.beta"
+gem "contact_us"
 gem "strong_parameters"
 
 group :assets do
@@ -90,7 +90,7 @@ end
 
 group :test do
   gem "simplecov", :require => false
-  gem "spork", "1.0.0.rc2"
+  gem "spork", "1.0.0.rc3"
   gem "rspec"
   gem "rspec-rails"
   gem "factory_girl"
