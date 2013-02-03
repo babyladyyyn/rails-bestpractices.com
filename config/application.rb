@@ -82,8 +82,3 @@ if defined?(PhusionPassenger)
     # ObjectSpace.each_object(ActionDispatch::Session::DalliStore) { |obj| obj.reset }
   end
 end
-
-
-if ThinkingSphinx::Configuration.instance.address != "127.0.0.1"
-  ThinkingSphinx.remote_sphinx = true
-end
