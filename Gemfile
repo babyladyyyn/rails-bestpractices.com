@@ -98,6 +98,7 @@ group :test do
   gem 'shoulda-matchers'
   gem "email_spec"
   gem "rspec-cells"
+  gem "capybara"
   gem "guard-spork"
   gem "guard-rspec"
   gem "rails_best_practices"
@@ -106,7 +107,6 @@ end
 group :cucumber do
   gem "cucumber"
   gem "cucumber-rails"
-  gem "capybara"
   gem "database_cleaner"
   gem "launchy"
   gem "pickle"

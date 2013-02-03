@@ -6,10 +6,10 @@ describe FooterCell do
     context "rendering show" do
       subject { render_cell(:footer, :show) }
 
-      it { should have_selector("li", :content => "Contact Us") }
-      it { should have_selector("li", :content => "About Us") }
-      it { should have_selector("li", :content => "Team Blog") }
-      it { should have_selector("li", :content => "Advertise") }
+      it { should have_selector("li", :text => "Contact Us") }
+      it { should have_selector("li", :text => "About Us") }
+      it { should have_selector("li", :text => "Team Blog") }
+      it { should have_selector("li", :text => "Advertise") }
     end
 
   end

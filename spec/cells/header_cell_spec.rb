@@ -7,7 +7,7 @@ describe HeaderCell do
       before { @user = FactoryGirl.create(:user) }
       subject { render_cell(:header, :show, @user) }
 
-      it { should have_selector("h1", :content => "Rails Best Practices") }
+      it { should have_selector("h1", :text => "Rails Best Practices") }
     end
 
   end

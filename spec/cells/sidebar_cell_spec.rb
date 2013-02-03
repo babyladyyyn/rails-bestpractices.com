@@ -10,7 +10,7 @@ describe SidebarCell do
       end
       subject { render_cell(:sidebar, :display) }
 
-      it { should have_selector("h3", :content => "Top Ruby and Rails jobs") }
+      it { should have_selector("h3", :text => "Top Ruby and Rails Jobs") }
       it { should have_link(@job1.title) }
       it { should have_content(@job1.company) }
       it { should have_content(@job1.location) }
@@ -34,7 +34,7 @@ describe SidebarCell do
       end
       subject { render_cell(:sidebar, :display, "blog_posts") }
 
-      it { should have_selector("h3", :content => "Recent Blog Post") }
+      it { should have_selector("h3", :text => "Recent Blog Post") }
       it { should have_link(@blog_post1.title) }
       it { should have_link(@blog_post2.title) }
     end
@@ -46,7 +46,7 @@ describe SidebarCell do
       end
       subject { render_cell(:sidebar, :display, "posts") }
 
-      it { should have_selector("h3", :content => "Tags") }
+      it { should have_selector("h3", :text => "Tags") }
       it { should have_link(@tag1.name) }
       it { should have_link(@tag2.name) }
     end

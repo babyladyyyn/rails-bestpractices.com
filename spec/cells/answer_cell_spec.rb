@@ -12,9 +12,9 @@ describe AnswerCell do
       end
       subject { render_cell(:answer, :list, @question, @user) }
 
-      it { should have_selector("h3", :content => "Answers") }
-      it { should have_selector(".wikistyle", :content => @answer1.body ) }
-      it { should have_selector(".wikistyle", :content => @answer2.body ) }
+      it { should have_selector("h3", :text => "Answers") }
+      it { should have_selector(".wikistyle", :text => @answer1.body ) }
+      it { should have_selector(".wikistyle", :text => @answer2.body ) }
     end
 
     context "rendering show" do
@@ -25,7 +25,7 @@ describe AnswerCell do
       end
       subject { render_cell(:answer, :show, @question, @answer, @user) }
 
-      it { should have_selector(".wikistyle", :content => @answer.body ) }
+      it { should have_selector(".wikistyle", :text => @answer.body ) }
     end
 
     context "rendering new" do
