@@ -38,18 +38,6 @@ class Question < ActiveRecord::Base
 
   acts_as_taggable
 
-  define_index do
-    indexes :title
-    indexes question_body(:body), :as => :body
-
-    has :id
-
-    set_property :field_weights => {
-      :title => 10,
-      :body  => 1
-    }
-  end
-
   model_cache do
     with_key
     with_method :formatted_html

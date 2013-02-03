@@ -40,21 +40,6 @@ class Post < ActiveRecord::Base
 
   paginates_per 10
 
-  define_index do
-    indexes :title, :description
-    indexes post_body(:body), :as => :body
-
-    has :id
-
-    set_property :field_weights => {
-      :title       => 10,
-      :description => 5,
-      :body        => 1
-    }
-
-    where "published = 1"
-  end
-
   model_cache do
     with_key
     with_method :formatted_html
