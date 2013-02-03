@@ -2,7 +2,7 @@ source :rubygems
 
 gem 'rails'
 
-gem 'mysql2'
+gem 'mysql2', '0.3.12b5'
 
 gem "json"
 gem "haml"

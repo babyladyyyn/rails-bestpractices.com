@@ -1,7 +1,6 @@
 ThinkingSphinx::Index.define :post, :with => :active_record do
   indexes title, description
   indexes post_body.body, :as => :body
-  indexes user.articles.title, :as => :related_titles
 
   has id
 
@@ -11,5 +10,5 @@ ThinkingSphinx::Index.define :post, :with => :active_record do
     :body        => 1
   }
 
-  where "published = 1"
+  where sanitize_sql(["published", true])
 end
