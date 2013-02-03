@@ -8,7 +8,7 @@ describe Notification do
 
   describe "notification count" do
     it "should increase notification count" do
-      answer = Factory(:answer)
+      answer = FactoryGirl.create(:answer)
       user = answer.question.user
       expect {
         user.notifications.create(:notifierable => answer)
@@ -21,7 +21,7 @@ describe Notification do
     end
 
     it "should decrease notification count when read" do
-      answer = Factory(:answer)
+      answer = FactoryGirl.create(:answer)
       user = answer.question.user
       notification1 = user.notifications.create(:notifierable => answer)
       notification2 = user.notifications.create(:notifierable => answer)
@@ -37,7 +37,7 @@ describe Notification do
     end
 
     it "should decrease notification count before destroy" do
-      answer = Factory(:answer)
+      answer = FactoryGirl.create(:answer)
       user = answer.question.user
       notification1 = user.notifications.create(:notifierable => answer)
       notification2 = user.notifications.create(:notifierable => answer)
@@ -53,7 +53,7 @@ describe Notification do
     end
 
     it "should not decrease notification count when delete after read" do
-      answer = Factory(:answer)
+      answer = FactoryGirl.create(:answer)
       user = answer.question.user
       notification1 = user.notifications.create(:notifierable => answer)
       notification2 = user.notifications.create(:notifierable => answer)

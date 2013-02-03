@@ -5,7 +5,7 @@ describe TagCell do
 
     context "renderding list" do
       before do
-        @post = Factory(:post, :tag_list => "ruby, rails")
+        @post = FactoryGirl.create(:post, :tag_list => "ruby, rails")
       end
       subject { render_cell(:tag, :list, @post) }
 

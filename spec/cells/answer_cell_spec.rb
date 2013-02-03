@@ -5,10 +5,10 @@ describe AnswerCell do
 
     context "rendering list" do
       before do
-        @user = Factory(:user)
-        @question = Factory(:question)
-        @answer1 = Factory(:answer, :question => @question)
-        @answer2 = Factory(:answer, :question => @question)
+        @user = FactoryGirl.create(:user)
+        @question = FactoryGirl.create(:question)
+        @answer1 = FactoryGirl.create(:answer, :question => @question)
+        @answer2 = FactoryGirl.create(:answer, :question => @question)
       end
       subject { render_cell(:answer, :list, @question, @user) }
 
@@ -19,9 +19,9 @@ describe AnswerCell do
 
     context "rendering show" do
       before do
-        @user = Factory(:user)
-        @question = Factory(:question)
-        @answer = Factory(:answer, :question => @question)
+        @user = FactoryGirl.create(:user)
+        @question = FactoryGirl.create(:question)
+        @answer = FactoryGirl.create(:answer, :question => @question)
       end
       subject { render_cell(:answer, :show, @question, @answer, @user) }
 
@@ -30,8 +30,8 @@ describe AnswerCell do
 
     context "rendering new" do
       before do
-        @user = Factory(:user)
-        @question = Factory(:question)
+        @user = FactoryGirl.create(:user)
+        @question = FactoryGirl.create(:question)
         @answer = @question.answers.build
       end
       subject { render_cell(:answer, :new, @question, @answer, @user) }

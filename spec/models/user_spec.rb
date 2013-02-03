@@ -13,13 +13,13 @@ describe User do
   it { should have_many(:notification_settings) }
 
   context "validations" do
-    before { Factory(:user) }
+    before { FactoryGirl.create(:user) }
     it { should validate_presence_of(:login) }
     it { should validate_uniqueness_of(:login) }
   end
 
   it "should reflect :id & :login when converted to param" do
-    user = Factory(:user, :login => 'flyerhzm')
+    user = FactoryGirl.create(:user, :login => 'flyerhzm')
     user.to_param.should == "#{user.id}-flyerhzm"
   end
 end

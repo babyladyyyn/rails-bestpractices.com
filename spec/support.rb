@@ -19,7 +19,7 @@ module RailsBestPractices
         def should_be_tweetable(&block)
           describe "being tweetable" do
             before do
-              @instance = Factory(described_class.to_s.underscore)
+              @instance = FactoryGirl.create(described_class.to_s.underscore)
             end
 
             it 'should have tweet title' do
@@ -45,12 +45,12 @@ module RailsBestPractices
             it { should have_many(:votes) }
 
             it "should support retrieving of any user's 1st vote" do
-              jane = Factory(:user)
-              peter = Factory(:user)
-              instance = Factory(described_class.to_s.underscore)
-              Factory(:vote, :voteable => instance, :user => peter)
-              Factory(:vote, :voteable => instance, :user => jane)
-              Factory(:vote, :voteable => instance, :user => jane)
+              jane = FactoryGirl.create(:user)
+              peter = FactoryGirl.create(:user)
+              instance = FactoryGirl.create(described_class.to_s.underscore)
+              FactoryGirl.create(:vote, :voteable => instance, :user => peter)
+              FactoryGirl.create(:vote, :voteable => instance, :user => jane)
+              FactoryGirl.create(:vote, :voteable => instance, :user => jane)
               instance.vote(jane).should == instance.votes[1]
             end
           end
@@ -67,13 +67,13 @@ module RailsBestPractices
             it "should generate simple markdown html" do
               raw = "subject\n=======\ntitle\n-----"
               formatted = "<h1>subject</h1>\n\n<h2>title</h2>\n"
-              Factory(described_class.to_s.underscore, :body => raw).formatted_html.should == formatted
+              FactoryGirl.create(described_class.to_s.underscore, :body => raw).formatted_html.should == formatted
             end
 
             it "should generate markdown html with <pre><code>" do
               raw = "subject\n=======\ntitle\n-----\n    def test\n      puts 'test'\n    end"
               formatted = "<h1>subject</h1>\n\n<h2>title</h2>\n\n<pre><code>def test\n  puts 'test'\nend\n</code></pre>\n"
-              Factory(described_class.to_s.underscore, :body => raw).formatted_html.should == formatted
+              FactoryGirl.create(described_class.to_s.underscore, :body => raw).formatted_html.should == formatted
             end
           end
         end

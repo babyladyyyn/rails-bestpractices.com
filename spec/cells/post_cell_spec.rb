@@ -5,9 +5,9 @@ describe PostCell do
 
     context "rendering related" do
       before do
-        @post = Factory(:post, :tag_list => 'model')
-        @post1 = Factory(:post, :tag_list => 'model')
-        @post2 = Factory(:post, :tag_list => 'model')
+        @post = FactoryGirl.create(:post, :tag_list => 'model')
+        @post1 = FactoryGirl.create(:post, :tag_list => 'model')
+        @post2 = FactoryGirl.create(:post, :tag_list => 'model')
       end
       subject { render_cell(:post, :related, @post) }
 
@@ -18,9 +18,9 @@ describe PostCell do
 
     context "rednering prev_next" do
       before do
-        @post1 = Factory(:post)
-        @post2 = Factory(:post)
-        @post3 = Factory(:post)
+        @post1 = FactoryGirl.create(:post)
+        @post2 = FactoryGirl.create(:post)
+        @post3 = FactoryGirl.create(:post)
       end
 
       context "@post1" do

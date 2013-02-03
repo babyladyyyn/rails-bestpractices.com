@@ -5,7 +5,7 @@ describe AvatarCell do
 
     context "rendering show" do
       it "should render with user" do
-        user = Factory(:user)
+        user = FactoryGirl.create(:user)
         response = render_cell(:avatar, :show, user)
         response.should have_selector("img[alt='#{user.login}']")
       end

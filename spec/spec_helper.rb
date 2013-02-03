@@ -6,7 +6,6 @@ Spork.prefork do
   require 'rspec/rails'
   require 'email_spec'
   require 'database_cleaner'
-  DatabaseCleaner.strategy = :truncation
 
   Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
@@ -24,11 +23,12 @@ Spork.prefork do
     config.include(EmailSpec::Helpers)
     config.include(EmailSpec::Matchers)
 
-    config.before do
-      DatabaseCleaner.clean
+    config.before(:each) do
+      DatabaseCleaner.start
     end
 
-    config.after do
+    config.after(:each) do
+      DatabaseCleaner.clean
       Rails.cache.clear
     end
   end

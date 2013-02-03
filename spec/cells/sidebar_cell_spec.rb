@@ -5,8 +5,8 @@ describe SidebarCell do
 
     context "rendering jobs" do
       before do
-        @job1 = Factory(:job, :published => true)
-        @job2 = Factory(:job, :published => true)
+        @job1 = FactoryGirl.create(:job, :published => true)
+        @job2 = FactoryGirl.create(:job, :published => true)
       end
       subject { render_cell(:sidebar, :display) }
 
@@ -29,8 +29,8 @@ describe SidebarCell do
 
     context "rendering blog posts" do
       before do
-        @blog_post1 = Factory(:blog_post)
-        @blog_post2 = Factory(:blog_post)
+        @blog_post1 = FactoryGirl.create(:blog_post)
+        @blog_post2 = FactoryGirl.create(:blog_post)
       end
       subject { render_cell(:sidebar, :display, "blog_posts") }
 
@@ -41,8 +41,8 @@ describe SidebarCell do
 
     context "rendering important" do
       before do
-        @tag1 = Factory(:tag, :important => true)
-        @tag2 = Factory(:tag, :important => true)
+        @tag1 = FactoryGirl.create(:tag, :important => true)
+        @tag2 = FactoryGirl.create(:tag, :important => true)
       end
       subject { render_cell(:sidebar, :display, "posts") }
 

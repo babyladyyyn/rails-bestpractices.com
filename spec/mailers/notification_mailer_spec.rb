@@ -3,9 +3,9 @@ require "spec_helper"
 describe NotificationMailer do
   describe "notify_answer" do
     before :each do
-      @question = Factory(:question, :title => 'email question')
-      @answer = Factory(:answer, :question => @question, :answer_body => AnswerBody.new(:body => 'answer body'))
-      @user = Factory(:user, :email => 'flyerhzm@gmail.com')
+      @question = FactoryGirl.create(:question, :title => 'email question')
+      @answer = FactoryGirl.create(:answer, :question => @question, :answer_body => AnswerBody.new(:body => 'answer body'))
+      @user = FactoryGirl.create(:user, :email => 'flyerhzm@gmail.com')
     end
     subject { NotificationMailer.notify_answer("flyerhzm@gmail.com", @answer) }
 
@@ -18,7 +18,7 @@ describe NotificationMailer do
   end
 
   describe "notify_admin" do
-    before { @post = Factory(:post) }
+    before { @post = FactoryGirl.create(:post) }
     subject { NotificationMailer.notify_admin(@post) }
 
     it { should deliver_to("flyerhzm@gmail.com") }
@@ -28,7 +28,7 @@ describe NotificationMailer do
   end
 
   describe "notify_job" do
-    before { @job = Factory(:job) }
+    before { @job = FactoryGirl.create(:job) }
     subject { NotificationMailer.notify_job(@job) }
 
     it { should deliver_to("flyerhzm@gmail.com") }

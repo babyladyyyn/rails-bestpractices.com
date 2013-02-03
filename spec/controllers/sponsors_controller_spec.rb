@@ -4,7 +4,7 @@ describe SponsorsController do
 
   describe "GET 'show'" do
     it "should be successful" do
-      sponsor = Factory.stub(:sponsor)
+      sponsor = FactoryGirl.build(:sponsor)
       Sponsor.should_receive(:find_cached).with("1").and_return(sponsor)
       sponsor_tracks = []
       sponsor.should_receive(:sponsor_tracks).and_return(sponsor_tracks)

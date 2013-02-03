@@ -5,7 +5,7 @@ describe JobPartnerCell do
 
     context "rendering hint" do
       before do
-        @job_partner = Factory(:job_partner)
+        @job_partner = FactoryGirl.create(:job_partner)
       end
       subject { render_cell(:job_partner, :hint) }
 

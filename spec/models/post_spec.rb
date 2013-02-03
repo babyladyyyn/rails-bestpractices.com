@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Post do
 
-  let(:post) { Factory.create(:post) }
+  let(:post) { FactoryGirl.create(:post) }
 
   include RailsBestPractices::Spec::Support
   should_be_taggable
@@ -20,20 +20,20 @@ describe Post do
   it { should validate_presence_of(:description) }
 
   describe 'when title validation is required' do
-    before { Factory.create(:post) }
+    before { FactoryGirl.create(:post) }
     it { should validate_presence_of(:title) }
     it { should validate_uniqueness_of(:title) }
   end
 
   it 'should be scopable by implemented posts' do
     Post.delete_all
-    posts = [false, true].map{|flag| Factory(:post, :implemented => flag) }
+    posts = [false, true].map{|flag| FactoryGirl.create(:post, :implemented => flag) }
     Post.implemented.should == posts[1..1]
   end
 
   it 'should be scopable by published posts' do
     Post.delete_all
-    posts = [false, true].map{|flag| Factory(:post, :published => flag) }
+    posts = [false, true].map{|flag| FactoryGirl.create(:post, :published => flag) }
     Post.published.should == posts[1..1]
   end
 
@@ -44,12 +44,12 @@ describe Post do
 
   it "should notify admin after create" do
     Delayed::Job.should_receive(:enqueue)
-    Factory(:post)
+    FactoryGirl.create(:post)
   end
 
   context "publish!" do
     before :each do
-      @post = Factory(:post, :published => false)
+      @post = FactoryGirl.create(:post, :published => false)
     end
 
     it "should increment user.posts_count" do
@@ -72,8 +72,8 @@ describe Post do
 
   context "prev" do
     before :each do
-      @post1 = Factory(:post, :vote_points => 20)
-      @post2 = Factory(:post, :vote_points => 10, :implemented => true)
+      @post1 = FactoryGirl.create(:post, :vote_points => 20)
+      @post2 = FactoryGirl.create(:post, :vote_points => 10, :implemented => true)
     end
 
     it "should order by id" do
@@ -87,7 +87,7 @@ describe Post do
     end
 
     it "should order by implemented" do
-      @post3 = Factory(:post, :implemented => true)
+      @post3 = FactoryGirl.create(:post, :implemented => true)
       @post2.prev("implemented").should be_nil
       @post3.prev("implemented").should == @post2
     end
@@ -95,8 +95,8 @@ describe Post do
 
   context "next" do
     before :each do
-      @post1 = Factory(:post, :vote_points => 20, :implemented => true)
-      @post2 = Factory(:post, :vote_points => 10, :implemented => true)
+      @post1 = FactoryGirl.create(:post, :vote_points => 20, :implemented => true)
+      @post2 = FactoryGirl.create(:post, :vote_points => 10, :implemented => true)
     end
 
     it "should order by id" do
@@ -110,7 +110,7 @@ describe Post do
     end
 
     it "should order by implemented" do
-      @post3 = Factory(:post)
+      @post3 = FactoryGirl.create(:post)
       @post1.next("implemented").should == @post2
       @post2.next("implemented").should be_nil
     end

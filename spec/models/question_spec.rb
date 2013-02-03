@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Question do
 
-  let(:question) { Factory.create(:question) }
+  let(:question) { FactoryGirl.create(:question) }
 
   include RailsBestPractices::Spec::Support
   should_be_taggable
@@ -19,15 +19,15 @@ describe Question do
   it { should have_many(:answers) }
 
   describe 'when title validation is required' do
-    before { Factory.create(:question) }
+    before { FactoryGirl.create(:question) }
     it { should validate_presence_of(:title) }
     it { should validate_uniqueness_of(:title) }
   end
 
   it 'should be scopable by not-answered' do
     Question.delete_all
-    questions = [Factory(:question)]
-    questions << Factory(:answer).question
+    questions = [FactoryGirl.create(:question)]
+    questions << FactoryGirl.create(:answer).question
     Question.not_answered.should == questions[0..0]
   end
 
@@ -38,7 +38,7 @@ describe Question do
 
   it "should tweet after create" do
     Delayed::Job.should_receive(:enqueue)
-    Factory(:question)
+    FactoryGirl.create(:question)
   end
 
 end
