@@ -95,7 +95,7 @@ GEM
       rails (>= 3.0.0)
     country-select (1.1.1)
     crack (0.3.2)
-    css_sprite (2.0.0)
+    css_sprite (2.1.0)
       mini_magick
       mocha
       rspec
