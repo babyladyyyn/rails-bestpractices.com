@@ -10,9 +10,14 @@ class UsersController < Devise::RegistrationsController
     if params[:id] != @user.to_param
       redirect_to user_path(@user), :status => 301
     else
-      params[:nav] = params[:nav] || "posts"
-      @children = @user.send(params[:nav])
-      @children = @children.published if params[:nav] == "posts"
+      params[:nav] ||= "posts"
+      nav = case params[:nav]
+            when "questions" then "questions"
+            when "answers" then "answers"
+            else "posts"
+            end
+      @children = @user.send(nav)
+      @children = @children.published if nav == "posts"
     end
   end
 
