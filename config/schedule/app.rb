@@ -10,6 +10,10 @@
 set :output, "/home/huangzhi/sites/rails-bestpractices.com/production/shared/log/cron_log.log"
 job_type :rake, "cd :path && RAILS_ENV=:environment bundle exec rake :task :output"
 
+every 12.hours do
+  rake "ts:index"
+end
+
 every 1.day, :at => '2am' do
   rake "sitemap:refresh"
 end
