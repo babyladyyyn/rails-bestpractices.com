@@ -11,6 +11,7 @@ config/bitly.yml
 config/omniauth.yml
 config/memcache.yml
 config/initializers/secret_token.rb
+config/initializers/session_store.rb
 *.swp
 dump.rdb
 tmp/cross-stub.cache
