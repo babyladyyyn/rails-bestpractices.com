@@ -16,13 +16,7 @@ role :web, "app.rails-bestpractices.com"
 role :app, "app.rails-bestpractices.com"
 role :db,  "db.rails-bestpractices.com", :primary => true
 
-before "deploy:finalize_update", "shared_symlink:create", "asset:revision"
-
-namespace :shared_symlink do
-  task :create do
-    run "ln -nfs #{shared_path}/config/*.yml #{release_path}/config/"
-  end
-end
+before "deploy:finalize_update", "asset:revision"
 
 namespace :asset do
   task :revision, :roles => :app do
