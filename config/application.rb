@@ -65,9 +65,8 @@ module RailsBestpracticesCom
 
     config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
 
-    MEMCACHE_YAML = Rails.root.join('config', 'memcache.yml')
-    MEMCACHE_CONFIG = YAML.load_file(MEMCACHE_YAML)[Rails.env]
-    config.cache_store = :dalli_store, *MEMCACHE_CONFIG.delete("hosts"), MEMCACHE_CONFIG
+    MEMCACHE_CONFIG = YAML.load_file(Rails.root.join('config', 'memcache.yml'))[Rails.env]
+    config.cache_store = Memcached::Rails.new(MEMCACHE_CONFIG.symbolize_keys.merge(:logger => Rails.logger))
   end
 end
 

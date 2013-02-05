@@ -109,7 +109,6 @@ GEM
       cucumber (>= 1.1.8)
       nokogiri (>= 1.5.0)
     daemons (1.1.9)
-    dalli (2.6.2)
     database_cleaner (0.9.1)
     delayed_job (3.0.5)
       activesupport (~> 3.0)
@@ -220,6 +219,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcached (1.5.0)
     meta-tags (1.2.6)
       actionpack
     metaclass (0.0.1)
@@ -479,7 +479,6 @@ DEPENDENCIES
   cucumber
   cucumber-rails
   daemons
-  dalli
   database_cleaner
   delayed_job_active_record
   devise
@@ -507,6 +506,7 @@ DEPENDENCIES
   kaminari
   kgio
   launchy
+  memcached
   meta-tags
   multiple_mailers
   mysql2 (= 0.3.12b5)
