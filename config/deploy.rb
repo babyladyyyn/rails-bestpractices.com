@@ -30,6 +30,5 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     migrate
     cleanup
-    run "god restart rails-bestpractices-server"
   end
 end

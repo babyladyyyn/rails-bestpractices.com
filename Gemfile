@@ -49,7 +49,7 @@ gem "wmd-rails"
 gem "contact_us"
 gem "strong_parameters"
 
-gem "puma"
+gem "puma", "2.0.0.b4"
 
 group :assets do
   gem 'sass-rails'
