@@ -19,7 +19,7 @@ db/sphinx
 log/*.pid
 config/*.sphinx.conf
 config/mailers.yml
-config/sphinx.yml
+config/thinking_sphinx.yml
 ERD.pdf
 log/newrelic_agent_store.db
 .sass-cache/
