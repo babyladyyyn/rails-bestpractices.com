@@ -18,7 +18,7 @@ RailsBestpracticesCom::Application.routes.draw do
     resources :votes, :only => [:create, :destroy]
   end
 
-  resources :answers, :only => :create do
+  resources :answers, :only => [:show, :create] do
     resources :votes, :only => [:create, :destroy]
   end
 
