@@ -30,6 +30,6 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     migrate
     cleanup
-    run "touch #{File.join(current_path,'tmp','restart.txt')}"
+    run "god restart rails-bestpractices-server"
   end
 end

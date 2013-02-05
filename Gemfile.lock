@@ -283,6 +283,8 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    puma (1.6.3)
+      rack (~> 1.2)
     quiet_assets (1.0.1)
       railties (~> 3.1)
     rack (1.4.4)
@@ -418,10 +420,6 @@ GEM
     therubyracer (0.11.3)
       libv8 (~> 3.11.8.12)
       ref
-    thin (1.5.0)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
     thinking-sphinx (3.0.1)
       activerecord (>= 3.1.0)
       builder (>= 2.1.2)
@@ -519,6 +517,7 @@ DEPENDENCIES
   omniauth-twitter
   paperclip
   pickle
+  puma
   quiet_assets
   rack-perftools_profiler
   rails
@@ -543,7 +542,6 @@ DEPENDENCIES
   strong_parameters
   switch_user
   therubyracer
-  thin
   thinking-sphinx
   turbo-sprockets-rails3
   twitter

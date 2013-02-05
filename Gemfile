@@ -49,6 +49,8 @@ gem "wmd-rails"
 gem "contact_us"
 gem "strong_parameters"
 
+gem "puma"
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
@@ -65,7 +67,6 @@ group :production do
 end
 
 group :development do
-  gem 'thin'
   gem "awesome_print", :require => 'ap'
   gem "bullet"
   gem "annotate"
