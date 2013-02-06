@@ -7,7 +7,7 @@ before_script:
   - "cp config/bitly.yml.example config/bitly.yml"
   - "cp config/mailers.yml.example config/mailers.yml"
   - "cp config/omniauth.yml.example config/omniauth.yml"
-  - "cp config/sphinx.yml.example config/sphinx.yml"
+  - "cp config/thinking_sphinx.yml.example config/thinking_sphinx.yml"
   - "cp config/memcache.yml.example config/memcache.yml"
   - "bundle exec rake db:create"
   - "bundle exec rake db:schema:load"
