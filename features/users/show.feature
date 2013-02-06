@@ -17,14 +17,14 @@ Feature: Show Posts and Questions with User
     And I go to the home page
 
   Scenario: Show posts
-    When I follow "flyerhzm"
+    When I follow "flyerhzm" within ".render-post:first"
     Then I should see "first post"
     And I should see "third post"
     And I should not see "second post"
     And I should not see "fourth post"
 
   Scenario: Show questions
-    When I follow "flyerhzm"
+    When I follow "flyerhzm" within ".render-post:first"
     And I follow "Questions" within ".navs"
     Then I should see "first question"
     And I should see "third question"

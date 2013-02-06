@@ -7,13 +7,13 @@ Feature: Access Edit Post
   Scenario: Non-owner cannot access edit post page
     Given I am already signed in as "richard"
     When I follow "awesome practice"
-    Then I should see "awesome practice" page
+    Then I should see "awesome practice"
     But I should not see "Edit"
 
   Scenario: Owner can access edit post page
     Given I am already signed in as "flyerhzm"
     When I follow "awesome practice"
-    Then I should see "awesome practice" page
+    Then I should see "awesome practice"
     When I follow "Edit"
     Then I should see "Edit a Rails Best Practice" page
 

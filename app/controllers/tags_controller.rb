@@ -3,7 +3,7 @@ class TagsController < ApplicationController
     @tag = ActsAsTaggableOn::Tag.find_cached_by_name(params[:id])
     if @tag
       params[:nav] ||= "posts"
-      nav = params[:nav] == "questsions" ? "questions" : "posts"
+      nav = params[:nav] == "questions" ? "questions" : "posts"
       @children = @tag.send(nav)
       @children = @children.published if nav == "posts"
       @children = @children.page(params[:page] || 1)

@@ -16,14 +16,14 @@ Feature: Show Posts and Questions with Tag
     And I go to the home page
 
   Scenario: Show posts with tag
-    When I follow "test"
+    When I follow "test" within ".render-post:first"
     Then I should see "first post"
     And I should see "third post"
     And I should not see "second post"
     And I should not see "fourth post"
 
   Scenario: Show questions with tag
-    When I follow "test"
+    When I follow "test" within ".render-post:first"
     And I follow "Questions" within ".navs"
     Then I should see "first question"
     And I should see "third question"

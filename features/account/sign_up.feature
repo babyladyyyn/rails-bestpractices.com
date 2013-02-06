@@ -6,10 +6,10 @@ Feature: Account sign up
 
   Scenario: Successful sign up with valid info
     Given I fill in the following:
-      | Login                 | flyerhzm           |
-      | Email                 | flyerhzm@gmail.com |
-      | Password              | flyerhzm           |
-      | Password confirmation | flyerhzm           |
+      | user_login                 | flyerhzm           |
+      | user_email                 | flyerhzm@gmail.com |
+      | user_password              | flyerhzm           |
+      | user_password_confirmation | flyerhzm           |
     When I press "Sign up"
     Then I should be on the home page
     And I should see success message "You have signed up successfully."
@@ -17,10 +17,10 @@ Feature: Account sign up
   Scenario Outline: Unsuccessful sign up with duplicated info
     Given a user exists with <db-field>: "<value>"
     And I fill in the following:
-      | Login                 | flyerhzm           |
-      | Email                 | flyerhzm@gmail.com |
-      | Password              | flyerhzm           |
-      | Password confirmation | flyerhzm           |
+      | user_login                 | flyerhzm           |
+      | user_email                 | flyerhzm@gmail.com |
+      | user_password              | flyerhzm           |
+      | user_password_confirmation | flyerhzm           |
     When I press "Sign up"
     Then I should be on sign up failure page
     And I should see error field "<field>"
@@ -34,10 +34,10 @@ Feature: Account sign up
     # We only cover a subset of the invalid info, cos the validity of registration
     # (creating of new user) is actually handled by Authlogic.
     Given I fill in the following:
-      | Login                 | |
-      | Email                 | |
-      | Password              | |
-      | Password confirmation | |
+      | user_login                 | |
+      | user_email                 | |
+      | user_password              | |
+      | user_password_confirmation | |
     When I press "Sign up"
     Then I should be on sign up failure page
     And I should see error fields: "Login", "Email" & "Password"

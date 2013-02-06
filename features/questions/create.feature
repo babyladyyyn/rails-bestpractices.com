@@ -2,7 +2,8 @@ Feature: Create Question
 
   Background:
     Given I am already signed in as "flyerhzm"
-    And I follow "Questions" / "Question"
+    And I follow "Questions"
+    And I follow "Question" within ".command"
 
   Scenario: Accessing create post page
     Then I should see "Ask for Rails Best Practice" page

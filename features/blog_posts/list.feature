@@ -9,6 +9,7 @@ Feature: List Blog Posts
 
   Scenario: list blog posts
     When I go to the home page
-    And I follow "Blog"
+    And show me the page
+    And I follow "Blog" within "#header"
     Then I should see "first blog post"
     And I should see "second blog post"
