@@ -26,12 +26,12 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @job = current_user.jobs.find(params[:id])
+    @job = Job.find_cached(params[:id])
   end
 
   def update
-    @job = current_user.jobs.build(resource_params)
-    if @job.save
+    @job = Job.find_cached(params[:id])
+    if @job.update_attributes(resource_params)
       redirect_to @job, notice: "Your Job was successfully updated!"
     else
       render 'edit'
@@ -45,7 +45,7 @@ class JobsController < ApplicationController
 
   protected
     def resource_params
-      params.require(:job).permit(:title, :company, :company_url, :country, :state, :city, :address, :salary, :apply_email, :description)
+      params.require(:job).permit(:title, :company, :company_url, :country, :state, :city, :address, :salary, :apply_email, :description) if params[:job]
     end
 
     def require_partner
