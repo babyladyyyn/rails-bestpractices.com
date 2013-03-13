@@ -2,7 +2,7 @@ require 'capistrano_colors'
 require 'bundler/capistrano'
 require 'rvm/capistrano'
 require 'puma/capistrano'
-set :rvm_ruby_string, 'ruby-1.9.3-p194@rails-bestpractices.com'
+set :rvm_ruby_string, 'ruby-2.0.0-p0@rails-bestpractices.com'
 
 set :application, "rails-bestpractices"
 set :repository,  "git@github.com:railsbp/rails-bestpractices.com.git"
