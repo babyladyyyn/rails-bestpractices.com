@@ -1,0 +1,9 @@
+{
+  "directory": "vendor/assets/components",
+  "dependencies": {
+    "jquery": "latest",
+    "jquery-ujs": "https://raw.github.com/rails/jquery-ujs/master/src/rails.js",
+    "prettify": "https://raw.github.com/edubkendo/prettify.js/master/prettify.js",
+    "jquery.google-analytics": "https://raw.github.com/christianhellsten/jquery-google-analytics/master/jquery.google-analytics.js"
+  }
+}

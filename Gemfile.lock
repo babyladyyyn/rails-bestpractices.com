@@ -274,7 +274,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.4.0)
       mime-types
-    perftools.rb (2.0.0)
     pickle (0.4.11)
       cucumber (>= 0.8)
       rake
@@ -497,7 +496,6 @@ DEPENDENCIES
   guard-spork
   haml
   has_scope
-  jquery-rails
   json
   kaminari
   kgio

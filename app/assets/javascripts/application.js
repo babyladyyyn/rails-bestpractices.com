@@ -4,14 +4,13 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require jquery
-//= require jquery_ujs
-//= require jquery.timeago.js
-//= require jquery.autocomplete.js
-//= require prettify.js
+//= require jquery/jquery
+//= require jquery-ujs/index
+//= require prettify/index.js
+//= require jquery.google-analytics/index.js
+//= require rails_bestpractices.js
 //= require wmd/wmd
 //= require wmd/showdown
 //= require disqus
 //= require ckeditor-jquery
 //= require_tree .
-//= require google_analytics.js

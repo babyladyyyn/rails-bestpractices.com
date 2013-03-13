@@ -18,7 +18,6 @@
  *= require formtastic
  *= require formtastic_changes
  *= require job
- *= require jquery.autocomplete
  *= require login_register
  *= require notification
  *= require wmd

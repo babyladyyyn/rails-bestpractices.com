@@ -1,4 +1,4 @@
-source :rubygems
+source "https://rubygems.org"
 
 gem 'rails'
 
@@ -59,8 +59,6 @@ group :assets do
   gem 'turbo-sprockets-rails3'
 end
 
-gem 'jquery-rails'
-
 group :production do
   gem 'therubyracer'
   gem 'sass-rails'
@@ -72,7 +70,6 @@ group :development do
   gem "annotate"
   gem "rails-erd"
   gem "quiet_assets"
-  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
 
   gem "capistrano"
   gem "capistrano_colors"

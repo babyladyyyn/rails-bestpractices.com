@@ -44,6 +44,4 @@ RailsBestpracticesCom::Application.configure do
     Bullet.alert = true
     Bullet.rails_logger = true
   end
-
-  config.middleware.use ::Rack::PerftoolsProfiler
 end
