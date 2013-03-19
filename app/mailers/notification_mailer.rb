@@ -26,7 +26,7 @@ class NotificationMailer < ActionMailer::Base
          :subject => "#{@user.try(:login)} post a job")
   end
 
-  def reset_password_instructions(user)
+  def reset_password_instructions(user, options={})
     @resource = user
     mail(:to => user.email, :subject => "Reset password instructions")
   end
