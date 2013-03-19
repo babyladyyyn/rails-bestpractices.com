@@ -84,6 +84,8 @@ group :development do
   gem "guard-livereload"
   gem "guard-rails"
   gem "guard-migrate"
+
+  gem "thin"
 end
 
 group :test do
