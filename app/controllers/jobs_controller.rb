@@ -43,11 +43,11 @@ class JobsController < ApplicationController
     render :xml => @jobs.to_xml(:methods => :cached_job_type_names)
   end
 
-  protected
-    def resource_params
-      params.require(:job).permit(:title, :company, :company_url, :country, :state, :city, :address, :salary, :apply_email, :description) if params[:job]
-    end
+  def resource_params
+    params.require(:job).permit(:title, :company, :company_url, :country, :state, :city, :address, :salary, :apply_email, :description) if params[:job]
+  end
 
+  protected
     def require_partner
       @partner = JobPartner.find_by_token(params[:token])
       render_422 and return unless @partner

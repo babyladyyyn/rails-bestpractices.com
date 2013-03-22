@@ -13,11 +13,11 @@ class AnswersController < ApplicationController
     end
   end
 
-  protected
-    def resource_params
-      params.require(:answer).permit(answer_body_attributes: [:body]) if params[:answer]
-    end
+  def resource_params
+    params.require(:answer).permit(answer_body_attributes: [:body]) if params[:answer]
+  end
 
+  protected
     def load_question
       @question = Question.find_cached(params[:question_id])
     end

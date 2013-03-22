@@ -43,11 +43,11 @@ class QuestionsController < ApplicationController
     end
   end
 
-  protected
-    def resource_params
-      params.require(:question).permit(:title, :tag_list, question_body_attributes: [:body]) if params[:question]
-    end
+  def resource_params
+    params.require(:question).permit(:title, :tag_list, question_body_attributes: [:body]) if params[:question]
+  end
 
+  protected
     def nav_order
       params[:nav] = "id" unless %w(id vote_points answers_count not_answered).include?(params[:nav])
       params[:order] = "desc" unless %w(desc asc).include?(params[:order])

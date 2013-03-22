@@ -50,11 +50,11 @@ class PostsController < ApplicationController
     @posts = Post.published
   end
 
-  protected
-    def resource_params
-      params.require(:post).permit(:title, :description, :tag_list, post_body_attributes: [:body]) if params[:post]
-    end
+  def resource_params
+    params.require(:post).permit(:title, :description, :tag_list, post_body_attributes: [:body]) if params[:post]
+  end
 
+  protected
     def nav_order
       params[:nav] = "id" unless %w(id vote_points implemented).include?(params[:nav])
       params[:order] = "desc" unless %w(desc asc).include?(params[:order])

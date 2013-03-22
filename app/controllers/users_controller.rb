@@ -41,6 +41,10 @@ class UsersController < Devise::RegistrationsController
     end
   end
 
+  def resource_params
+    params.require(:user).permit(:login, :email, :password, :password_confirmation, :url, :notification_settings_attributes)
+  end
+
   protected
     def build_resource(*args)
       super
@@ -48,9 +52,5 @@ class UsersController < Devise::RegistrationsController
         @user.apply_omniauth(session[:omniauth])
         @user.valid?
       end
-    end
-
-    def resource_params
-      params.require(:user).permit(:login, :email, :password, :password_confirmation, :url, :notification_settings_attributes)
     end
 end
