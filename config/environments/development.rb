@@ -45,3 +45,8 @@ RailsBestpracticesCom::Application.configure do
     Bullet.rails_logger = true
   end
 end
+
+silence_warnings do
+  require 'pry'
+  IRB = Pry
+end

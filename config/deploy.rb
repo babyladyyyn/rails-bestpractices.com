@@ -1,7 +1,6 @@
 require 'capistrano_colors'
 require 'bundler/capistrano'
 require 'rvm/capistrano'
-require 'puma/capistrano'
 set :rvm_ruby_string, 'ruby-2.0.0-p0@rails-bestpractices.com'
 
 set :application, "rails-bestpractices"
@@ -31,5 +30,6 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     migrate
     cleanup
+    run "sudo monit restart rails-bestpractices.com"
   end
 end
