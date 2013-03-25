@@ -1,5 +1,5 @@
 before "deploy:finalize_update", "thinking_sphinx:symlink_sphinx_configs", "thinking_sphinx:symlink_sphinx_indexes"
-after "deploy:create_symlink", "thinking_sphinx:restart"
+after "deploy:restart", "thinking_sphinx:restart"
 
 namespace :thinking_sphinx do
   task :symlink_sphinx_configs, :roles => :app do
@@ -12,6 +12,6 @@ namespace :thinking_sphinx do
 
   desc "restart thinking_sphinx"
   task :restart, :roles => :app do
-    run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env} ts:configure ts:rebuild"
+    run "sudo monit restart searchd.rails-bestpractices.com"
   end
 end
