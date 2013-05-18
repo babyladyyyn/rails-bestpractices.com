@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem 'rails'
 
-gem 'mysql2', '0.3.12b5'
+gem 'mysql2', '~> 0.3.12b6'
 
 gem "json"
 gem "haml"
@@ -86,6 +86,8 @@ group :development do
   gem "guard-migrate"
 
   gem "thin"
+
+  gem "pry"
 end
 
 group :test do
