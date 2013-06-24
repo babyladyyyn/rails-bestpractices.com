@@ -8,6 +8,7 @@ Disallow: /auth/*
 Disallow: /jobs/*
 Disallow: /jobs/*/edit
 Disallow: /questions/new
+Disallow: /search
 Allow: /
 Sitemap: http://rails-bestpractices.com/sitemap_index.xml.gz
 
