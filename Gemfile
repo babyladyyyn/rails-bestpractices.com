@@ -1,20 +1,20 @@
 source "https://rubygems.org"
 
-gem 'rails'
+gem 'rails', '4.0.0'
 
 gem 'mysql2', '~> 0.3.12b6'
 
 gem "json"
 gem "haml"
 gem "kaminari"
-gem "devise"
+gem "devise", "3.0.0.rc"
 gem "devise-encryptable"
 gem "omniauth"
 gem "omniauth-facebook"
 gem "omniauth-twitter"
 gem "formtastic"
 gem "has_scope"
-gem 'exception_notification', :require => 'exception_notifier'
+gem 'exception_notification', "4.0.0.rc1", :require => "exception_notifier"
 gem "acts-as-taggable-on"
 gem "rdiscount"
 gem "gravtastic"
@@ -28,7 +28,8 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem 'whenever'
 gem "thinking-sphinx", :require => 'thinking_sphinx'
 gem "daemons"
-gem "delayed_job_active_record"
+gem "delayed_job_active_record", "4.0.0.beta3"
+gem "delayed_job", "4.0.0.beta2"
 gem "switch_user"
 gem "dropbox"
 gem "backup"
@@ -47,8 +48,6 @@ gem "country-select"
 gem "multiple_mailers"
 gem "wmd-rails"
 gem "contact_us"
-gem "strong_parameters"
-
 gem "puma", "2.0.0.b6"
 
 group :assets do
@@ -56,7 +55,6 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'compass'
-  gem 'turbo-sprockets-rails3'
 end
 
 group :production do
@@ -108,7 +106,7 @@ end
 
 group :cucumber do
   gem "cucumber"
-  gem "cucumber-rails"
+  #gem "cucumber-rails"
   gem "database_cleaner"
   gem "launchy"
   gem "pickle"
