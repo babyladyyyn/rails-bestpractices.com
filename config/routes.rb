@@ -3,8 +3,9 @@ RailsBestpracticesCom::Application.routes.draw do
   devise_scope :user do
     resources :users, :only => [:index, :show]
   end
-  match '/auth/:provider/callback' => 'authentications#create'
-  match '/auth/failure' => redirect('/')
+  get '/auth/:provider/callback' => 'authentications#create'
+  post '/auth/:provider/callback' => 'authentications#create'
+  get '/auth/failure' => redirect('/')
 
   resources :tags, :only => :show
 
@@ -34,9 +35,9 @@ RailsBestpracticesCom::Application.routes.draw do
 
   resources :sponsors, :only => [:show]
 
-  match 'search' => 'search#show', :as => :search
+  get 'search' => 'search#show', :as => :search
 
-  match 'page/:name' => 'pages#show', :as => :page
+  get 'page/:name' => 'pages#show', :as => :page
 
   root :to => "posts#index"
 

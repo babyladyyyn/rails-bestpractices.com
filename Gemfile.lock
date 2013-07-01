@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/flyerhzm/contact_us.git
+  revision: e34bdb0ba0d0b5582ffcb684ffbecb3647ffcf60
+  branch: rails-4
+  specs:
+    contact_us (0.4.0)
+      rails (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -88,8 +96,6 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    contact_us (0.4.0)
-      rails (>= 3.0.0)
     country-select (1.1.1)
     crack (0.3.2)
     css_sprite (2.1.0)
@@ -453,7 +459,7 @@ DEPENDENCIES
   ckeditor_rails
   coffee-rails
   compass
-  contact_us
+  contact_us!
   country-select
   css_sprite
   cucumber
