@@ -24,6 +24,5 @@ ERD.pdf
 log/newrelic_agent_store.db
 .sass-cache/
 public/assets/
-bin/
 coverage/
 zeus.json
