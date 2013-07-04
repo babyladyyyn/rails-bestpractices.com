@@ -27,7 +27,7 @@ class Question < ActiveRecord::Base
 
   validates :title, :presence => true, :uniqueness => true
 
-  scope :not_answered, where(:answers_count => 0)
+  scope :not_answered, -> { where(:answers_count => 0) }
 
   after_create :tweet_it, :expire_user_cache
   after_destroy :expire_user_cache

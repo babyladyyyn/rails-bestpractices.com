@@ -21,7 +21,7 @@ class Sponsor < ActiveRecord::Base
 
   has_many :sponsor_tracks
 
-  scope :active, where(:active => true)
+  scope :active, -> { where(:active => true) }
 
   model_cache do
     with_key

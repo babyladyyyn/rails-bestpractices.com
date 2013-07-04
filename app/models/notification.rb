@@ -22,8 +22,6 @@ class Notification < ActiveRecord::Base
   after_create :increase_notification_count
   before_destroy :decrease_notification_count
 
-  default_scope order('notifications.created_at desc')
-
   after_create :expire_notify_user_cache
   after_destroy :expire_notify_user_cache
 

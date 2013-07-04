@@ -31,8 +31,8 @@ class Job < ActiveRecord::Base
 
   validates_presence_of :title, :company, :country, :city, :description, :apply_email
 
-  scope :published, where(:published => true)
-  scope :owner, where("source IS NULL")
+  scope :published, -> { where(:published => true) }
+  scope :owner, -> { where("source IS NULL") }
 
   after_create :notify_admin
 

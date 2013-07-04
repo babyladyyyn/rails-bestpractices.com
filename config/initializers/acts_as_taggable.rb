@@ -2,7 +2,7 @@ module ActsAsTaggableOn
   class Tag
     include Cacheable
 
-    scope :important_tags, where(['important = ?', true])
+    scope :important_tags, -> { where(['important = ?', true]) }
 
     model_cache do
       with_attribute :name

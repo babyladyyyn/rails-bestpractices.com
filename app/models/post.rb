@@ -27,8 +27,8 @@ class Post < ActiveRecord::Base
   validates :title, :presence => true, :uniqueness => true
   validates :description, :presence => true
 
-  scope :implemented, where(:implemented => true)
-  scope :published, where(:published => true)
+  scope :implemented, -> { where(:implemented => true) }
+  scope :published, -> { where(:published => true) }
 
   after_create :notify_admin
 
