@@ -57,7 +57,7 @@ class Notification < ActiveRecord::Base
     end
 
     def expire_notify_user_cache
-      notify_user.expire_model_cache
+      notify_user.try(:expire_model_cache)
     end
 end
 

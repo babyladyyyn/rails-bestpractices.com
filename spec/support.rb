@@ -5,7 +5,6 @@ module RailsBestPractices
       def self.included(base)
         base.class_eval do
           extend ClassMethods
-          include InstanceMethods
         end
       end
 
@@ -75,43 +74,6 @@ module RailsBestPractices
               formatted = "<h1>subject</h1>\n\n<h2>title</h2>\n\n<pre><code>def test\n  puts 'test'\nend\n</code></pre>\n"
               FactoryGirl.create(described_class.to_s.underscore, :body => raw).formatted_html.should == formatted
             end
-          end
-        end
-      end
-
-      module InstanceMethods
-        def within_observable_scope
-          observer_class = self.class.send(:described_class)
-          has_applied_tweak, tweaks = apply_observer_tweaks(observer_class)
-          begin
-            yield(observer_class.instance)
-          ensure
-            unapply_observer_tweaks(observer_class, tweaks) if has_applied_tweak
-          end
-        end
-
-        def apply_observer_tweaks(observer_class)
-          observer, is_unwanted_observer_initialized = nil
-          orig_update_meth = :_original_update_observee_xyz_ # some weird name that should never clash with others
-
-          if ObjectSpace.each_object(observer_class){|o| observer = o }.zero?
-            # This is the case when the observer is never meant to exist in this environment
-            [true, {:method => orig_update_meth}]
-          elsif observer.respond_to?(orig_update_meth)
-            # This is the case when the observer is never meant to exist in this environment,
-            # yet it has already been tampered with, and we want to undo tampering
-            (class << observer_class.instance; self; end).class_eval do
-              alias_method :update, orig_update_meth
-            end
-            [true, {:method => orig_update_meth}]
-          end
-        end
-
-        def unapply_observer_tweaks(observer_class, tweaks)
-          orig_update_meth  = tweaks[:method]
-          (class << observer_class.instance; self; end).class_eval do
-            alias_method orig_update_meth, :update
-            def update(*args) ; end
           end
         end
       end

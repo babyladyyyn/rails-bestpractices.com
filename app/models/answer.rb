@@ -27,8 +27,8 @@ class Answer < ActiveRecord::Base
 
   delegate :body, :formatted_html, :to => :answer_body
 
-  after_create :expire_question_and_user_cache
-  after_destroy :expire_question_and_user_cache
+  after_create :expire_question_and_user_cache, :notify_user
+  after_destroy :expire_question_and_user_cache, :destroy_notification
 
   model_cache do
     with_key
@@ -50,5 +50,14 @@ class Answer < ActiveRecord::Base
       user.expire_model_cache
     end
 
+    def notify_user
+      if self.question.user != self.user
+        self.question.user.notifications.create(:notifierable => self)
+      end
+    end
+
+    def destroy_notification
+      Notification.where(:notifierable_id => self.id, :notifierable_type => "Answer").destroy_all
+    end
 end
 

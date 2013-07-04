@@ -10,10 +10,7 @@ describe Notification do
     it "should increase notification count" do
       answer = FactoryGirl.create(:answer)
       user = answer.question.user
-      expect {
-        user.notifications.create(:notifierable => answer)
-        user.reload
-      }.to change(user, :unread_notification_count).by(1)
+      user.reload
       expect {
         user.notifications.create(:notifierable => answer)
         user.reload

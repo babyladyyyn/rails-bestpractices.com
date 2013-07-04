@@ -12,6 +12,8 @@ Spork.prefork do
   Devise.stretches = 1
   Rails.logger.level = 4
 
+  DatabaseCleaner.strategy = :transaction
+
   RSpec.configure do |config|
     config.mock_with :rspec
 

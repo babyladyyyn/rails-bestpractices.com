@@ -33,8 +33,6 @@ RailsBestpracticesCom::Application.configure do
 
   config.action_mailer.default_url_options = { :host => "rails-bestpractices.com" }
 
-  config.active_record.observers = :vote_sweeper
-
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,
   # like if you have constraints or database-specific column types
