@@ -7,7 +7,6 @@ Feature: List notifications
     And a question_body exists with question: question "first question", body: "first question"
     And an answer "first answer" exists with user: user "flyerhzm", question: question "first question"
     And an answer_body exists with answer: answer "first answer", body: "first answer"
-    And a notification exists with user: user "richard", notifierable: the answer
     And I am already signed in as "richard"
     When I follow "1"
     Then I should see "flyerhzm"

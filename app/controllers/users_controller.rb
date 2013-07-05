@@ -28,21 +28,17 @@ class UsersController < Devise::RegistrationsController
 
   def edit
     NotificationSetting::ITEMS.each do |name, description|
-      current_user.notification_settings.find_or_create_by_name(name)
+      current_user.notification_settings.find_or_create_by(name: name)
     end
   end
 
   def update
     return create unless current_user
-    if current_user.update_attributes(resource_params)
+    if current_user.update_attributes(account_update_params)
       redirect_to current_user, notice: "Account updated."
     else
       render :edit
     end
-  end
-
-  def resource_params
-    params.require(:user).permit(:login, :email, :password, :password_confirmation, :url, :notification_settings_attributes)
   end
 
   protected
@@ -52,5 +48,6 @@ class UsersController < Devise::RegistrationsController
         @user.apply_omniauth(session[:omniauth])
         @user.valid?
       end
+      @user
     end
 end
