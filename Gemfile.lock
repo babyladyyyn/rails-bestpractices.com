@@ -14,6 +14,14 @@ GIT
     formtastic (2.2.1)
       actionpack (>= 3.0)
 
+GIT
+  remote: git://github.com/milgner/compass-rails.git
+  revision: c86e7fd9c2605c80816a2f64a3fb8b7c3a09e494
+  branch: rails4
+  specs:
+    compass-rails (1.0.3)
+      compass (>= 0.12.2, < 0.14)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -466,7 +474,7 @@ DEPENDENCIES
   cells
   ckeditor_rails
   coffee-rails
-  compass
+  compass-rails!
   contact_us!
   country-select
   css_sprite

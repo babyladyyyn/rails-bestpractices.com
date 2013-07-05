@@ -1,11 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-require 'compass'
-
-module Compass
-  RAILS_LOADED = true
-end
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -61,8 +56,6 @@ module RailsBestpracticesCom
     config.assets.version = '1.0'
 
     config.assets.paths << Rails.root.join("vendor", "assets", "components")
-
-    config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
 
     MEMCACHE_CONFIG = YAML.load_file(Rails.root.join('config', 'memcache.yml'))[Rails.env]
     config.cache_store = Memcached::Rails.new(MEMCACHE_CONFIG.symbolize_keys.merge(:logger => Rails.logger))

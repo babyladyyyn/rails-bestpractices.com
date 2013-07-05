@@ -54,7 +54,7 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'compass'
+  gem 'compass-rails', github: "milgner/compass-rails", branch: "rails4"
 end
 
 group :production do
