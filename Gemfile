@@ -106,7 +106,7 @@ end
 
 group :cucumber do
   gem "cucumber"
-  #gem "cucumber-rails"
+  gem "cucumber-rails", github: "cucumber/cucumber-rails", branch: "master_rails4_test"
   gem "database_cleaner"
   gem "launchy"
   gem "pickle"
