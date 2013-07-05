@@ -66,7 +66,7 @@ class Post < ActiveRecord::Base
   end
 
   def related_posts
-    Post.where(['posts.id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true).all
+    Post.where(['posts.id <> ?', self.id]).limit(4).tagged_with(self.tag_list, :any => true)
   end
 
   def prev(order)
