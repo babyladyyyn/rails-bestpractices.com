@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: git://github.com/flyerhzm/contact_us.git
-  revision: e34bdb0ba0d0b5582ffcb684ffbecb3647ffcf60
+  revision: 778ef46bfef9ef15272c5409549440c6778549d3
   branch: rails-4
   specs:
     contact_us (0.4.0)
