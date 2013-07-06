@@ -77,6 +77,7 @@ RailsBestpracticesCom::Application.configure do
     end
 
     class ExceptionNotifier::Notifier
+      include MultipleMailers
       mailer_account "exception.notifier"
     end
   end
