@@ -61,11 +61,13 @@ RailsBestpracticesCom::Application.configure do
 
   config.action_mailer.default_url_options = { :host => "rails-bestpractices.com" }
 
-  config.middleware.use ExceptionNotifier,
-    :email_prefix => "[rails-bestpractices.com] ",
-    :sender_address => %{"Application Error" <exception.notifier@rails-bestpractices.com>},
-    :exception_recipients => %w(flyerhzm@rails-bestpractices.com),
-    :ignore_exceptions => %w(ActionView::MissingTemplate)
+  config.middleware.use ExceptionNotification::Rack,
+    email: {
+      :email_prefix => "[rails-bestpractices.com] ",
+      :sender_address => %{"Application Error" <exception.notifier@rails-bestpractices.com>},
+      :exception_recipients => %w(flyerhzm@rails-bestpractices.com),
+      :ignore_exceptions => %w(ActionView::MissingTemplate)
+    }
 
   config.after_initialize do
     if ContactUs.const_defined? :ContactMailer
