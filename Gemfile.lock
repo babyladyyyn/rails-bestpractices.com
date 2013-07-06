@@ -446,6 +446,8 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
+    turbolinks (1.2.0)
+      coffee-rails
     twitter (4.5.0)
       faraday (~> 0.8, < 0.10)
       multi_json (~> 1.0)
@@ -554,6 +556,7 @@ DEPENDENCIES
   therubyracer
   thin
   thinking-sphinx
+  turbolinks
   twitter
   uglifier
   whenever

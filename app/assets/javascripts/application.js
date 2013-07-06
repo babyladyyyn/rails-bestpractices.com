@@ -6,6 +6,7 @@
 //
 //= require jquery/jquery
 //= require jquery-ujs/index
+//= require turbolinks
 //= require prettify/index.js
 //= require jquery.google-analytics/index.js
 //= require rails_bestpractices.js

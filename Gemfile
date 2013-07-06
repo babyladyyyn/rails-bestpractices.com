@@ -50,6 +50,8 @@ gem "wmd-rails"
 gem "contact_us", github: "flyerhzm/contact_us", branch: "rails-4"
 gem "puma", "2.0.0.b6"
 
+gem "turbolinks"
+
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
