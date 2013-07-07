@@ -63,10 +63,12 @@ RailsBestpracticesCom::Application.configure do
 
   config.middleware.use ExceptionNotification::Rack,
     email: {
-      :email_prefix => "[rails-bestpractices.com] ",
-      :sender_address => %{"Application Error" <exception.notifier@rails-bestpractices.com>},
-      :exception_recipients => %w(flyerhzm@rails-bestpractices.com),
-      :ignore_exceptions => %w(ActionView::MissingTemplate)
+      email_prefix: "[rails-bestpractices.com] ",
+      sender_address: %{"Application Error" <exception.notifier@rails-bestpractices.com>},
+      exception_recipients: %w(flyerhzm@rails-bestpractices.com),
+      ignore_exceptions: %w(ActionView::MissingTemplate),
+      delivery_method: :stmp,
+      smtp_settings: MultipleMailers::Configuration.get("exception.notifier")
     }
 
   config.after_initialize do
@@ -74,11 +76,6 @@ RailsBestpracticesCom::Application.configure do
       class ContactUs::ContactMailer
         mailer_account "notification"
       end
-    end
-
-    class ExceptionNotifier::Notifier
-      include MultipleMailers
-      mailer_account "exception.notifier"
     end
   end
 end

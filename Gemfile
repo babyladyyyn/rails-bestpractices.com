@@ -14,7 +14,7 @@ gem "omniauth-facebook"
 gem "omniauth-twitter"
 gem "formtastic", github: "justinfrench/formtastic", branch: "rails4"
 gem "has_scope"
-gem 'exception_notification', "4.0.0.rc1"
+gem 'exception_notification'
 gem "acts-as-taggable-on"
 gem "rdiscount"
 gem "gravtastic"
