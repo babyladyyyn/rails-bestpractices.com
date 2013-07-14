@@ -52,12 +52,10 @@ gem "puma", "2.0.0.b6"
 
 gem "turbolinks"
 
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  gem 'compass-rails', github: "milgner/compass-rails", branch: "rails4"
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'compass-rails', github: "milgner/compass-rails", branch: "rails4"
 
 group :production do
   gem 'therubyracer'
