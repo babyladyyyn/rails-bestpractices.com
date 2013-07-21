@@ -67,9 +67,7 @@ RailsAdmin.config do |config|
     end
     edit do
       field :title
-      field :body do
-        ckeditor true
-      end
+      field :body, :ckeditor
       field :user
     end
   end
@@ -84,9 +82,7 @@ RailsAdmin.config do |config|
     end
     edit do
       field :title
-      field :description do
-        ckeditor true
-      end
+      field :description, :ckeditor
       field :published
       field :source
       field :apply_email
