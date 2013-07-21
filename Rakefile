@@ -6,3 +6,5 @@ require 'rake'
 include Rake::DSL
 
 RailsBestpracticesCom::Application.load_tasks
+
+task default: [:spec, :cucumber]
