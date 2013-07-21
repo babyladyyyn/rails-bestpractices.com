@@ -89,7 +89,7 @@ group :development do
 end
 
 group :test do
-  gem "simplecov", :require => false
+  gem 'coveralls', require: false
   gem "spork", "1.0.0.rc3"
   gem "rspec"
   gem "rspec-rails"

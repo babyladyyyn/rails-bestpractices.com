@@ -127,11 +127,18 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     colored (1.2)
+    colorize (0.5.8)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
     country-select (1.1.1)
+    coveralls (0.6.7)
+      colorize
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      thor
     crack (0.3.2)
     css_sprite (2.1.0)
       mini_magick
@@ -377,6 +384,8 @@ GEM
     recaptcha (0.3.4)
     ref (1.0.2)
     remotipart (1.0.5)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     riddle (1.5.6)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
@@ -494,6 +503,7 @@ DEPENDENCIES
   compass-rails!
   contact_us!
   country-select
+  coveralls
   css_sprite
   cucumber
   cucumber-rails!
@@ -555,7 +565,6 @@ DEPENDENCIES
   sass-rails
   shoulda-matchers
   simple_cacheable!
-  simplecov
   sitemap_generator
   spork (= 1.0.0.rc3)
   switch_user

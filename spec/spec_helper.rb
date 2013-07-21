@@ -6,6 +6,8 @@ Spork.prefork do
   require 'rspec/rails'
   require 'email_spec'
   require 'database_cleaner'
+  require 'coveralls'
+  Coveralls.wear!('rails')
 
   Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
@@ -37,9 +39,6 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  require 'simplecov'
-  SimpleCov.start 'rails'
-
   require 'factory_girl_rails'
   require File.join(File.dirname(__FILE__), 'support')
 end
