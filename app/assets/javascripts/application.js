@@ -13,5 +13,5 @@
 //= require wmd/wmd
 //= require wmd/showdown
 //= require disqus
-//= require ckeditor-jquery
+//= require ckeditor/init
 //= require_tree .
