@@ -1,113 +1,103 @@
 source "https://rubygems.org"
 
-gem 'rails', '4.0.0'
-
-gem 'mysql2', '~> 0.3.12b6'
-
-gem "json"
-gem "haml"
-gem "kaminari"
+gem "acts-as-taggable-on"
+gem "backup"
+gem "bitly"
+gem "cancan"
+gem "cells"
+gem "ckeditor"
+gem 'coffee-rails'
+gem 'compass-rails', github: "milgner/compass-rails", branch: "rails4"
+gem "contact_us", github: "flyerhzm/contact_us", branch: "rails-4"
+gem "country-select"
+gem "css_sprite"
+gem "daemons"
+gem "delayed_job", "4.0.0.beta2"
+gem "delayed_job_active_record", "4.0.0.beta3"
 gem "devise", "3.0.0.rc"
 gem "devise-encryptable"
+gem "dropbox"
+gem "escape_utils"
+gem 'exception_notification'
+gem "formtastic", github: "justinfrench/formtastic", branch: "rails4"
+gem "haml"
+gem "has_scope"
+gem "json"
+gem "kaminari"
+gem "kgio"
+gem "gravtastic"
+gem "memcached"
+gem "meta-tags", :require => 'meta_tags'
+gem "multiple_mailers"
+gem 'mysql2', '~> 0.3.12b6'
+gem "newrelic_rpm"
+gem "nokogiri"
 gem "omniauth"
 gem "omniauth-facebook"
 gem "omniauth-twitter"
-gem "formtastic", github: "justinfrench/formtastic", branch: "rails4"
-gem "has_scope"
-gem 'exception_notification'
-gem "acts-as-taggable-on"
-gem "rdiscount"
-gem "gravtastic"
-gem "css_sprite"
-gem "meta-tags", :require => 'meta_tags'
-gem "sitemap_generator"
-gem "twitter"
-gem "bitly"
-gem "cancan"
-gem "recaptcha", :require => "recaptcha/rails"
-gem 'whenever'
-gem "thinking-sphinx", :require => 'thinking_sphinx'
-gem "daemons"
-gem "delayed_job_active_record", "4.0.0.beta3"
-gem "delayed_job", "4.0.0.beta2"
-gem "switch_user"
-gem "dropbox"
-gem "backup"
-gem "escape_utils"
-gem "newrelic_rpm"
-gem "rails_admin"
 gem "paperclip"
-gem "ckeditor_rails", :require => "ckeditor-rails"
-gem "nokogiri"
-gem "kgio"
-gem "memcached"
-gem "simple_cacheable", github: "flyerhzm/simple_cacheable", branch: "rails4", require: "cacheable"
-gem "cells"
-gem "yajl-ruby"
-gem "country-select"
-gem "multiple_mailers"
-gem "wmd-rails"
-gem "contact_us", github: "flyerhzm/contact_us", branch: "rails-4"
 gem "puma", "2.0.0.b6"
-
-gem "turbolinks"
-
+gem 'rails', '4.0.0'
+gem "rails_admin"
+gem "rdiscount"
+gem "recaptcha", :require => "recaptcha/rails"
 gem 'sass-rails'
-gem 'coffee-rails'
+gem "simple_cacheable", github: "flyerhzm/simple_cacheable", branch: "rails4", require: "cacheable"
+gem "sitemap_generator"
+gem "switch_user"
+gem "thinking-sphinx", :require => 'thinking_sphinx'
+gem "turbolinks"
+gem "twitter"
 gem 'uglifier'
-gem 'compass-rails', github: "milgner/compass-rails", branch: "rails4"
+gem 'whenever'
+gem "wmd-rails"
+gem "yajl-ruby"
+
 
 group :production do
   gem 'therubyracer'
-  gem 'sass-rails'
 end
 
 group :development do
   gem "awesome_print", :require => 'ap'
-  gem "bullet"
   gem "annotate"
-  gem "rails-erd"
-  gem "quiet_assets"
-
+  gem "bullet"
   gem "capistrano"
   gem "capistrano_colors"
-  gem "rvm-capistrano"
-
+  gem "pry"
   gem "guard"
-  gem "rb-inotify", :require => false
-  gem "rb-fsevent", :require => false
-  gem "rb-fchange", :require => false
   gem "guard-annotate"
   gem "guard-bundler"
   gem "guard-livereload"
-  gem "guard-rails"
   gem "guard-migrate"
-
+  gem "guard-rails"
+  gem "quiet_assets"
+  gem "rails-erd"
+  gem "rb-fchange", :require => false
+  gem "rb-fsevent", :require => false
+  gem "rb-inotify", :require => false
+  gem "rvm-capistrano"
   gem "thin"
-
-  gem "pry"
 end
 
 group :test do
-  gem 'coveralls', require: false
-  gem "spork", "1.0.0.rc3"
-  gem "rspec"
-  gem "rspec-rails"
-  gem "factory_girl"
-  gem "factory_girl_rails"
-  gem 'shoulda-matchers'
-  gem "email_spec"
-  gem "rspec-cells"
   gem "capybara"
+  gem 'coveralls', require: false
+  gem "database_cleaner"
+  gem "email_spec"
+  gem "factory_girl_rails"
   gem "guard-spork"
   gem "guard-rspec"
+  gem "rspec-cells"
+  gem "rspec-rails"
   gem "rails_best_practices"
+  gem 'shoulda-matchers'
+  gem "spork", "1.0.0.rc3"
 end
 
 group :cucumber do
   gem "cucumber"
   gem "cucumber-rails", github: "cucumber/cucumber-rails", branch: "master_rails4_test"
-  gem "database_cleaner"
   gem "launchy"
   gem "pickle"
 end

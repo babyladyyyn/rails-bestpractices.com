@@ -113,8 +113,9 @@ GEM
     choice (0.1.6)
     chronic (0.9.1)
     chunky_png (1.2.8)
-    ckeditor_rails (4.0.1.1)
-      railties (>= 3.0)
+    ckeditor (4.0.4)
+      mime-types
+      orm_adapter
     cocaine (0.4.2)
     code_analyzer (0.3.1)
       sexp_processor
@@ -501,7 +502,7 @@ DEPENDENCIES
   capistrano_colors
   capybara
   cells
-  ckeditor_rails
+  ckeditor
   coffee-rails
   compass-rails!
   contact_us!
@@ -520,7 +521,6 @@ DEPENDENCIES
   email_spec
   escape_utils
   exception_notification
-  factory_girl
   factory_girl_rails
   formtastic!
   gravtastic
@@ -561,7 +561,6 @@ DEPENDENCIES
   rb-inotify
   rdiscount
   recaptcha
-  rspec
   rspec-cells
   rspec-rails
   rvm-capistrano
