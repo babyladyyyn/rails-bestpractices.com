@@ -9,18 +9,22 @@ RailsBestpracticesCom::Application.routes.draw do
 
   resources :tags, :only => :show
 
+  concern :voteable do
+    resources :votes, only: [:create, :destroy]
+  end
+
   resources :posts, :except => :destroy do
+    concerns :voteable
     get :archive, :on => :collection
-    resources :votes, :only => [:create, :destroy]
   end
 
   resources :questions, :only => [:show, :new, :create, :edit, :update, :index] do
+    concerns :voteable
     resources :answers, :only => :create
-    resources :votes, :only => [:create, :destroy]
   end
 
   resources :answers, :only => [:show, :create] do
-    resources :votes, :only => [:create, :destroy]
+    concerns :voteable
   end
 
   scope '/blog' do
