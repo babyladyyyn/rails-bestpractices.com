@@ -6,6 +6,7 @@ Rails Best Practices Website
 [![Dependency Status](https://gemnasium.com/railsbp/rails-bestpractices.com.png)](https://gemnasium.com/railsbp/rails-bestpractices.com)
 [![Code Climate](https://codeclimate.com/repos/51eb55467e00a47e7d007f7f/badges/39b2913dc2cf1b545b7b/gpa.png)](https://codeclimate.com/repos/51eb55467e00a47e7d007f7f/feed)
 [![Security Status](http://rails-brakeman.com/railsbp/rails-bestpractices.com.png)](http://rails-brakeman.com/railsbp/rails-bestpractices.com)
+
 [![Click here to lend your support to: rails-bestpractices.com and make a donation at www.pledgie.com !](https://www.pledgie.com/campaigns/12057.png?skin_name=chrome)](http://www.pledgie.com/campaigns/12057)
 
 rails-bestpractices.com is aimed to share everyone's rails best practices.
