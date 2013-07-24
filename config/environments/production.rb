@@ -66,7 +66,7 @@ RailsBestpracticesCom::Application.configure do
       email_prefix: "[rails-bestpractices.com] ",
       sender_address: %{"Application Error" <exception.notifier@rails-bestpractices.com>},
       exception_recipients: %w(flyerhzm@rails-bestpractices.com),
-      ignore_exceptions: %w(ActionView::MissingTemplate),
+      ignore_exceptions: %w(ActionView::MissingTemplate ActionController::BadRequest),
       delivery_method: :smtp,
       smtp_settings: MultipleMailers::Configuration.get("exception.notifier").symbolize_keys
     }
