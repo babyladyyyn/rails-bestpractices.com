@@ -20,7 +20,7 @@ class Question < ActiveRecord::Base
   include Voteable
   include Cacheable
 
-  paginates_per 10
+  self.per_page = 10
 
   has_many :answers, :dependent => :destroy
   has_one :question_body, :dependent => :destroy

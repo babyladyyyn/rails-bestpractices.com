@@ -9,7 +9,7 @@ class JobsController < ApplicationController
   end
 
   def index
-    @jobs = Job.published.order('created_at desc').page(params[:page] || 1)
+    @jobs = Job.published.order('created_at desc').paginate(page: params[:page] || 1)
   end
 
   def new

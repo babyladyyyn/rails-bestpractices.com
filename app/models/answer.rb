@@ -18,8 +18,6 @@ class Answer < ActiveRecord::Base
   include Voteable
   include Cacheable
 
-  paginates_per 10
-
   belongs_to :question, :counter_cache => true
   has_one :answer_body, :dependent => :destroy
 

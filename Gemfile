@@ -23,7 +23,6 @@ gem "formtastic", github: "justinfrench/formtastic", branch: "rails4"
 gem "haml"
 gem "has_scope"
 gem "json"
-gem "kaminari"
 gem "kgio"
 gem "gravtastic"
 gem "memcached"
@@ -50,6 +49,7 @@ gem "turbolinks"
 gem "twitter"
 gem 'uglifier'
 gem 'whenever'
+gem "will_paginate"
 gem "wmd-rails"
 gem "yajl-ruby"
 

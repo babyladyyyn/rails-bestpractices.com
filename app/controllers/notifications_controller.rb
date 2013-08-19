@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   after_filter :mark_as_read, :only => :index
 
   def index
-    @notifications = current_user.notifications.order('notifications.created_at desc').page(params[:page] || 1)
+    @notifications = current_user.notifications.order('notifications.created_at desc').paginate(page: params[:page] || 1)
   end
 
   def destroy

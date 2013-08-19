@@ -38,7 +38,7 @@ class Post < ActiveRecord::Base
 
   acts_as_taggable
 
-  paginates_per 10
+  self.per_page = 10
 
   model_cache do
     with_key

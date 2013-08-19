@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.order(nav_order).page(params[:page] || 1)
+    @questions = Question.order(nav_order).paginate(page: params[:page] || 1)
     @questions = @questions.where(:answers_count => 0) if params[:nav] == 'not_answered'
   end
 

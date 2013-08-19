@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.published.order(nav_order).page(params[:page] || 1)
+    @posts = Post.published.order(nav_order).paginate(page: params[:page] || 1)
     @posts = @posts.implemented if params[:nav] == 'implemented'
   end
 
