@@ -13,7 +13,7 @@ describe PostsController do
       posts = mock([Post])
       Post.should_receive(:published).and_return(posts)
       posts.should_receive(:order).with("posts.id desc").and_return(posts)
-      posts.should_receive(:page).and_return(posts)
+      posts.should_receive(:paginate).and_return(posts)
       get :index, :nav => "wssiasbhpnlgw", :order => "desc"
       response.should render_template("posts/index")
       assigns[:posts].should == posts
@@ -24,7 +24,7 @@ describe PostsController do
       Post.should_receive(:published).and_return(posts)
       posts.should_receive(:implemented).and_return(posts)
       posts.should_receive(:order).with("posts.id desc").and_return(posts)
-      posts.should_receive(:page).and_return(posts)
+      posts.should_receive(:paginate).and_return(posts)
       get :index, :nav => "implemented"
       response.should render_template("posts/index")
       assigns[:posts].should == posts

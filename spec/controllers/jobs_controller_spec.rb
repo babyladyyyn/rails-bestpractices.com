@@ -13,7 +13,7 @@ describe JobsController do
       jobs = mock([Job])
       Job.should_receive(:published).and_return(jobs)
       jobs.should_receive(:order).with("created_at desc").and_return(jobs)
-      jobs.should_receive(:page).and_return(jobs)
+      jobs.should_receive(:paginate).and_return(jobs)
 
       get 'index'
       response.should render_template("jobs/index")
