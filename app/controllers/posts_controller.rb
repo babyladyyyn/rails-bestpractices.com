@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
-  before_filter :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
-  before_filter :set_post_order, :only => :index
+  before_action :authenticate_user!, :only => [:new, :edit, :create, :update, :destroy]
+  before_action :set_post_order, :only => :index
   has_scope :implemented
   respond_to :xml, :only => :index
 

@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   load_and_authorize_resource
-  before_filter :authenticate_user!, :only => [:new, :edit, :created, :update]
-  before_filter :require_partner, :only => :partner
+  before_action :authenticate_user!, :only => [:new, :edit, :created, :update]
+  before_action :require_partner, :only => :partner
   respond_to :xml, :only => :index
 
   def show

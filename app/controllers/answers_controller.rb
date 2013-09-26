@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
   load_and_authorize_resource
-  before_filter :authenticate_user!, :only => :create
-  before_filter :load_question
+  before_action :authenticate_user!, :only => :create
+  before_action :load_question
 
   def create
     @answer = current_user.answers.build(resource_params.merge(:question_id => @question.id))

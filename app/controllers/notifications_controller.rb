@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
-  before_filter :authenticate_user!
-  after_filter :mark_as_read, :only => :index
+  before_action :authenticate_user!
+  after_action :mark_as_read, :only => :index
 
   def index
     @notifications = current_user.notifications.order('notifications.created_at desc').paginate(page: params[:page] || 1)
