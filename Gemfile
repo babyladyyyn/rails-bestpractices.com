@@ -9,7 +9,7 @@ gem "ckeditor"
 gem 'coffee-rails'
 gem 'compass-rails', github: "milgner/compass-rails", branch: "rails4"
 gem "contact_us", github: "flyerhzm/contact_us", branch: "rails-4"
-gem "country-select"
+gem "country_select"
 gem "css_sprite"
 gem "daemons"
 gem "delayed_job"
