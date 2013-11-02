@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ahmadsherif/capistrano-puma.git
-  revision: 5a2c5fced42a1d58a9eed845078ea8e7618759d7
+  revision: 296d3df71749bd8d50571102fc008fa7abe97dba
   specs:
     capistrano-puma (0.0.1)
       capistrano (>= 3.0.0.pre)

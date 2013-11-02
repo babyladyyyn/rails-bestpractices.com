@@ -1,35 +1,45 @@
-require 'capistrano_colors'
-require 'bundler/capistrano'
-require 'rvm/capistrano'
-set :rvm_ruby_string, 'ruby-2.0.0-p195@rails-bestpractices.com'
+set :bundle_roles, :all
+set :rvm_type, :user
+set :rvm_ruby_version, '2.0.0-p247'
 
 set :application, "rails-bestpractices"
-set :repository,  "git@github.com:railsbp/rails-bestpractices.com.git"
-set :rails_env, "production"
+set :repo_url,  "git@github.com:railsbp/rails-bestpractices.com.git"
 set :deploy_to, "/home/huangzhi/sites/rails-bestpractices.com/production"
-
 set :scm, :git
-set :user, 'huangzhi'
-set :git_shallow_clone, 1
+set :branch, "master"
 
-role :web, "app.rails-bestpractices.com"
-role :app, "app.rails-bestpractices.com"
-role :db,  "db.rails-bestpractices.com", :primary => true
+set :log_level, :debug
 
-before "deploy:finalize_update", "asset:revision"
+set :linked_files, %w{
+  config/bitly.yml config/database.yml config/mailers.yml config/memcache.yml config/omniauth.yml config/thinking_sphinx.yml config/initializers/secret_token.rb
+  public/google9df66a0aeacea061.html public/BingSiteAuth.xml
+}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system db/sphinx}
 
-namespace :asset do
-  task :revision, :roles => :app do
-    run "cd #{release_path}; git ls-remote origin master | awk '{print $1}' > #{release_path}/public/REVISION"
-  end
-end
+set :keep_releases, 5
 
 namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    migrate
-    cleanup
-    run "sudo monit restart rails-bestpractices.com"
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+    end
   end
+
+  # before :restart, :revision do
+  #   on roles :app do
+  #     within release_path do
+  #       head = `git ls-remote origin master`.split("\t")[0]
+  #       execute "echo #{head} > public/REVISION"
+  #     end
+  #   end
+  # end
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    end
+  end
+
+  after :finishing, 'deploy:cleanup'
+
 end
