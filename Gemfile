@@ -59,11 +59,13 @@ group :production do
 end
 
 group :development do
-  gem "awesome_print", :require => 'ap'
   gem "annotate"
   gem "bullet"
-  gem "capistrano"
-  gem "capistrano_colors"
+  gem 'capistrano', github: 'wecapslabs/capistrano', branch: 'fix-symlink-role'
+  gem 'capistrano-bundler'
+  gem 'capistrano-puma', github: 'ahmadsherif/capistrano-puma'
+  gem 'capistrano-rvm', '~> 0.0.2'
+  gem 'capistrano-rails', github: 'flyerhzm/rails-1'
   gem "pry"
   gem "guard"
   gem "guard-annotate"
@@ -90,7 +92,6 @@ group :test do
   gem "guard-rspec"
   gem "rspec-cells"
   gem "rspec-rails"
-  gem "rails_best_practices"
   gem 'shoulda-matchers'
   gem "spork", "1.0.0.rc3"
 end
