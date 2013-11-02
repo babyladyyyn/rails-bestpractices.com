@@ -5,7 +5,7 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'email_spec'
-  require 'database_rewinder'
+  require 'database_cleaner'
   require 'coveralls'
   Coveralls.wear!('rails')
 
@@ -25,13 +25,17 @@ Spork.prefork do
     config.include(EmailSpec::Helpers)
     config.include(EmailSpec::Matchers)
 
-    config.before :suite do
-      DatabaseRewinder.clean_all
+    config.before(:suite) do
+      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.clean_with(:truncation)
     end
 
-    config.after :each do
-      DatabaseRewinder.clean
-      Rails.cache.clear
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
     end
   end
 end
