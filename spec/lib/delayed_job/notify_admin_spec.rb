@@ -5,7 +5,7 @@ describe DelayedJob::NotifyAdmin do
   it "should notify to admin" do
     post = FactoryGirl.create(:post)
 
-    mailer.stub!(:deliver)
+    mailer.stub(:deliver)
     NotificationMailer.should_receive(:notify_admin).with(post).and_return(mailer)
     DelayedJob::NotifyAdmin.new(post.id).perform
   end

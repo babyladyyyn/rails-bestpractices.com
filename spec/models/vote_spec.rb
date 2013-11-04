@@ -13,17 +13,11 @@ describe Vote do
   describe 'when created' do
 
     it "should increment corresponding Post#vote_points if indicated as 'like'" do
-      orig_vote_point = post.vote_points
-      FactoryGirl.create(:vote, :voteable => post, :like => true)
-      post.reload
-      post.vote_points.should == orig_vote_point + 1
+      expect { FactoryGirl.create(:vote, voteable: post, like: true) }.to change { post.reload.vote_points }.by(1)
     end
 
     it "should decrement corresponding Post#vote_points if indicated as 'don like'" do
-      orig_vote_point = post.vote_points
-      FactoryGirl.create(:vote, :voteable => post, :like => false)
-      post.reload
-      post.vote_points.should == orig_vote_point - 1
+      expect { FactoryGirl.create(:vote, voteable: post, like: false) }.to change { post.reload.vote_points }.by(-1)
     end
 
   end

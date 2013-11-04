@@ -7,7 +7,7 @@ describe DelayedJob::NotifyAnswer do
     question = FactoryGirl.create(:question, :user => user)
     answer = FactoryGirl.create(:answer, :question => question)
 
-    mailer.stub!(:deliver)
+    mailer.stub(:deliver)
     NotificationMailer.should_receive(:notify_answer).with('question@gmail.com', answer).and_return(mailer)
     DelayedJob::NotifyAnswer.new(answer.id).perform
   end
@@ -18,7 +18,7 @@ describe DelayedJob::NotifyAnswer do
     question = FactoryGirl.create(:question, :user => user)
     answer = FactoryGirl.create(:answer, :question => question)
 
-    mailer.stub!(:deliver)
+    mailer.stub(:deliver)
     DelayedJob::NotifyAnswer.new(answer.id).perform
   end
 
@@ -34,7 +34,7 @@ describe DelayedJob::NotifyAnswer do
 
     answer = FactoryGirl.create(:answer, :question => question, :user => answer_user2, :answer_body => AnswerBody.new(:body => 'answer'))
 
-    mailer.stub!(:deliver)
+    mailer.stub(:deliver)
     NotificationMailer.should_receive(:notify_answer).with('question@gmail.com', answer).ordered.and_return(mailer)
     NotificationMailer.should_receive(:notify_answer).with('answer1@gmail.com', answer).ordered.and_return(mailer)
     NotificationMailer.should_receive(:notify_answer).with('answer3@gmail.com', answer).ordered.and_return(mailer)

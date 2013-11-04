@@ -8,5 +8,5 @@ namespace :sitemap do
       end
     end
   end
-  after :published, "sitemap:refresh"
+  after "deploy:published", "sitemap:refresh"
 end

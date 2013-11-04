@@ -52,13 +52,6 @@ describe Post do
       @post = FactoryGirl.create(:post, :published => false)
     end
 
-    it "should increment user.posts_count" do
-      origin_posts_count = @post.cached_user.posts_count
-      @post.publish!
-      @post.reload
-      @post.cached_user.posts_count.should == origin_posts_count + 1
-    end
-
     it "should mark published as true" do
       @post.publish!
       @post.should be_published

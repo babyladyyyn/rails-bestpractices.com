@@ -1,8 +1,8 @@
 environment 'production'
 daemonize
-pidfile 'tmp/pids/puma.pid'
-state_path 'tmp/sockets/puma.state'
-stdout_redirect 'log/stdout.log', 'log/stderr.log'
+pidfile '/home/huangzhi/sites/rails-bestpractices.com/production/shared/tmp/pids/puma.pid'
+state_path '/home/huangzhi/sites/rails-bestpractices.com/production/shared/tmp/sockets/puma.state'
+stdout_redirect '/home/huangzhi/sites/rails-bestpractices.com/production/shared/log/stdout.log', '/home/huangzhi/sites/rails-bestpractices.com/production/shared/log/stderr.log'
 threads 4, 16
 workers 2
 bind 'unix:///home/huangzhi/sites/rails-bestpractices.com/production/shared/tmp/sockets/puma.sock'

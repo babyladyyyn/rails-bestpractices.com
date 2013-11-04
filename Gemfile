@@ -8,7 +8,7 @@ gem "cells"
 gem "ckeditor"
 gem 'coffee-rails'
 gem 'compass-rails'
-gem "contact_us", github: "flyerhzm/contact_us", branch: "rails-4"
+gem "contact_us", github: "jdutil/contact_us"
 gem "country_select"
 gem "css_sprite"
 gem "daemons"
@@ -19,14 +19,14 @@ gem "devise-encryptable"
 gem "dropbox"
 gem "escape_utils"
 gem 'exception_notification'
-gem "formtastic", github: "justinfrench/formtastic", branch: "rails4"
+gem "formtastic", "2.3.0.rc2"
 gem "haml"
 gem "has_scope"
 gem "json"
 gem "kgio"
 gem "gravtastic"
 gem "memcached"
-gem "meta-tags", :require => 'meta_tags'
+gem "meta-tags", require: 'meta_tags'
 gem "multiple_mailers"
 gem 'mysql2'
 gem "newrelic_rpm"
@@ -39,12 +39,12 @@ gem "puma"
 gem 'rails'
 gem "rails_admin"
 gem "rdiscount"
-gem "recaptcha", :require => "recaptcha/rails"
+gem "recaptcha", require: "recaptcha/rails"
 gem 'sass-rails'
-gem "simple_cacheable", require: "cacheable"
+gem "simple_cacheable", github: "flyerhzm/simple_cacheable", require: "cacheable"
 gem "sitemap_generator"
 gem "switch_user"
-gem "thinking-sphinx", :require => 'thinking_sphinx'
+gem "thinking-sphinx", require: 'thinking_sphinx'
 gem "turbolinks"
 gem "twitter"
 gem 'uglifier'
@@ -60,6 +60,8 @@ end
 
 group :development do
   gem "annotate"
+  gem "better_errors"
+  gem "binding_of_caller"
   gem "bullet"
   gem 'capistrano', github: 'wecapslabs/capistrano', branch: 'fix-symlink-role'
   gem 'capistrano-bundler'
@@ -75,9 +77,9 @@ group :development do
   gem "guard-rails"
   gem "quiet_assets"
   gem "rails-erd"
-  gem "rb-fchange", :require => false
-  gem "rb-fsevent", :require => false
-  gem "rb-inotify", :require => false
+  gem "rb-fchange", require: false
+  gem "rb-fsevent", require: false
+  gem "rb-inotify", require: false
   gem "rvm-capistrano"
   gem "thin"
 end
