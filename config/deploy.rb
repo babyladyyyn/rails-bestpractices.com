@@ -8,7 +8,7 @@ set :deploy_to, "/home/huangzhi/sites/rails-bestpractices.com/production"
 set :scm, :git
 set :branch, "master"
 
-set :log_level, :debug
+set :log_level, :info
 
 set :linked_files, %w{
   config/bitly.yml config/database.yml config/mailers.yml config/memcache.yml config/omniauth.yml config/thinking_sphinx.yml config/initializers/secret_token.rb

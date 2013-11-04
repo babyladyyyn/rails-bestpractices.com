@@ -8,6 +8,6 @@ namespace :css_sprite do
         end
       end
     end
-    after "deploy:updated", "css_sprite:build"
   end
+  before "deploy:compile_assets", "css_sprite:build"
 end
