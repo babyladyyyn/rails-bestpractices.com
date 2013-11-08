@@ -63,11 +63,11 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "bullet"
-  gem 'capistrano', github: 'wecapslabs/capistrano', branch: 'fix-symlink-role'
-  gem 'capistrano-bundler'
-  gem 'capistrano-puma', github: 'ahmadsherif/capistrano-puma'
-  gem 'capistrano-rvm', '~> 0.0.2'
-  gem 'capistrano-rails', github: 'flyerhzm/rails-1'
+  gem 'capistrano', github: 'wecapslabs/capistrano', branch: 'fix-symlink-role', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-puma', github: 'ahmadsherif/capistrano-puma', require: false
+  gem 'capistrano-rvm', '~> 0.0.2', require: false
+  gem 'capistrano-rails', require: false
   gem "pry"
   gem "guard"
   gem "guard-annotate"
@@ -80,7 +80,6 @@ group :development do
   gem "rb-fchange", require: false
   gem "rb-fsevent", require: false
   gem "rb-inotify", require: false
-  gem "rvm-capistrano"
   gem "thin"
 end
 

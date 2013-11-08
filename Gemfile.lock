@@ -17,13 +17,6 @@ GIT
       rails (>= 3.0.0)
 
 GIT
-  remote: git://github.com/flyerhzm/rails-1.git
-  revision: e1b31f011f275f84bdfebaf9eb2622310795ccea
-  specs:
-    capistrano-rails (1.0.0)
-      capistrano
-
-GIT
   remote: git://github.com/flyerhzm/simple_cacheable.git
   revision: a1d462a4fc67c6c6dcaa51c742f714c76868ef6b
   specs:
@@ -105,6 +98,8 @@ GEM
     cancan (1.6.9)
     capistrano-bundler (1.0.0)
       capistrano (>= 3.0.0.pre)
+    capistrano-rails (1.0.0)
+      capistrano
     capistrano-rvm (0.0.3)
       capistrano
     capybara (2.1.0)
@@ -408,8 +403,6 @@ GEM
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     ruby-graphviz (1.0.8)
-    rvm-capistrano (1.2.7)
-      capistrano (>= 2.0.0)
     safe_yaml (0.9.7)
     sass (3.2.12)
     sass-rails (4.0.1)
@@ -505,7 +498,7 @@ DEPENDENCIES
   capistrano!
   capistrano-bundler
   capistrano-puma!
-  capistrano-rails!
+  capistrano-rails
   capistrano-rvm (~> 0.0.2)
   capybara
   cells
@@ -568,7 +561,6 @@ DEPENDENCIES
   recaptcha
   rspec-cells
   rspec-rails
-  rvm-capistrano
   sass-rails
   shoulda-matchers
   simple_cacheable!
