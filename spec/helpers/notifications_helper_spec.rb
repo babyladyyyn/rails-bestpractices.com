@@ -9,7 +9,7 @@ describe NotificationsHelper do
       answer = FactoryGirl.create(:answer, :question => question, :user => answer_user)
       notification = FactoryGirl.create(:notification, :notifierable => answer, :user => question_user)
 
-      helper.notification_message(notification).should == "#{link_to 'answer_user', user_path(answer_user)} answered on Question #{link_to 'notifierable question', question_path(question)}"
+      expect(helper.notification_message(notification)).to eq("#{link_to 'answer_user', user_path(answer_user)} answered on Question #{link_to 'notifierable question', question_path(question)}")
     end
   end
 end

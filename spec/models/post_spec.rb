@@ -28,22 +28,22 @@ describe Post do
   it 'should be scopable by implemented posts' do
     Post.delete_all
     posts = [false, true].map{|flag| FactoryGirl.create(:post, :implemented => flag) }
-    Post.implemented.should == posts[1..1]
+    expect(Post.implemented).to eq(posts[1..1])
   end
 
   it 'should be scopable by published posts' do
     Post.delete_all
     posts = [false, true].map{|flag| FactoryGirl.create(:post, :published => flag) }
-    Post.published.should == posts[1..1]
+    expect(Post.published).to eq(posts[1..1])
   end
 
   it "should reflect :id & :title when converted to param" do
     post.title = 'Super Mighty Proc'
-    post.to_param.should == post.instance_exec{"#{id}-#{title.parameterize}"}
+    expect(post.to_param).to eq(post.instance_exec{"#{id}-#{title.parameterize}"})
   end
 
   it "should notify admin after create" do
-    Delayed::Job.should_receive(:enqueue)
+    expect(Delayed::Job).to receive(:enqueue)
     FactoryGirl.create(:post)
   end
 
@@ -54,11 +54,11 @@ describe Post do
 
     it "should mark published as true" do
       @post.publish!
-      @post.should be_published
+      expect(@post).to be_published
     end
 
     it "should tweet after publish!" do
-      Delayed::Job.should_receive(:enqueue)
+      expect(Delayed::Job).to receive(:enqueue)
       @post.publish!
     end
   end
@@ -70,19 +70,19 @@ describe Post do
     end
 
     it "should order by id" do
-      @post1.prev("id").should be_nil
-      @post2.prev("id").should == @post1
+      expect(@post1.prev("id")).to be_nil
+      expect(@post2.prev("id")).to eq(@post1)
     end
 
     it "should order by vote_points" do
-      @post1.prev("vote_points").should == @post2
-      @post2.prev("vote_points").should be_nil
+      expect(@post1.prev("vote_points")).to eq(@post2)
+      expect(@post2.prev("vote_points")).to be_nil
     end
 
     it "should order by implemented" do
       @post3 = FactoryGirl.create(:post, :implemented => true)
-      @post2.prev("implemented").should be_nil
-      @post3.prev("implemented").should == @post2
+      expect(@post2.prev("implemented")).to be_nil
+      expect(@post3.prev("implemented")).to eq(@post2)
     end
   end
 
@@ -93,19 +93,19 @@ describe Post do
     end
 
     it "should order by id" do
-      @post1.next("id").should == @post2
-      @post2.next("id").should be_nil
+      expect(@post1.next("id")).to eq(@post2)
+      expect(@post2.next("id")).to be_nil
     end
 
     it "should order by vote_points" do
-      @post1.next("vote_points").should be_nil
-      @post2.next("vote_points").should == @post1
+      expect(@post1.next("vote_points")).to be_nil
+      expect(@post2.next("vote_points")).to eq(@post1)
     end
 
     it "should order by implemented" do
       @post3 = FactoryGirl.create(:post)
-      @post1.next("implemented").should == @post2
-      @post2.next("implemented").should be_nil
+      expect(@post1.next("implemented")).to eq(@post2)
+      expect(@post2.next("implemented")).to be_nil
     end
   end
 end

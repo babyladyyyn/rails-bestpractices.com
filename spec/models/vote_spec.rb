@@ -27,13 +27,13 @@ describe Vote do
     it "should decrement corresponding Post#vote_points if indicated as 'like'" do
       orig_vote_point = post.vote_points
       (vote = FactoryGirl.create(:vote, :voteable => post, :like => true)).destroy
-      post.vote_points.should == orig_vote_point
+      expect(post.vote_points).to eq(orig_vote_point)
     end
 
     it "should increment corresponding Post#vote_points if indicated as 'don like'" do
       orig_vote_point = post.vote_points
       (vote = FactoryGirl.create(:vote, :voteable => post, :like => false)).destroy
-      post.vote_points.should == orig_vote_point
+      expect(post.vote_points).to eq(orig_vote_point)
     end
 
   end

@@ -22,11 +22,11 @@ module RailsBestPractices
             end
 
             it 'should have tweet title' do
-              @instance.tweet_title.should == block.call(@instance)[:title]
+              expect(@instance.tweet_title).to eq(block.call(@instance)[:title])
             end
 
             it 'should have tweet path' do
-              @instance.tweet_path.should == block.call(@instance)[:path]
+              expect(@instance.tweet_path).to eq(block.call(@instance)[:path])
             end
           end
         end
@@ -34,7 +34,7 @@ module RailsBestPractices
         def should_be_taggable
           describe 'being taggable' do
             it "should acts_ast_taggable" do
-              described_class.ancestors.should be_include(ActsAsTaggableOn::Taggable::Core)
+              expect(described_class.ancestors).to be_include(ActsAsTaggableOn::Taggable::Core)
             end
           end
         end
@@ -50,7 +50,7 @@ module RailsBestPractices
               FactoryGirl.create(:vote, :voteable => instance, :user => peter)
               FactoryGirl.create(:vote, :voteable => instance, :user => jane)
               FactoryGirl.create(:vote, :voteable => instance, :user => jane)
-              instance.vote(jane).should == instance.votes[1]
+              expect(instance.vote(jane)).to eq(instance.votes[1])
             end
           end
         end
@@ -66,13 +66,13 @@ module RailsBestPractices
             it "should generate simple markdown html" do
               raw = "subject\n=======\ntitle\n-----"
               formatted = "<h1>subject</h1>\n\n<h2>title</h2>\n"
-              FactoryGirl.create(described_class.to_s.underscore, :body => raw).formatted_html.should == formatted
+              expect(FactoryGirl.create(described_class.to_s.underscore, :body => raw).formatted_html).to eq(formatted)
             end
 
             it "should generate markdown html with <pre><code>" do
               raw = "subject\n=======\ntitle\n-----\n    def test\n      puts 'test'\n    end"
               formatted = "<h1>subject</h1>\n\n<h2>title</h2>\n\n<pre><code>def test\n  puts 'test'\nend\n</code></pre>\n"
-              FactoryGirl.create(described_class.to_s.underscore, :body => raw).formatted_html.should == formatted
+              expect(FactoryGirl.create(described_class.to_s.underscore, :body => raw).formatted_html).to eq(formatted)
             end
           end
         end

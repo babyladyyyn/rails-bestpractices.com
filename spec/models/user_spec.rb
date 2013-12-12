@@ -20,6 +20,6 @@ describe User do
 
   it "should reflect :id & :login when converted to param" do
     user = FactoryGirl.create(:user, :login => 'flyerhzm')
-    user.to_param.should == "#{user.id}-flyerhzm"
+    expect(user.to_param).to eq("#{user.id}-flyerhzm")
   end
 end

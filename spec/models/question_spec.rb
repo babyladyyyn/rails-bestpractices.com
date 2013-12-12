@@ -28,16 +28,16 @@ describe Question do
     Question.delete_all
     questions = [FactoryGirl.create(:question)]
     questions << FactoryGirl.create(:answer).question
-    Question.not_answered.should == questions[0..0]
+    expect(Question.not_answered).to eq(questions[0..0])
   end
 
   it "should reflect :id & :title when converted to param" do
     question.title = 'Howto Write Super Mighty Proc'
-    question.to_param.should == question.instance_exec{"#{id}-#{title.parameterize}"}
+    expect(question.to_param).to eq(question.instance_exec{"#{id}-#{title.parameterize}"})
   end
 
   it "should tweet after create" do
-    Delayed::Job.should_receive(:enqueue)
+    expect(Delayed::Job).to receive(:enqueue)
     FactoryGirl.create(:question)
   end
 

@@ -5,11 +5,11 @@ describe NotificationSetting do
 
   describe "description" do
     it "should get global email description" do
-      FactoryGirl.create(:notification_setting, :name => 'global_email').description.should == 'Receive email notification (global setting)'
+      expect(FactoryGirl.create(:notification_setting, :name => 'global_email').description).to eq('Receive email notification (global setting)')
     end
 
     it "should get question answer description" do
-      FactoryGirl.create(:notification_setting, :name => 'answer_question').description.should == 'Answer on my Question'
+      expect(FactoryGirl.create(:notification_setting, :name => 'answer_question').description).to eq('Answer on my Question')
     end
   end
 end
