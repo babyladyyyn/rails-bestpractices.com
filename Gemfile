@@ -80,6 +80,9 @@ group :development do
   gem "rb-fchange", require: false
   gem "rb-fsevent", require: false
   gem "rb-inotify", require: false
+  gem "spring"
+  gem "spring-commands-rspec"
+  gem "spring-commands-cucumber"
   gem "thin"
 end
 
