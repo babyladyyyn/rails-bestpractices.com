@@ -8,7 +8,7 @@ gem "cells"
 gem "ckeditor"
 gem 'coffee-rails'
 gem 'compass-rails'
-gem "contact_us", github: "jdutil/contact_us"
+gem "contact_us"
 gem "country_select"
 gem "css_sprite"
 gem "daemons"
@@ -102,7 +102,7 @@ end
 
 group :cucumber do
   gem "cucumber"
-  gem "cucumber-rails", github: "cucumber/cucumber-rails", branch: "master_rails4_test"
+  gem "cucumber-rails"
   gem "launchy"
   gem "pickle"
 end
