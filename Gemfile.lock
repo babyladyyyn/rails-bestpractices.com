@@ -6,13 +6,6 @@ GIT
       capistrano (>= 3.0.0.pre)
 
 GIT
-  remote: git://github.com/flyerhzm/simple_cacheable.git
-  revision: a1d462a4fc67c6c6dcaa51c742f714c76868ef6b
-  specs:
-    simple_cacheable (1.4.1)
-      rails (>= 3.0.0)
-
-GIT
   remote: git://github.com/wecapslabs/capistrano.git
   revision: 2fe6bebe4a1536e2f4ccb0ef8402ff1555a8bf06
   branch: fix-symlink-role
@@ -401,6 +394,8 @@ GEM
     shoulda-matchers (1.4.2)
       activesupport (>= 3.0.0)
       bourne (~> 1.1.2)
+    simple_cacheable (1.4.1)
+      rails (>= 3.0.0)
     simple_oauth (0.2.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
@@ -557,7 +552,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   shoulda-matchers
-  simple_cacheable!
+  simple_cacheable
   sitemap_generator
   spork (= 1.0.0.rc3)
   spring

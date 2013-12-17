@@ -41,7 +41,7 @@ gem "rails_admin"
 gem "rdiscount"
 gem "recaptcha", require: "recaptcha/rails"
 gem 'sass-rails'
-gem "simple_cacheable", github: "flyerhzm/simple_cacheable", require: "cacheable"
+gem "simple_cacheable", require: "cacheable"
 gem "sitemap_generator"
 gem "switch_user"
 gem "thinking-sphinx", require: 'thinking_sphinx'

@@ -2,6 +2,8 @@ language: ruby
 rvm:
   - 2.0.0
 env: DB=mysql
+services:
+  - memcached
 before_script:
   - "cp config/database.yml.example config/database.yml"
   - "cp config/bitly.yml.example config/bitly.yml"
