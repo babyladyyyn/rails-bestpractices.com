@@ -8,7 +8,6 @@ class SidebarCell < Cell::Rails
     unless user
       sidebar << render(:state => :login)
     end
-    sidebar << render(:state => :referrals)
     sidebar << render(:state => :jobs)
     case controller
     when "posts"

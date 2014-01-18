@@ -75,6 +75,7 @@ group :development do
   gem "guard-livereload"
   gem "guard-migrate"
   gem "guard-rails"
+  gem "guard-spring"
   gem "quiet_assets"
   gem "rails-erd"
   gem "rb-fchange", require: false
@@ -92,12 +93,10 @@ group :test do
   gem "database_cleaner"
   gem "email_spec"
   gem "factory_girl_rails"
-  gem "guard-spork"
   gem "guard-rspec"
   gem "rspec-cells"
   gem "rspec-rails"
   gem 'shoulda-matchers'
-  gem "spork", "1.0.0.rc3"
 end
 
 group :cucumber do
