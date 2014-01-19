@@ -262,7 +262,7 @@ GEM
     multi_xml (0.5.2)
     multipart-post (1.1.5)
     multiple_mailers (1.2.1)
-    mysql2 (0.3.14)
+    mysql2 (0.3.12)
     nested_form (0.3.2)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
