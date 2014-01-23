@@ -1,10 +1,10 @@
 set :bundle_roles, :all
 set :rvm_type, :user
-set :rvm_ruby_version, '2.0.0-p247'
+set :rvm_ruby_version, '2.0.0-p353'
 
 set :application, "rails-bestpractices"
 set :repo_url,  "git@github.com:railsbp/rails-bestpractices.com.git"
-set :deploy_to, "/home/huangzhi/sites/rails-bestpractices.com/production"
+set :deploy_to, "/home/deploy/sites/rails-bestpractices.com/production"
 set :scm, :git
 set :branch, "master"
 
