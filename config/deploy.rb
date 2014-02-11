@@ -11,7 +11,7 @@ set :branch, "master"
 set :log_level, :debug
 
 set :linked_files, %w{
-  config/bitly.yml config/database.yml config/mailers.yml config/memcache.yml config/omniauth.yml config/thinking_sphinx.yml config/initializers/secret_token.rb
+  config/bitly.yml config/database.yml config/mailers.yml config/memcache.yml config/omniauth.yml config/redis.yml config/thinking_sphinx.yml config/initializers/secret_token.rb
   public/google9df66a0aeacea061.html public/BingSiteAuth.xml
 }
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system db/sphinx}
