@@ -44,7 +44,7 @@ class JobsController < ApplicationController
   end
 
   def resource_params
-    params.require(:job).permit(:title, :company, :company_url, :country, :state, :city, :address, :salary, :apply_email, :description) if params[:job]
+    params.require(:job).permit(:title, :company, :company_url, :country, :state, :city, :address, :salary, :apply_email, :description, :job_type_ids) if params[:job]
   end
 
   protected

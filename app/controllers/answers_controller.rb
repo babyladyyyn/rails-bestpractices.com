@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
   def create
     @answer = current_user.answers.build(resource_params.merge(:question_id => @question.id))
     if @answer.save
-      job = Delayed::Job.enqueue(DelayedJob::NotifyAnswer.new(@answer.id))
+      NotifyAnswerWorker.perform_async @answer.id
       redirect_to @question, notice: "Your Answer was successfully created!"
     else
       render 'questions/show'

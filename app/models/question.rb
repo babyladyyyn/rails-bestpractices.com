@@ -58,7 +58,7 @@ class Question < ActiveRecord::Base
 
   protected
     def tweet_it
-      Delayed::Job.enqueue(DelayedJob::Tweet.new('Question', self.id))
+      TweetWorker.perform_async 'Question', self.id
     end
 
     def expire_user_cache

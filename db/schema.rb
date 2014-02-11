@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20120427183926) do
+ActiveRecord::Schema.define(version: 20140211112752) do
 
   create_table "answer_bodies", force: true do |t|
     t.text     "body"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20120427183926) do
   add_index "blog_posts", ["user_id"], name: "index_blog_posts_on_user_id", using: :btree
 
   create_table "comments", force: true do |t|
-    t.text     "body"
+    t.text     "body",             limit: 16777215
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
@@ -71,22 +71,6 @@ ActiveRecord::Schema.define(version: 20120427183926) do
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
-
-  create_table "delayed_jobs", force: true do |t|
-    t.integer  "priority",   default: 0
-    t.integer  "attempts",   default: 0
-    t.text     "handler"
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "queue"
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "job_job_types", force: true do |t|
     t.integer  "job_id"
@@ -156,7 +140,7 @@ ActiveRecord::Schema.define(version: 20120427183926) do
 
   create_table "pages", force: true do |t|
     t.string   "name"
-    t.text     "body"
+    t.text     "body",       limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -176,12 +160,12 @@ ActiveRecord::Schema.define(version: 20120427183926) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.text     "description"
-    t.integer  "comments_count", default: 0
-    t.integer  "vote_points",    default: 0
+    t.text     "description",    limit: 16777215
+    t.integer  "comments_count",                  default: 0
+    t.integer  "vote_points",                     default: 0
     t.integer  "view_count"
-    t.boolean  "implemented",    default: false, null: false
-    t.boolean  "published",      default: false, null: false
+    t.boolean  "implemented",                     default: false, null: false
+    t.boolean  "published",                       default: false, null: false
   end
 
   add_index "posts", ["published"], name: "index_posts_on_published", using: :btree

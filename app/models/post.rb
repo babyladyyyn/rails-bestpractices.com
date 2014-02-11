@@ -62,7 +62,7 @@ class Post < ActiveRecord::Base
     self.update_attribute(:published, true)
     expire_user_cache
     expire_post_cell_cache
-    Delayed::Job.enqueue(DelayedJob::Tweet.new('Post', self.id))
+    TweetWorker.perform_async 'Post', self.id
   end
 
   def related_posts
@@ -87,7 +87,7 @@ class Post < ActiveRecord::Base
 
   protected
     def notify_admin
-      Delayed::Job.enqueue(DelayedJob::NotifyAdmin.new(self.id))
+      NotifyAdminWorker.perform_async self.id
     end
 
     def expire_user_cache

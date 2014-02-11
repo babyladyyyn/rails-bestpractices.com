@@ -1,5 +1,7 @@
-class DelayedJob::NotifyAnswer < Struct.new(:answer_id)
-  def perform
+class NotifyAnswerWorker
+  include Sidekiq::Worker
+
+  def perform(answer_id)
     answer = Answer.find_cached(answer_id)
     question = answer.cached_question
     emails = []

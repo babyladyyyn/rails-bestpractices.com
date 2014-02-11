@@ -60,11 +60,10 @@ class Job < ActiveRecord::Base
 
   def publish!
     self.update_attribute(:published, true)
-    # Delayed::Job.enqueue(DelayedJob::Tweet.new('Job', self.id))
   end
 
   protected
     def notify_admin
-      Delayed::Job.enqueue(DelayedJob::NotifyJob.new(self.id))
+      NotifyJobWorker.perform_async self.id
     end
 end

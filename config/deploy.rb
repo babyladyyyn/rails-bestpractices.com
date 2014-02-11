@@ -20,26 +20,6 @@ set :keep_releases, 5
 
 namespace :deploy do
 
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-    end
-  end
-
-  # before :restart, :revision do
-  #   on roles :app do
-  #     within release_path do
-  #       head = `git ls-remote origin master`.split("\t")[0]
-  #       execute "echo #{head} > public/REVISION"
-  #     end
-  #   end
-  # end
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-    end
-  end
-
   after :finishing, 'deploy:cleanup'
 
 end
