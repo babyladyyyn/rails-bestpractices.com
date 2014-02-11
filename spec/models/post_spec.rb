@@ -43,7 +43,7 @@ describe Post do
   end
 
   it "should notify admin after create" do
-    expect(Delayed::Job).to receive(:enqueue)
+    expect(NotifyAdminWorker).to receive(:perform_async)
     FactoryGirl.create(:post)
   end
 
@@ -58,7 +58,7 @@ describe Post do
     end
 
     it "should tweet after publish!" do
-      expect(Delayed::Job).to receive(:enqueue)
+      expect(TweetWorker).to receive(:perform_async)
       @post.publish!
     end
   end

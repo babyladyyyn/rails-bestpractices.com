@@ -37,7 +37,7 @@ describe Question do
   end
 
   it "should tweet after create" do
-    expect(Delayed::Job).to receive(:enqueue)
+    expect(TweetWorker).to receive(:perform_async)
     FactoryGirl.create(:question)
   end
 

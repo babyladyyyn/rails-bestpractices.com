@@ -1,12 +1,12 @@
 require "spec_helper"
 
-describe DelayedJob::NotifyAdmin do
+describe NotifyAdminWorker do
 
   it "should notify to admin" do
     post = FactoryGirl.create(:post)
 
     allow(mailer).to receive(:deliver)
     expect(NotificationMailer).to receive(:notify_admin).with(post).and_return(mailer)
-    DelayedJob::NotifyAdmin.new(post.id).perform
+    NotifyAdminWorker.new.perform(post.id)
   end
 end
