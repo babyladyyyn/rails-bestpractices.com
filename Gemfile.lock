@@ -87,7 +87,6 @@ GEM
       actionpack (>= 3.0)
       railties (>= 3.0)
     choice (0.1.6)
-    chronic (0.9.1)
     chunky_png (1.2.9)
     ckeditor (4.0.4)
       mime-types
@@ -459,9 +458,6 @@ GEM
     uniform_notifier (1.3.0)
     warden (1.2.3)
       rack (>= 1.0)
-    whenever (0.8.2)
-      activesupport (>= 2.3.4)
-      chronic (>= 0.6.3)
     will_paginate (3.0.4)
     wmd-rails (0.0.7)
       rails (>= 3.1.1)
@@ -561,7 +557,6 @@ DEPENDENCIES
   turbolinks
   twitter
   uglifier
-  whenever
   will_paginate
   wmd-rails
   yajl-ruby

@@ -48,7 +48,6 @@ gem "thinking-sphinx", require: 'thinking_sphinx'
 gem "turbolinks"
 gem "twitter"
 gem 'uglifier'
-gem 'whenever'
 gem "will_paginate"
 gem "wmd-rails"
 gem "yajl-ruby"
