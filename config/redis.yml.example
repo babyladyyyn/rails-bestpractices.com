@@ -1,0 +1,7 @@
+development:
+  url: 'http://localhost:6379'
+  namespace: 'rbp'
+
+test:
+  url: 'http://localhost:6379'
+  namespace: 'rbp'

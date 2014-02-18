@@ -11,6 +11,7 @@ before_script:
   - "cp config/omniauth.yml.example config/omniauth.yml"
   - "cp config/thinking_sphinx.yml.example config/thinking_sphinx.yml"
   - "cp config/memcache.yml.example config/memcache.yml"
+  - "cp config/redis.yml.example config/redis.yml"
   - "cp config/initializers/secret_token.rb.example config/initializers/secret_token.rb"
   - "bundle exec rake db:create"
   - "bundle exec rake db:schema:load"
