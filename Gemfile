@@ -27,6 +27,7 @@ gem "meta-tags", require: 'meta_tags'
 gem "multiple_mailers"
 gem 'mysql2'
 gem "newrelic_rpm"
+gem "newrelic-rake"
 gem "nokogiri"
 gem "omniauth"
 gem "omniauth-facebook"
