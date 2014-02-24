@@ -4,6 +4,7 @@ rvm:
 env: DB=mysql
 services:
   - memcached
+  - redis
 before_script:
   - "cp config/database.yml.example config/database.yml"
   - "cp config/bitly.yml.example config/bitly.yml"
