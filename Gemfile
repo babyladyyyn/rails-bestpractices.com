@@ -34,7 +34,7 @@ gem "omniauth-facebook"
 gem "omniauth-twitter"
 gem "paperclip"
 gem "puma"
-gem 'rails'
+gem "rails", "4.0.3"
 gem "rails_admin"
 gem "rdiscount"
 gem "recaptcha", require: "recaptcha/rails"
