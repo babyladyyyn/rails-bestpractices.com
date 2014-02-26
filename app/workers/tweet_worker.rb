@@ -1,8 +1,8 @@
 class TweetWorker
   include Sidekiq::Worker
 
-  def perform(klass_name, id, force)
-    if Rails.env.production? || force
+  def perform(klass_name, id)
+    if Rails.env.production?
       model = klass_name.constantize.find_cached(id)
       init_twitter
       tweet(model.tweet_title, model.tweet_path)
